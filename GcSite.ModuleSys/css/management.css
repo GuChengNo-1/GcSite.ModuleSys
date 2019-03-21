@@ -1,0 +1,582 @@
+#site-tabs {
+    background: #fff;
+    margin-top: 20px
+}
+
+.dialog-content input.text {
+    width: 368px
+}
+
+.dialog-content p {
+    margin: 20px 0
+}
+
+.dialog-content label {
+    width: 70px;
+    display: inline-block
+}
+
+.update-max-site-dialog .dialog-title {
+    border: 1px solid #dedede;
+    border-bottom: none
+}
+
+.update-max-site-dialog .dialog-content {
+    border: 1px solid #dedede;
+    border-top: none
+}
+
+.multiple-site-list-wrapper label {
+    width: auto;
+    display: inline-block
+}
+
+.multiple-site-list-wrapper .tip {
+    margin-bottom: 10px
+}
+
+.add-site-container {
+    color: #5d5d61
+}
+
+.add-site-container .footer-tip {
+    margin-left: 70px;
+    margin-top: 10px
+}
+
+.add-site-container .footer-tip p {
+    margin: 8px 0
+}
+
+.add-site-container .buttons {
+    padding-top: 24px
+}
+
+.tab-contents .footer-tip {
+    padding: 30px 0 20px 20px;
+    color: #999
+}
+
+.error {
+    color: red
+}
+
+.errortip {
+    display: block;
+    margin-left: 71px;
+    margin-top: 8px
+}
+
+.dialog-content input {
+    text-indent: 10px
+}
+
+.add-site-input {
+    width: 445px
+}
+
+.js-install-ratio-text {
+    float: left
+}
+
+.js-install-ratio-low {
+    float: right;
+    display: inline-block;
+    cursor: pointer;
+    width: 16px;
+    padding-right: 10px;
+    background-position: 0 center;
+    background-repeat: no-repeat;
+    background-image: url(decorator/js-install-ratio-low.png)
+}
+
+.get-js-install-status.disabled {
+    color: #999;
+    cursor: not-allowed
+}
+
+table.table .table-index, table.table .table-index .td-content {
+    width: 260px
+}
+
+.default-hidden {
+    visibility: hidden
+}
+
+.table tr:hover .default-hidden {
+    visibility: visible
+}
+
+.bridge-status-container, .bridge-status-container .bridge-active, .bridge-status-container .bridge-unactive {
+    width: 96px;
+    display: inline-block
+}
+
+.site-list {
+    margin: 20px 19px
+}
+
+.site-list .title-wrapper {
+    padding: 20px
+}
+
+.site-list .title-wrapper .title {
+    line-height: 30px
+}
+
+.site-list .title-wrapper .title .help {
+    top: 9px
+}
+
+.multiple-site-tip {
+    margin-left: 83px
+}
+
+.multiple-site-list {
+    border: 1px solid #e4e4e4;
+    height: 340px;
+    width: 478px;
+    margin: 6px 0 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: #fff
+}
+
+.multiple-site-list li {
+    height: 30px;
+    line-height: 30px;
+    padding-left: 10px;
+    border-bottom: 1px solid #f0f0f0
+}
+
+.multiple-site-list li:last-child {
+    border-bottom: none
+}
+
+.multiple-site-list li input {
+    margin-right: 10px
+}
+
+.multiple-site-name {
+    margin: 0 0 20px
+}
+
+.multiple-site-name input {
+    width: 180px;
+    margin-right: 6px
+}
+
+.buttons {
+    text-align: right;
+    padding-top: 20px
+}
+
+.buttons .btn {
+    margin-left: 10px
+}
+
+.multiple-site-add .buttons {
+    padding-top: 0
+}
+
+.table .setting-operations {
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 14px
+}
+
+.table .setting-operations td {
+    text-align: left
+}
+
+.table .setting-operations a, .table .setting-operations span {
+    margin: 0 18px 0 0
+}
+
+.table .setting-operations .more-item-container {
+    padding: 11px 13px 11px 5px
+}
+
+.table .setting-operations .more-item-container a, .table .setting-operations .more-item-container span {
+    margin: 0;
+    padding: 0 20px 0 0
+}
+
+#MultipleSiteList .setting-operations {
+    padding-left: 20px
+}
+
+.table .operations {
+    padding-left: 0;
+    text-indent: 20px
+}
+
+.table thead .help {
+    top: 0
+}
+
+.no-multiple-site-data {
+    padding: 20px;
+    font-weight: 600
+}
+
+.tip-content-container p {
+    line-height: 1.5
+}
+
+.item .title-wrapper .label {
+    height: 30px;
+    line-height: 30px;
+    color: #5d5d61
+}
+
+.code {
+    font-size: 13px;
+    width: 456px;
+    line-height: 1.5;
+    margin: 0 auto 20px;
+    height: 139px;
+    outline: 0
+}
+
+#SiteCodeCopyWrap {
+    position: relative;
+    height: 26px;
+    line-height: 26px
+}
+
+#SiteCodeCopyWrap .button {
+    margin-left: 8px
+}
+
+#SiteCodeCopyBtn {
+    position: absolute;
+    top: 0;
+    right: 56px;
+    z-index: 5;
+    width: 82px;
+    height: 26px
+}
+
+.code-copy-row-tip {
+    line-height: 22px;
+    color: #0965b8;
+    margin-right: 8px
+}
+
+.code-get-dialog-title {
+    font-weight: 700;
+    margin: 10px 0 15px
+}
+
+.code-get-dialog-domain {
+    margin-bottom: 10px
+}
+
+.code-get-tip p {
+    line-height: 23px;
+    margin: 0
+}
+
+.code-get-tip .last {
+    margin-top: 6px
+}
+
+.code-get-dialog-check {
+    margin-top: 20px
+}
+
+.code-get-dialog-check-tip {
+    margin-bottom: 4px
+}
+
+#SiteCodeCopyMsg {
+    margin-top: 10px
+}
+
+.setting-highlight {
+    color: red
+}
+
+.ProUrlContainer {
+    margin: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid #dedede
+}
+
+.ProUrlContainer .table {
+    border-top: none
+}
+
+.ProUrlContainer .hm-scroll {
+    overflow-y: scroll
+}
+
+.ProUrlContainer .hm-scroll::-webkit-scrollbar-track {
+    background-color: transparent
+}
+
+#SiteProUrlList {
+    width: 280px;
+    max-height: 565px;
+    border: 1px solid #dedede;
+    border-top: none;
+    background: #f4f4f4
+}
+
+#SiteProUrlList .cur, #SiteProUrlRatio, #SiteProUrlRatio .table, #SiteProUrlRatio .table thead td {
+    background: #f8f8f8
+}
+
+#SiteProUrlList td {
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 35px;
+    line-height: 35px
+}
+
+#SiteProUrlList .table-index {
+    width: 120px
+}
+
+#SiteProUrlList tr:hover {
+    cursor: pointer
+}
+
+#SiteProUrlRatio {
+    margin-left: 281px;
+    min-height: 106px;
+    border-left: 1px solid #dedede;
+    border-bottom: 1px solid #dedede;
+    padding: 0 20px
+}
+
+#SiteProUrlRatio .subline-tab-wrapper.first, #SiteProUrlRatio .table thead .table-index div {
+    margin-left: -59px
+}
+
+#SiteProUrlRatio .table thead td {
+    border: none
+}
+
+.summary .item .content, .summary .item .title {
+    border-left: 1px solid #dedede;
+    text-indent: 20px
+}
+
+#SiteProUrlRatio .table thead .table-index {
+    width: auto
+}
+
+#SiteProUrlRatio .table thead .table-index span {
+    padding-right: 20px
+}
+
+#SiteProUrlRatio .table thead .table-index .emphasize {
+    font-weight: 600
+}
+
+#SiteProUrlRatio .table thead .subline-header td {
+    border-bottom: 1px solid #dedede
+}
+
+#SiteProUrlRatio .table td {
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 35px
+}
+
+#SiteProUrlRatio .table tbody td {
+    border-top: 1px solid #dedede;
+    border-bottom: none
+}
+
+#SiteProUrlRatio .table tbody .number-col {
+    width: 24px
+}
+
+#SiteProUrlRatio .table tbody .paging-row td {
+    border-bottom: none
+}
+
+#SiteProUrlRatio .subline-tab-wrapper {
+    float: left;
+    height: 35px;
+    line-height: 35px;
+    margin-right: 20px
+}
+
+#SiteProUrlRatio .subline-tab-wrapper a {
+    color: #323437;
+    padding: 0 10px
+}
+
+#SiteProUrlRatio .active {
+    height: 33px;
+    line-height: 33px;
+    border-bottom: 2px solid #4fa8f9
+}
+
+#SiteProUrlRatio .subline .paging {
+    margin: 16px 0;
+    background: #f8f8f8
+}
+
+#SiteProUrlRatio .help {
+    top: 1px
+}
+
+#SiteProUrlRatio .pattern-url-tip {
+    margin-left: -20px;
+    padding-right: 8px
+}
+
+#SiteProUrlRatio .table-ellipsis {
+    padding-left: 10px
+}
+
+.pro-js-install-ratio {
+    width: 200px
+}
+
+.pro-js-install-ratio .loading {
+    height: 148px;
+    line-height: 148px
+}
+
+.pro-js-installed-right {
+    width: 167px
+}
+
+.pro-js-installed-wrong {
+    width: 301px
+}
+
+.summary {
+    height: 148px;
+    background-color: #fff
+}
+
+.summary p {
+    margin: 0
+}
+
+.summary .item {
+    float: left;
+    height: 100%
+}
+
+.summary .item .title {
+    color: #5d5d61;
+    margin-top: 45px
+}
+
+.summary .item .content {
+    padding-top: 15px;
+    font-size: 18px;
+    font-weight: 600
+}
+
+.summary .item .pro-js-uninstalled-download {
+    font-size: 12px;
+    font-weight: 500;
+    border-color: #fff
+}
+
+.summary .item .detail-content {
+    margin-top: 62px;
+    margin-right: 20px
+}
+
+.summary .pro-js-installed-tip {
+    padding: 45px 20px 21px;
+    border-left: 1px solid #dedede;
+    margin-left: 668px
+}
+
+.summary .pro-js-installed-tip .content {
+    color: #5d5d61;
+    padding-top: 8px;
+    line-height: 1.5
+}
+
+.summary .pro-js-installed-tip .content .emphasize {
+    color: #f48c88
+}
+
+.summary .pro-js-install-ratio {
+    text-align: center
+}
+
+.summary .pro-js-install-ratio .ratio-content {
+    font-size: 48px;
+    color: #f05654;
+    margin-top: 35px
+}
+
+.summary .pro-js-install-ratio .ratio-content .unit {
+    font-size: 24px
+}
+
+.summary .pro-js-install-ratio .ratio-title {
+    margin-top: 20px
+}
+
+#PromotionAccountList a {
+    padding-right: 10px
+}
+
+.indicator-theme, .title-theme {
+    background-color: #fff;
+    border: 1px solid #a5c2e1;
+    color: #666
+}
+
+.indicator-theme .tip-arrow, .title-theme .tip-arrow {
+    border: none;
+    width: 15px;
+    height: 7px;
+    top: -7px;
+    background-repeat: no-repeat;
+    background-position: 1px 1px;
+    background-image: url(decorator/tip-arrow-new.png)
+}
+
+.tip-layout-warning .title-theme {
+    border: 1px solid #e35638;
+    color: #333
+}
+
+.tip-layout-warning .title-theme .tip-arrow {
+    border: none;
+    width: 15px;
+    height: 6px;
+    top: -7px;
+    background-repeat: no-repeat;
+    background-position: 1px 1px;
+    background-image: url(decorator/tip-arrow-error.png)
+}
+
+.table thead {
+    color: #5d5d61
+}
+
+.table tbody td {
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 35px
+}
+
+.table .item-content {
+    height: 35px;
+    line-height: 35px
+}
+
+.more-item-sub-title {
+    border-top: 1px solid #dedede
+}
+
+.overlimit-tip {
+    float: right;
+    margin: 10px 10px 0 0
+}

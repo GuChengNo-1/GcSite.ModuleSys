@@ -1,0 +1,194 @@
+@charset "UTF-8";
+body, form, h1, h2, h3, h4, h5, li, ol, p, table, td, th, tr, ul {
+    margin: 0;
+    padding: 0
+}
+
+body {
+    background-color: #fff;
+    text-align: center
+}
+
+img {
+    border: none;
+    vertical-align: middle
+}
+
+h1, h2, h3, h4, h5 {
+    font-weight: 400
+}
+
+.bfc {
+    overflow: hidden;
+    zoom: 1
+}
+
+.cases-banner {
+    width: 100%;
+    height: 238px;
+    background-color: #000;
+    color: #fff;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url(../img/home/case/cases-banner.png)
+}
+
+.cases-banner .cases-banner-title {
+    font-size: 30px;
+    padding-top: 74px
+}
+
+.cases-banner .cases-banner-detail {
+    font-size: 16px;
+    color: #b0b8bf;
+    padding-top: 25px
+}
+
+.cases-content {
+    width: 1180px;
+    margin: 0 auto
+}
+
+.cases-content .tabs {
+    font-size: 18px;
+    color: #555966;
+    margin-top: 56px
+}
+
+.cases-content .tabs li {
+    display: inline-block;
+    width: 74px;
+    cursor: pointer;
+    margin-left: 53px;
+    padding-bottom: 6px
+}
+
+.cases-content .tabs li.first {
+    margin-left: 0
+}
+
+.cases-content .tabs li.selected {
+    color: #396fff;
+    border-bottom: 4px solid #396fff
+}
+
+.cases-content .tab-contents {
+    text-align: left;
+    padding-bottom: 100px
+}
+
+.cases-content .tab-contents .cases-1-row {
+    border-top: 1px solid #e5e5e5;
+    margin-top: 25px;
+    overflow: hidden;
+    zoom: 1
+}
+
+.cases-content .tab-contents .cases-1-row.first {
+    margin-top: 30px
+}
+
+.cases-content .tab-contents .cases-1-row.last {
+    padding-bottom: 25px;
+    border-bottom: 1px solid #e5e5e5
+}
+
+.cases-content .tab-contents .cases-1-row .cases-1-row-img {
+    width: 200px;
+    float: left;
+    padding-top: 28px
+}
+
+.cases-content .tab-contents .cases-1-row .cases-1-row-brief {
+    padding-top: 26px;
+    float: left;
+    width: 888px
+}
+
+.cases-content .tab-contents .cases-1-row .cases-1-row-brief h3 {
+    color: #333437;
+    font-size: 18px;
+    margin-bottom: 5px
+}
+
+.cases-content .tab-contents .cases-1-row .cases-1-row-brief .desc, .cases-content .tab-contents .cases-1-row .cases-1-row-brief p {
+    color: #808492;
+    font-size: 14px
+}
+
+.cases-content .tab-contents .cases-1-row .cases-1-row-brief .desc ol {
+    padding-left: 40px;
+    margin-bottom: 15px
+}
+
+.cases-content .tab-contents .cases-1-row .cases-1-row-brief .desc p {
+    margin-bottom: 15px;
+    line-height: 20px
+}
+
+.cases-content .tab-contents .cases-1-row .cases-1-row-opt {
+    float: left;
+    padding-top: 38px;
+    cursor: pointer;
+    width: 92px;
+    overflow: hidden
+}
+
+.cases-content .tab-contents .cases-1-row .cases-1-row-opt em {
+    font-size: 22px;
+    font-style: normal;
+    color: #396fff;
+    width: 12px;
+    padding: 0 19px 0 60px;
+    overflow: hidden
+}
+
+.cases-content .tab-contents .cases-1-row .cases-1-row-opt em.font20 {
+    font-size: 20px
+}
+
+.cases-content .tab-contents .cases-2-row {
+    border-top: 1px solid #e5e5e5;
+    margin-top: 30px;
+    padding-top: 30px;
+    font-size: 0
+}
+
+.cases-content .tab-contents .cases-2-row .cases-2-row-img-row {
+    margin-bottom: 10px
+}
+
+.cases-content .tab-contents .cases-2-row h3 {
+    font-size: 18px;
+    line-height: 18px;
+    color: #323437;
+    margin-bottom: 30px
+}
+
+.cases-content .tab-contents .cases-2-row a {
+    display: inline-block;
+    width: 170px
+}
+
+.cases-content .tab-contents .cases-2-row a img {
+    width: 140px;
+    height: 60px;
+    margin-right: 30px
+}
+
+.cases-content .tab-contents .cases-2-row a.last {
+    width: 140px
+}
+
+.cases-content .tab-contents .cases-2-row a.last img {
+    margin-right: 0
+}
+
+div.footer {
+    clear: both;
+    padding-top: 45px
+}
+
+.register-dialog-content {
+    text-align: left
+}

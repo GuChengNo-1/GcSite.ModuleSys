@@ -1,0 +1,287 @@
+﻿@using GcSite.ModuleSys.Models
+@model GcSite.ModuleSys.Models.FlowComputer
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>主页</title>
+    <link href="~/css/common.css" rel="stylesheet" type="text/css" media="all">
+    <link href="~/css/index.css" rel="stylesheet" type="text/css" media="all">
+</head>
+<body>
+    <div class="header-wrapper">
+        <div class="header clearfix">
+            <div class="logo l">
+                <a href="/Home/Report?siteId=@ViewBag.host.Id"><img src="~/img/logo4.png" alt="百度统计"></a>
+                <span class="logo-title">网站统计</span>
+            </div>
+            <div class="view-tab l">
+                <a href="gc_index.html" class="selected" id="homepage">主页</a>
+                <a href="gc_report.html" class="">报告</a>
+                <a href="gc_analysis.html" target="_blank">高级分析</a>
+                <a href="gc_management.html" target="_blank" class="site-center">管理</a>
+            </div>
+            <div class="top-nav r">
+
+                <a id="event-monitor-help-center" href="/Toolbar/Helper" class="more-apps top-nav-item  my-service" target="_blank">帮助中心</a>
+                <span class="more-tools top-nav-item layer" id="span2">
+                    <span class="icon icon-font"></span>
+                    <ul class="content hide" id="sp2">
+                        <li class="item">
+                            <a href="http://www2.baidu.com/" target="_blank">百度推广</a>
+                        </li>
+                        <li class="item">
+                            <a href="http://union.baidu.com/" target="_blank">百度联盟</a>
+                        </li>
+                        <li class="item">
+                            <a href="http://dmp.baidu.com/" target="_blank">百度DMP</a>
+                        </li>
+                        <li class="item">
+                            <a href="http://zhanzhang.baidu.com/" target="_blank">站长平台</a>
+                        </li>
+                        <li class="item">
+                            <a href="http://jingsuan.baidu.com/" target="_blank">百度精算</a>
+                        </li>
+                        <li class="item">
+                            <a href="http://di.baidu.com/" target="_blank">百度数智平台</a>
+                        </li>
+                    </ul>
+                </span>
+                <span class="more-tools top-nav-item layer account-wrapper" id="span1">
+                    <span class="account">
+                        Hi&nbsp;
+                        gucheng262314
+                    </span>
+                    <em></em>
+                    <ul class="content hide" id="sp1">
+                        <li class="item">
+                            <a href="/Toolbar/Helper" target="_blank">联系我们</a>
+                        </li>
+                        <li class="item">
+                            <a href="/Toolbar/Helper" target="_blank">帮助中心</a>
+                        </li>
+                        <li class="item">
+                            <a href="/User/Login" id="event-monitor-logout">退出</a>
+                        </li>
+                    </ul>
+                </span>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="body">
+        <div class="misc" id="misc">
+            <ul class="clearfix">
+                <li id="event-monitor-consultation" class="item">
+                    <a class="consultation item-icon icon-font" href="https://zhiqiu.baidu.com/imcswebchat/roulette/in?id=15445&amp;token=mj6se1ti686mh87qe81ip80c1blof08b&amp;domainID=tongji&amp;type=2" target="_blank"><span class="icon"></span></a>
+                    <a class="consultation-text item-text" href="https://zhiqiu.baidu.com/imcswebchat/roulette/in?id=15445&amp;token=mj6se1ti686mh87qe81ip80c1blof08b&amp;domainID=tongji&amp;type=2" target="_blank"><span class="text">在线客服</span></a>
+                </li>
+                <li id="event-monitor-message" class="item">
+                    <a class="message item-icon icon-font" href="javascript:void(0)"><span class="icon"></span></a>
+                    <a id="feedback" class="message-text item-text" href="javascript:void(0)"><span class="text">反馈建议</span></a>
+                </li>
+                <li id="event-monitor-introduction" class="item" toggle-data="introduction-qr-code">
+                    <a class="introduction item-icon icon-font" href="javascript:void(0)">
+                        <span class="icon"></span>
+                    </a>
+                    <a class="introduction-text item-text" href="javascript:void(0)">
+                        <span class="text">关注微信</span>
+                    </a>
+                </li>
+                <li class="item" id="back-to-top" style="display: none;">
+                    <a class="top item-icon icon-font" href="#top"><span class="icon"></span></a>
+                    <a class="top-text item-text" href="#top"><span class="text">返回顶部</span></a>
+                </li>
+            </ul>
+        </div>
+        <div class="misc-body">
+            <a href="javascript:void(0)" class="misc-body-item introduction-qr-code hm-dropdown-shadow" style="display:none">
+                <img src="/web/image/wechart-qr.png" alt="关注百度统计微信">
+            </a>
+        </div>
+
+        <div class="main">
+
+            <div id="report-wrapper" class="content clearfix">
+                <div id="content-header-wrapper">
+                    <div id="content-header" class="content-header">
+                    </div>
+                </div>
+
+                <div class="page-tip" id="PageTip" style="display:none">
+                    <a class="tip-close open trackable" memo="{id:'PageTip',type:'page-tip',global:0}" onclick="$(this).parent().hide();" href="javascript:void(0);"></a>
+                    <div class="text"></div>
+                </div>
+                <div class="page-tip" id="ConditionalPageTip" style="display:none">
+                    <a class="tip-close open trackable" memo="{id:'ConditionalPageTip',type:'page-tip',global:0}" onclick="$(this).parent().hide();" href="javascript:void(0);"></a>
+                    <div class="text"></div>
+                </div>
+
+
+                <div class="main-content">
+                    <div class="main-content-header">
+                        <div class="title">百度推广</div>
+                    </div>
+                    <div id="pro-summary" class="section"><table><tbody><tr><td><div class="empty">最近两日暂无消费。</div></td></tr></tbody></table></div>
+                </div>
+
+                <div class="main-content clearfix">
+                    <div class="main-content-header">
+                        <div class="title">站点与子目录</div>
+                        <div class="fav-filter">
+                            <a class="fav-filter-all" href="#">全部</a>
+                            <a class="fav-filter-favorite" href="#"></a>
+                        </div>
+                        <div class="search-container" id="search-container">
+                            <span class="search-btn">&nbsp;</span>
+                            <span class="search-close" style="display: none;">&nbsp;</span>
+                            <input class="search-input" placeholder="请输入..." type="text">
+                        </div>
+                        <div class="drop-down-container" id="search-type-container">
+                            <div class="drop-down-header">
+                                <span class="drop-down-text ellipsis" data-id="domain" title="按域名">按域名</span>
+                                <span class="btn-arrow">&nbsp;</span>
+                            </div>
+                            <div class="drop-down-list hm-scroll drop-down-level1" level="1" style="display:none; width: 150px;" id="ddl">
+                                <ul>
+                                    <li id="bbb" class="drop-down-li drop-down-clickable" data-children="false" data-id="domain">
+                                        <span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span>
+                                        <span class="drop-down-li-content" title="按域名">按域名</span>
+                                    </li>
+                                    <li class="drop-down-li drop-down-clickable" data-children="false" data-id="name">
+                                        <span class="drop-down-arrow-style" style="float: right; width: 6px;">&nbsp;</span>
+                                        <span class="drop-down-li-content" title="按名称">按名称</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="site-summary">
+                        <table class="table site-summary-layout-02">
+                            <thead>
+                                <tr class="group-item" id="">
+                                    <td class="empty-col" colspan="1" data="" id="" rowspan="1">
+                                        <div class="td-content">&nbsp;</div>
+                                    </td>
+                                    <td class="no-expand-col" colspan="1" data="" id="" rowspan="1">
+                                        <div class="td-content">&nbsp;</div>
+                                    </td>
+                                    <td class="" colspan="" data="" id="" rowspan="">
+                                        <div class="td-content">网站名称</div>
+                                    </td>
+                                    <td class="no-operate-col" colspan="" data="" id="" rowspan="1">
+                                        <div class="td-content">&nbsp;</div>
+                                    </td>
+                                    <td class="days" colspan="" data="" id="" rowspan="">
+                                        <div class="td-content">&nbsp;</div>
+                                    </td>
+                                    <td class="number sortable desc" colspan="" data="pv_count" id="pv_count" rowspan="">
+                                        <div class="td-content">浏览量(PV)</div>
+                                    </td>
+                                    <td class="number sortable" colspan="" data="visitor_count" id="visitor_count" rowspan="">
+                                        <div class="td-content">访客数(UV)</div>
+                                    </td>
+                                    <td class="number sortable" colspan="" data="ip_count" id="ip_count" rowspan="">
+                                        <div class="td-content">IP数</div>
+                                    </td>
+                                    <td class="number sortable" colspan="" data="bounce_ratio" id="bounce_ratio" rowspan="">
+                                        <div class="td-content">跳出率</div>
+                                    </td>
+                                    <td class="number sortable" colspan="" data="avg_visit_time" id="avg_visit_time" rowspan="">
+                                        <div class="td-content">平均访问时长</div>
+                                    </td>
+                                    <td class="site-overview-cell" colspan="" data="site-overview" id="site-overview"
+                                        rowspan="">
+                                        <div class="td-content">操作  </div>
+                                    </td>
+                                    <td class="empty-col last" colspan="" data="" id="" rowspan="">
+                                        <div class="td-content">&nbsp;</div>
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody"></tbody>
+                        </table>
+                    </div>
+                    <div id="paging"></div>
+                </div>
+
+
+            </div>
+            <div class="footer">
+                <span>©2019 GC</span>
+                <a href="http://www.baidu.com/gucheng.html" target="_blank">谷程首页</a>
+                <a href="http://www2.baidu.com/gucheng.html" target="_blank">谷程推广</a>
+                <a href="http://union.baidu.com/gucheng.html" target="_blank">谷程联盟</a>
+                <a href="http://adm.baidu.com/gucheng.html" target="_blank">谷程广告管家</a>
+                <a href="http://zhishu.baidu.com/gucheng.html" target="_blank">谷程指数</a>
+                <a href="http://su.baidu.com/gucheng.html?from=tongji" target="_blank">谷程云加速</a>
+                <a href="http://di.baidu.com/gucheng.html" target="_blank">谷程数智平台</a>
+                <a href="http://www.baidu.com/duty/gucheng.html" target="_blank">使用谷程前必读</a>
+            </div>
+        </div>
+    </div>
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/re.js"></script>
+    <script>
+	function opentrs(){
+				let trs=`<tr class="line site-one">
+                	<td class="empty-col" data="@ViewBag.host.Id" id="" colspan=""><div class="td-content">&nbsp;</div></td>
+                	<td class="no-expand-col" data="@ViewBag.host.Id" id="expand_site-summary-tr_@ViewBag.host.Id" colspan=""><div class="td-content">&nbsp;</div></td>
+                	<td class="table-index" data="" id="" colspan=""><div class="td-content"><a href="/Home/Report?siteId=@ViewBag.host.Id">@ViewBag.host.WebDomain</a><span>@ViewBag.host.WebDomain</span></div></td><td colspan="" class="operate-col single-operate" id=""><div class="td-content" data="@ViewBag.host.Id" title="收藏站点" layer="#Operations">&nbsp;</div></td>
+                	<td class="value summary-ellipsis seperator days" data="" id="" colspan=""><div class="td-content"><div title="今日">今日</div><div title="昨日">昨日</div><div title="预计今日">预计今日</div></div></td><td class="value summary-ellipsis arrow-up" data="" id="" colspan=""><div class="td-content"><div title="@ViewBag.flow.WebPv">@ViewBag.flow.WebPv</div><div title="@ViewBag.preterite.WebPv">@ViewBag.preterite.WebPv</div><div title="@ViewBag.predict.WebPv">@ViewBag.predict.WebPv</div></div></td>
+                	<td class="value summary-ellipsis arrow-up" data="" id="" colspan=""><div class="td-content"><div title="@ViewBag.flow.WebUv">@ViewBag.flow.WebUv</div><div title="@ViewBag.preterite.WebUv">@ViewBag.preterite.WebUv</div><div title="@ViewBag.predict.WebUv">@ViewBag.predict.WebUv</div></div></td><td class="value summary-ellipsis arrow-up" data="" id="" colspan=""><div class="td-content"><div title="@ViewBag.flow.IpCount">@ViewBag.flow.IpCount</div><div title="@ViewBag.preterite.IpCount">@ViewBag.preterite.IpCount</div><div title="@ViewBag.predict.IpCount">@ViewBag.predict.IpCount</div></div></td>
+                	<td class="value summary-ellipsis" data="" id="" colspan=""><div class="td-content"><div title="@ViewBag.flow.BounceRate">@ViewBag.flow.BounceRate</div><div title="@ViewBag.preterite.BounceRate">@ViewBag.preterite.BounceRate</div><div title="--">--</div></div></td><td class="value summary-ellipsis" data="" id="" colspan=""><div class="td-content"><div title="@ViewBag.flow.WebTS">@ViewBag.flow.WebTS</div><div title="@ViewBag.preterite.WebTS">@ViewBag.preterite.WebTS</div><div title="--">--</div></div></td>
+                	<td class="seperator site-overview-cell" data="" id="" colspan=""><div class="td-content"><a class="site-overview" href="/Home/Report?siteId=@ViewBag.host.Id">查看报告</a></div></td><td class="empty-col last" data="" id="" colspan=""><div class="td-content">&nbsp;</div></td>
+                    </tr>`;
+        $("#tbody").append(trs);
+	}
+	$(function(){
+		opentrs();
+		$(".fav-filter-all").addClass("fav-filter-selected");
+		$(".fav-filter-all").click(function(){
+			$(this).addClass("fav-filter-selected");
+			$(".fav-filter-favorite").removeClass("fav-filter-selected");
+			$("#tbody .line").remove();
+            opentrs();
+		});
+		$(".fav-filter-favorite").click(function(){
+			$(this).addClass("fav-filter-selected");
+			$(".fav-filter-all").removeClass("fav-filter-selected");
+			$("#tbody .line").remove();
+			let trs=`<tr class="line site-two">
+                    	<td colspan="12">
+                    	<div class="empty">暂无数据</div>
+                    	</td>
+                    </tr>`;
+            $("#tbody").append(trs);
+		});
+	});
+
+	var setc = document.getElementById("search-type-container");
+	var ddl = document.getElementById("ddl");
+    setc.onclick = function () {
+        if (ddl.style.display==='none'){
+            ddl.style.display = "block";
+
+        }else {
+            ddl.style.display = "none";
+        }
+    };
+
+    $("#ddl>ul>li").mouseenter(function () {
+        $(this).addClass("hover").siblings("li").removeClass("hover");
+    })
+
+
+    </script>
+
+
+</body>
+</html>

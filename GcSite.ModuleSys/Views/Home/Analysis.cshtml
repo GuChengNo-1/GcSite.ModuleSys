@@ -1,0 +1,1137 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <title>高级分析</title>
+    <link rel="stylesheet" href="~/css/main.css">
+    <script src="~/js/echarts.min.js"></script>
+    <script src="~/js/jquery.min.js"></script>
+</head>
+<body>
+
+    <div id="root">
+        <div class="App">
+            <div class="header header-wrapper">
+                <div class="logo l">
+                    <a href="#">
+                        <img alt="百度统计" src="">
+                    </a>
+                    <span class="logo-title">网站统计</span>
+                </div>
+                <div class="view-tab l">
+                    <a class="" href="gc_index.html" target="_blank">主页</a>
+                    <a class="" href="gc_report.html" target="_blank">报告</a>
+                    <a class="selected" href="gc_analysis.html">高级分析</a>
+                    <a class="" href="gc_management.html" target="_blank">管理</a>
+                </div>
+                <div class="top-nav r">
+                    <div class="site-list-container" id="site-list-container">
+                        <div class="jimu-select jimu-select-bordered jimu-select-has-result" style="width: 240px;" value="12774508">
+                            <i class="jimu-icon jimu-icon-down jimu-select-arrow"></i>
+                            <span class="jimu-select-result" title="sh808web.com-sh808web.com">sh808web.com-sh808web.com</span>
+                        </div>
+
+                        <ul class="jimu-select jimu-select-bordered jimu-select-has-result" style="margin-top: 1px; height: 36px;text-align: left; line-height: 36px;background-color: white;display: none;" id="site-list">
+                            <li class="hover">
+                                <em class="sub-dir-arrow "></em>
+                                <a href="javascript:void(0);" data="12774508" class="url" title="sh808web.com-sh808web.com" style="color:black">sh808web.com-sh808web.com</a>
+                                <a href="javascript:void(0)" data="12774508" class="set-default is-not-default" title="设为默认网站"></a>
+                            </li>
+                        </ul>
+
+
+
+                    </div>
+                    <a class="more-apps top-nav-item  my-service" href="https://tongji.baidu.com/web/help/index?from=2"
+                       id="event-monitor-help-center" target="_blank">帮助中心</a>
+                    <span class="more-tools top-nav-item layer" id="span2">
+                        <span class="icon icon-font"></span>
+                        <ul class="content " style="background-color: white;position: absolute;top: 46px;right: -2px; border-radius: 2px; display: none" id="sp2">
+                            <li class="item">
+                                <a href="http://www2.baidu.com/" target="_blank">百度推广</a>
+                            </li>
+                            <li class="item">
+                                <a href="http://union.baidu.com/" target="_blank">百度联盟</a>
+                            </li>
+                            <li class="item">
+                                <a href="http://dmp.baidu.com/" target="_blank">百度DMP</a>
+                            </li>
+                            <li class="item">
+                                <a href="http://zhanzhang.baidu.com/" target="_blank">站长平台</a>
+                            </li>
+                            <li class="item">
+                                <a href="http://jingsuan.baidu.com/" target="_blank">百度精算</a>
+                            </li>
+                            <li class="item">
+                                <a href="http://di.baidu.com/" target="_blank">百度数智平台</a>
+                            </li>
+                        </ul>
+                    </span>
+                    <span class="more-tools top-nav-item layer account-wrapper" id="span1">
+                        <span>
+                            <span class="account">Hi gucheng262314</span>
+                            <em></em>
+
+
+                            <ul class="content" style="background-color: white;position: absolute;display: none;top: 46px;right:10px; border-radius: 2px;" id="sp1">
+                                <li class="item">
+                                    <a href="//tongji.baidu.com/web/help/article?id=276&amp;type=0" target="_blank">联系我们</a>
+                                </li>
+                                <li class="item">
+                                    <a href="/analytics/demo?siteId=5503017" target="_blank" title="/analytics/demo?siteId=5503017">查看演示</a>
+                                </li>
+                                <li class="item">
+                                    <a href="//tongji.baidu.com/web/help/index?from=2" target="_blank">帮助中心</a>
+                                </li>
+                                <li class="item">
+                                    <a href="/analytics/26754769/welcome/logout" id="event-monitor-logout">退出</a>
+                                </li>
+                            </ul>
+
+                        </span>
+                    </span>
+                </div>
+            </div>
+            <div class="body">
+                <div class="aside">
+                    <div class="version-tip free">
+                        <div class="apply-contact-wrapper">
+                            <button class="jimu-button jimu-button-small" type="button"><span>申请完整版</span></button>
+                        </div>
+                        <div class="version-tip-content" style="display: none;">
+                            <table class="version-tip-detail">
+                                <tbody>
+                                    <tr>
+                                        <td class="label-col version-title">体验版<span class="icon icon-font"></span></td>
+                                        <td class="value-col">&nbsp;</td>
+                                    </tr>
+                                    <tr class="strip-row">
+                                        <td class="label-col">实时分析时间范围</td>
+                                        <td class="value-col">3天</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="label-col">实时分析采样量</td>
+                                        <td class="value-col">50万</td>
+                                    </tr>
+                                    <tr class="strip-row">
+                                        <td class="label-col">数据看板</td>
+                                        <td class="value-col">1个</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="label-col">报告数据导出</td>
+                                        <td class="value-col">不支持</td>
+                                    </tr>
+                                    <tr class="strip-row">
+                                        <td class="label-col">用户洞察</td>
+                                        <td class="value-col">支持</td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="label-col">漏斗分析</td>
+                                        <td class="value-col">支持</td>
+                                    </tr>
+                                    <tr class="strip-row">
+                                        <td class="label-col">留存分析</td>
+                                        <td class="value-col">支持</td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="label-col">用户理解</td>
+                                        <td class="value-col">支持</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="label-col">
+                                            <a href="http://datamarket.baidu.com/welcome/index?from=%2Fapp.html%23app%2Fdetail%2FtongjiPro" target="_blank">我要升级</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="nav-wrapper hm-scroll">
+                        <ul class="nav">
+                            <li class="dashboard menu-item clearfix">
+                                <a href="javascript:void(0)">
+                                    <span class="icon icon-font front-icon"></span>
+                                    <span class="item-title">数据看板</span>
+                                    <i class="icon-font add-dashboard-icon disabled" title="看板个数已达上限"></i>
+                                </a>
+                                <ul class="expandable-level1 expandable-content" style="background: none;">
+                                    <li aria-roledescription="Draggable item. Press space bar to lift" data-react-beautiful-dnd-drag-handle="0"
+                                        data-react-beautiful-dnd-draggable="0"
+                                        draggable="false" style="user-select: none; background: none;"
+                                        tabindex="0">
+                                        <a aria-current="page" class="selected" href="/analytics/26754769/dashboard/134067?siteId=12774508">
+                                            <span class="l menu-label" title="示例看板">示例看板</span>
+                                            <i class="menu-label-icon menu-label-delete icon icon-font disabled" title="删除看板"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="analysis menu-item clearfix">
+                                <a href="javascript:void(0)">
+                                    <span class="icon icon-font front-icon"></span>
+                                    <span class="item-title">实时分析</span>
+                                </a>
+                                <ul class="expandable-level1 expandable-content ">
+                                    <li>
+                                        <a href="/analytics/26754769/ondemand?siteId=12774508">
+                                            <span class="l menu-label">交叉分析</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/analytics/26754769/funnel?siteId=12774508">
+                                            <span class="l menu-label">漏斗分析</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/analytics/26754769/cohort?siteId=12774508">
+                                            <span class="l menu-label">留存分析</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/analytics/26754769/flow?siteId=12774508">
+                                            <span class="l menu-label">行为流</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="user menu-item clearfix">
+                                <a href="javascript:void(0)">
+                                    <span class="icon icon-font front-icon"></span>
+                                    <span class="item-title">用户挖掘</span>
+                                </a>
+                                <ul class="expandable-level1 expandable-content ">
+                                    <li>
+                                        <a href="/analytics/26754769/comprehension?siteId=12774508">
+                                            <span class="l menu-label">用户理解</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/analytics/26754769/insight/overview?siteId=12774508">
+                                            <span class="l menu-label">用户洞察</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/analytics/26754769/cohortslaunch?siteId=12774508">
+                                            <span class="l menu-label">分群投放</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="menu-setting-wrapper">
+                        <a class="menu-guide-item" href="javascript:void(0);">
+                            <span class="icon-font"></span>
+                            <span class="menu-setting-label">新手引导</span>
+                        </a>
+                        <a class="menu-setting-item" href="/sc-web/26754769/home/customtag?siteId=12774508" target="_blank">
+                            <span class="icon-font"></span><span class="menu-setting-label">高级分析设置</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="main">
+                    <div class="dashboard-container" dashboard-key="134067">
+                        <div class="dashboard-header content-header">
+                            <div class="dashboard-header-title content-header-title">
+                                <div class="hm-report-title">
+                                    <h5>
+                                        <span>示例看板</span>
+                                        <i class="hm-dashboard-name-edit icon icon-font" title="编辑名称"></i>
+                                    </h5>
+                                </div>
+                                <button class="jimu-button add-card-btn  jimu-button-small" title="" type="button">
+                                    添加图表<em class="icon icon-font"></em>
+                                </button>
+                            </div>
+                            <div class="dashboard-header-date control-bar-wrapper">
+                                <div class="control-bar date-controller l">
+                                    <span class="l label">时间：</span>
+                                    <div class="l date-select-bar" id="date-select-bar">
+                                        <div class="jimu-radio-group date-select-shortcut">
+                                            <button class="jimu-button jimu-radio-button" type="button" value="#0">
+                                                <span>昨天</span>
+                                            </button>
+                                            <button class="jimu-button jimu-radio-button" type="button" value="#-1">
+                                                <span>前天</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="l time-select-bar" id="custom-date-select">
+                                        <div class="jimu-date-picker select-bar-item l jimu-date-picker-bordered"
+                                             value="Sat Mar 09 2019 00:00:00 GMT+0800 (中国标准时间),Mon Mar 11 2019 00:00:00 GMT+0800 (中国标准时间)">
+                                            <i class="jimu-icon jimu-icon-down jimu-date-picker-arrow"></i><span class="jimu-date-picker-result">2019/03/09 - 2019/03/11</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="promotion-switch r">
+                                    <div class="promotion-switch-btn r" id="promotion-switch-btn">
+                                        <div class="jimu-select promotion-switcher jimu-select-bordered jimu-select-has-result jimu-select-small"
+                                             style="width: 140px;">
+                                            <i class="jimu-icon jimu-icon-down jimu-select-arrow"></i><span class="jimu-select-result"
+                                                                                                            title="全部数据">全部数据</span>
+                                        </div>
+                                    </div>
+                                    <span class="ds-tip non-promotion-tip r">
+                                        抽样基准：<span class="get-samplind-data "
+                                                   id="sampling">100%</span><a class="icon-font"></a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-stack-scroll-wrapper hm-scroll" data-lazyload-listened="14">
+                            <div class="grid-stack-wrapper">
+                                <div class="react-grid-layout layout" style="height: 1452px;">
+                                    <div class="react-grid-item react-draggable cssTransforms react-resizable"
+                                         style="width: 428px; height: 228px; position: absolute; touch-action: none; transform: translate(12px, 12px);">
+                                        <div class="hm-card hm-card-undraggable">
+                                            <div class="hm-card-title-wrapper">
+                                                <div class="hm-card-title hm-card-undraggable">
+                                                    <span class="hm-card-label unselectable">
+                                                        <span class="hm-card-label-content"
+                                                              title="浏览量(PV)">浏览量(PV)</span><i class="hm-card-opts-edit icon icon-font"
+                                                                                               title="编辑名称"></i>
+                                                    </span><span class="hm-card-opts">
+                                                        <i class="hm-card-opts-more icon icon-font" title="卡片操作"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="hm-card-content-wrapper">
+                                                <div class="hm-card-chart">
+                                                    <div class="hm-chart-text hm-chart">
+                                                        <div class="hm-chart-text-wrapper">
+                                                            <div class="hm-chart-text-info">浏览量(PV)</div>
+                                                            <div class="hm-chart-text-value ellipsis">
+                                                                <div class="hm-chart-base-value ellipsis">139</div>
+                                                            </div>
+                                                            <div class="hm-chart-text-info-wrapper">
+                                                                <div class="hm-chart-compare-info">
+                                                                    <div class="hm-chart-compare-value indicator-up">
+                                                                        <span class="hm-chart-compare-tip">相比1天前</span><i class="jimu-icon jimu-icon-caret-up"
+                                                                                                                          style="font-size: 14px;"></i>&nbsp;10.32%
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span class="react-resizable-handle" style="touch-action: none;"></span>
+                                    </div>
+                                    <div class="react-grid-item react-draggable cssTransforms react-resizable"
+                                         style="width: 428px; height: 228px; position: absolute; touch-action: none; transform: translate(452px, 12px);">
+                                        <div class="hm-card hm-card-undraggable">
+                                            <div class="hm-card-title-wrapper">
+                                                <div class="hm-card-title hm-card-undraggable">
+                                                    <span class="hm-card-label unselectable">
+                                                        <span class="hm-card-label-content"
+                                                              title="访客数(UV)">访客数(UV)</span><i class="hm-card-opts-edit icon icon-font"
+                                                                                               title="编辑名称"></i>
+                                                    </span><span class="hm-card-opts">
+                                                        <i class="hm-card-opts-more icon icon-font" title="卡片操作"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="hm-card-content-wrapper">
+                                                <div class="hm-card-chart">
+                                                    <div class="hm-chart-text hm-chart">
+                                                        <div class="hm-chart-text-wrapper">
+                                                            <div class="hm-chart-text-info">访客数(UV)</div>
+                                                            <div class="hm-chart-text-value ellipsis">
+                                                                <div class="hm-chart-base-value ellipsis">93</div>
+                                                            </div>
+                                                            <div class="hm-chart-text-info-wrapper">
+                                                                <div class="hm-chart-compare-info">
+                                                                    <div class="hm-chart-compare-value indicator-up">
+                                                                        <span class="hm-chart-compare-tip">相比1天前</span><i class="jimu-icon jimu-icon-caret-up"
+                                                                                                                          style="font-size: 14px;"></i>&nbsp;1.09%
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span class="react-resizable-handle" style="touch-action: none;"></span>
+                                    </div>
+                                    <div class="react-grid-item react-draggable cssTransforms react-resizable"
+                                         style="width: 428px; height: 228px; position: absolute; touch-action: none; transform: translate(891px, 12px);">
+                                        <div class="hm-card hm-card-undraggable">
+                                            <div class="hm-card-title-wrapper">
+                                                <div class="hm-card-title hm-card-undraggable">
+                                                    <span class="hm-card-label unselectable">
+                                                        <span class="hm-card-label-content"
+                                                              title="跳出率">跳出率</span><i class="hm-card-opts-edit icon icon-font"
+                                                                                       title="编辑名称"></i>
+                                                    </span><span class="hm-card-opts">
+                                                        <i class="hm-card-opts-more icon icon-font" title="卡片操作"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="hm-card-content-wrapper">
+                                                <div class="hm-card-chart">
+                                                    <div class="hm-chart-text hm-chart">
+                                                        <div class="hm-chart-text-wrapper">
+                                                            <div class="hm-chart-text-info">跳出率</div>
+                                                            <div class="hm-chart-text-value ellipsis">
+                                                                <div class="hm-chart-base-value ellipsis">88.24%</div>
+                                                            </div>
+                                                            <div class="hm-chart-text-info-wrapper">
+                                                                <div class="hm-chart-compare-info">
+                                                                    <div class="hm-chart-compare-value indicator-up">
+                                                                        <span class="hm-chart-compare-tip">相比1天前</span><i class="jimu-icon jimu-icon-caret-up"
+                                                                                                                          style="font-size: 14px;"></i>&nbsp;9.47%
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span class="react-resizable-handle" style="touch-action: none;"></span>
+                                    </div>
+                                    <div class="react-grid-item react-draggable cssTransforms react-resizable"
+                                         style="width: 428px; height: 228px; position: absolute; touch-action: none; transform: translate(1331px, 12px);">
+                                        <div class="hm-card hm-card-undraggable">
+                                            <div class="hm-card-title-wrapper">
+                                                <div class="hm-card-title hm-card-undraggable">
+                                                    <span class="hm-card-label unselectable">
+                                                        <span class="hm-card-label-content" title="平均访问时长">平均访问时长</span>
+                                                        <i class="hm-card-opts-edit icon icon-font" title="编辑名称"></i>
+                                                    </span>
+                                                    <span class="hm-card-opts">
+                                                        <i class="hm-card-opts-more icon icon-font" title="卡片操作"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="hm-card-content-wrapper">
+                                                <div class="hm-card-chart">
+                                                    <div class="hm-chart-text hm-chart">
+                                                        <div class="hm-chart-text-wrapper">
+                                                            <div class="hm-chart-text-info">平均访问时长</div>
+                                                            <div class="hm-chart-text-value ellipsis">
+                                                                <div class="hm-chart-base-value ellipsis">00:02:21</div>
+                                                            </div>
+                                                            <div class="hm-chart-text-info-wrapper">
+                                                                <div class="hm-chart-compare-info">
+                                                                    <div class="hm-chart-compare-value indicator-up">
+                                                                        <span class="hm-chart-compare-tip">相比1天前</span><i class="jimu-icon jimu-icon-caret-up"
+                                                                                                                          style="font-size: 14px;"></i>&nbsp;44.08%
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span class="react-resizable-handle" style="touch-action: none;"></span>
+                                    </div>
+                                    <div class="react-grid-item react-draggable cssTransforms react-resizable"
+                                         style="width: 868px; height: 228px; position: absolute; touch-action: none; transform: translate(12px, 252px);">
+                                        <div class="hm-card hm-card-undraggable">
+                                            <div class="hm-card-title-wrapper">
+                                                <div class="hm-card-title hm-card-undraggable">
+                                                    <span class="hm-card-label unselectable">
+                                                        <span class="hm-card-label-content"
+                                                              title="新老访客占比">新老访客占比</span><i class="hm-card-opts-edit icon icon-font"
+                                                                                             title="编辑名称"></i>
+                                                    </span><span class="hm-card-opts">
+                                                        <i class="hm-card-opts-more icon icon-font" title="卡片操作"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="hm-card-content-wrapper">
+                                                <div class="hm-card-chart">
+                                                    <div class="hm-chart-bar hm-chart">
+                                                        <div _echarts_instance_="ec_1552383628730"
+                                                             class="echarts-for-react " size-sensor-id="2"
+                                                             style="/* height: 100%; *//* -webkit-tap-highlight-color: transparent; *//* user-select: none; *//* position: relative; */">
+                                                            <div id="cha1" style="position: relative; overflow: hidden; width: 834px; height: 154px; padding: 0px; margin: 0px; border-width: 0px; cursor: default;">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span class="react-resizable-handle" style="touch-action: none;"></span>
+                                    </div>
+                                    <div class="react-grid-item react-draggable cssTransforms react-resizable"
+                                         style="width: 868px; height: 228px; position: absolute; touch-action: none; transform: translate(891px, 252px);">
+                                        <div class="hm-card hm-card-undraggable">
+                                            <div class="hm-card-title-wrapper">
+                                                <div class="hm-card-title hm-card-undraggable">
+                                                    <span class="hm-card-label unselectable">
+                                                        <span class="hm-card-label-content"
+                                                              title="浏览量趋势">浏览量趋势</span><i class="hm-card-opts-edit icon icon-font"
+                                                                                           title="编辑名称"></i>
+                                                    </span><span class="hm-card-opts">
+                                                        <i class="hm-card-opts-more icon icon-font" title="卡片操作"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="hm-card-content-wrapper">
+                                                <div class="hm-card-chart">
+                                                    <div class="hm-chart-line hm-chart">
+                                                        <div _echarts_instance_="ec_1552383628729" class="echarts-for-react " size-sensor-id="1"
+                                                             style="height: 100%; -webkit-tap-highlight-color: transparent; user-select: none; position: relative;">
+                                                            <div id="cha2" style="position: relative;width: 834px; height: 154px; padding: 0px; margin: 0px; border-width: 0px; cursor: default;">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span class="react-resizable-handle" style="touch-action: none;"></span>
+                                    </div>
+                                    <div class="react-grid-item react-draggable cssTransforms react-resizable"
+                                         style="width: 868px; height: 228px; position: absolute; touch-action: none; transform: translate(12px, 492px);">
+                                        <div class="hm-card hm-card-undraggable">
+                                            <div class="hm-card-title-wrapper">
+                                                <div class="hm-card-title hm-card-undraggable">
+                                                    <span class="hm-card-label unselectable">
+                                                        <span class="hm-card-label-content" title="访问用户趋势">访问用户趋势</span>
+                                                        <i class="hm-card-opts-edit icon icon-font" title="编辑名称"></i>
+                                                    </span>
+                                                    <span class="hm-card-opts">
+                                                        <i class="hm-card-opts-more icon icon-font" title="卡片操作"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="hm-card-content-wrapper">
+                                                <div class="hm-card-chart">
+                                                    <div class="hm-chart-line hm-chart">
+                                                        <div _echarts_instance_="ec_1552383628731"
+                                                             class="echarts-for-react " size-sensor-id="3"
+                                                             style="height: 100%; -webkit-tap-highlight-color: transparent; user-select: none; position: relative;">
+                                                            <div id="cha3" style="position: relative;width: 834px; height: 154px; padding: 0px; margin: 0px; border-width: 0px; cursor: default;">
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span class="react-resizable-handle" style="touch-action: none;"></span>
+                                    </div>
+                                    <div class="react-grid-item react-draggable cssTransforms react-resizable"
+                                         style="width: 868px; height: 228px; position: absolute; touch-action: none; transform: translate(891px, 492px);">
+                                        <div class="hm-card hm-card-undraggable">
+                                            <div class="hm-card-title-wrapper">
+                                                <div class="hm-card-title hm-card-undraggable">
+                                                    <span class="hm-card-label unselectable">
+                                                        <span class="hm-card-label-content" title="平均访问时长">平均访问时长</span>
+                                                        <i class="hm-card-opts-edit icon icon-font" title="编辑名称"></i>
+                                                    </span>
+                                                    <span class="hm-card-opts">
+                                                        <i class="hm-card-opts-more icon icon-font" title="卡片操作"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="hm-card-content-wrapper">
+                                                <div class="hm-card-chart">
+                                                    <div class="hm-chart-line hm-chart">
+                                                        <div _echarts_instance_="ec_1552383628732"
+                                                             class="echarts-for-react " size-sensor-id="4"
+                                                             style="height: 100%; -webkit-tap-highlight-color: transparent; user-select: none; position: relative;">
+                                                            <div id="cha4" style="position: relative; width: 834px; height: 154px; padding: 0px; margin: 0px; border-width: 0px; cursor: default;">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span class="react-resizable-handle" style="touch-action: none;"></span>
+                                    </div>
+                                    <div class="react-grid-item react-draggable cssTransforms react-resizable"
+                                         style="width: 868px; height: 228px; position: absolute; touch-action: none; transform: translate(12px, 732px);">
+                                        <div class="hm-card hm-card-undraggable">
+                                            <div class="hm-card-title-wrapper">
+                                                <div class="hm-card-title hm-card-undraggable">
+                                                    <span class="hm-card-label unselectable">
+                                                        <span class="hm-card-label-content"
+                                                              title="跳出率趋势">跳出率趋势</span><i class="hm-card-opts-edit icon icon-font"
+                                                                                           title="编辑名称"></i>
+                                                    </span><span class="hm-card-opts">
+                                                        <i class="hm-card-opts-more icon icon-font" title="卡片操作"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="hm-card-content-wrapper">
+                                                <div class="hm-card-chart">
+                                                    <div class="hm-chart-line hm-chart">
+                                                        <div _echarts_instance_="ec_1552383628734"
+                                                             class="echarts-for-react " size-sensor-id="6"
+                                                             style="height: 100%; -webkit-tap-highlight-color: transparent; user-select: none; position: relative;">
+                                                            <div id="cha5" style="position: relative;  width: 834px; height: 154px; padding: 0px; margin: 0px; border-width: 0px; cursor: default;">
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span class="react-resizable-handle" style="touch-action: none;"></span>
+                                    </div>
+                                    <div class="react-grid-item react-draggable cssTransforms react-resizable"
+                                         style="width: 868px; height: 228px; position: absolute; touch-action: none; transform: translate(891px, 732px);">
+                                        <div class="hm-card hm-card-undraggable">
+                                            <div class="hm-card-title-wrapper">
+                                                <div class="hm-card-title hm-card-undraggable">
+                                                    <span class="hm-card-label unselectable">
+                                                        <span class="hm-card-label-content"
+                                                              title="平均访问页数">平均访问页数</span><i class="hm-card-opts-edit icon icon-font"
+                                                                                             title="编辑名称"></i>
+                                                    </span><span class="hm-card-opts">
+                                                        <i class="hm-card-opts-more icon icon-font" title="卡片操作"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="hm-card-content-wrapper">
+                                                <div class="hm-card-chart">
+                                                    <div class="hm-chart-line hm-chart">
+                                                        <div _echarts_instance_="ec_1552383628733"
+                                                             class="echarts-for-react " size-sensor-id="5"
+                                                             style="height: 100%; -webkit-tap-highlight-color: transparent; user-select: none; position: relative;">
+                                                            <div id="cha6" style="position: relative; width: 834px; height: 154px; padding: 0px; margin: 0px; border-width: 0px; cursor: default;">
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span class="react-resizable-handle" style="touch-action: none;"></span>
+                                    </div>
+                                    <div class="react-grid-item react-draggable cssTransforms react-resizable"
+                                         style="width: 868px; height: 228px; position: absolute; touch-action: none; transform: translate(12px, 972px);">
+                                        <div class="hm-card hm-card-undraggable">
+                                            <div class="hm-card-title-wrapper">
+                                                <div class="hm-card-title hm-card-undraggable">
+                                                    <span class="hm-card-label unselectable">
+                                                        <span class="hm-card-label-content"
+                                                              title="来源类型">来源类型</span><i class="hm-card-opts-edit icon icon-font"
+                                                                                         title="编辑名称"></i>
+                                                    </span><span class="hm-card-opts">
+                                                        <i class="hm-card-opts-more icon icon-font" title="卡片操作"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="hm-card-content-wrapper">
+                                                <div class="hm-card-chart">
+                                                    <div class="hm-chart-bar hm-chart">
+                                                        <div _echarts_instance_="ec_1552383628735"
+                                                             class="echarts-for-react " size-sensor-id="7"
+                                                             style="height: 100%; -webkit-tap-highlight-color: transparent; user-select: none; position: relative;">
+                                                            <div id="cha7" style="position: relative; width: 834px; height: 154px; padding: 0px; margin: 0px; border-width: 0px; cursor: default;">
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span class="react-resizable-handle" style="touch-action: none;"></span>
+                                    </div>
+                                    <div class="react-grid-item react-draggable cssTransforms react-resizable"
+                                         style="width: 868px; height: 228px; position: absolute; touch-action: none; transform: translate(891px, 972px);">
+                                        <div class="hm-card hm-card-undraggable">
+                                            <div class="hm-card-title-wrapper">
+                                                <div class="hm-card-title hm-card-undraggable">
+                                                    <span class="hm-card-label unselectable">
+                                                        <span class="hm-card-label-content"
+                                                              title="访问城市">访问城市</span><i class="hm-card-opts-edit icon icon-font"
+                                                                                         title="编辑名称"></i>
+                                                    </span><span class="hm-card-opts">
+                                                        <i class="hm-card-opts-more icon icon-font" title="卡片操作"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="hm-card-content-wrapper">
+                                                <div class="hm-card-chart">
+                                                    <div class="hm-chart-table hm-chart">
+                                                        <div class="jimu-table hm-scroll-mini jimu-table-bordered jimu-table-small jimu-table-cell-ellipsis">
+                                                            <div class="jimu-table-content">
+                                                                <div class="">
+                                                                    <table>
+                                                                        <colgroup>
+                                                                            <col>
+                                                                            <col>
+                                                                        </colgroup>
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th class="jimu-table-sortable-col">
+                                                                                    <span title="城市">城市</span>
+                                                                                </th>
+                                                                                <th class="jimu-table-sortable-col">
+                                                                                    <span title="浏览量(PV)">浏览量(PV)</span>
+                                                                                </th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr class="">
+                                                                                <td>
+                                                                                    <div title="（其他）">（其他）</div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="42">42</div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr class="">
+                                                                                <td>
+                                                                                    <div title="闵行">闵行</div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="38">38</div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr class="">
+                                                                                <td>
+                                                                                    <div title="浦东">浦东</div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="8">8</div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr class="">
+                                                                                <td>
+                                                                                    <div title="嘉定">嘉定</div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="7">7</div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr class="">
+                                                                                <td>
+                                                                                    <div title="徐汇">徐汇</div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="7">7</div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr class="">
+                                                                                <td>
+                                                                                    <div title="松江">松江</div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="5">5</div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr class="">
+                                                                                <td>
+                                                                                    <div title="温州">温州</div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="4">4</div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr class="">
+                                                                                <td>
+                                                                                    <div title="宝山">宝山</div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="3">3</div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr class="">
+                                                                                <td>
+                                                                                    <div title="六安">六安</div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="2">2</div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr class="">
+                                                                                <td>
+                                                                                    <div title="蚌埠">蚌埠</div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="2">2</div>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="hm-chart-table-paging jimu-pagination jimu-pagination-right">
+                                                            <span class="jimu-pagination-pages">
+                                                                <i class="jimu-icon jimu-icon-left jimu-pagination-page-prev jimu-pagination-page-disabled"></i><span class="jimu-pagination-page jimu-pagination-page-checked">1</span><span class="jimu-pagination-page">2</span><span class="jimu-pagination-page">3</span><i class="jimu-icon jimu-icon-right jimu-pagination-page-next"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span class="react-resizable-handle" style="touch-action: none;"></span>
+                                    </div>
+                                    <div class="react-grid-item react-draggable cssTransforms react-resizable"
+                                         style="width: 868px; height: 228px; position: absolute; touch-action: none; transform: translate(12px, 1212px);">
+                                        <div class="hm-card hm-card-undraggable">
+                                            <div class="hm-card-title-wrapper">
+                                                <div class="hm-card-title hm-card-undraggable">
+                                                    <span class="hm-card-label unselectable">
+                                                        <span class="hm-card-label-content"
+                                                              title="搜索词">搜索词</span><i class="hm-card-opts-edit icon icon-font"
+                                                                                       title="编辑名称"></i>
+                                                    </span><span class="hm-card-opts">
+                                                        <i class="hm-card-opts-more icon icon-font" title="卡片操作"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="hm-card-content-wrapper">
+                                                <div class="hm-card-chart">
+                                                    <div class="hm-chart-table hm-chart">
+                                                        <div class="jimu-table hm-scroll-mini jimu-table-bordered jimu-table-small jimu-table-cell-ellipsis">
+                                                            <div class="jimu-table-content">
+                                                                <div class="">
+                                                                    <table>
+                                                                        <colgroup>
+                                                                            <col>
+                                                                            <col>
+                                                                        </colgroup>
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th class="jimu-table-sortable-col">
+                                                                                    <span title="搜索词">搜索词</span>
+                                                                                </th>
+                                                                                <th class="jimu-table-sortable-col">
+                                                                                    <span title="浏览量(PV)">浏览量(PV)</span>
+                                                                                </th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr class="">
+                                                                                <td>
+                                                                                    <div title="（无）">（无）</div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="88">88</div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr class="">
+                                                                                <td>
+                                                                                    <div title="新能源网站建设">新能源网站建设</div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="21">21</div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr class="">
+                                                                                <td>
+                                                                                    <div title="响应式网站">响应式网站</div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="5">5</div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr class="">
+                                                                                <td>
+                                                                                    <div title="网站制作高端">网站制作高端</div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="4">4</div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr class="">
+                                                                                <td>
+                                                                                    <div title="百度权重_百度权重提升_联系Q:1060717655_kyehsdl.com">
+                                                                                        百度权重_百度权重提升_联系Q:1060717655_kyehsdl.com
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="2">2</div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr class="">
+                                                                                <td>
+                                                                                    <div title="网页设计">网页设计</div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="2">2</div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr class="">
+                                                                                <td>
+                                                                                    <div title="如何进行网站设计">如何进行网站设计</div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="2">2</div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr class="">
+                                                                                <td>
+                                                                                    <div title="网站建设">网站建设</div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="1">1</div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr class="">
+                                                                                <td>
+                                                                                    <div title="做网站公司">做网站公司</div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="1">1</div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr class="">
+                                                                                <td>
+                                                                                    <div title="上海网站设计">上海网站设计</div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="1">1</div>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="hm-chart-table-paging jimu-pagination jimu-pagination-right">
+                                                            <span class="jimu-pagination-pages">
+                                                                <i class="jimu-icon jimu-icon-left jimu-pagination-page-prev jimu-pagination-page-disabled"></i><span class="jimu-pagination-page jimu-pagination-page-checked">1</span><span class="jimu-pagination-page">2</span><span class="jimu-pagination-page">3</span><i class="jimu-icon jimu-icon-right jimu-pagination-page-next"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span class="react-resizable-handle" style="touch-action: none;"></span>
+                                    </div>
+                                    <div class="react-grid-item react-draggable cssTransforms react-resizable"
+                                         style="width: 868px; height: 228px; position: absolute; touch-action: none; transform: translate(891px, 1212px);">
+                                        <div class="hm-card hm-card-undraggable">
+                                            <div class="hm-card-title-wrapper">
+                                                <div class="hm-card-title hm-card-undraggable">
+                                                    <span class="hm-card-label unselectable">
+                                                        <span class="hm-card-label-content"
+                                                              title="来源域名">来源域名</span><i class="hm-card-opts-edit icon icon-font"
+                                                                                         title="编辑名称"></i>
+                                                    </span><span class="hm-card-opts">
+                                                        <i class="hm-card-opts-more icon icon-font" title="卡片操作"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="hm-card-content-wrapper">
+                                                <div class="hm-card-chart">
+                                                    <div class="hm-chart-table hm-chart">
+                                                        <div class="jimu-table hm-scroll-mini jimu-table-bordered jimu-table-small jimu-table-cell-ellipsis">
+                                                            <div class="jimu-table-content">
+                                                                <div class="">
+                                                                    <table>
+                                                                        <colgroup>
+                                                                            <col>
+                                                                            <col>
+                                                                            <col>
+                                                                            <col>
+                                                                        </colgroup>
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th class="jimu-table-sortable-col">
+                                                                                    <span title="来源域名">来源域名</span>
+                                                                                </th>
+                                                                                <th class="jimu-table-sortable-col">
+                                                                                    <span title="浏览量(PV)">浏览量(PV)</span>
+                                                                                </th>
+                                                                                <th class="jimu-table-sortable-col">
+                                                                                    <span title="平均访问时长">平均访问时长</span>
+                                                                                </th>
+                                                                                <th class="jimu-table-sortable-col">
+                                                                                    <span title="跳出率">跳出率</span>
+                                                                                </th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr class="">
+                                                                                <td>
+                                                                                    <div title="www.shvalnet.com">
+                                                                                        www.shvalnet.com
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="49">49</div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="153.48">153.48</div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="90.91">90.91</div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr class="">
+                                                                                <td>
+                                                                                    <div title="www.sogou.com">
+                                                                                        www.sogou.com
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="33">33</div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="234.1">234.1</div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="80">80</div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr class="">
+                                                                                <td>
+                                                                                    <div title="（无）">（无）</div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="25">25</div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="178.9">178.9</div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="85.71">85.71</div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr class="">
+                                                                                <td>
+                                                                                    <div title="www.baidu.com">
+                                                                                        www.baidu.com
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="14">14</div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="42.91">42.91</div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="90.91">90.91</div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr class="">
+                                                                                <td>
+                                                                                    <div title="china.machine365.com">
+                                                                                        china.machine365.com
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="9">9</div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="71">71</div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="71.43">71.43</div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr class="">
+                                                                                <td>
+                                                                                    <div title="www.so.com">www.so.com</div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="3">3</div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="81.67">81.67</div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="100">100</div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr class="">
+                                                                                <td>
+                                                                                    <div title="www.16fafa.cn">
+                                                                                        www.16fafa.cn
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="3">3</div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="46.33">46.33</div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="100">100</div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr class="">
+                                                                                <td>
+                                                                                    <div title="gq.icom1688.com">
+                                                                                        gq.icom1688.com
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="2">2</div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="6">6</div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="100">100</div>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr class="">
+                                                                                <td>
+                                                                                    <div title="m.sogou.com">m.sogou.com</div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="1">1</div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="120">120</div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div title="100">100</div>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="hm-chart-table-paging jimu-pagination jimu-pagination-right">
+                                                            <span class="jimu-pagination-pages">
+                                                                <i class="jimu-icon jimu-icon-left jimu-pagination-page-prev jimu-pagination-page-disabled"></i><span class="jimu-pagination-page jimu-pagination-page-checked">1</span><i class="jimu-icon jimu-icon-right jimu-pagination-page-next jimu-pagination-page-disabled"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span class="react-resizable-handle" style="touch-action: none;"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    var inp = document.getElementById("site-list-container");
+    var inpy = document.getElementById("site-list");
+    inp.onclick = function () {
+        if (inpy.style.display==='none'){
+            inpy.style.display = "block";
+        }else {
+            inpy.style.display = "none";
+        }
+    };
+    </script>
+    <script src="~/js/chart.js"></script>
+    <script src="~/js/re.js"></script>
+
+</body>
+</html>

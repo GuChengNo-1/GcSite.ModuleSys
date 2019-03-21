@@ -1,0 +1,1078 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>报告</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="css/common.css" rel="stylesheet" type="text/css" media="all">
+    <link href="css/overview.css" rel="stylesheet" type="text/css" media="all">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/echarts.min.js"></script>
+    <script src="js/china.js"></script>
+
+
+
+</head>
+<body>
+<div class="header-wrapper">
+    <div class="header clearfix">
+        <div class="logo l">
+            <a href="/web/26754769/overview/index?siteId=12774508"><img src="img/logo4.png" alt="百度统计"></a>
+            <span class="logo-title">网站统计</span>
+        </div>
+        <div class="view-tab l">
+            <a href="gc_index.html" class="" id="homepage">主页</a>
+            <a href="gc_report.html" class="selected">报告</a>
+            <a href="gc_analysis.html" target="_blank">高级分析</a>
+            <a href="gc_management.html" target="_blank" class="site-center">管理</a>
+        </div>
+        <div class="top-nav r">
+            <div class="selector site-selector top-nav-item" id="site-list-container">
+                <div class="arrow close">
+                </div>
+                <div class="text" title="sh808web.com">
+                    sh808web.com        </div>
+                <a href="javascript:void(0)" title="设为默认网站" id="set-current-default-site" data="12774508" class="set-default is-not-default"></a>
+                <ul class="site-selector-options hm-scroll" style="display: none"  id="site-list">
+                    <li>
+                        <em class="sub-dir-arrow "></em>
+                        <a href="javascript:void(0);" data="12774508" class="url" title="sh808web.com-sh808web.com">sh808web.com-sh808web.com</a>
+                        <a href="javascript:void(0)" data="12774508" class="set-default is-not-default" title="设为默认网站"></a>
+                    </li>
+                </ul>
+            </div>
+
+            <a id="event-monitor-help-center" href="http://tongji.baidu.com/web/help/index?from=2" class="more-apps top-nav-item  my-service" target="_blank">帮助中心</a>
+            <span class="more-tools top-nav-item layer" id="span2">
+                <span class="icon icon-font"></span>
+        <ul class="content hide" id="sp2">
+            <li class="item">
+                <a href="http://www2.baidu.com/gucheng.html" target="_blank">谷程推广</a>
+            </li>
+            <li class="item">
+                <a href="http://union.baidu.com/gucheng.html" target="_blank">谷程联盟</a>
+            </li>
+            <li class="item">
+                <a href="http://dmp.baidu.com/gucheng.html" target="_blank">谷程DMP</a>
+            </li>
+            <li class="item">
+                <a href="http://zhanzhang.baidu.com/gucheng.html" target="_blank">站长平台</a>
+            </li>
+            <li class="item">
+                <a href="http://jingsuan.baidu.com/gucheng.html" target="_blank">谷程精算</a>
+            </li>
+            <li class="item">
+                <a href="http://di.baidu.com/gucheng.html" target="_blank">谷程数智平台</a>
+            </li>
+        </ul>
+    </span>
+            <span class="more-tools top-nav-item layer account-wrapper" id="span1">
+        <span class="account">
+            Hi&nbsp;
+            gucheng262314
+                    </span>
+        <em></em>
+        <ul class="content hide" id="sp1">
+            <li class="item">
+                <a href="/gucheng.html/tongji.baidu.com/web/help/article?id=276&amp;type=0" target="_blank">联系我们</a>
+            </li>
+            <li class="item">
+                <a href="/gucheng.html/tongji.baidu.com/web/help/index?from=2" target="_blank">帮助中心</a>
+            </li>
+            <li class="item">
+                                <a href="/web/26754769/welcome/logout" id="event-monitor-logout">退出</a>
+                            </li>
+        </ul>
+    </span>
+        </div>
+    </div>
+</div>
+
+<div class="body">
+    <div class="aside" id="aside">
+        <div class="nav-wrapper">
+            <div class="title">
+                <span class="l nav-text">网站导航</span>
+                <span id="event-monitor-operation" class="operation close icon-font"></span>
+            </div>
+            <ul class="nav hm-scroll" id="main-menu">
+                <li class="common-report menu-item clearfix">
+                                                            <span class="add-common-report">
+                            <span class="expandable recordable open" memo="{id:'0',type:'menu',global:1,status:''}">
+                                <span class="icon icon-font"></span>
+                                <span class="item-title">常用报告</span>
+                            </span>
+                            <a class="setting-icon icon-font" href="gc_index.html"></a>
+                        </span>
+                    <ul class="expandable-level1 expandable-content">
+                    </ul>
+                </li>
+                <li class="pro-overview menu-item pro-overview-selected  clearfix">
+                    <a href="gc_report.html">
+                        <span class="icon icon-font"></span>
+                        <span data="85" class="item-title menu-label">网站概况</span>
+                    </a>
+                    <ul class="expandable-level1 expandable-content">
+                    </ul>
+                </li>
+
+                <li class="flow-analysis menu-item clearfix">
+                    <a href="javascript:void(0)" class="expandable recordable close" memo="{id:'94',type:'menu',global:1,status:'1'}">
+                        <span class="icon icon-font"></span>
+                        <span class="item-title">流量分析</span>
+                    </a>
+                    <ul class="expandable-level1 expandable-content liulian" style="display:none">
+                        <li>
+                            <a class=" " href="/web/26754769/trend/latest?siteId=12774508">
+                                <span data="95" class="l menu-label">实时访客</span>
+                                <span class="normal icon-font">&nbsp;</span>                                </a>
+                        </li>
+                        <li>
+                                                        <span class="trend">
+                                <a data="96" class="trend-title menu-label  " href="/web/26754769/trend/time?siteId=12774508">趋势分析</a>
+                                <a id="event-monitor-today" href="/web/26754769/trend/time?siteId=12774508&amp;flag=today" class="day">今</a>
+                                <a id="event-monitor-yesterday" href="/web/26754769/trend/time?siteId=12774508&amp;flag=yesterday" class="day">昨</a>
+                            </span>
+                        </li>
+                    </ul>
+                </li>
+                <li class="source-analysis menu-item clearfix">
+                    <a href="javascript:void(0)" class="expandable recordable close" memo="{id:'98',type:'menu',global:1,status:'1'}">
+                        <span class="icon icon-font"></span>
+                        <span class="item-title">来源分析</span>
+                    </a>
+                    <ul class="expandable-level1 expandable-content liulian" style="display:none">
+                        <li>
+                            <a class=" " href="/web/26754769/source/all?siteId=12774508">
+                                <span data="99" class="l menu-label">全部来源</span>
+                                <span class="normal icon-font">&nbsp;</span>                                </a>
+                        </li>
+                        <li>
+                            <a class=" " href="/web/26754769/source/engine?siteId=12774508">
+                                <span data="100" class="l menu-label">搜索引擎</span>
+                                <span class="normal icon-font">&nbsp;</span>                                </a>
+                        </li>
+                        <li>
+                            <a class=" " href="/web/26754769/source/searchword?siteId=12774508">
+                                <span data="101" class="l menu-label">搜索词</span>
+                                <span class="normal icon-font">&nbsp;</span>                                </a>
+                        </li>
+                        <li>
+                            <a class=" " href="/web/26754769/source/link?siteId=12774508">
+                                <span data="102" class="l menu-label">外部链接</span>
+                                <span class="normal icon-font">&nbsp;</span>                                </a>
+                        </li>
+                        <li>
+                            <a class=" " href="/web/26754769/custom/media?siteId=12774508">
+                                <span data="104" class="l menu-label">指定广告跟踪</span>
+                                <span class="normal icon-font">&nbsp;</span>                                </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="visit-analysis menu-item clearfix">
+                    <a href="javascript:void(0)" class="expandable recordable close" memo="{id:'105',type:'menu',global:1,status:'1'}">
+                        <span class="icon icon-font"></span>
+                        <span class="item-title">访问分析</span>
+                    </a>
+                    <ul class="expandable-level1 expandable-content liulian" style="display:none">
+                        <li>
+                            <a class=" " href="/web/26754769/visit/toppage?siteId=12774508">
+                                <span data="108" class="l menu-label">受访页面</span>
+                                <span class="normal icon-font">&nbsp;</span>                                </a>
+                        </li>
+                        <li>
+                            <a class=" " href="/web/26754769/visit/landingpage?siteId=12774508">
+                                <span data="109" class="l menu-label">入口页面</span>
+                                <span class="normal icon-font">&nbsp;</span>                                </a>
+                        </li>
+                        <li>
+                            <a class=" " href="/web/26754769/visit/topdomain?siteId=12774508">
+                                <span data="110" class="l menu-label">受访域名</span>
+                                <span class="normal icon-font">&nbsp;</span>                                </a>
+                        </li>
+                        <li>
+                            <a class=" " href="/web/26754769/custom/pageclick?siteId=12774508">
+                                <span data="106" class="l menu-label">页面点击图</span>
+                                <span class="normal icon-font">&nbsp;</span>                                </a>
+                        </li>
+                        <li>
+                            <a class=" " href="/web/26754769/custom/flow?siteId=12774508">
+                                <span data="107" class="l menu-label">页面上下游</span>
+                                <span class="normal icon-font">&nbsp;</span>                                </a>
+                        </li>
+                        <li>
+                            <a class=" " href="/web/26754769/custom/event_track?siteId=12774508">
+                                <span data="111" class="l menu-label">事件分析</span>
+                                <span class="normal icon-font">&nbsp;</span>                                </a>
+                        </li>
+                        <li>
+                            <a class=" " href="/web/26754769/custom/subdir?siteId=12774508">
+                                <span data="112" class="l menu-label">子目录</span>
+                                <span class="normal icon-font">&nbsp;</span>                                </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="visitor-analysis menu-item clearfix">
+                    <a href="javascript:void(0)" class="expandable recordable close" memo="{id:'119',type:'menu',global:1,status:'1'}">
+                        <span class="icon icon-font"></span>
+                        <span class="item-title">访客分析</span>
+                    </a>
+                    <ul class="expandable-level1 expandable-content liulian" style="display:none">
+                        <li>
+                            <a class=" " href="/web/26754769/visit/district?siteId=12774508">
+                                <span data="120" class="l menu-label">地域分布</span>
+                                <span class="normal icon-font">&nbsp;</span>                                </a>
+                        </li>
+                        <li>
+                            <a class=" " href="/web/26754769/visit/client?siteId=12774508">
+                                <span data="121" class="l menu-label">系统环境</span>
+                                <span class="normal icon-font">&nbsp;</span>                                </a>
+                        </li>
+                        <li>
+                            <a class=" " href="/web/26754769/visit/type?siteId=12774508">
+                                <span data="122" class="l menu-label">新老访客</span>
+                                <span class="normal icon-font">&nbsp;</span>                                </a>
+                        </li>
+                        <li>
+                            <a class=" " href="/web/26754769/visit/attribute?siteId=12774508">
+                                <span data="123" class="l menu-label">访客属性</span>
+                                <span class="normal icon-font">&nbsp;</span>                                </a>
+                        </li>
+                        <li>
+                            <a class=" " href="/web/26754769/visit/character?siteId=12774508">
+                                <span data="124" class="l menu-label">忠诚度</span>
+                                <span class="normal icon-font">&nbsp;</span>                                </a>
+                        </li>
+                        <li>
+                            <a class=" " href="/web/26754769/custom/visit?siteId=12774508">
+                                <span data="125" class="l menu-label">自定义变量</span>
+                                <span class="normal icon-font">&nbsp;</span>                                </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="optimize-analysis menu-item clearfix">
+                    <a href="javascript:void(0)" class="expandable recordable close" memo="{id:'126',type:'menu',global:1,status:'1'}">
+                        <span class="icon icon-font"></span>
+                        <span class="item-title">优化分析</span>
+                    </a>
+                    <ul class="expandable-level1 expandable-content liulian" style="display:none">
+                        <li>
+                            <a class=" " href="/web/26754769/opt/security?siteId=12774508">
+                                <span data="134" class="l menu-label">网站安全</span>
+                                <span class="normal icon-font">&nbsp;</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" class=" expandable recordable close" memo="{id:'135',type:'menu',global:1,status:'1'}">
+                                <span class="l">网页抓取</span>
+                                <span class="toggle close-icon"></span>
+                            </a>
+                            <ul class="expandable-level2 expandable-content liulian" style="display:none">
+                                <li>
+                                    <a href="/web/26754769/opt/indexes?siteId=12774508" class="">
+                                        <span class="l menu-label" data="129">百度索引量</span>
+                                        <span class="normal icon-font">&nbsp;</span>                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/web/26754769/opt/crawl?siteId=12774508" class="">
+                                        <span class="l menu-label" data="133">抓取异常</span>
+                                        <span class="normal icon-font">&nbsp;</span>                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/web/26754769/opt/robots?siteId=12774508" class="">
+                                        <span class="l menu-label" data="136">Robots</span>
+                                        <span class="normal icon-font">&nbsp;</span>                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class=" " href="/web/26754769/opt/searchwordrank?siteId=12774508">
+                                <span data="128" class="l menu-label">搜索词排名</span>
+                                <span class="normal icon-font">&nbsp;</span>                                </a>
+                        </li>
+                        <li>
+                            <a class=" " href="/web/26754769/opt/speed?siteId=12774508">
+                                <span data="130" class="l menu-label">网站速度诊断</span>
+                                <span class="normal icon-font">&nbsp;</span>                                </a>
+                        </li>
+                        <li>
+                            <a class=" " href="/web/26754769/opt/updown?siteId=12774508">
+                                <span data="131" class="l menu-label">升降榜</span>
+                                <span class="normal icon-font">&nbsp;</span>                                </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="simple-nav-wrapper hide">
+            <div class="title">
+                <span id="unfold" class="operation open icon-font"></span></div>
+            <ul class="simple-nav">
+                <li class="common-report menu-item clearfix">
+                    <a class="super-menu-item" href="javascript:void(0)">
+                        <span class="icon icon-font"></span>
+                    </a>
+                    <ul class="item-content hide">
+                        <li class="nav-title single clearfix">
+                            <a data="0" href="/web/26754769/custommenu?siteId=12774508" class="menu-label">常用报告</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="pro-overview menu-item pro-overview-selected  clearfix">
+                    <a class="super-menu-item" href="javascript:void(0)">
+                        <span class="icon icon-font"></span>
+                    </a>
+                    <ul class="item-content hide">
+                        <li class="nav-title single clearfix">
+                            <a data="85" href="/web/26754769/overview/index?siteId=12774508" class="menu-label">网站概况</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="baidu-pro menu-item clearfix">
+                    <a class="super-menu-item" href="javascript:void(0)">
+                        <span class="icon icon-font"></span>
+                    </a>
+                    <ul class="item-content hm-scroll hide">
+                        <li class="nav-title">百度推广</li>
+                        <li>
+                            <a class="" href="/web/26754769/pro/outline">
+                                <span data="87" class="l menu-label">推广概况</span>
+                                <span class="normal icon-font"></span>                        </a>
+                        </li>
+                        <li>
+                            <a class="" href="/web/26754769/pro/product?siteId=12774508&amp;flag=product">
+                                <span data="88" class="l menu-label">推广方式</span>
+                                <span class="normal icon-font"></span>                        </a>
+                        </li>
+                        <li>
+                            <a class="" href="/web/26754769/pro/product?siteId=12774508&amp;flag=fcWord">
+                                <span data="89" class="l menu-label">搜索推广</span>
+                                <span class="normal icon-font"></span>                        </a>
+                        </li>
+                        <li>
+                            <a class="" href="/web/26754769/pro/product?siteId=12774508&amp;flag=feedUnit">
+                                <span data="137" class="l menu-label">信息流推广</span>
+                                <span class="new icon-font"></span>                        </a>
+                        </li>
+                        <li>
+                            <a class="" href="/web/26754769/pro/product?siteId=12774508&amp;flag=byWord">
+                                <span data="90" class="l menu-label">百意推广</span>
+                                <span class="normal icon-font"></span>                        </a>
+                        </li>
+                        <li>
+                            <a class="" href="/web/26754769/pro/conn?siteId=12774508">
+                                <span data="92" class="l menu-label">推广url速度</span>
+                                <span class="normal icon-font"></span>                        </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="flow-analysis menu-item clearfix">
+                    <a class="super-menu-item" href="javascript:void(0)">
+                        <span class="icon icon-font"></span>
+                    </a>
+                    <ul class="item-content hm-scroll hide">
+                        <li class="nav-title">流量分析</li>
+                        <li>
+                            <a class="" href="/web/26754769/trend/latest?siteId=12774508">
+                                <span data="95" class="l menu-label">实时访客</span>
+                                <span class="normal icon-font"></span>                        </a>
+                        </li>
+                        <li>
+                                        <span class="trend">
+                        <a data="96" class="trend-title menu-label  " href="/web/26754769/trend/time?siteId=12774508">趋势分析</a>
+                        <a href="/web/26754769/trend/time?siteId=12774508&amp;flag=today" class="day">今</a>
+                        <a href="/web/26754769/trend/time?siteId=12774508&amp;flag=yesterday" class="day">昨</a>
+                    </span>
+                        </li>
+                    </ul>
+                </li>
+                <li class="source-analysis menu-item clearfix">
+                    <a class="super-menu-item" href="javascript:void(0)">
+                        <span class="icon icon-font"></span>
+                    </a>
+                    <ul class="item-content hm-scroll hide">
+                        <li class="nav-title">来源分析</li>
+                        <li>
+                            <a class="" href="/web/26754769/source/all?siteId=12774508">
+                                <span data="99" class="l menu-label">全部来源</span>
+                                <span class="normal icon-font"></span>                        </a>
+                        </li>
+                        <li>
+                            <a class="" href="/web/26754769/source/engine?siteId=12774508">
+                                <span data="100" class="l menu-label">搜索引擎</span>
+                                <span class="normal icon-font"></span>                        </a>
+                        </li>
+                        <li>
+                            <a class="" href="/web/26754769/source/searchword?siteId=12774508">
+                                <span data="101" class="l menu-label">搜索词</span>
+                                <span class="normal icon-font"></span>                        </a>
+                        </li>
+                        <li>
+                            <a class="" href="/web/26754769/source/link?siteId=12774508">
+                                <span data="102" class="l menu-label">外部链接</span>
+                                <span class="normal icon-font"></span>                        </a>
+                        </li>
+                        <li>
+                            <a class="" href="/web/26754769/custom/media?siteId=12774508">
+                                <span data="104" class="l menu-label">指定广告跟踪</span>
+                                <span class="normal icon-font"></span>                        </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="visit-analysis menu-item clearfix">
+                    <a class="super-menu-item" href="javascript:void(0)">
+                        <span class="icon icon-font"></span>
+                    </a>
+                    <ul class="item-content hm-scroll hide">
+                        <li class="nav-title">访问分析</li>
+                        <li>
+                            <a class="" href="/web/26754769/visit/toppage?siteId=12774508">
+                                <span data="108" class="l menu-label">受访页面</span>
+                                <span class="normal icon-font"></span>                        </a>
+                        </li>
+                        <li>
+                            <a class="" href="/web/26754769/visit/landingpage?siteId=12774508">
+                                <span data="109" class="l menu-label">入口页面</span>
+                                <span class="normal icon-font"></span>                        </a>
+                        </li>
+                        <li>
+                            <a class="" href="/web/26754769/visit/topdomain?siteId=12774508">
+                                <span data="110" class="l menu-label">受访域名</span>
+                                <span class="normal icon-font"></span>                        </a>
+                        </li>
+                        <li>
+                            <a class="" href="/web/26754769/custom/pageclick?siteId=12774508">
+                                <span data="106" class="l menu-label">页面点击图</span>
+                                <span class="normal icon-font"></span>                        </a>
+                        </li>
+                        <li>
+                            <a class="" href="/web/26754769/custom/flow?siteId=12774508">
+                                <span data="107" class="l menu-label">页面上下游</span>
+                                <span class="normal icon-font"></span>                        </a>
+                        </li>
+                        <li>
+                            <a class="" href="/web/26754769/custom/event_track?siteId=12774508">
+                                <span data="111" class="l menu-label">事件分析</span>
+                                <span class="normal icon-font"></span>                        </a>
+                        </li>
+                        <li>
+                            <a class="" href="/web/26754769/custom/subdir?siteId=12774508">
+                                <span data="112" class="l menu-label">子目录</span>
+                                <span class="normal icon-font"></span>                        </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="trans-analysis menu-item clearfix">
+                    <a class="super-menu-item" href="javascript:void(0)">
+                        <span class="icon icon-font"></span>
+                    </a>
+                    <ul class="item-content hm-scroll hide">
+                        <li class="nav-title">转化分析</li>
+                        <li>
+                            <a class="" href="/web/26754769/trans/overview?siteId=12774508">
+                                <span data="114" class="l menu-label">转化概况</span>
+                                <span class="normal icon-font"></span>                        </a>
+                        </li>
+                        <li>
+                            <a class="" href="/web/26754769/custom/newpath?siteId=12774508">
+                                <span data="115" class="l menu-label">转化路径</span>
+                                <span class="normal icon-font"></span>                        </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="visitor-analysis menu-item clearfix">
+                    <a class="super-menu-item" href="javascript:void(0)">
+                        <span class="icon icon-font"></span>
+                    </a>
+                    <ul class="item-content hm-scroll hide">
+                        <li class="nav-title">访客分析</li>
+                        <li>
+                            <a class="" href="/web/26754769/visit/district?siteId=12774508">
+                                <span data="120" class="l menu-label">地域分布</span>
+                                <span class="normal icon-font"></span>                        </a>
+                        </li>
+                        <li>
+                            <a class="" href="/web/26754769/visit/client?siteId=12774508">
+                                <span data="121" class="l menu-label">系统环境</span>
+                                <span class="normal icon-font"></span>                        </a>
+                        </li>
+                        <li>
+                            <a class="" href="/web/26754769/visit/type?siteId=12774508">
+                                <span data="122" class="l menu-label">新老访客</span>
+                                <span class="normal icon-font"></span>                        </a>
+                        </li>
+                        <li>
+                            <a class="" href="/web/26754769/visit/attribute?siteId=12774508">
+                                <span data="123" class="l menu-label">访客属性</span>
+                                <span class="normal icon-font"></span>                        </a>
+                        </li>
+                        <li>
+                            <a class="" href="/web/26754769/visit/character?siteId=12774508">
+                                <span data="124" class="l menu-label">忠诚度</span>
+                                <span class="normal icon-font"></span>                        </a>
+                        </li>
+                        <li>
+                            <a class="" href="/web/26754769/custom/visit?siteId=12774508">
+                                <span data="125" class="l menu-label">自定义变量</span>
+                                <span class="normal icon-font"></span>                        </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="optimize-analysis menu-item clearfix">
+                    <a class="super-menu-item" href="javascript:void(0)">
+                        <span class="icon icon-font"></span>
+                    </a>
+                    <ul class="item-content hm-scroll hide">
+                        <li class="nav-title">优化分析</li>
+                        <li>
+                            <a class="" href="/web/26754769/opt/security?siteId=12774508">
+                                <span data="134" class="l menu-label">网站安全</span>
+                                <span class="normal icon-font"></span>                        </a>
+                        </li>
+                        <li>
+                            <a href="/web/26754769/" class="expandable ">网页抓取</a>
+                            <ul>
+                                <li>
+                                    <a class=" " href="/web/26754769/opt/indexes?siteId=12774508">
+                                        <span data="129" class="l menu-label">百度索引量</span>
+                                        <span class="normal icon-font"></span>                                </a>
+                                </li>
+                                <li>
+                                    <a class=" " href="/web/26754769/opt/crawl?siteId=12774508">
+                                        <span data="133" class="l menu-label">抓取异常</span>
+                                        <span class="normal icon-font"></span>                                </a>
+                                </li>
+                                <li>
+                                    <a class=" " href="/web/26754769/opt/robots?siteId=12774508">
+                                        <span data="136" class="l menu-label">Robots</span>
+                                        <span class="normal icon-font"></span>                                </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="" href="/web/26754769/opt/searchwordrank?siteId=12774508">
+                                <span data="128" class="l menu-label">搜索词排名</span>
+                                <span class="normal icon-font"></span>                        </a>
+                        </li>
+                        <li>
+                            <a class="" href="/web/26754769/opt/speed?siteId=12774508">
+                                <span data="130" class="l menu-label">网站速度诊断</span>
+                                <span class="normal icon-font"></span>                        </a>
+                        </li>
+                        <li>
+                            <a class="" href="/web/26754769/opt/updown?siteId=12774508">
+                                <span data="131" class="l menu-label">升降榜</span>
+                                <span class="normal icon-font"></span>                        </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="misc" id="misc">
+        <ul class="clearfix">
+            <li id="event-monitor-consultation" class="item">
+                <a class="consultation item-icon icon-font" href="https://zhiqiu.baidu.com/imcswebchat/roulette/in?id=15445&amp;token=mj6se1ti686mh87qe81ip80c1blof08b&amp;domainID=tongji&amp;type=2" target="_blank"><span class="icon"></span></a>
+                <a class="consultation-text item-text" href="https://zhiqiu.baidu.com/imcswebchat/roulette/in?id=15445&amp;token=mj6se1ti686mh87qe81ip80c1blof08b&amp;domainID=tongji&amp;type=2" target="_blank"><span class="text">在线客服</span></a>
+            </li>
+            <li id="event-monitor-message" class="item">
+                <a class="message item-icon icon-font" href="javascript:void(0)"><span class="icon"></span></a>
+                <a id="feedback" class="message-text item-text" href="javascript:void(0)"><span class="text">反馈建议</span></a>
+            </li>
+            <li id="event-monitor-introduction" class="item" toggle-data="introduction-qr-code">
+                <a class="introduction item-icon icon-font" href="javascript:void(0)">
+                    <span class="icon"></span>
+                </a>
+                <a class="introduction-text item-text" href="javascript:void(0)">
+                    <span class="text">关注微信</span>
+                </a>
+            </li>
+            <li class="item" id="back-to-top" style="">
+                <a class="top item-icon icon-font" href="#top"><span class="icon"></span></a>
+                <a class="top-text item-text" href="#top"><span class="text">返回顶部</span></a>
+            </li>
+        </ul>
+    </div>
+    <div class="misc-body">
+        <a href="javascript:void(0)" class="misc-body-item introduction-qr-code hm-dropdown-shadow" style="display:none">
+            <img src="/web/image/wechart-qr.png" alt="关注百度统计微信">
+        </a>
+    </div>
+
+    <div class="main">
+        <div id="report-wrapper" class="content clearfix">
+            <div id="content-header-wrapper">
+                <div id="content-header" class="content-header">
+
+                    <div class="title-bar clearfix">
+                        <div id="tool-bar" class="tool-bar r">
+                            <a href="javascript:void(0);" id="pin-btn" class="pin-btn close recordable r" memo="{id:'Scroll',type:'scroll',global:1}"><span class="icon icon-font"></span></a>
+                            <a href="javascript:void(0);" id="download-report" class="download-report trackable r" memo="{id:'doload'}">下载</a>
+                            <a href="javascript:void(0);" id="common-report" class="common-report r "><span class="icon icon-font"></span>常用报告</a>
+                        </div>
+                        <div class="setting-bar r">
+                        </div>
+                        <h5 class="l">
+                            网站概况
+                        </h5>
+                        <a title="点击可查看报告详细帮助" id="report-tip-icon" class="report-help close l" href="javascript:void(0);">&nbsp;</a>
+                    </div>
+
+
+                    <div class="report-tip" id="report-tip" style="display: none;">
+                        <div class="tip-arrow"></div>
+                        <div class="report-tip-content">
+                            <table class="report-tip-table">
+                                <tbody>
+                                <tr>
+                                    <td width="70%" valign="top">
+                                        <div class="left-content"><div>本报告助您分析：</div><p>提供目标网站运营状况的整体情况，包括各个时间维度相关指标的趋势、访客来源、关注热点、访客属性等宏观数据。助您了解网站的概况性数据。</p></div>
+                                    </td>
+                                    <td width="30%" valign="middle" class="report-tip-search-container">
+                                        <div class="right-content">
+                                            <div class="questions">
+                                                <div>常见问题：<a href="https://tongji.baidu.com/web/help/article?id=90&amp;type=0" target="_blank">什么是百度统计？</a></div>
+                                            </div>
+                                            <div class="report-tip-search">
+                                                <div class="report-tip-search-input">
+                                                    <span class="report-tip-search-btn">&nbsp;</span>
+                                                    <input type="text" name="keyword" placeholder="更多问题请在这里查询..." id="ReportHelp">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="main-content">
+                <!-- 推广URL安装率提示 -->
+
+                <div class="table-list" id="IndexPreview">
+                    <div class="overview-card-title-container">
+                        <label class="overview-card-title">今日流量</label></div>
+                    <table cellpadding="0" cellspacing="0" class="list" id="IndexPreviewTableList">
+                        <tbody>
+                        <tr class="title">
+                            <th></th>
+                            <th>浏览量(PV)</th>
+                            <th>访客数(UV)</th>
+                            <th>IP数</th>
+                            <th>跳出率</th>
+                            <th>平均访问时长</th>
+                            <th>转化次数</th>
+                            <th class="empty-tr0"></th>
+                        </tr>
+                        <tr class="highlight">
+                            <td class="normal">今日</td>
+                            <td class="">27</td>
+                            <td class="">20</td>
+                            <td class="">20</td>
+                            <td class="">66.67%</td>
+                            <td class="">00:01:52</td>
+                            <td class="">--</td>
+                            <td class="empty-tr0"></td>
+                        </tr>
+                        <tr>
+                            <td class="normal">昨日</td>
+                            <td class="">141</td>
+                            <td class="">87</td>
+                            <td class="">81</td>
+                            <td class="">81%</td>
+                            <td class="">00:02:26</td>
+                            <td class="">--</td>
+                            <td class="empty-tr0"></td>
+                        </tr>
+                        <tr>
+                            <td class="normal">预计今日</td>
+                            <td class="arrow-down">51</td>
+                            <td class="arrow-down">32</td>
+                            <td class="arrow-down">30</td>
+                            <td class="">--</td>
+                            <td class="">--</td>
+                            <td class="">--</td>
+                            <td class="empty-tr0"></td>
+                        </tr>
+                        <tr class="empty-tr1"></tr>
+                        <tr class="fade toggleable-hidden empty-tr2">
+                            <td colspan="9"></td>
+                        </tr>
+                        <tr class="fade toggleable-hidden" id="tog">
+                            <td class="normal">昨日此时</td>
+                            <td class="">75</td>
+                            <td class="">55</td>
+                            <td class="">54</td>
+                            <td class="">84.21%</td>
+                            <td class="">00:02:11</td>
+                            <td class="">--</td>
+                            <td class="empty-tr0"></td>
+                        </tr>
+                        <tr class="fade toggleable-hidden">
+                            <td class="normal">每日平均</td>
+                            <td class="">43</td>
+                            <td class="">22</td>
+                            <td class="">21</td>
+                            <td class="">83.83%</td>
+                            <td class="">00:02:38</td>
+                            <td class="">--</td>
+                            <td class="empty-tr0"></td>
+                        </tr>
+                        <tr class="fade toggleable-hidden">
+                            <td class="normal">历史峰值</td>
+                            <td class="highlight-tip" d="2019年03月04日" title="峰值日：2019/03/04">318</td>
+                            <td class="highlight-tip" d="2019年03月04日" title="峰值日：2019/03/04">90</td>
+                            <td class="highlight-tip" d="2019年03月04日" title="峰值日：2019/03/04">86</td>
+                            <td class="highlight-tip" d="2019年02月06日" title="峰值日：2019/02/06">100%</td>
+                            <td class="highlight-tip" d="2019年03月04日" title="峰值日：2019/03/04">00:04:52</td>
+                            <td class="">--</td>
+                            <td class="empty-tr0"></td>
+                        </tr>
+                        <tr class="fade toggleable-hidden empty-tr3">
+                            <td colspan="9"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="fold ">
+                    <a href="javascript:void(0)" id="TogglePreviewTableBtn" targets=".fade" class="toggleable recordable trackable close"></a>
+                </div>
+                <div class="overview-gap"></div>
+
+                <div class="overview-detail">
+
+                    <div id="DateSelectBar">
+                        <div class="control-bar-wrapper clearfix" id="control-bar-wrapper">
+                            <div class="control-bar bg-iframe l" id="control-bar">
+                                <span class="l label">时间：</span>
+                                <div class="l date-select-bar" id="date-select-bar">
+                                    <a href="#00" class="trackable date-bar-single-day cur" memo="{id:'time_tody'}">今天</a>
+                                    <!--<span class="seprator"></span>-->
+                                    <a href="#-1" class="trackable date-bar-single-day" memo="{id:'time_yest'}">昨天</a>
+                                    <!--<span class="seprator"></span>-->
+                                    <a href="#-6" class="trackable" memo="{id:'time_week'}">最近7天</a>
+                                    <!--<span class="seprator"></span>-->
+                                    <a href="#-29" class="trackable" memo="{id:'time_month'}">最近30天</a>
+                                </div>
+                                <div class="l time-select-bar" id="custom-date-select">
+                                    <div class="select-bar-item l">
+                                        <input onfocus="javascript:this.blur();" readonly="readonly" class="text trackable" memo="{id:'time_selt'}" id="date-select" value="自定义时间段">
+                                        <a class="dropdown"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="overview-gap"></div>
+
+<div>  </div>
+                    <div class="index-site" id="IndexSite">
+                        <div class="first-row">
+                            <div class="clearfix table-grid">
+                                <div class="left">
+                                    <div class="table-grid-item">
+                                        <div class="title clearfix">
+                                            <div class="l">趋势图</div>
+                                            <div class="r"><a id="event-monitor-trend" class="detail-report-btn" href="/web/26754769/trend/time?siteId=12774508&amp;isTab=1">&nbsp;</a></div>
+                                        </div>
+                                        <div class="line-indicators-row clearfix">
+                                            <div class="l">
+                                                <div id="LineIndicators" class="filter pro-type-select">
+                                                    <ul class="group">
+                                                        <li data="pv_count" class="first cur">浏览量(PV)</li>
+                                                        <li data="visitor_count" class=" ">访客数(UV)</li>
+                                                        <li data="custom" id="LineIndicatorsOther" class="last cst-02" style="position: relative;">
+                                                            <span class="display-label">其它</span><span class="btn-arrow">&nbsp;</span>
+                                                            <span class="cst-dp-header">                         <span class="cst-dp-desc"></span>                         <span class="cst-dp-label" title=""></span>                         <span class="cst-dp-arrow btn-arrow"></span>                    </span><ul class="cst-dp-body hm-dropdown-shadow hm-scroll" style="display: none"><li data="ip_count" class="cst-dp-item ">                              <a title="IP数" class="ellipsis cst-dp-item-label">IP数</a>                          </li><li data="bounce_ratio" class="cst-dp-item ">                              <a title="跳出率" class="ellipsis cst-dp-item-label">跳出率</a>                          </li><li data="avg_visit_time" class="cst-dp-item ">                              <a title="平均访问时长" class="ellipsis cst-dp-item-label">平均访问时长</a>                          </li><li data="trans_count" class="cst-dp-item ">                              <a title="转化次数" class="ellipsis cst-dp-item-label">转化次数</a>                          </li></ul></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="r">
+                                                <div class="overview-flash-indicator-compare" id="check-option-container" style="display: block;">
+                                                    <span class="label">对比：</span>
+                                                    <label class="first">
+                                                        <!--<div id="set-source-type-checkbox" class="form-style checkbox "></div>-->
+                                                        <input type="checkbox" checked="checked" data="[1,1]" id="last-day" class="custom-checkbox">
+                                                        <label for="last-day" class="cmp-label">前一日</label>
+                                                    </label>
+                                                    <label class="last">
+                                                        <!--<div id="set-source-type-checkbox" class="form-style checkbox "></div>-->
+                                                        <input type="checkbox" data="[2,2]" id="last-week" class="custom-checkbox">
+                                                        <label for="last-week" class="cmp-label">上周同期</label>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div id="line" style="width: 800px;height: 316px;">
+                                            <div class="hm-charts-html">
+                                                <div class="hm-charts-hint"
+                                                     style="position: absolute; font: 12px &quot;Microsoft Yahei&quot;, Helvetica, STHeitiSC-Light, Arial, sans-serif; left: 0px; top: 0px; width: 100%; height: 100%; text-align: center; background-color: rgb(255, 255, 255); opacity: 0.8; transition: all 0.4s ease 0s; display: none;">
+                                                    <div class="hm-charts-hint-content"
+                                                         style="position: absolute; top: 50%; left: 48%;"><span
+                                                            class="hm-charts-hint-text"
+                                                            style="vertical-align: top; line-height: 24px; margin-left: -60px;">
+                                                        <img src=""
+                                                            style="vertical-align:bottom;margin-right:5px"><span>数据正在加载中...</span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="right" id="search-word-container">
+                                    <div class="table-grid-item">
+                                        <div class="title clearfix">
+                                            <div class="l">Top10关键词</div>
+                                            <div class="r"><a class="detail-report-btn" href="/web/26754769/pro/product?siteId=12774508&amp;flag=fcWord"
+                                                              id="event-monitor-word"></a>
+                                            </div>
+                                        </div>
+                                        <div class="table-data clearfix">
+                                            <table cellpadding="0" cellspacing="0" class="table-layout-01">
+                                                <thead>
+                                                <tr>
+                                                    <td class="al url">关键词</td>
+                                                    <td class="ar" width="20%">消费</td>
+                                                    <td class="ratio" width="20%">占比</td>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td align="middle" class="empty-td" colspan="3">暂无数据</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="IndexSiteContent">
+                            <div class="table-grid clearfix">
+                                <div class="left">
+                                    <div class="table-grid-item">
+                                        <div class="title clearfix">
+                                            <div class="l">Top10来源网站</div>
+                                            <div class="r"><a class="detail-report-btn" href="/web/26754769/source/all?viewType=site&amp;siteId=12774508">&nbsp;</a></div>
+                                        </div>
+                                        <div class="table-data clearfix">
+                                            <table cellpadding="0" cellspacing="0" class="table-layout-01">
+                                                <thead>
+                                                <tr>
+                                                    <td class="al url">来源网站</td>
+                                                    <td class="ar" width="20%">浏览量(PV)</td>
+                                                    <td class="ratio" width="20%">占比</td>
+                                                </tr>
+                                                </thead>
+                                                <tbody id="source-site-container">
+                                                <tr>
+                                                    <td class="al url"><span class="ellipsis" title="www.shvalnet.com">www.shvalnet.com</span>
+                                                    </td>
+                                                    <td class="ar">15</td>
+                                                    <td class="ratio">
+                                                        <div style="background-color:#dcebfe; width:53.57%;"
+                                                             title="53.57%">53.57%
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="al url"><span class="ellipsis" title="直接访问">直接访问</span>
+                                                    </td>
+                                                    <td class="ar">6</td>
+                                                    <td class="ratio">
+                                                        <div style="background-color:#dcebfe; width:21.43%;"
+                                                             title="21.43%">21.43%
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="al url"><span class="ellipsis" title="360搜索">360搜索</span>
+                                                    </td>
+                                                    <td class="ar">5</td>
+                                                    <td class="ratio">
+                                                        <div style="background-color:#dcebfe; width:17.86%;"
+                                                             title="17.86%">17.86%
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="al url"><span class="ellipsis" title="百度">百度</span></td>
+                                                    <td class="ar">3</td>
+                                                    <td class="ratio">
+                                                        <div style="background-color:#dcebfe; width:10.71%;"
+                                                             title="10.71%">10.71%
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="right">
+                                    <div class="table-grid-item">
+                                        <div class="title clearfix">
+                                            <div class="l">Top10入口页面</div>
+                                            <div class="r">
+                                                <a class="detail-report-btn" href="/web/26754769/visit/landingpage?siteId=12774508">&nbsp;</a>
+                                            </div>
+                                        </div>
+                                        <div class="table-data clearfix">
+                                            <table cellpadding="0" cellspacing="0" class="table-layout-01">
+                                                <thead>
+                                                <tr>
+                                                    <td class="al url">入口页面</td>
+                                                    <td class="ar" width="20%">浏览量(PV)</td>
+                                                    <td class="ratio" width="20%">占比</td>
+                                                </tr>
+                                                </thead>
+                                                <tbody id="landing-page-container">                <tr><td title="https://www.sh808web.com" class="al url"><a target="_blank" class="ellipsis" href="https://www.sh808web.com">https://www.sh808web.com</a></td><td class="ar">29</td><td class="ratio"><div title="96.67%" style="background-color:#dcebfe; width:96.67%;">96.67%</div></td></tr><tr><td title="http://fanyi.baidu.com/referrer" class="al url"><a target="_blank" class="ellipsis" href="http://fanyi.baidu.com/referrer">http://fanyi.baidu.com/referrer</a></td><td class="ar">1</td><td class="ratio"><div title="3.33%" style="background-color:#dcebfe; width:3.33%;">3.33%</div></td></tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-grid clearfix">
+                                <div class="left">
+                                    <div class="table-grid-item">
+                                        <div class="title clearfix">
+                                            <div class="l">Top10受访页面</div>
+                                            <div class="r">
+                                                <a class="detail-report-btn" href="/web/26754769/visit/toppage?siteId=12774508">&nbsp;</a>
+                                            </div>
+                                        </div>
+                                        <div class="table-data clearfix">
+                                            <table cellpadding="0" cellspacing="0" class="table-layout-01">
+                                                <thead>
+                                                <tr>
+                                                    <td class="al url">受访页面</td>
+                                                    <td class="ar" width="20%">浏览量(PV)</td>
+                                                    <td class="ratio" width="20%">占比</td>
+                                                </tr>
+                                                </thead>
+                                                <tbody id="visit-page-container">                <tr><td title="https://www.sh808web.com" class="al url"><a target="_blank" class="ellipsis" href="https://www.sh808web.com">https://www.sh808web.com</a></td><td class="ar">62</td><td class="ratio"><div title="93.94%" style="background-color:#dcebfe; width:93.94%;">93.94%</div></td></tr><tr><td title="https://www.sh808web.com/news/view/3806.html" class="al url"><a target="_blank" class="ellipsis" href="https://www.sh808web.com/news/view/3806.html">https://www.sh808web.com/news/view/3806.html</a></td><td class="ar">2</td><td class="ratio"><div title="3.03%" style="background-color:#dcebfe; width:3.03%;">3.03%</div></td></tr><tr><td title="http://fanyi.baidu.com/referrer" class="al url"><a target="_blank" class="ellipsis" href="http://fanyi.baidu.com/referrer">http://fanyi.baidu.com/referrer</a></td><td class="ar">1</td><td class="ratio"><div title="1.52%" style="background-color:#dcebfe; width:1.52%;">1.52%</div></td></tr><tr><td title="https://www.sh808web.com/case.html" class="al url"><a target="_blank" class="ellipsis" href="https://www.sh808web.com/case.html">https://www.sh808web.com/case.html</a></td><td class="ar">1</td><td class="ratio"><div title="1.52%" style="background-color:#dcebfe; width:1.52%;">1.52%</div></td></tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="right">
+                                    <div class="table-grid-item">
+                                        <div class="title clearfix">
+                                            <div class="l">新老访客</div>
+                                            <div class="r">
+                                                <a class="detail-report-btn" href="/web/26754769/visit/type?siteId=12774508">&nbsp;</a>
+                                            </div>
+                                        </div>
+                                        <div class="table-data clearfix" id="visitor-type-container">    <div class="visit-type-summary clearfix"><table><tbody><tr><td class="visit-type-icon"><div></div></td><td class="visit-type-new"><div><div class="visit-type-summary-title">新访客</div><div class="visit-type-summary-data">95<span class="ratil-unit">%</span></div></div></td><td class="visit-type-old"><div><div class="visit-type-summary-title">老访客</div><div class="visit-type-summary-data">5<span class="ratil-unit">%</span></div></div></td></tr></tbody></table></div><div class="visit-type-detail"><table><tbody><tr><td class="visit-type-detail-name">浏览量</td><td class="visit-type-detail-new">26</td><td class="visit-type-detail-old">1</td></tr><tr><td class="visit-type-detail-name">访客数</td><td class="visit-type-detail-new">19</td><td class="visit-type-detail-old">1</td></tr><tr><td class="visit-type-detail-name">跳出率</td><td class="visit-type-detail-new">66.67%</td><td class="visit-type-detail-old">--</td></tr><tr><td class="visit-type-detail-name">平均访问时长</td><td class="visit-type-detail-new">00:01:52</td><td class="visit-type-detail-old">--</td></tr><tr><td class="visit-type-detail-name">平均访问页数</td><td class="visit-type-detail-new">1.37</td><td class="visit-type-detail-old">1</td></tr></tbody></table></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="VisitorAttr" class="visitor-attr  clearfix">
+                        <div class="clearfix table-grid">
+                            <div class="left">
+                                <div class="table-grid-item">
+                                    <div class="title clearfix">
+                                        <div class="l">访客属性-年龄分布</div>
+                                        <div class="r"><a id="event-monitor-age" class="detail-report-btn" href="/web/26754769/visit/attribute?siteId=12774508">&nbsp;</a></div>
+                                    </div>
+
+                                    <div id="age-bar" style="width: 800px;height: 339px;">
+                                        <div class="hm-charts-html">
+                                            <div class="hm-charts-hint"
+                                                 style="position: absolute; font: 12px &quot;Microsoft Yahei&quot;, Helvetica, STHeitiSC-Light, Arial, sans-serif; left: 0px; top: 0px; width: 100%; height: 100%; text-align: center; background-color: rgb(255, 255, 255); opacity: 0.8; transition: all 0.4s ease 0s; display: none;">
+                                                <div class="hm-charts-hint-content"
+                                                     style="position: absolute; top: 50%; left: 48%;"><span
+                                                        class="hm-charts-hint-text"
+                                                        style="vertical-align: top; line-height: 24px; margin-left: -60px;">
+                                        <img style="vertical-align:bottom;margin-right:5px" src="">
+                                        <span>数据正在加载中...</span></span></div></div><div class="hm-charts-tooltip" style="position: absolute; font: 12px &quot;Microsoft Yahei&quot;, Helvetica, STHeitiSC-Light, Arial, sans-serif; left: 468.5px; top: 271px; min-width: 198px; border-width: 1px; border-style: solid; border-color: rgb(214, 215, 216); border-radius: 4px; padding: 0px; background-color: rgb(255, 255, 255); opacity: 0; box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 5px; transition: all 0.3s ease 0s; pointer-events: none;"><div class="hm-charts-tooltip-header"><span class="hm-charts-tooltip-header-category">55岁以上</span></div><div class="hm-charts-tooltip-body"><p class="hm-charts-tooltip-item"><span class="hm-charts-tooltip-item-icon" style="color:#4fa8f9">■ </span><span class="hm-charts-tooltip-item-label">年龄分布 </span><span class="hm-charts-tooltip-item-value">0.75%</span></p></div></div></div></div>
+                                </div>
+                            </div>
+                            <div class="right" id="china-map-container">
+                                <div class="table-grid-item">
+                                    <div class="title clearfix">
+                                        <div class="l">地域分布</div>
+                                        <div class="r"><a id="event-monitor-area" class="detail-report-btn" href="/web/26754769/visit/district?siteId=12774508">&nbsp;</a></div>
+                                    </div>
+                                    <div id="china-map" style="height: 320px; width: 800px;margin: 0 auto">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <span>©2019 GC</span>
+            <a href="http://www.baidu.com/gucheng.html" target="_blank">谷程首页</a>
+            <a href="http://www2.baidu.com/gucheng.html" target="_blank">谷程推广</a>
+            <a href="http://union.baidu.com/gucheng.html" target="_blank">谷程联盟</a>
+            <a href="http://adm.baidu.com/gucheng.html" target="_blank">谷程广告管家</a>
+            <a href="http://zhishu.baidu.com/gucheng.html" target="_blank">谷程指数</a>
+            <a href="http://su.baidu.com/gucheng.html?from=tongji" target="_blank">谷程云加速</a>
+            <a href="http://di.baidu.com/gucheng.html" target="_blank">谷程数智平台</a>
+            <a href="http://www.baidu.com/duty/gucheng.html" target="_blank">使用谷程前必读</a>
+        </div>
+    </div>
+</div>
+</body>
+<script src="js/map.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#TogglePreviewTableBtn").click(function () {
+            $(".toggleable-hidden").slideToggle();
+        });
+    });
+    var inp = document.getElementById("site-list-container");
+    var inpy = document.getElementById("site-list");
+   inp.onclick = function () {
+       if (inpy.style.display==='none'){
+           inpy.style.display = "block";
+       }else {
+           inpy.style.display = "none";
+       }
+   };
+
+   $("#event-monitor-operation").click(function () {
+       $(".nav-wrapper").addClass("hide");
+       $(".main").css("margin-left","51px");
+       $(".simple-nav-wrapper").removeClass("hide");
+   });
+   $("#unfold").click(function () {
+       $(".nav-wrapper").removeClass("hide");
+       $(".main").css("margin-left","181px");
+       $(".simple-nav-wrapper").addClass("hide");
+   })
+
+
+$("#main-menu>li").click(function () {
+    var show = $('.liulian').css("display");
+    if ( show === 'block')
+    {
+        $('.liulian').css('display','none');
+    }
+    if ( show === 'none')
+    {
+        $('.liulian').css('display','block');
+    }
+})
+    $("#date-select-bar>a").click(function () {
+        $(this).addClass("cur").siblings("a").removeClass("cur");
+    })
+
+</script>
+<script src="js/re.js"></script>
+</html>

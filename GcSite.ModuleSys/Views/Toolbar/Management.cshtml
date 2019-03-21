@@ -1,0 +1,502 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>管理</title>
+    <link href="~/css/man_com.css" rel="stylesheet" type="text/css" media="all">
+    <link href="~/css/management.css" rel="stylesheet" type="text/css" media="all">
+
+
+</head>
+<body>
+
+    <div class="header-wrapper site-center-header-wrapper" id="Top">
+        <div class="header clearfix">
+            <div class="logo l">
+                <a href="/sc-web"><img src="/sc-web/image/logo@2x.png?__v=1552372223015" alt="百度统计"></a>
+                <span class="logo-title">网站统计</span>
+            </div>
+            <div class="view-tab l">
+                <a href="gc_index.html" target="_blank">主页</a>
+                <a href="gc_report.html" target="_blank">报告</a>
+                <a href="gc_analysis.html" target="_blank">高级分析</a>
+                <a href="gc_management.html" class="site-center selected">管理</a>
+            </div>
+            <div class="top-nav r">
+
+                <a id="event-monitor-help-center" href="//tongji.baidu.com/web/help/index?from=2" class="more-apps top-nav-item  my-service" target="_blank">帮助中心</a>
+                <span class="more-tools top-nav-item layer">
+                    <span class="icon icon-font"></span>
+                    <ul class="content hide">
+                        <li class="item">
+                            <a href="http://www2.baidu.com/" target="_blank">百度推广</a>
+                        </li>
+                        <li class="item">
+                            <a href="http://union.baidu.com/" target="_blank">百度联盟</a>
+                        </li>
+                        <li class="item">
+                            <a href="http://dmp.baidu.com/" target="_blank">百度DMP</a>
+                        </li>
+                        <li class="item">
+                            <a href="http://zhanzhang.baidu.com/" target="_blank">站长平台</a>
+                        </li>
+                        <li class="item">
+                            <a href="http://jingsuan.baidu.com/" target="_blank">百度精算</a>
+                        </li>
+                        <li class="item">
+                            <a href="http://di.baidu.com/" target="_blank">百度数智平台</a>
+                        </li>
+                    </ul>
+                </span>
+                <span class="more-tools top-nav-item layer account-wrapper">
+                    <span class="account">
+                        Hi&nbsp;
+                        gucheng262314
+                    </span>
+                    <em></em>
+                    <ul class="content hide">
+                        <li class="item">
+                            <a href="//tongji.baidu.com/web/help/article?id=276&amp;type=0" target="_blank">联系我们</a>
+                        </li>
+                        <li class="item">
+                            <a href="//tongji.baidu.com/web/help/index?from=2" target="_blank">帮助中心</a>
+                        </li>
+                        <li class="item">
+                            <a href="/sc-web/26754769/welcome/logout" id="event-monitor-logout">退出</a>
+                        </li>
+                    </ul>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="body">
+        <div class="aside" style="height: 380px; top: 60px; left: 0px;">
+            <ul class="nav hm-scroll" style="height: 380px;">
+                <li class="account-admin menu-item account-admin-selected clearfix">
+                    <a href="javascript:void(0)" class="expandable recordable close" memo="{id:'200',type:'menu',global:1,status:'1'}">
+                        <span class="icon icon-font"></span>
+                        <span class="item-title">账户管理</span>
+                    </a>
+                    <ul class="expandable-level1 expandable-content" style="display:none">
+                        <li>
+                            <a class="selected " href="/sc-web/26754769/home/site/index?siteId=12774508" target="">
+                                <span class="l menu-label">网站列表</span>
+                                <span class="normal icon-font">&nbsp;</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class=" " href="/sc-web/26754769/home/account?siteId=12774508" target="">
+                                <span class="l menu-label">权限账号管理</span>
+                                <span class="normal icon-font">&nbsp;</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class=" " href="/sc-web/26754769/home/anti/index?siteId=12774508" target="">
+                                <span class="l menu-label">推广屏蔽列表</span>
+                                <span class="normal icon-font">&nbsp;</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class=" " href="/sc-web/26754769/home/reportsend?siteId=12774508" target="">
+                                <span class="l menu-label">邮件订阅设置</span>
+                                <span class="normal icon-font">&nbsp;</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class=" " href="/sc-web/26754769/home/accountbind?siteId=12774508" target="">
+                                <span class="l menu-label">账号绑定管理</span>
+                                <span class="normal icon-font">&nbsp;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="code-admin menu-item clearfix">
+                    <a href="javascript:void(0)" class="expandable recordable close" memo="{id:'206',type:'menu',global:1,status:'1'}">
+                        <span class="icon icon-font"></span>
+                        <span class="item-title">代码管理</span>
+                    </a>
+                    <ul class="expandable-level1 expandable-content" style="display:none">
+                        <li>
+                            <a class=" " href="/sc-web/26754769/home/site/getjs?siteId=12774508" target="">
+                                <span class="l menu-label">代码获取</span>
+                                <span class="normal icon-font">&nbsp;</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class=" " href="/sc-web/26754769/home/js/check?siteId=12774508" target="">
+                                <span class="l menu-label">代码安装检查</span>
+                                <span class="normal icon-font">&nbsp;</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class=" " href="/sc-web/26754769/home/js/install?siteId=12774508" target="">
+                                <span class="l menu-label">代码自动安装</span>
+                                <span class="normal icon-font">&nbsp;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="trans-setting menu-item clearfix">
+                    <a href="javascript:void(0)" class="expandable recordable close" memo="{id:'210',type:'menu',global:1,status:'1'}">
+                        <span class="icon icon-font"></span>
+                        <span class="item-title">转化设置</span>
+                    </a>
+                    <ul class="expandable-level1 expandable-content" style="display:none">
+                        <li>
+                            <a class=" " href="/sc-web/26754769/home/trans/basicsetting?siteId=12774508" target="">
+                                <span class="l menu-label">基本转化设置</span>
+                                <span class="normal icon-font">&nbsp;</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class=" " href="/sc-web/26754769/home/trans/effect?siteId=12774508" target="">
+                                <span class="l menu-label">长效转化设置</span>
+                                <span class="normal icon-font">&nbsp;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="advanced-setting menu-item clearfix">
+                    <a href="javascript:void(0)" class="expandable recordable close" memo="{id:'224',type:'menu',global:1,status:'1'}">
+                        <span class="icon icon-font"></span>
+                        <span class="item-title">高级功能管理</span>
+                    </a>
+                    <ul class="expandable-level1 expandable-content" style="display:none">
+                        <li>
+                            <a class=" " href="/sc-web/26754769/home/customtag?siteId=12774508" target="">
+                                <span class="l menu-label">自定义标签设置</span>
+                                <span class="normal icon-font">&nbsp;</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class=" " href="/sc-web/26754769/home/analyticsdata?siteId=12774508" target="">
+                                <span class="l menu-label">高级分析下载</span>
+                                <span class="normal icon-font">&nbsp;</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class=" " href="/sc-web/26754769/home/alert?siteId=12774508" target="">
+                                <span class="l menu-label">报警权限管理</span>
+                                <span class="new icon-font">&nbsp;</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class=" " href="/sc-web/26754769/home/mktbind?siteId=12774508" target="">
+                                <span class="l menu-label">百度精算授权</span>
+                                <span class="new icon-font">&nbsp;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="stat-setting menu-item clearfix">
+                    <a href="javascript:void(0)" class="expandable recordable close" memo="{id:'213',type:'menu',global:1,status:'1'}">
+                        <span class="icon icon-font"></span>
+                        <span class="item-title">统计规则设置</span>
+                    </a>
+                    <ul class="expandable-level1 expandable-content" style="display:none">
+                        <li>
+                            <a class=" " href="/sc-web/26754769/home/subdir?siteId=12774508" target="">
+                                <span class="l menu-label">子目录管理</span>
+                                <span class="normal icon-font">&nbsp;</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class=" " href="/sc-web/26754769/home/exclusion?siteId=12774508" target="">
+                                <span class="l menu-label">排除规则设置</span>
+                                <span class="normal icon-font">&nbsp;</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class=" " href="/sc-web/26754769/home/statrule/crossdomain?siteId=12774508" target="">
+                                <span class="l menu-label">跨域监控</span>
+                                <span class="normal icon-font">&nbsp;</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class=" " href="/sc-web/26754769/home/statrule/uniformurl?siteId=12774508" target="">
+                                <span class="l menu-label">URL规则设置</span>
+                                <span class="normal icon-font">&nbsp;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="third-party-admin menu-item clearfix">
+                    <a href="javascript:void(0)" class="expandable recordable open" memo="{id:'218',type:'menu',global:1,status:''}">
+                        <span class="icon icon-font"></span>
+                        <span class="item-title">第三方推广管理</span>
+                    </a>
+                    <ul class="expandable-level1 expandable-content">
+                        <li>
+                            <a class=" " href="/sc-web/26754769/home/media?siteId=12774508" target="">
+                                <span class="l menu-label">指定广告跟踪</span>
+                                <span class="normal icon-font">&nbsp;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="other-setting menu-item clearfix">
+                    <a href="javascript:void(0)" class="expandable recordable open" memo="{id:'220',type:'menu',global:1,status:''}">
+                        <span class="icon icon-font"></span>
+                        <span class="item-title">其它设置</span>
+                    </a>
+                    <ul class="expandable-level1 expandable-content">
+                        <li>
+                            <a class=" " href="/sc-web/26754769/home/ico?siteId=12774508" target="">
+                                <span class="l menu-label">统计图标设置</span>
+                                <span class="normal icon-font">&nbsp;</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class=" " href="/sc-web/26754769/home/dataapi?siteId=12774508" target="">
+                                <span class="l menu-label">数据导出服务</span>
+                                <span class="normal icon-font">&nbsp;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="misc">
+            <ul class="clearfix">
+                <li id="event-monitor-consultation" class="item">
+                    <a class="consultation item-icon icon-font" href="https://zhiqiu.baidu.com/imcswebchat/roulette/in?id=15445&amp;token=mj6se1ti686mh87qe81ip80c1blof08b&amp;domainID=tongji&amp;type=2" target="_blank"><span class="icon"></span></a>
+                    <a class="consultation-text item-text" href="https://zhiqiu.baidu.com/imcswebchat/roulette/in?id=15445&amp;token=mj6se1ti686mh87qe81ip80c1blof08b&amp;domainID=tongji&amp;type=2" target="_blank"><span class="text">在线客服</span></a>
+                </li>
+                <li id="event-monitor-message" class="item">
+                    <a class="message item-icon icon-font" href="javascript:void(0)"><span class="icon"></span></a>
+                    <a id="feedback" class="message-text item-text" href="javascript:void(0)"><span class="text">反馈建议</span></a>
+                </li>
+                <li id="event-monitor-introduction" class="item" toggle-data="introduction-qr-code">
+                    <a class="introduction item-icon icon-font" href="javascript:void(0)"><span class="icon"></span></a>
+                    <a class="introduction-text item-text" href="javascript:void(0)"><span class="text">新版介绍</span></a>
+                </li>
+                <li class="item" id="back-to-top" style="display: none;">
+                    <a class="top item-icon icon-font" href="#top"><span class="icon"></span></a>
+                    <a class="top-text item-text" href="#top"><span class="text">返回顶部</span></a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="misc-body">
+            <a href="javascript:void(0)" class="misc-body-item introduction-qr-code hm-dropdown-shadow" style="display:none">
+                <img src="/sc-web/image/wechart-qr.png" alt="关注百度统计微信">
+            </a>
+        </div>
+
+        <div class="main">
+
+            <div id="setting-wrapper">
+                <div id="content-header-wrapper">
+                    <div id="content-header" class="content-header">
+                        <div class="title-bar clearfix">
+                            <h5 class="l">网站列表</h5>
+                        </div>
+
+                        <div class="report-tip" id="report-tip" style="display: none;">
+                            <div class="tip-arrow"></div>
+                            <div class="report-tip-content">
+                                <table class="report-tip-table">
+                                    <tbody>
+                                        <tr>
+                                            <td width="70%" valign="top">
+                                                <div class="left-content"><p></p></div>
+                                            </td>
+                                            <td width="30%" valign="middle" class="report-tip-search-container">
+                                                <div class="right-content">
+                                                    <div class="report-tip-search">
+                                                        <div class="report-tip-search-input">
+                                                            <span class="report-tip-search-btn">&nbsp;</span>
+                                                            <input type="text" name="keyword" placeholder="更多问题请在这里查询..." id="ReportHelp">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="page-tip" id="PageTip" style="display:none">
+                    <a class="tip-close open trackable" memo="{id:'PageTip',type:'page-tip',global:0}" onclick="$(this).parent().hide();" href="javascript:void(0);"></a>
+                    <div class="text"></div>
+                </div>
+                <div class="page-tip" id="ConditionalPageTip" style="display:none">
+                    <a class="tip-close open trackable" memo="{id:'ConditionalPageTip',type:'page-tip',global:0}" onclick="$(this).parent().hide();" href="javascript:void(0);"></a>
+                    <div class="text"></div>
+                </div>
+
+
+                <div class="site-list">
+                    <div id="site-tabs">
+                        <div class="tabs">
+                            <ul class="clearfix selected">
+                                <li class="selected loaded" id="masterSite">
+                                    <a href="javascript:void(0);">自有网站</a>
+                                </li>
+                                <li class="" id="virtualSite">
+                                    <a href="javascript:void(0);">汇总网站</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-contents" id="tab-contents">
+                            <ul>
+                                <li class="item master" style="">
+                                    <div class="title-wrapper clearfix">
+                                        <a class="r button add-site-btn" href="javascript: void(0);" id="AddSite" onclick="$.holmes.settingPage.addSite();">
+                                            <span class="r btn btn-green btn-large btn-add-icon">新增网站</span>
+                                        </a>
+                                        <span class="label">自有网站：在本账户下创建的网站域名，拥有全部的查看和设置权限。</span>
+                                    </div>
+                                    <div id="MasterSiteList">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <td class="number-col"></td>
+                                                    <td style="">网站域名</td>
+                                                    <td style="">网站名称</td>
+                                                    <td style="width:84px;">首页代码状态</td>
+                                                    <td style="width: 20px;"></td>
+                                                    <td class="operations" style="width:461px;">操作</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="line" codeinfo="[&quot;12774508&quot;,&quot;3b9851aa307bb5374fcff13013ee0240&quot;,&quot;sh808web.com&quot;]"
+                                                    datainfo="{&quot;name&quot;:&quot;sh808web.com&quot;,&quot;url&quot;:&quot;http://sh808web.com&quot;,&quot;userId&quot;:26754769,&quot;id&quot;:&quot;1f81317347d562db079861607a6f2de5&quot;,&quot;urlType&quot;:2,&quot;siteId&quot;:12774508,&quot;homePage&quot;:&quot;sh808web.com&quot;,&quot;domainName&quot;:&quot;sh808web.com&quot;,&quot;siteName&quot;:&quot;sh808web.com&quot;}"
+                                                    id="SiteLine12774508">
+                                                    <td class="number-col">1</td>
+                                                    <td>
+                                                        <div class="ellipsis item-content">
+                                                            <a href="http://sh808web.com" target="_blank" title="sh808web.com">sh808web.com</a>
+                                                        </div>
+                                                    </td>
+                                                    <td class="site-name-td">
+                                                        <div class="ellipsis item-content update-site-name">
+                                                            <span class="update-site-name-span" ref="12774508"
+                                                                  title="sh808web.com">sh808web.com</span>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <span class="js-install-status-text help"
+                                                              customtip="true"
+                                                              tipinfo="{&quot;correct&quot;:[&quot;gucheng262314&quot;,&quot;sh808web.com&quot;,&quot;3b9851aa307bb5374fcff13013ee0240&quot;],&quot;incorrect&quot;:[[&quot;gucheng7x24&quot;,&quot;sh808web.com&quot;,&quot;4af6fb9510db777485f720928a88ecbd&quot;]]}">代码安装正确</span>
+                                                    </td>
+                                                    <td>
+                                                        <a class="get-js-install-status"
+                                                           href="javascript:void(0);"
+                                                           jsinfo="{&quot;urlId&quot;:&quot;1f81317347d562db079861607a6f2de5&quot;,&quot;url&quot;:&quot;http://sh808web.com&quot;,&quot;urlType&quot;:2,&quot;userId&quot;:26754769,&quot;siteId&quot;:12774508}"></a>
+                                                    </td>
+                                                    <td class="setting-operations">
+                                                        <em class="more-item-container">
+                                                            <a href="/web/26754769/overview/index?siteId=12774508" target="_blank">查看报告</a>
+                                                        </em>
+                                                        <em class="more-item-container">
+                                                            <a href="/sc-web/26754769/home/site/getjs?siteId=12774508" target="_blank">获取代码</a>
+                                                        </em>
+                                                        <a href="/sc-web/26754769/home/js/check?siteId=12774508" target="_blank">代码检查</a>
+                                                        <span class="bridge-status-text bridge-status-container">
+                                                            <em class="bridge-active">
+                                                                <a href="javascript:void(0);" onclick="$.holmes.settingPage.updateBridgeStatus(12774508, 0, 'pc')">
+                                                                    停用PC商桥
+                                                                </a>
+                                                            </em>
+                                                        </span>
+                                                        <em class="more-item-container" style="">
+                                                            <a class="combobox-more">更多设置</a>
+                                                            <!--<ul>-->
+                                                            <!--<li class="clearfix"><a-->
+                                                            <!--href="/sc-web/26754769/home/trans/basicsetting?siteId=12774508"-->
+                                                            <!--target="_blank" title="基本转化设置">基本转化设置</a></li>-->
+                                                            <!--<li class="clearfix"><a-->
+                                                            <!--href="/sc-web/26754769/home/subdir/index?siteId=12774508"-->
+                                                            <!--target="_blank" title="子目录管理">子目录管理</a></li>-->
+                                                            <!--<li class="clearfix"><a-->
+                                                            <!--href="/sc-web/26754769/home/exclusion?siteId=12774508"-->
+                                                            <!--target="_blank" title="排除规则设置">排除规则设置</a></li>-->
+                                                            <!--<li class="clearfix"><a-->
+                                                            <!--href="/sc-web/26754769/home/statrule/crossdomain?siteId=12774508"-->
+                                                            <!--target="_blank" title="跨域监控">跨域监控</a></li>-->
+                                                            <!--<li class="clearfix"><a href="/sc-web/26754769/home/media?siteId=12774508"-->
+                                                            <!--target="_blank" title="指定广告跟踪">指定广告跟踪</a></li>-->
+                                                            <!--<li class="clearfix more-item-sub-title"><a href="javascript:void(0);"-->
+                                                            <!--onclick="$.holmes.settingPage.updateSiteInformation(12774508);">修改资料</a>-->
+                                                            <!--</li>-->
+                                                            <!--<li class="clearfix"><a href="javascript:void(0);"-->
+                                                            <!--onclick="$.holmes.settingPage.stopSite(12774508);">暂停</a>-->
+                                                            <!--</li>-->
+                                                            <!--<li class="clearfix"><a href="javascript:void(0);"-->
+                                                            <!--onclick="$.holmes.settingPage.deleteSite(12774508);">删除</a>-->
+                                                            <!--</li>-->
+                                                            <!--</ul>-->
+                                                        </em>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="footer-tip">
+                                        <p class="lh2">小贴士：</p>
+                                        <p>该账号下可以建立的自有网站个数上限为30个，请点此<a href="http://datamarket.baidu.com/app.html#app/detail?appId=1" target="_blank">提升上限</a>。</p>
+                                    </div>
+
+                                </li>
+                                <li class="item multiple" style="display: none;">
+                                    <div class="title-wrapper clearfix">
+                                        <a class="r button add-site-btn" href="javascript: void(0);" id="AddMultipleSite">
+                                            <span class="r btn btn-green btn-large btn-add-icon">创建汇总网站</span>
+                                        </a>
+                                        <span class="label">汇总网站：您可以将多个自有网站的数据合并，以便汇总查看和分析。</span>
+                                    </div>
+                                    <div id="MultipleSiteList">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <td class="number-col">&nbsp;</td>
+                                                    <td class="table-index">网站名称</td>
+                                                    <td>包含网站</td>
+                                                    <td>&nbsp;</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="nob">
+                                                    <td colspan="4" align="center">
+                                                        <div class="loading">数据正在加载中...</div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="footer">
+                <span>©2019 Baidu</span>
+                <a href="http://www.baidu.com/" target="_blank">百度首页</a>
+                <a href="http://www2.baidu.com/" target="_blank">百度推广</a>
+                <a href="http://union.baidu.com/" target="_blank">百度联盟</a>
+                <a href="http://adm.baidu.com/" target="_blank">百度广告管家</a>
+                <a href="http://zhishu.baidu.com/" target="_blank">百度指数</a>
+                <a href="http://su.baidu.com/?from=tongji" target="_blank">百度云加速</a>
+                <a href="http://di.baidu.com/" target="_blank">百度数智平台</a>
+                <a href="http://www.baidu.com/duty/" target="_blank">使用百度前必读</a>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

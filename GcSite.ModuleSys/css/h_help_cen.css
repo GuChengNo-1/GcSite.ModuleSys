@@ -1,0 +1,164 @@
+.operating-guide-li-wrapper-0, .operating-guide-li-wrapper-1, .operating-guide-li-wrapper-2, .operating-guide-li-wrapper-3, .operating-guide-li-wrapper-4, .operating-guide-li-wrapper-5 {
+    background-image: url(decorator/tj_help_center/tj_help_center_deb5e22f6a066cdba3fa57d6a8344d7d.png);
+    -background-image: url(decorator/tj_help_center/tj_help_center_2c894d5222877f57b086d07102dc2f02-ie6.png);
+    background-repeat: no-repeat
+}
+
+.introduction-wrapper .introduction-ul {
+    padding: 20px 10px 10px 20px;
+    border: 1px solid #e8e8e9;
+    border-radius: 2px;
+    background-color: #fff
+}
+
+.introduction-wrapper .introduction-ul li:hover a {
+    color: #fff;
+    background-color: #4fa8f9;
+    -webkit-transition: background-color .3s ease-in-out;
+    -moz-transition: background-color .3s ease-in-out;
+    transition: background-color .3s ease-in-out
+}
+
+.introduction-wrapper .introduction-ul li a {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 0 15px;
+    height: 44px;
+    line-height: 44px;
+    width: 114.5px;
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #fafafb
+}
+
+.introduction-wrapper .introduction-ul li.last a {
+    margin-right: 0
+}
+
+.introduction-wrapper .introduction-ul li.selected {
+    background-color: #fafafb;
+    color: #396fff;
+    -webkit-transition: background-color .3s ease-in-out;
+    -moz-transition: background-color .3s ease-in-out;
+    transition: background-color .3s ease-in-out
+}
+
+.introduction-wrapper .introduction-list-ul .introduction-list-li {
+    width: 278px;
+    margin: 9px 20px
+}
+
+.help-center-article-list-wrapper {
+    height: 102px;
+    padding: 20px 0;
+    border: 1px solid #e8e8e9;
+    border-top: 0;
+    border-radius: 2px;
+    background-color: #fff
+}
+
+.help-center-content a {
+    -webkit-transition: none;
+    -moz-transition: none;
+    transition: none;
+    color: #343437
+}
+
+.help-center-content a:hover {
+    color: #396fff
+}
+
+.operating-guide-wrapper {
+    width: 980px;
+    overflow: hidden
+}
+
+.operating-guide-wrapper .operating-guide-li-wrapper {
+    margin: 0 20px 20px 0;
+    padding: 22px 20px 20px;
+    width: 264px;
+    height: 190px;
+    border: 1px solid #e8e8e9;
+    border-radius: 2px;
+    background-color: #fff
+}
+
+.operating-guide-wrapper .operating-guide-li-wrapper .operations-guide-tab {
+    display: inline-block;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #396fff;
+    font-weight: 700
+}
+
+.operating-guide-wrapper .operating-guide-li-wrapper ul li {
+    margin-bottom: 12px
+}
+
+.introduction-list-ul .introduction-list-li .introduction-list-li-more, .operating-guide-li-wrapper ul .operations-guide-li-more {
+    color: #808492
+}
+
+.operating-guide-li-wrapper ul li {
+    width: 264px
+}
+
+.operating-guide-li-wrapper-0 {
+    background-position: left 0
+}
+
+.operating-guide-li-wrapper-1 {
+    background-position: left -262px
+}
+
+.operating-guide-li-wrapper-2 {
+    background-position: left -524px
+}
+
+.operating-guide-li-wrapper-3 {
+    background-position: left -786px
+}
+
+.operating-guide-li-wrapper-4 {
+    background-position: left -1053px
+}
+
+.operating-guide-li-wrapper-5 {
+    background-position: left -1315px
+}
+
+.tongji-class-wrapper {
+    height: 130px;
+    border: 1px solid #e8e8e9;
+    border-radius: 2px;
+    background-color: #fff
+}
+
+.tongji-class-wrapper ul li {
+    padding: 30px 20px 20px;
+    height: 80px;
+    width: 278px;
+    border-right: 1px solid #e8e8e9
+}
+
+.tongji-class-wrapper ul li a {
+    color: #396fff;
+    font-size: 14px;
+    font-weight: 700
+}
+
+.tongji-class-detail {
+    margin-top: 15px;
+    line-height: 2;
+    white-space: normal
+}
+
+.tongji-class-wrapper ul li.last {
+    border-right: 0
+}
+
+.tongji-class-title h2 {
+    padding-top: 10px
+}
