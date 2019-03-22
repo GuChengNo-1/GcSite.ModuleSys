@@ -552,7 +552,7 @@
                     dataType: 'json',
                     success: function (data) {
                         if (data.success == 1) {
-                            window.location.href = "/Home/Report?id=" + data.id;
+                            window.location.href = "/Home/Report?siteId=" + data.id;
                         }
                         else if (data.success == 2) {
                             alert("用户名或密码错误！");
@@ -563,7 +563,7 @@
                         }
                     }
                 });
-                $("#cas_code").attr("src", "/User/GetCodeImg?id=" + Math.random());
+                //$("#cas_code").attr("src", "/User/GetCodeImg?id=" + Math.random());
             }
             else if ($("#UserName").val() != "" && $("#Password").val() != "" && $("#Valicode").val() == "") {
                 alert("请输入验证码！");
