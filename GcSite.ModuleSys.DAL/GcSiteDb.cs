@@ -20,5 +20,6 @@ namespace GcSite.ModuleSys.DAL
         public IDbSet<WebInfo> WebInfo { get; set; }
 
         public IDbSet<VisitorInfo> VisitorInfo { get; set; }
+        public IDbSet<FlowComputer> FlowComputer { get; set; }
     }
 }

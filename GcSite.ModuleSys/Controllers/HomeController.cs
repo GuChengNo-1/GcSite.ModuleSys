@@ -141,13 +141,97 @@ namespace GcSite.ModuleSys.Controllers
             DateTime endTime = DateTime.Now.AddDays(double.Parse(date));
             //来源网站计算
             var sourceSite = SourceSiteByDay(endTime, date, webId);
-            return Json(new { mages = "this is temp test", sourceSite },JsonRequestBehavior.AllowGet);
+            //关键词计算
+            var keyword = KeywordByDay(endTime, date, webId);
+            return Json(new { sourceSite, keyword }, JsonRequestBehavior.AllowGet);
         }
         //[Route("~/Home/")]
         //[Route("~/Home/analysis.html")]
         public ActionResult Analysis()
         {
             return View();
+        }
+        /// <summary>
+        /// 根据时间计算关键词(数量,占比)
+        /// </summary>
+        /// <param name="endTime"></param>
+        /// <param name="date"></param>
+        /// <param name="site"></param>
+        /// <returns></returns>
+        public List<FlowComputer> KeywordByDay(DateTime endTime, string date, int site)
+        {
+            List<FlowComputer> flow = new List<FlowComputer>();
+
+            try
+            {
+                List<FlowComputer> vistio = null;
+                if (date == "0" || date == "-1")
+                {
+                    date = date == "0" ? "0" : date;
+                    endTime = DateTime.Now.AddDays(double.Parse(date));
+                    vistio = work.CreateRepository<FlowComputer>().GetList(
+                        m => DbFunctions.DiffDays(m.CurrentTime, endTime) == 0 && m.WebInfo.Id == site && m.SearchTerms != ""
+                        ).ToList();
+                }
+                else
+                {
+                    vistio = work.CreateRepository<FlowComputer>().GetList(
+                        m => DbFunctions.DiffDays(m.CurrentTime, endTime) <= 0 && m.WebInfo.Id == site && m.SearchTerms != ""
+                        ).ToList();
+                }
+                //数量&占比计算
+                for (int i = 0; i < vistio.Count; i++)
+                {
+                    if (flow.Count == 0)
+                    {
+                        FlowComputer model = new FlowComputer();
+                        model.SearchTerms = vistio[i].SearchTerms; 
+                        model.Id = vistio.Count(m => m.SearchTerms == vistio[i].SearchTerms);
+                        decimal rateResult = Math.Round((decimal)model.Id / vistio.Count, 4);
+                        if (rateResult >= 1) { rateResult = 1; }
+                        model.VisitPage = (rateResult * 100).ToString().Length >= 5 ? 
+                            (rateResult * 100).ToString().Substring(0, 4) + "%" : (rateResult * 100).ToString() + "%";
+                        flow.Add(model);
+                    }
+                    else
+                    {
+                        if (flow.Count <= 10)
+                        {
+                            for (int j = 0; j < flow.Count; j++)
+                            {
+                                if (flow[j].SearchTerms.Trim() != vistio[i].SearchTerms.Trim())
+                                {
+                                    FlowComputer model = new FlowComputer();
+                                    model.SearchTerms = vistio[i].SearchTerms;
+                                    model.Id = vistio.Count(m => m.SearchTerms == vistio[i].SearchTerms);
+                                    decimal rateResult = Math.Round((decimal)model.Id / vistio.Count, 4);
+                                    if (rateResult >= 1) { rateResult = 1; }
+                                    model.VisitPage = (rateResult * 100).ToString().Length >= 5 ?
+                                        (rateResult * 100).ToString().Substring(0, 4) + "%" : (rateResult * 100).ToString() + "%";
+                                    flow.Add(model);
+                                }
+                            }
+                        }
+                    }
+                }
+                //去除冗余数据
+                for (int i = 0; i < flow.Count(); i++)
+                {
+                    for (int j = flow.Count() - 1; j > i; j--)
+                    {
+                        if (flow[i].SearchTerms == flow[j].SearchTerms)
+                        {
+                            flow.RemoveAt(j);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return flow = null;
+                throw ex;
+            }
+            return flow.OrderByDescending(m => m.Id).ToList();
         }
         /// <summary>
         /// 根据时间计算来源网站(数量,占比)
@@ -167,99 +251,77 @@ namespace GcSite.ModuleSys.Controllers
                 {
                     date = date == "0" ? "0" : date;
                     endTime = DateTime.Now.AddDays(double.Parse(date));
-                    vistio = work.CreateRepository<FlowComputer>().GetList(m => DbFunctions.DiffDays(m.CurrentTime, endTime) == 0 && m.WebInfo.Id == site).ToList();
+                    vistio = work.CreateRepository<FlowComputer>().GetList(
+                        m => DbFunctions.DiffDays(m.CurrentTime, endTime) == 0 && m.WebInfo.Id == site
+                        ).ToList();
                 }
                 else
                 {
-                    vistio = work.CreateRepository<FlowComputer>().GetList(m => DbFunctions.DiffDays(m.CurrentTime, endTime) <= 0 && m.WebInfo.Id == site).ToList();
+                    vistio = work.CreateRepository<FlowComputer>().GetList(
+                        m => DbFunctions.DiffDays(m.CurrentTime, endTime) <= 0 && m.WebInfo.Id == site
+                        ).ToList();
                 }
-                if (vistio.Count(m => m.VisitSE.Contains("谷歌") || m.VisitSE.Contains("Google")) > 0)
+                //数量&占比计算
+                for (int i = 0; i < vistio.Count; i++)
                 {
-                    FlowComputer gk = new FlowComputer();
-                    gk.VisitSE = "谷歌";
-                    gk.Id = vistio.Count(m => m.VisitSE.Contains("谷歌") || m.VisitSE.Contains("Google"));
-                    decimal rateResult = Math.Round((decimal)gk.Id / vistio.Count, 4);
-                    if (rateResult >= 1) { rateResult = 1; }
-                    gk.SearchTerms = (rateResult * 100).ToString().Length >= 5 ? (rateResult * 100).ToString().Substring(0, 4) + "%" : (rateResult * 100).ToString() + "%";
-                    flow.Add(gk);
+                    if (flow.Count == 0)
+                    {
+                        FlowComputer model = new FlowComputer();
+                        model.VisitSE = vistio[i].VisitSE;
+                        model.Id = vistio.Count(m => m.VisitSE == vistio[i].VisitSE);
+                        decimal rateResult = Math.Round((decimal)model.Id / vistio.Count, 4);
+                        if (rateResult >= 1) { rateResult = 1; }
+                        model.SearchTerms = (rateResult * 100).ToString().Length >= 5 ? 
+                            (rateResult * 100).ToString().Substring(0, 4) + "%" : (rateResult * 100).ToString() + "%";
+                        flow.Add(model);
+                    }
+                    else
+                    {
+                        if (flow.Count <= 10)
+                        {
+                            for (int j = 0; j < flow.Count; j++)
+                            {
+                                if (flow[j].VisitSE.Trim() != vistio[i].VisitSE.Trim())
+                                {
+                                    FlowComputer model = new FlowComputer();
+                                    model.VisitSE = vistio[i].VisitSE;
+                                    model.Id = vistio.Count(m => m.VisitSE == vistio[i].VisitSE);
+                                    decimal rateResult = Math.Round((decimal)model.Id / vistio.Count, 4);
+                                    if (rateResult >= 1) { rateResult = 1; }
+                                    model.SearchTerms = (rateResult * 100).ToString().Length >= 5 ?
+                                        (rateResult * 100).ToString().Substring(0, 4) + "%" : (rateResult * 100).ToString() + "%";
+                                    flow.Add(model);
+                                }
+                            }
+                        }
+                    }
                 }
-                if (vistio.Count(m => m.VisitSE.Contains("火狐")) > 0)
+                //去除冗余数据
+                for (int i = 0; i < flow.Count(); i++)
                 {
-                    FlowComputer hf = new FlowComputer();
-                    hf.VisitSE = "火狐";
-                    hf.Id = vistio.Count(m => m.VisitSE == "火狐");
-                    decimal rateResult = Math.Round((decimal)hf.Id / vistio.Count, 4);
-                    if (rateResult >= 1) { rateResult = 1; }
-                    hf.SearchTerms = (rateResult * 100).ToString().Length >= 5 ? (rateResult * 100).ToString().Substring(0, 4) + "%" : (rateResult * 100).ToString() + "%";
-                    flow.Add(hf);
-                }
-                if (vistio.Count(m => m.VisitSE.Contains("苹果")) > 0)
-                {
-                    FlowComputer pg = new FlowComputer();
-                    pg.VisitSE = "苹果";
-                    pg.Id = vistio.Count(m => m.VisitSE.Contains("苹果"));
-                    decimal rateResult = Math.Round((decimal)pg.Id / vistio.Count, 4);
-                    if (rateResult >= 1) { rateResult = 1; }
-                    pg.SearchTerms = (rateResult * 100).ToString().Length >= 5 ? (rateResult * 100).ToString().Substring(0, 4) + "%" : (rateResult * 100).ToString() + "%";
-                    flow.Add(pg);
-                }
-                if (vistio.Count(m => m.VisitSE.Contains("Opera")) > 0)
-                {
-                    FlowComputer opera = new FlowComputer();
-                    opera.VisitSE = "Opera";
-                    opera.Id = vistio.Count(m => m.VisitSE.Contains("Opera"));
-                    decimal rateResult = Math.Round((decimal)opera.Id / vistio.Count, 4);
-                    if (rateResult >= 1) { rateResult = 1; }
-                    opera.SearchTerms = (rateResult * 100).ToString().Length >= 5 ? (rateResult * 100).ToString().Substring(0, 4) + "%" : (rateResult * 100).ToString() + "%";
-                    flow.Add(opera);
-                }
-                if (vistio.Count(m => m.VisitSE.Contains("猎豹")) > 0)
-                {
-                    FlowComputer lb = new FlowComputer();
-                    lb.VisitSE = "猎豹";
-                    lb.Id = vistio.Count(m => m.VisitSE.Contains("猎豹"));
-                    decimal rateResult = Math.Round((decimal)lb.Id / vistio.Count, 4);
-                    if (rateResult >= 1) { rateResult = 1; }
-                    lb.SearchTerms = (rateResult * 100).ToString().Length >= 5 ? (rateResult * 100).ToString().Substring(0, 4) + "%" : (rateResult * 100).ToString() + "%";
-                    flow.Add(lb);
-                }
-                if (vistio.Count(m => m.VisitSE.Contains("搜狗") || m.VisitSE.Contains("Sogou")) > 0)
-                {
-                    FlowComputer sg = new FlowComputer();
-                    sg.VisitSE = "搜狗";
-                    sg.Id = vistio.Count(m => m.VisitSE.Contains("搜狗") || m.VisitSE.Contains("Sogou"));
-                    decimal rateResult = Math.Round((decimal)sg.Id / vistio.Count, 4);
-                    if (rateResult >= 1) { rateResult = 1; }
-                    sg.SearchTerms = (rateResult * 100).ToString().Length >= 5 ? (rateResult * 100).ToString().Substring(0, 4) + "%" : (rateResult * 100).ToString() + "%";
-                    flow.Add(sg);
-                }
-                if (vistio.Count(m => m.VisitSE.Contains("傲游")) > 0)
-                {
-                    FlowComputer ay = new FlowComputer();
-                    ay.VisitSE = "傲游";
-                    ay.Id = vistio.Count(m => m.VisitSE.Contains("傲游"));
-                    decimal rateResult = Math.Round((decimal)ay.Id / vistio.Count, 4);
-                    if (rateResult >= 1) { rateResult = 1; }
-                    ay.SearchTerms = (rateResult * 100).ToString().Length >= 5 ? (rateResult * 100).ToString().Substring(0, 4) + "%" : (rateResult * 100).ToString() + "%";
-                    flow.Add(ay);
-                }
-                if (vistio.Count(m => m.VisitSE.Contains("未知")) > 0)
-                {
-                    FlowComputer qt = new FlowComputer();
-                    qt.VisitSE = "其他";
-                    qt.Id = vistio.Count(m => m.VisitSE.Contains("未知"));
-                    decimal rateResult = Math.Round((decimal)qt.Id / vistio.Count, 4);
-                    if (rateResult >= 1) { rateResult = 1; }
-                    qt.SearchTerms = (rateResult * 100).ToString().Length >= 5 ? (rateResult * 100).ToString().Substring(0, 4) + "%" : (rateResult * 100).ToString() + "%";
-                    flow.Add(qt);
+                    for (int j = flow.Count() - 1; j > i; j--)
+                    {
+                        if (flow[i].VisitSE == flow[j].VisitSE)
+                        {
+                            flow.RemoveAt(j);
+                        }
+                    }
                 }
             }
             catch (Exception ex)
             {
+                return flow = null;
                 throw ex;
             }
-            return flow;
+            return flow.OrderByDescending(m => m.Id).ToList();
         }
+        /// <summary>
+        /// 受访页面(数量,占比)
+        /// </summary>
+        /// <param name="endTime"></param>
+        /// <param name="date"></param>
+        /// <param name="site"></param>
+        /// <returns></returns>
         public List<FlowComputer> PageviewByDay(DateTime endTime, string date, int site)
         {
             List<FlowComputer> flow = new List<FlowComputer>();
