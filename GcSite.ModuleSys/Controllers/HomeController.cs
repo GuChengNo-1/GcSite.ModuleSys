@@ -575,5 +575,142 @@ namespace GcSite.ModuleSys.Controllers
             }
             return int_hour + ":" + int_minute + ":" + int_second;
         }
+        public ActionResult AnalysisInit()
+        {
+
+            #region  获取今天的浏览量、访客数、跳出率、平均访问时长
+            //获取今天的浏览量、访客数、跳出率、平均访问时长
+            string today = DateTime.Now.ToString("yyyy-MM-dd");
+            int year = int.Parse(today.Split('-')[0].ToString());
+            int month = int.Parse(today.Split('-')[1].ToString());
+            int day = int.Parse(today.Split('-')[2].ToString());
+            DateTime? startTime = new DateTime(year, month, day);
+            //浏览量
+            double model = work.CreateRepository<FlowComputer>().GetCount(m => System.Data.Entity.Core.Objects.EntityFunctions.DiffDays(m.CurrentTime, startTime) == 0);
+            if (model == 0)
+            {
+                return View();
+            }
+            //访客数
+            double model1 = work.CreateRepository<VisitorInfo>().GetCount(m => System.Data.Entity.Core.Objects.EntityFunctions.DiffDays(m.AccessTime, startTime) == 0);
+            //跳出率
+            var list = work.CreateRepository<VisitorInfo>().GetList(v => System.Data.Entity.Core.Objects.EntityFunctions.DiffDays(v.AccessTime, startTime) == 0);
+            double pagenumber = work.CreateRepository<VisitorInfo>().GetCount(m => m.PageNumber == 0 && System.Data.Entity.Core.Objects.EntityFunctions.DiffDays(m.AccessTime, startTime) == 0);
+            double number = work.CreateRepository<VisitorInfo>().GetCount(m => m.PageNumber > 0 && System.Data.Entity.Core.Objects.EntityFunctions.DiffDays(m.AccessTime, startTime) == 0);
+            string br = (pagenumber / (number + pagenumber) * 100).ToString("0.00") + "%";
+            //平均访问时长
+            var a = 0.00;
+            foreach (var item in list)
+            {
+                a += item.Duration;
+            }
+            double avgts = a / model1;
+            TimeSpan ts = new TimeSpan(0, 0, Convert.ToInt32(avgts));
+            string str = ts.ToString();
+
+            //获取前一天天的浏览量、访客数、跳出率、平均访问时长
+            string yesterday = DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd");
+            int yyear = int.Parse(yesterday.Split('-')[0].ToString());
+            int ymonth = int.Parse(yesterday.Split('-')[1].ToString());
+            int yday = int.Parse(yesterday.Split('-')[2].ToString());
+            DateTime? ystartTime = new DateTime(yyear, ymonth, yday);
+            double ymodel = work.CreateRepository<FlowComputer>().GetCount(m => System.Data.Entity.Core.Objects.EntityFunctions.DiffDays(m.CurrentTime, ystartTime) == 0);
+            double ymodel1 = work.CreateRepository<VisitorInfo>().GetCount(m => System.Data.Entity.Core.Objects.EntityFunctions.DiffDays(m.AccessTime, ystartTime) == 0);
+            var ylist = work.CreateRepository<VisitorInfo>().GetList(v => System.Data.Entity.Core.Objects.EntityFunctions.DiffDays(v.AccessTime, ystartTime) == 0);
+            double ypagenumber = work.CreateRepository<VisitorInfo>().GetCount(m => m.PageNumber == 0 && System.Data.Entity.Core.Objects.EntityFunctions.DiffDays(m.AccessTime, ystartTime) == 0);
+            double ynumber = work.CreateRepository<VisitorInfo>().GetCount(m => m.PageNumber > 0 && System.Data.Entity.Core.Objects.EntityFunctions.DiffDays(m.AccessTime, ystartTime) == 0);
+            var ya = 0.00;
+            foreach (var item in ylist)
+            {
+                ya += item.Duration;
+            }
+            double yavgts = ya / ymodel1;
+            TimeSpan yts = new TimeSpan(0, 0, Convert.ToInt32(yavgts));
+            string ystr = yts.ToString();
+            //pv相比昨天
+            string cwpv = ((model - ymodel) / model * 100).ToString("0.00") + "%";
+            //uv相比昨天
+            string cwuv = ((model1 - ymodel1) / model1 * 100).ToString("0.00") + "%";
+            //br相比昨天
+            string cwbr = ((pagenumber / (number + pagenumber) - ypagenumber / (ynumber + ypagenumber)) / pagenumber / (number + pagenumber)).ToString("0.00") + "%";
+            //平均访问时长相比昨天
+            string cwa = ((a - ya) / a * 100).ToString("0.00") + "%";
+            #endregion
+
+            #region  获取新访客老访客占比
+            //按IP地址分组
+            var oldlist = db.VisitorInfo.Where(v => System.Data.Entity.Core.Objects.EntityFunctions.DiffDays(v.AccessTime, startTime) == 0).GroupBy(p => p.IpAddress).Select(p => new { count = p.Count() });
+            double old = 0;
+            double Xin = 0;
+            foreach (var item in oldlist)
+            {
+                int str1 = item.count;
+                if (str1 > 1)
+                {
+                    //获取老访客数量
+                    old += old + 1;
+                }
+                else
+                {
+                    //获取新访客数量
+                    Xin += Xin + 1;
+                }
+            }
+
+
+
+            //var xin = db.VisitorInfo.Where();
+
+
+
+            ////老访客比例
+            //string oldRatio = (old / (old + Xin) * 100).ToString("0.00") + "%";
+            ////新访客比例
+            //string newRatio = (Xin / (old + Xin) * 100).ToString("0.00") + "%";
+            #endregion
+
+            #region 访问城市
+            //var cityList = db.VisitorInfo.GroupBy(p => p.IpAddress).Select(p => new { count = p.Count(), city = p.Address });
+            var q = from p in db.VisitorInfo
+                    group p by p.Address into g
+                    select new
+                    {
+                        g.Key,
+                        NumProducts = g.Count()
+                    };
+            //string city = "";
+            //int cityNumber = 0;
+            //foreach (var item in q)
+            //{
+            //    city = item.Key.Replace("市", "").Trim();
+            //    cityNumber = item.NumProducts;
+            //}
+            #endregion
+
+            #region  浏览量趋势
+
+
+            #endregion
+
+            #region  访问用户趋势
+            #endregion
+
+            #region  平均访问时长
+            #endregion
+
+            #region  跳出率趋势
+            #endregion
+
+            #region  来源类型
+            #endregion
+
+            #region  搜索词
+            #endregion
+
+            #region  来源类型
+            #endregion
+
+            return Json(new { pv = model, uv = model1, ts = str, br = br, cwpv = cwpv, cwa = cwa, cwuv = cwuv, cwbr = cwbr, old = old, xin = Xin, cityList = q }, JsonRequestBehavior.AllowGet);
+        }
     }
 }
