@@ -9,8 +9,10 @@
     <meta charset="UTF-8">
     <title>报告</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="~/layui/css/layui.css">
     <link href="~/css/common.css" rel="stylesheet" type="text/css" media="all">
     <link href="~/css/overview.css" rel="stylesheet" type="text/css" media="all">
+    <script src="~/layui/layui.js"></script>
     <script src="~/js/jquery.min.js"></script>
     <script src="~/js/echarts.min.js"></script>
     <script src="~/js/china.js"></script>
@@ -778,7 +780,249 @@
                                                 <div class="r"><a id="event-monitor-trend" class="detail-report-btn" href="/web/26754769/trend/time?siteId=12774508&amp;isTab=1">&nbsp;</a></div>
                                             </div>
                                             <div class="line-indicators-row clearfix">
-                                                <div class="l">
+                                                <div class="layui-tab" style="margin: 0;">
+                                                    <ul class="layui-tab-title">
+                                                        <li class="layui-this">浏览量</li>
+                                                        <li>访客数</li>
+                                                        <li>IP数</li>
+                                                        <li>跳出率</li>
+                                                        <li>平均访问时长</li>
+                                                        <li>转化次数</li>
+                                                        <li>前一日</li>
+                                                        <li>上周同期</li>
+                                                    </ul>
+                                                    <div class="layui-tab-content" style="padding: 0;">
+                                                        <div id="line" class="layui-tab-item layui-show" style="width: 800px;height: 319px;">
+                                                            <script>
+                                                                var myChart = echarts.init(document.getElementById('line'));
+                                                                var colors = ['#C23531', '#2F4554'];
+                                                                option = {
+                                                                    color: colors,
+
+                                                                    tooltip: {
+                                                                        trigger: 'none',
+                                                                        axisPointer: {
+                                                                            type: 'cross'
+                                                                        }
+                                                                    },
+                                                                    legend: {
+                                                                        data: ['新顾客', '老顾客']
+                                                                    },
+                                                                    grid: {
+                                                                        top: 70,
+                                                                        bottom: 50
+                                                                    },
+                                                                    xAxis: [
+                                                                        {
+                                                                            type: 'category',
+                                                                            axisTick: {
+                                                                                alignWithLabel: true
+                                                                            },
+                                                                            axisLine: {
+                                                                                onZero: false,
+                                                                                lineStyle: {
+                                                                                    color: colors[1]
+                                                                                }
+                                                                            },
+                                                                            axisPointer: {
+                                                                                label: {
+                                                                                    formatter: function (params) {
+                                                                                        return '老顾客  ' + params.value
+                                                                                            + (params.seriesData.length ? '：' + params.seriesData[0].data : '');
+                                                                                    }
+                                                                                }
+                                                                            },
+                                                                            data: ["2019-03-06", "2019-03-07", "2019-03-09", "2019-03-10", "2019-03-11"]
+                                                                        },
+                                                                        {
+                                                                            type: 'category',
+                                                                            axisTick: {
+                                                                                alignWithLabel: true
+                                                                            },
+                                                                            axisLine: {
+                                                                                onZero: false,
+                                                                                lineStyle: {
+                                                                                    color: colors[0]
+                                                                                }
+                                                                            },
+                                                                            axisPointer: {
+                                                                                label: {
+                                                                                    formatter: function (params) {
+                                                                                        return '新顾客  ' + params.value
+                                                                                            + (params.seriesData.length ? '：' + params.seriesData[0].data : '');
+                                                                                    }
+                                                                                }
+                                                                            },
+                                                                            data: ["2019-03-06", "2019-03-07", "2019-03-09", "2019-03-10", "2019-03-11"]
+                                                                        }
+                                                                    ],
+                                                                    yAxis: [
+                                                                        {
+                                                                            type: 'value'
+                                                                        }
+                                                                    ],
+                                                                    series: [
+                                                                        {
+                                                                            name: '新顾客',
+                                                                            type: 'line',
+                                                                            xAxisIndex: 1,
+                                                                            smooth: true,
+                                                                            data: [6, 9, 9, 26, 28]
+                                                                        },
+                                                                        {
+                                                                            name: '老顾客',
+                                                                            type: 'line',
+                                                                            smooth: true,
+                                                                            data: [9, 9, 11, 18, 4]
+                                                                        }
+                                                                    ]
+                                                                };
+                                                                myChart.setOption(option);
+                                                            </script>
+                                                        </div>
+                                                        <div id="lineb" class="layui-tab-item" style="width: 800px;height: 319px;">
+                                                            <script>
+                                                                var myChart = echarts.init(document.getElementById('lineb'));
+                                                                option = {
+                                                                    xAxis: {
+                                                                        type: 'category',
+                                                                        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                                                                    },
+                                                                    yAxis: {
+                                                                        type: 'value'
+                                                                    },
+                                                                    series: [{
+                                                                        data: [820, 932, 901, 934, 1290, 13, 13],
+                                                                        type: 'line'
+                                                                    }]
+                                                                };
+
+                                                                myChart.setOption(option);
+                                                            </script>
+                                                        </div>
+                                                        <div id="linec" class="layui-tab-item" style="width: 800px;height: 319px;">
+                                                            <script>
+                                                                var myChart = echarts.init(document.getElementById('linec'));
+                                                                option = {
+                                                                    xAxis: {
+                                                                        type: 'category',
+                                                                        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                                                                    },
+                                                                    yAxis: {
+                                                                        type: 'value'
+                                                                    },
+                                                                    series: [{
+                                                                        data: [80, 92, 901, 4, 90, 30, 20],
+                                                                        type: 'line'
+                                                                    }]
+                                                                };
+
+                                                                myChart.setOption(option);
+                                                            </script>
+                                                        </div>
+                                                        <div id="lined" class="layui-tab-item" style="width: 800px;height: 319px;">
+                                                            <script>
+                                                                var myChart = echarts.init(document.getElementById('lined'));
+                                                                option = {
+                                                                    xAxis: {
+                                                                        type: 'category',
+                                                                        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                                                                    },
+                                                                    yAxis: {
+                                                                        type: 'value'
+                                                                    },
+                                                                    series: [{
+                                                                        data: [8, 92, 9, 4, 190, 130, 120],
+                                                                        type: 'line'
+                                                                    }]
+                                                                };
+
+                                                                myChart.setOption(option);
+                                                            </script>
+                                                        </div>
+                                                        <div id="linee" class="layui-tab-item" style="width: 800px;height: 319px;">
+                                                            <script>
+                                                                var myChart = echarts.init(document.getElementById('linee'));
+                                                                option = {
+                                                                    xAxis: {
+                                                                        type: 'category',
+                                                                        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                                                                    },
+                                                                    yAxis: {
+                                                                        type: 'value'
+                                                                    },
+                                                                    series: [{
+                                                                        data: [820, 932, 901, 934, 120, 130, 130],
+                                                                        type: 'line'
+                                                                    }]
+                                                                };
+
+                                                                myChart.setOption(option);
+                                                            </script>
+                                                        </div>
+                                                        <div id="linef" class="layui-tab-item" style="width: 800px;height: 319px;">
+                                                            <script>
+                                                                var myChart = echarts.init(document.getElementById('linef'));
+                                                                option = {
+                                                                    xAxis: {
+                                                                        type: 'category',
+                                                                        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                                                                    },
+                                                                    yAxis: {
+                                                                        type: 'value'
+                                                                    },
+                                                                    series: [{
+                                                                        data: [80, 92, 91, 94, 190, 130, 120],
+                                                                        type: 'line'
+                                                                    }]
+                                                                };
+
+                                                                myChart.setOption(option);
+                                                            </script>
+                                                        </div>
+                                                        <div id="lineg" class="layui-tab-item" style="width: 800px;height: 319px;">
+                                                            <script>
+                                                                var myChart = echarts.init(document.getElementById('lineg'));
+                                                                option = {
+                                                                    xAxis: {
+                                                                        type: 'category',
+                                                                        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                                                                    },
+                                                                    yAxis: {
+                                                                        type: 'value'
+                                                                    },
+                                                                    series: [{
+                                                                        data: [20, 32, 1, 34, 290, 330, 320],
+                                                                        type: 'line'
+                                                                    }]
+                                                                };
+
+                                                                myChart.setOption(option);
+                                                            </script>
+                                                        </div>
+                                                        <div id="lineh" class="layui-tab-item" style="width: 800px;height: 319px;">
+                                                            <script>
+                                                                var myChart = echarts.init(document.getElementById('lineh'));
+                                                                option = {
+                                                                    xAxis: {
+                                                                        type: 'category',
+                                                                        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                                                                    },
+                                                                    yAxis: {
+                                                                        type: 'value'
+                                                                    },
+                                                                    series: [{
+                                                                        data: [82, 93, 90, 93, 129, 133, 132],
+                                                                        type: 'line'
+                                                                    }]
+                                                                };
+
+                                                                myChart.setOption(option);
+                                                            </script>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @*<div class="l">
                                                     <div id="LineIndicators" class="filter pro-type-select">
                                                         <ul class="group">
                                                             <li data="pv_count" class="first cur">浏览量(PV)</li>
@@ -804,10 +1048,10 @@
                                                             <label for="last-week" class="cmp-label">上周同期</label>
                                                         </label>
                                                     </div>
-                                                </div>
+                                                </div>*@
                                             </div>
 
-                                            <div id="line" style="width: 800px;height: 316px;">
+                                            @*<div id="line" style="width: 800px;height: 316px;">
                                                 <div class="hm-charts-html">
                                                     <div class="hm-charts-hint"
                                                          style="position: absolute; font: 12px &quot;Microsoft Yahei&quot;, Helvetica, STHeitiSC-Light, Arial, sans-serif; left: 0px; top: 0px; width: 100%; height: 100%; text-align: center; background-color: rgb(255, 255, 255); opacity: 0.8; transition: all 0.4s ease 0s; display: none;">
@@ -821,7 +1065,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div>*@
                                         </div>
                                     </div>
                                     <div class="right" id="search-word-container">
@@ -843,9 +1087,6 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td align="middle" class="empty-td" colspan="3">暂无数据</td>
-                                                        </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -1048,22 +1289,6 @@
     <script src="~/Scripts/jquery-1.10.2.js"></script>
     <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
     <script type="text/javascript">
-        $(function () {
-            var formdata = { key: "3b9851aa307bb5374fcff13013ee0240", VisitPage: window.location.href, IpAddress: returnCitySN['cip'], Address: returnCitySN['cname'] };
-            jQuery.support.cors = true;
-            $.ajax({
-                url: 'http://localhost:58393/api/Statistical',
-                type: 'get',
-                data: formdata,
-                dataType: 'json',
-                success: function (data) {
-                    alert(data);
-                    console.log(data.AccessTime);
-                }
-            })
-        });
-    </script>
-    <script type="text/javascript">
         function timeConverte(time_distance) {
             // 天时分秒换算
             var int_day = Math.floor(time_distance / 86400)
@@ -1169,26 +1394,51 @@
                 dataType: "json",
                 beforeSend: function () {
                     $("#source-site-container").append("<tr class='source-loading'><td class='empty-td' colspan='8' align='middle' style='text-align: center;height: 200px;'><img src='/img/loading.gif' style='vertical-align: middle;margin-right: 5px;' />数据正在加载中...</td></tr>");
+                    $("#search-word-container tbody").append("<tr class='search-loading'><td class='empty-td' colspan='8' align='middle' style='text-align: center;height: 200px;'><img src='/img/loading.gif' style='vertical-align: middle;margin-right: 5px;' />数据正在加载中...</td></tr>");
                 },
                 complete: function () {
-                    $(".source-loadin").remove();
+                    $(".source-loading").remove();
+                    $(".search-loading").remove();
                 },
                 success: function (data) {
-                    console.log(data.sourceSite)
                     $("#source-site-container").html("");
                     for (var i = 0; i < data.sourceSite.length; i++) {
                         content += "<tr><td class='al url'><span class='ellipsis' title='" + data.sourceSite[i].Id + "'>" + data.sourceSite[i].VisitSE + "</span></td>" + ""
                             + "<td class='ar'>" + data.sourceSite[i].Id + "</td><td class='ratio'><div style='background-color:#dcebfe; width:" + data.sourceSite[i].SearchTerms + "" + ""
                             + ";'title='" + data.sourceSite[i].SearchTerms + "'>" + data.sourceSite[i].SearchTerms + "</div></td></tr>";
                     }
-                    $("#source-site-container").append(content);
+                    if (content == "") {
+                        $("#source-site-container").append("<tr><td class='empty-td' colspan='3' align='middle' style='text-align: center;'>暂无数据</td></tr>");
+                    }
+                    else {
+                        $("#source-site-container").append(content);
+                    }
+                    content = "";
+                    for (var j = 0; j < data.keyword.length; j++) {
+                        content += "<tr><td class='al url'><span class='ellipsis' title='" + data.keyword[j].SearchTerms + "'>" + data.keyword[j].SearchTerms + "</span></td>" + ""
+                            + "<td class='ar'>" + data.keyword[j].Id + "</td><td class='ratio'><div style='background-color:#dcebfe; width:" + data.keyword[j].VisitPage + "" + ""
+                            + ";'title='" + data.keyword[j].VisitPage + "'>" + data.keyword[j].VisitPage + "</div></td></tr>";
+                    }
+                    if (content == "") {
+                        $("#search-word-container tbody").append("<tr><td class='empty-td' colspan='3' align='middle' style='text-align: center;'>暂无数据</td></tr>");
+                    }
+                    else {
+                        $("#search-word-container tbody").html("");
+                        $("#search-word-container tbody").append(content);
+                    }
                 },
                 error: function () {
-                    error = "<tr><td class='empty-td' colspan='8' align='middle' style='text-align: center;height: 200px;'>暂无数据</td></tr>";
+                    error = "<tr><td class='empty-td' colspan='3' align='middle' style='text-align: center;'>暂无数据</td></tr>";
                     $('#source-site-container').append(error);
+                    $("#search-word-container tbody").append(error);
                 }
             })
         }
+    </script>
+    <script>
+        layui.use('element', function () {
+            var element = layui.element;
+        });
     </script>
     <script src="~/js/map.js"></script>
     <script>
@@ -1218,20 +1468,32 @@
             $(".simple-nav-wrapper").addClass("hide");
         })
 
+        $("#main-menu>li>a").click(function () {
+            var dd = $(this).next("ul").css('display');
+            if (dd === "none") {
+                $(this).next("ul").css('display', 'block');
+            }
+            if (dd === "block") {
+                $(this).next("ul").css('display', 'none');
+            }
+        });
 
-        $("#main-menu>li").click(function () {
-            var show = $('.liulian').css("display");
-            if (show === 'block') {
-                $('.liulian').css('display', 'none');
-            }
-            if (show === 'none') {
-                $('.liulian').css('display', 'block');
-            }
-        })
+
+        $(".simple-nav>li>a").mouseenter(function () {
+            $(this).next("ul").removeClass("hide");
+            $(this).parent("li").addClass("cur");
+        }).mouseleave(function () {
+            $(this).next("ul").addClass("hide");
+            $(this).parent("li").removeClass("cur");
+        });
+
         $("#date-select-bar>a").click(function () {
             $(this).addClass("cur").siblings("a").removeClass("cur");
         })
 
+        var mainMenu = document.getElementById("main-menu");
+        var screenHeight = window.innerHeight
+        mainMenu.style.height = screenHeight - 80 + "px";
     </script>
     <script src="~/js/re.js"></script>
 </body>

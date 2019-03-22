@@ -123,60 +123,8 @@ myChart.setOption(option);
 
 
 
-var myChart = echarts.init(document.getElementById('age-bar'));
-option = {
-    color: ['#C23531'],
-    tooltip : {
-        trigger: 'axis',
-        axisPointer : {
-            type : 'shadow'
-        },
-        formatter:'{b}<br />\
-                                                        <span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:#C23531"></span>\
-                                                                                                            {a0}：{c0}%<br />\
-                                                                    '
-    },
-    grid: {
-        left: '3%',
-        right: '4%',
-        bottom: '3%',
-        containLabel: true
-    },
-    xAxis : [
-        {
-            type : 'category',
-            data : ['18岁以下', '18-24岁', '25-34岁', '35-44岁', '45-54岁', '55岁以上'],
-            axisTick: {
-                alignWithLabel: true
-            }
-        }
-    ],
-    yAxis : [
-        {
-            type : 'value',
-            axisLabel: {
-                //设置y轴数值为%
-                formatter: '{value} %',
-            }
-        }
-    ],
-    series : [
-        {
-            name:'',
-            type:'bar',
-            barWidth: '60%',
-            data:[10, 52, 20, 34, 90, 30]
-        }
-    ]
-};
-myChart.setOption(option);
-
-
 var myChart = echarts.init(document.getElementById('line'));
-
 var colors = ['#C23531', '#2F4554'];
-
-
 option = {
     color: colors,
 
@@ -186,9 +134,7 @@ option = {
             type: 'cross'
         }
     },
-    legend: {
-        data:['新顾客', '老顾客']
-    },
+
     grid: {
         top: 70,
         bottom: 50
@@ -258,7 +204,5 @@ option = {
         }
     ]
 };
-
-
 
 myChart.setOption(option);
