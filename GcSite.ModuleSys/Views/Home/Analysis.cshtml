@@ -308,13 +308,13 @@
                                                         <div class="hm-chart-text-wrapper">
                                                             <div class="hm-chart-text-info">浏览量(PV)</div>
                                                             <div class="hm-chart-text-value ellipsis">
-                                                                <div class="hm-chart-base-value ellipsis">139</div>
+                                                                <div class="hm-chart-base-value ellipsis" id="pv">139</div>
                                                             </div>
                                                             <div class="hm-chart-text-info-wrapper">
                                                                 <div class="hm-chart-compare-info">
-                                                                    <div class="hm-chart-compare-value indicator-up">
-                                                                        <span class="hm-chart-compare-tip">相比1天前</span><i class="jimu-icon jimu-icon-caret-up"
-                                                                                                                          style="font-size: 14px;"></i>&nbsp;10.32%
+                                                                    <div class="hm-chart-compare-value indicator-up" id="cwpv">
+                                                                        @*<span class="hm-chart-compare-tip">相比1天前</span><i class="jimu-icon jimu-icon-caret-up"
+                                                                            style="font-size: 14px;"></i>&nbsp;10.32%*@
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -345,13 +345,13 @@
                                                         <div class="hm-chart-text-wrapper">
                                                             <div class="hm-chart-text-info">访客数(UV)</div>
                                                             <div class="hm-chart-text-value ellipsis">
-                                                                <div class="hm-chart-base-value ellipsis">93</div>
+                                                                <div class="hm-chart-base-value ellipsis" id="uv">93</div>
                                                             </div>
                                                             <div class="hm-chart-text-info-wrapper">
                                                                 <div class="hm-chart-compare-info">
-                                                                    <div class="hm-chart-compare-value indicator-up">
-                                                                        <span class="hm-chart-compare-tip">相比1天前</span><i class="jimu-icon jimu-icon-caret-up"
-                                                                                                                          style="font-size: 14px;"></i>&nbsp;1.09%
+                                                                    <div class="hm-chart-compare-value indicator-up" id="cwuv">
+                                                                        @*<span class="hm-chart-compare-tip">相比1天前</span><i class="jimu-icon jimu-icon-caret-up"
+                                                                            style="font-size: 14px;"></i>&nbsp;1.09%*@
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -382,13 +382,13 @@
                                                         <div class="hm-chart-text-wrapper">
                                                             <div class="hm-chart-text-info">跳出率</div>
                                                             <div class="hm-chart-text-value ellipsis">
-                                                                <div class="hm-chart-base-value ellipsis">88.24%</div>
+                                                                <div class="hm-chart-base-value ellipsis" id="br">88.24%</div>
                                                             </div>
                                                             <div class="hm-chart-text-info-wrapper">
                                                                 <div class="hm-chart-compare-info">
-                                                                    <div class="hm-chart-compare-value indicator-up">
-                                                                        <span class="hm-chart-compare-tip">相比1天前</span><i class="jimu-icon jimu-icon-caret-up"
-                                                                                                                          style="font-size: 14px;"></i>&nbsp;9.47%
+                                                                    <div class="hm-chart-compare-value indicator-up" id="cwbr">
+                                                                        @*<span class="hm-chart-compare-tip">相比1天前</span><i class="jimu-icon jimu-icon-caret-up"
+                                                                            style="font-size: 14px;"></i>&nbsp;9.47%*@
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -419,13 +419,13 @@
                                                         <div class="hm-chart-text-wrapper">
                                                             <div class="hm-chart-text-info">平均访问时长</div>
                                                             <div class="hm-chart-text-value ellipsis">
-                                                                <div class="hm-chart-base-value ellipsis">00:02:21</div>
+                                                                <div class="hm-chart-base-value ellipsis" id="ts">00:02:21</div>
                                                             </div>
                                                             <div class="hm-chart-text-info-wrapper">
                                                                 <div class="hm-chart-compare-info">
-                                                                    <div class="hm-chart-compare-value indicator-up">
-                                                                        <span class="hm-chart-compare-tip">相比1天前</span><i class="jimu-icon jimu-icon-caret-up"
-                                                                                                                          style="font-size: 14px;"></i>&nbsp;44.08%
+                                                                    <div class="hm-chart-compare-value indicator-up" id="cwa">
+                                                                        @*<span class="hm-chart-compare-tip">相比1天前</span><i class="jimu-icon jimu-icon-caret-up"
+                                                                            style="font-size: 14px;"></i>&nbsp;44.08%*@
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1118,17 +1118,148 @@
             </div>
         </div>
     </div>
+    <script>
+        $.ajax({
+            async: false,
+            url: '/Home/AnalysisInit',
+            type: 'get',
+            dataType: 'json',
+            success: function (data) {
+                $("#pv").text(data.pv);
+                $("#uv").text(data.uv);
+                $("#br").text(data.br);
+                $("#ts").text(data.ts);
+                var str = "<span class=\"hm-chart-compare-tip\">相比1天前</span> <i class=\"jimu-icon jimu-icon-caret-up\" style =\"font-size: 14px;\"></i>&nbsp; " + data.cwpv;
+                $("#cwpv").html("").append(str);
+                var uvstr = "<span class=\"hm-chart-compare-tip\">相比1天前</span><i class=\"jimu-icon jimu-icon-caret-up\" style=\"font-size: 14px;\"></i>&nbsp;" + data.cwuv;
+                $("#cwuv").html("").append(uvstr);
+                var brstr = "<span class=\"hm-chart-compare-tip\">相比1天前</span><i class=\"jimu-icon jimu-icon-caret-up\" style=\"font-size: 14px;\"></i>&nbsp;" + data.cwbr;
+                $("#cwbr").html("").append(brstr);
+                var astr = "<span class=\"hm-chart-compare-tip\">相比1天前</span><i class=\"jimu-icon jimu-icon-caret-up\" style=\"font-size: 14px;\"></i>&nbsp;" + data.cwa;
+                $("#cwa").html("").append(astr);
+                //新老客户占比
+                var myChart = echarts.init(document.getElementById('cha1'));
+                // 指定图表的配置项和数据
+                option = {
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: "{a} <br/>{b}: {c} ({d}%)"
+                    },
+                    legend: {
+                        orient: 'vertical',
+                        x: 'left',
+                        data: ['新客户', '老客户']
+                    },
+                    series: [
+                        {
+                            name: '访客',
+                            type: 'pie',
+                            radius: ['50%', '70%'],
+                            avoidLabelOverlap: false,
+                            label: {
+                                normal: {
+                                    show: false,
+                                    position: 'center'
+                                },
+                                emphasis: {
+                                    show: true,
+                                    textStyle: {
+                                        fontSize: '14',
+                                        fontWeight: 'bold'
+                                    }
+                                }
+                            },
+                            labelLine: {
+                                normal: {
+                                    show: false
+                                }
+                            },
+                            data: [
+                                { value: data.xin, name: '新客户' },
+                                { value: data.old, name: '老客户' },
+                            ]
+                        }
+                    ]
+                };
+                myChart.setOption(option);
+
+                //访问城市
+                var tbody = "";
+                for (var i = 0; i < data.cityList.length; i++) {
+                    tbody += "<tr class=\"\"><td><div title=\"\">" + data.cityList[i].Key + "</div></td><td><div title=\"\">" + data.cityList[i].NumProducts + "</div></td></tr>";
+                }
+                $("#table").html("").append(tbody);
+                alert(data.cityList.NumProducts);
+                console.log(data.cityList);
+            }
+        });
+        //浏览量趋势
+        var myChart = echarts.init(document.getElementById('cha2'));
+
+        option = {
+
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: ['新客户', '老客户']
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ['2019/02/01', '2019/03/01', '2019/04/01']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+                {
+                    name: '新客户',
+                    type: 'line',
+                    stack: '总量',
+                    data: [10, 132, 101]
+                },
+                {
+                    name: '老客户',
+                    type: 'line',
+                    stack: '总量',
+                    data: [220, 182, 191]
+                },
+            ]
+        };
+
+        myChart.setOption(option);
+        //访问用户趋势
+        //平均访问时长
+        //跳出率趋势
+        //平均访问页数
+        //来源类型
+        //访问城市
+        //搜索词
+        //来源域名
+    </script>
 
     <script>
-    var inp = document.getElementById("site-list-container");
-    var inpy = document.getElementById("site-list");
-    inp.onclick = function () {
-        if (inpy.style.display==='none'){
-            inpy.style.display = "block";
-        }else {
-            inpy.style.display = "none";
-        }
-    };
+        var inp = document.getElementById("site-list-container");
+        var inpy = document.getElementById("site-list");
+        inp.onclick = function () {
+            if (inpy.style.display === 'none') {
+                inpy.style.display = "block";
+            } else {
+                inpy.style.display = "none";
+            }
+        };
     </script>
     <script src="~/js/chart.js"></script>
     <script src="~/js/re.js"></script>
