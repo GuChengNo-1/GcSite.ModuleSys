@@ -12,7 +12,7 @@
     <link href="~/css/home.css" rel="stylesheet" type="text/css" media="all">
     <link href="~/css/login.css" rel="stylesheet" type="text/css" media="all">
 </head>
-<body>
+<body onkeydown="keyLogin();">
     <div class="homepage-header-wrapper">
         <div class="l logo">
             <a class="logo-link" href="https://tongji.baidu.com"><img src="/web/image/homepage_logo.png?__v=1548053037920" alt="百度统计"></a>
@@ -335,28 +335,28 @@
                         <div class="visitor-login-tab" id="LoginTab">请输入查看密码</div>
                         <div id="LoginInput" class="login-input">
                             @*<form method="post" action="">
-                            *@
-                            <input type="hidden" value="0" id="Appid" name="appid">
-                            <div class="form-item">
-                                <input type="password" class="client-password-input" id="Client_Password" name="passwd" style="ime-mode: disabled" placeholder="请输入查看密码" />
-                            </div>
-                            <div class="error-msg-row">
-                                if (this.errMsg) {
-                                <div id="ErrorTip" class="error">#{this.errMsg}</div>
-                                }
-                                <div class="error" id="ErrorNoSubmit" style="display: none;">
+                                *@
+                                <input type="hidden" value="0" id="Appid" name="appid">
+                                <div class="form-item">
+                                    <input type="password" class="client-password-input" id="Client_Password" name="passwd" style="ime-mode: disabled" placeholder="请输入查看密码" />
                                 </div>
-                            </div>
-                            <div class="form-buttons">
-                                <input type="submit" id="Client_Submit" class="login-btn l" value="登录" />
-                            </div>
-                            <div class="login-help-row">
-                                <a href="#" id="change_tj_login_type" class="l">切换到管理员登录</a>
-                            </div>
-                            <input type="hidden" value="utf-8" name="charset" />
-                            <input type="hidden" value="1" name="senderr" />
-                            @*
-                                </form>*@
+                                <div class="error-msg-row">
+                                    if (this.errMsg) {
+                                    <div id="ErrorTip" class="error">#{this.errMsg}</div>
+                                    }
+                                    <div class="error" id="ErrorNoSubmit" style="display: none;">
+                                    </div>
+                                </div>
+                                <div class="form-buttons">
+                                    <input type="submit" id="Client_Submit" class="login-btn l" value="登录" />
+                                </div>
+                                <div class="login-help-row">
+                                    <a href="#" id="change_tj_login_type" class="l">切换到管理员登录</a>
+                                </div>
+                                <input type="hidden" value="utf-8" name="charset" />
+                                <input type="hidden" value="1" name="senderr" />
+                                @*
+                            </form>*@
                         </div>
                     </div>
                     }
@@ -365,20 +365,20 @@
                         <div class="login-main-account-info">统计/推广/联盟 账号请在此登录</div>
                         <div id="LoginInput" class="login-input">
                             @*<form method="post" action="/User/Login">
-                            *@
-                            <input type="hidden" value="12" id="Appid" name="appid">
-                            <div class="form-item login-username">
-                                <input type="text" class="text form-item-input" tabindex="1" id="UserName" autocomplete="off" name="entered_login" value="" placeholder="请输入用户名">
-                            </div>
-                            <div class="form-item login-pwd">
-                                <div id="uc-safe-pwd-input" class="uc-safe-pwd-input-hidden"></div>
-                                <input type="password" class="text form-item-input" tabindex="2" id="Password" autocomplete="off" name="entered_password" style="ime-mode: disabled" placeholder="密码">
-                            </div>
-                            <div class="form-item login-vcode">
-                                <input type="text" class="text form-item-input" id="Valicode" tabindex="3" name="entered_imagecode" maxlength="4" autocomplete="off" style="ime-mode:disabled" placeholder="验证码">
-                                <img src="/User/GetCodeImg?id=0.111565465" id='cas_code' width="70" height="38" align="middle" />
-                            </div>
-                            @*<div class="error-msg-row">
+                                *@
+                                <input type="hidden" value="12" id="Appid" name="appid">
+                                <div class="form-item login-username">
+                                    <input type="text" class="text form-item-input" tabindex="1" id="UserName" autocomplete="off" name="entered_login" value="" placeholder="请输入用户名">
+                                </div>
+                                <div class="form-item login-pwd">
+                                    <div id="uc-safe-pwd-input" class="uc-safe-pwd-input-hidden"></div>
+                                    <input type="password" class="text form-item-input" tabindex="2" id="Password" autocomplete="off" name="entered_password" style="ime-mode: disabled" placeholder="密码">
+                                </div>
+                                <div class="form-item login-vcode">
+                                    <input type="text" class="text form-item-input" id="Valicode" tabindex="3" name="entered_imagecode" maxlength="4" autocomplete="off" style="ime-mode:disabled" placeholder="验证码">
+                                    <img src="/User/GetCodeImg?id=0.111565465" id='cas_code' width="70" height="38" align="middle" />
+                                </div>
+                                @*<div class="error-msg-row">
                                     if (/被锁定/.test(this.errMsg)) {
                                     <div id="ErrorTip" class="error customlized-lock-info">
                                         <p>账号已被锁定，统计账号30分钟后自动解锁</p>
@@ -391,17 +391,17 @@
                                     <div class="error" id="ErrorNoSubmit" style="display: none;">
                                     </div>
                                 </div>*@
-                            <div class="form-buttons">
-                                <input type="button" id="Submit" tabindex="4" class="login-btn form-btn l" value="登录" />
-                            </div>
-                            <div class="login-help-row">
-                                <a href="#{this.webMasterRegister}" target="_blank">立即注册</a>
-                                <a href="#{this.uc_forget}" target="_blank" class="r">忘记密码</a>
-                            </div>
-                            <input type="hidden" value="utf-8" name="charset" />
-                            <input type="hidden" value="#{this.fromUrl}" name="fromu" />
-                            <input type="hidden" value="#{this.selfUrl}" name="selfu" />
-                            <input type="hidden" value="1" name="senderr" />
+                                <div class="form-buttons">
+                                    <input type="button" id="Submit" tabindex="4" class="login-btn form-btn l" value="登录" />
+                                </div>
+                                <div class="login-help-row">
+                                    <a href="#{this.webMasterRegister}" target="_blank">立即注册</a>
+                                    <a href="#{this.uc_forget}" target="_blank" class="r">忘记密码</a>
+                                </div>
+                                <input type="hidden" value="utf-8" name="charset" />
+                                <input type="hidden" value="#{this.fromUrl}" name="fromu" />
+                                <input type="hidden" value="#{this.selfUrl}" name="selfu" />
+                                <input type="hidden" value="1" name="senderr" />
                         </div>
                     </div>
                     }
@@ -537,7 +537,6 @@
             $("#jquery-dialog--HM__1modal").css("display", "none");
             $("#jquery-dialog--HM__1").css("display", "none");
         });
-
         $("#cas_code").click(function () {
             $("#cas_code").attr("src", "/User/GetCodeImg?id=" + Math.random());
         });
@@ -563,7 +562,6 @@
                         }
                     }
                 });
-                $("#cas_code").attr("src", "/User/GetCodeImg?id=" + Math.random());
             }
             else if ($("#UserName").val() != "" && $("#Password").val() != "" && $("#Valicode").val() == "") {
                 alert("请输入验证码！");
@@ -572,7 +570,12 @@
                 alert("请输入用户名或密码！");
             }
         });
+        function keyLogin() {
+            if (window.event.keyCode == 13) {
+                //回车键的键值为13
+                document.getElementById("Submit").click();
+            }//调用登录按钮的登录事件
+        }
     </script>
-
 </body>
 </html>

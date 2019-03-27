@@ -24,7 +24,7 @@ namespace GcSite.ModuleSys.Models
         /// </summary>
         public string SearchTerms { get; set; }
         /// <summary>
-        /// pv当前搜索引擎
+        /// 搜索引擎
         /// </summary>
         public string VisitSE { get; set; }
         /// <summary>

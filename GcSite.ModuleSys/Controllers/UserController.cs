@@ -2,6 +2,7 @@
 using GcSite.ModuleSys.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -26,9 +27,12 @@ namespace GcSite.ModuleSys.Controllers
             pwd = userPwd;
             //判断验证码是否正确
             if (code.ToLower() == Session["code"].ToString().ToLower())
-            {
+            { SqlParameter[] param = {
+                 new SqlParameter("@LoginName",name),
+                 new SqlParameter("@LoginPwd",pwd)};
                 //判断用户是否存在
-                var model = work.CreateRepository<UserInfo>().GetList(p => p.UserName == name && p.UserPwd == pwd);
+                //var model = work.CreateRepository<UserInfo>().GetList(p => p.UserName == name && p.UserPwd == pwd);
+                var model = work.Query<UserInfo>("select * from UserInfoes where UserName=@LoginName and UserPwd=@LoginPwd", param).ToList();
                 //model = db.UserInfo.Where(p => p.UserName == name && p.UserPwd == pwd);
                 if (model.Count() > 0)
                 {
