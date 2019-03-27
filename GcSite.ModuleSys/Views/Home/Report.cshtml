@@ -756,7 +756,7 @@
                                     </div>
                                     <div class="l time-select-bar" id="custom-date-select">
                                         <div class="select-bar-item l">
-                                            <input onfocus="javascript:this.blur();" readonly="readonly" class="text trackable" memo="{id:'time_selt'}" id="date-select" value="自定义时间段">
+                                            <input readonly="readonly" class="text trackable" memo="{id:'time_selt'}" id="date-select" value="自定义时间段">
                                             <a class="dropdown"></a>
                                         </div>
                                     </div>
@@ -784,10 +784,6 @@
                                                         <li onclick="tendency(this)" type="ip">IP数</li>
                                                         <li onclick="tendency(this)" type="rate">跳出率</li>
                                                         <li onclick="tendency(this)" type="ave">平均访问时长</li>
-                                                        @*
-                                                            <li>转化次数</li>
-                                                            <li>前一日</li>
-                                                            <li>上周同期</li>*@
                                                     </ul>
                                                     <div class="layui-tab-content" style="padding: 0;">
                                                         <div id="line" class="layui-tab-item layui-show" style="width: 800px;height: 300px;">
@@ -1077,16 +1073,6 @@
         })
         //最近事件
         function Report(date) {
-            //$.ajax({
-            //    async: true,
-            //    url: '/Home/NewOldVisit',
-            //    data: { data },
-            //    type: 'post',
-            //    dataType: 'json',
-            //    success: function (data) {
-                    
-            //    }
-            //});
             var content = "";
             day = date;
             $.ajax({
@@ -1174,6 +1160,44 @@
                         $("visitor-type-container").html("").append("<tr><td class='empty-td' colspan='3' align='middle' style='text-align: center;'>暂无数据</td></tr>");
                     } else {
                         $("#visitor-type-container").html("").append(content);
+                    }
+                    if (data.territory.length == 0) {
+                        $("#china-map").html("");
+                        $("#china-map").append("<div style='margin-left: 0%;margin-top: 140px;'><div class='empty-td' colspan='3' align='middle' style='text-align: center;'>暂无数据</div></div>");
+                    }
+                    else {
+                        provic = [];
+                        var proportion = [];
+                        for (var i = 0; i < data.territory.length; i++) {
+                            provic.push({
+                                name: '' + data.territory[i].Address,
+                                value: data.territory[i].Id
+                            });
+                            proportion.push({
+                                name: '' + data.territory[i].Address,
+                                value: data.territory[i].VisitPage
+                            });
+                        }
+                        mapChart(provic, proportion);
+                    }
+                    if (data.networkDevice.length == 0) {
+                        $("#network-device-bar").html("");
+                        $("#network-device-bar").append("<div style='margin-left: 0%;margin-top: 140px;'><div class='empty-td' colspan='3' align='middle' style='text-align: center;'>暂无数据</div></div>");
+                    }
+                    else {
+                        provic = [];
+                        proportion = [];
+                        for (var i = 0; i < data.networkDevice.length; i++) {
+                            proportion.push({
+                                value: '' + data.networkDevice[i].DeviceType,
+                                name: data.networkDevice[i].VisitPage
+                            });
+                            provic.push({
+                                name: '' + data.networkDevice[i].DeviceType,
+                                value: data.networkDevice[i].Id
+                            });
+                        }
+                        networkDeviceBar(provic, proportion);
                     }
                 },
                 error: function () {

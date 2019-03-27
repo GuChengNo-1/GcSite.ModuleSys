@@ -48,7 +48,7 @@ namespace GcSite.ModuleSys.Controllers
             };
             #endregion
             ViewBag.predict = predict;
-            var model = db.UserInfo.ToList().Where(p => p.Id == siteId);
+            var model = db.UserInfo.ToList().Where(p => p.Id == userId);
             string name = "";
             foreach (var item in model)
             {
@@ -208,7 +208,7 @@ namespace GcSite.ModuleSys.Controllers
                 //今  昨
                 if (date == "0" || date == "-1")
                 {
-                    date = date == "0" ? "0" : date;
+                    date == "0" ? "0" : date;
                     endTime = DateTime.Now.AddDays(double.Parse(date));
                     //获取当天所有时间段的条件数据
                     for (int i = 0; i < 24; i++)

@@ -7,7 +7,6 @@ D:\朱亚涛\GcSite.ModuleSys\GcSite.ModuleSys\GcSite.ModuleSys.Models\bin\Debug
 D:\朱亚涛\GcSite.ModuleSys\GcSite.ModuleSys\GcSite.ModuleSys.Models\bin\Debug\GcSite.ModuleSys.Models.pdb
 D:\朱亚涛\GcSite.ModuleSys\GcSite.ModuleSys\GcSite.ModuleSys.Models\obj\Debug\GcSite.ModuleSys.Models.dll
 D:\朱亚涛\GcSite.ModuleSys\GcSite.ModuleSys\GcSite.ModuleSys.Models\obj\Debug\GcSite.ModuleSys.Models.pdb
-D:\朱亚涛\GcSite.ModuleSys\GcSite.ModuleSys\GcSite.ModuleSys.Models\obj\Debug\GcSite.ModuleSys.Models.csprojResolveAssemblyReference.cache
 D:\张丽月\GitHub\GcSite.ModuleSys\GcSite.ModuleSys.Models\bin\Debug\GcSite.ModuleSys.Models.dll
 D:\张丽月\GitHub\GcSite.ModuleSys\GcSite.ModuleSys.Models\bin\Debug\GcSite.ModuleSys.Models.pdb
 D:\张丽月\GitHub\GcSite.ModuleSys\GcSite.ModuleSys.Models\obj\Debug\GcSite.ModuleSys.Models.dll
