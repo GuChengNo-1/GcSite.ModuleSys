@@ -48,7 +48,7 @@ namespace GcSite.ModuleSys.Controllers
             };
             #endregion
             ViewBag.predict = predict;
-            var model = db.UserInfo.ToList().Where(p => p.Id == siteId);
+            var model = db.UserInfo.ToList().Where(p => p.Id == userId);
             string name = "";
             foreach (var item in model)
             {

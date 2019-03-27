@@ -12,4 +12,3 @@ D:\张丽月\GitHub\GcSite.ModuleSys\GcSite.ModuleSys.Models\bin\Debug\GcSite.Mo
 D:\张丽月\GitHub\GcSite.ModuleSys\GcSite.ModuleSys.Models\bin\Debug\GcSite.ModuleSys.Models.pdb
 D:\张丽月\GitHub\GcSite.ModuleSys\GcSite.ModuleSys.Models\obj\Debug\GcSite.ModuleSys.Models.dll
 D:\张丽月\GitHub\GcSite.ModuleSys\GcSite.ModuleSys.Models\obj\Debug\GcSite.ModuleSys.Models.pdb
-D:\张丽月\GitHub\GcSite.ModuleSys\GcSite.ModuleSys.Models\obj\Debug\GcSite.ModuleSys.Models.csprojResolveAssemblyReference.cache
