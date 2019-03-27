@@ -28,9 +28,17 @@ namespace GcSite.ModuleSys.Models
         /// </summary>
         public string VisitSE { get; set; }
         /// <summary>
+        /// 设备类型
+        /// </summary>
+        public string DeviceType { get; set; }
+        /// <summary>
         /// pv当前域名
         /// </summary>
         public string WebHost { get; set; }
+        /// <summary>
+        /// 地区
+        /// </summary>
+        public string Address { get; set; }
         /// <summary>
         /// 外键(网站流量表)
         /// </summary>

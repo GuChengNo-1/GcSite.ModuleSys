@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
@@ -17,11 +16,11 @@
     <script src="~/js/echarts.min.js"></script>
     <script src="~/js/china.js"></script>
 </head>
-<body>
-    <div class="header-wrapper">
+<body id="main-body">
+    <div class="header-wrapper" id="header">
         <div class="header clearfix">
             <div class="logo l">
-                <a href="/web/26754769/overview/index?siteId=12774508"><img src="~/img/logo4.png" alt="百度统计"></a>
+                <a :href="'/web/26754769/overview/index?siteId=' + items"><img src="~/img/logo4.png" alt="百度统计"></a>
                 <span class="logo-title">网站统计</span>
             </div>
             <div class="view-tab l">
@@ -37,12 +36,12 @@
                     <div class="text" title="sh808web.com">
                         sh808web.com
                     </div>
-                    <a href="javascript:void(0)" title="设为默认网站" id="set-current-default-site" data="12774508" class="set-default is-not-default"></a>
+                    <a href="javascript:void(0)" title="设为默认网站" id="set-current-default-site" data="items" class="set-default is-not-default"></a>
                     <ul class="site-selector-options hm-scroll" style="display: none" id="site-list">
                         <li>
                             <em class="sub-dir-arrow "></em>
-                            <a href="javascript:void(0);" data="12774508" class="url" title="sh808web.com-sh808web.com">sh808web.com-sh808web.com</a>
-                            <a href="javascript:void(0)" data="12774508" class="set-default is-not-default" title="设为默认网站"></a>
+                            <a href="javascript:void(0);" data="items" class="url" title="sh808web.com-sh808web.com">sh808web.com-sh808web.com</a>
+                            <a href="javascript:void(0)" data="items" class="set-default is-not-default" title="设为默认网站"></a>
                         </li>
                     </ul>
                 </div>
@@ -73,8 +72,7 @@
                 </span>
                 <span class="more-tools top-nav-item layer account-wrapper" id="span1">
                     <span class="account">
-                        Hi&nbsp;
-                        gucheng262314
+
                     </span>
                     <em></em>
                     <ul class="content hide" id="sp1">
@@ -126,15 +124,15 @@
                         </a>
                         <ul class="expandable-level1 expandable-content liulian" style="display:none">
                             <li>
-                                <a class=" " href="/web/26754769/trend/latest?siteId=12774508">
+                                <a class=" " :href="'/web/26754769/overview/index?siteId=' + items">
                                     <span data="95" class="l menu-label">实时访客</span>
                                     <span class="normal icon-font">&nbsp;</span>
                                 </a>
                             </li>
                             <li>
                                 <span class="trend">
-                                    <a data="96" class="trend-title menu-label  " href="/web/26754769/trend/time?siteId=12774508">趋势分析</a>
-                                    <a id="event-monitor-today" href="/web/26754769/trend/time?siteId=12774508&amp;flag=today" class="day">今</a>
+                                    <a data="96" class="trend-title menu-label  " :href="'/web/26754769/overview/index?siteId=' + items">趋势分析</a>
+                                    <a id="event-monitor-today" :href="'/web/26754769/overview/index?siteId=' + items" class="day">今</a>
                                     <a id="event-monitor-yesterday" href="/web/26754769/trend/time?siteId=12774508&amp;flag=yesterday" class="day">昨</a>
                                 </span>
                             </li>
@@ -147,31 +145,31 @@
                         </a>
                         <ul class="expandable-level1 expandable-content liulian" style="display:none">
                             <li>
-                                <a class=" " href="/web/26754769/source/all?siteId=12774508">
+                                <a class=" " :href="'/web/26754769/overview/index?siteId=' + items">
                                     <span data="99" class="l menu-label">全部来源</span>
                                     <span class="normal icon-font">&nbsp;</span>
                                 </a>
                             </li>
                             <li>
-                                <a class=" " href="/web/26754769/source/engine?siteId=12774508">
+                                <a class=" " :href="'/web/26754769/overview/index?siteId=' + items">
                                     <span data="100" class="l menu-label">搜索引擎</span>
                                     <span class="normal icon-font">&nbsp;</span>
                                 </a>
                             </li>
                             <li>
-                                <a class=" " href="/web/26754769/source/searchword?siteId=12774508">
+                                <a class=" " :href="'/web/26754769/overview/index?siteId=' + items">
                                     <span data="101" class="l menu-label">搜索词</span>
                                     <span class="normal icon-font">&nbsp;</span>
                                 </a>
                             </li>
                             <li>
-                                <a class=" " href="/web/26754769/source/link?siteId=12774508">
+                                <a class=" " :href="'/web/26754769/overview/index?siteId=' + items">
                                     <span data="102" class="l menu-label">外部链接</span>
                                     <span class="normal icon-font">&nbsp;</span>
                                 </a>
                             </li>
                             <li>
-                                <a class=" " href="/web/26754769/custom/media?siteId=12774508">
+                                <a class=" " :href="'/web/26754769/overview/index?siteId=' + items">
                                     <span data="104" class="l menu-label">指定广告跟踪</span>
                                     <span class="normal icon-font">&nbsp;</span>
                                 </a>
@@ -185,43 +183,43 @@
                         </a>
                         <ul class="expandable-level1 expandable-content liulian" style="display:none">
                             <li>
-                                <a class=" " href="/web/26754769/visit/toppage?siteId=12774508">
+                                <a class=" " :href="'/web/26754769/overview/index?siteId=' + items">
                                     <span data="108" class="l menu-label">受访页面</span>
                                     <span class="normal icon-font">&nbsp;</span>
                                 </a>
                             </li>
                             <li>
-                                <a class=" " href="/web/26754769/visit/landingpage?siteId=12774508">
+                                <a class=" " :href="'/web/26754769/overview/index?siteId=' + items">
                                     <span data="109" class="l menu-label">入口页面</span>
                                     <span class="normal icon-font">&nbsp;</span>
                                 </a>
                             </li>
                             <li>
-                                <a class=" " href="/web/26754769/visit/topdomain?siteId=12774508">
+                                <a class=" " :href="'/web/26754769/overview/index?siteId=' + items">
                                     <span data="110" class="l menu-label">受访域名</span>
                                     <span class="normal icon-font">&nbsp;</span>
                                 </a>
                             </li>
                             <li>
-                                <a class=" " href="/web/26754769/custom/pageclick?siteId=12774508">
+                                <a class=" " :href="'/web/26754769/overview/index?siteId=' + items">
                                     <span data="106" class="l menu-label">页面点击图</span>
                                     <span class="normal icon-font">&nbsp;</span>
                                 </a>
                             </li>
                             <li>
-                                <a class=" " href="/web/26754769/custom/flow?siteId=12774508">
+                                <a class=" " :href="'/web/26754769/overview/index?siteId=' + items">
                                     <span data="107" class="l menu-label">页面上下游</span>
                                     <span class="normal icon-font">&nbsp;</span>
                                 </a>
                             </li>
                             <li>
-                                <a class=" " href="/web/26754769/custom/event_track?siteId=12774508">
+                                <a class=" " :href="'/web/26754769/overview/index?siteId=' + items">
                                     <span data="111" class="l menu-label">事件分析</span>
                                     <span class="normal icon-font">&nbsp;</span>
                                 </a>
                             </li>
                             <li>
-                                <a class=" " href="/web/26754769/custom/subdir?siteId=12774508">
+                                <a class=" " :href="'/web/26754769/overview/index?siteId=' + items">
                                     <span data="112" class="l menu-label">子目录</span>
                                     <span class="normal icon-font">&nbsp;</span>
                                 </a>
@@ -236,37 +234,37 @@
                         </a>
                         <ul class="expandable-level1 expandable-content liulian" style="display:none">
                             <li>
-                                <a class=" " href="/web/26754769/visit/district?siteId=12774508">
+                                <a class=" " :href="'/web/26754769/overview/index?siteId=' + items">
                                     <span data="120" class="l menu-label">地域分布</span>
                                     <span class="normal icon-font">&nbsp;</span>
                                 </a>
                             </li>
                             <li>
-                                <a class=" " href="/web/26754769/visit/client?siteId=12774508">
+                                <a class=" " :href="'/web/26754769/overview/index?siteId=' + items">
                                     <span data="121" class="l menu-label">系统环境</span>
                                     <span class="normal icon-font">&nbsp;</span>
                                 </a>
                             </li>
                             <li>
-                                <a class=" " href="/web/26754769/visit/type?siteId=12774508">
+                                <a class=" " :href="'/web/26754769/overview/index?siteId=' + items">
                                     <span data="122" class="l menu-label">新老访客</span>
                                     <span class="normal icon-font">&nbsp;</span>
                                 </a>
                             </li>
                             <li>
-                                <a class=" " href="/web/26754769/visit/attribute?siteId=12774508">
+                                <a class=" " :href="'/web/26754769/overview/index?siteId=' + items">
                                     <span data="123" class="l menu-label">访客属性</span>
                                     <span class="normal icon-font">&nbsp;</span>
                                 </a>
                             </li>
                             <li>
-                                <a class=" " href="/web/26754769/visit/character?siteId=12774508">
+                                <a class=" " :href="'/web/26754769/overview/index?siteId=' + items">
                                     <span data="124" class="l menu-label">忠诚度</span>
                                     <span class="normal icon-font">&nbsp;</span>
                                 </a>
                             </li>
                             <li>
-                                <a class=" " href="/web/26754769/custom/visit?siteId=12774508">
+                                <a class=" " :href="'/web/26754769/overview/index?siteId=' + items">
                                     <span data="125" class="l menu-label">自定义变量</span>
                                     <span class="normal icon-font">&nbsp;</span>
                                 </a>
@@ -280,7 +278,7 @@
                         </a>
                         <ul class="expandable-level1 expandable-content liulian" style="display:none">
                             <li>
-                                <a class=" " href="/web/26754769/opt/security?siteId=12774508">
+                                <a class=" " href="/web/26754769/opt/security?siteId={{siteId}}">
                                     <span data="134" class="l menu-label">网站安全</span>
                                     <span class="normal icon-font">&nbsp;</span>
                                 </a>
@@ -292,19 +290,19 @@
                                 </a>
                                 <ul class="expandable-level2 expandable-content liulian" style="display:none">
                                     <li>
-                                        <a href="/web/26754769/opt/indexes?siteId=12774508" class="">
+                                        <a href="/web/26754769/opt/indexes?siteId={{siteId}}" class="">
                                             <span class="l menu-label" data="129">百度索引量</span>
                                             <span class="normal icon-font">&nbsp;</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="/web/26754769/opt/crawl?siteId=12774508" class="">
+                                        <a href="/web/26754769/opt/crawl?siteId={{siteId}}" class="">
                                             <span class="l menu-label" data="133">抓取异常</span>
                                             <span class="normal icon-font">&nbsp;</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="/web/26754769/opt/robots?siteId=12774508" class="">
+                                        <a href="/web/26754769/opt/robots?siteId={{siteId}}" class="">
                                             <span class="l menu-label" data="136">Robots</span>
                                             <span class="normal icon-font">&nbsp;</span>
                                         </a>
@@ -312,19 +310,19 @@
                                 </ul>
                             </li>
                             <li>
-                                <a class=" " href="/web/26754769/opt/searchwordrank?siteId=12774508">
+                                <a class=" " href="/web/26754769/opt/searchwordrank?siteId={{siteId}}">
                                     <span data="128" class="l menu-label">搜索词排名</span>
                                     <span class="normal icon-font">&nbsp;</span>
                                 </a>
                             </li>
                             <li>
-                                <a class=" " href="/web/26754769/opt/speed?siteId=12774508">
+                                <a class=" " href="/web/26754769/opt/speed?siteId={{siteId}}">
                                     <span data="130" class="l menu-label">网站速度诊断</span>
                                     <span class="normal icon-font">&nbsp;</span>
                                 </a>
                             </li>
                             <li>
-                                <a class=" " href="/web/26754769/opt/updown?siteId=12774508">
+                                <a class=" " href="/web/26754769/opt/updown?siteId={{siteId}}">
                                     <span data="131" class="l menu-label">升降榜</span>
                                     <span class="normal icon-font">&nbsp;</span>
                                 </a>
@@ -344,7 +342,7 @@
                         </a>
                         <ul class="item-content hide">
                             <li class="nav-title single clearfix">
-                                <a data="0" href="/web/26754769/custommenu?siteId=12774508" class="menu-label">常用报告</a>
+                                <a data="0" href="/web/26754769/custommenu?siteId={{siteId}}" class="menu-label">常用报告</a>
                             </li>
                         </ul>
                     </li>
@@ -354,7 +352,7 @@
                         </a>
                         <ul class="item-content hide">
                             <li class="nav-title single clearfix">
-                                <a data="85" href="/web/26754769/overview/index?siteId=12774508" class="menu-label">网站概况</a>
+                                <a data="85" href="/web/26754769/overview/index?siteId={{siteId}}" class="menu-label">网站概况</a>
                             </li>
                         </ul>
                     </li>
@@ -371,31 +369,31 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="" href="/web/26754769/pro/product?siteId=12774508&amp;flag=product">
+                                <a class="" href="/web/26754769/pro/product?siteId={{siteId}}&amp;flag=product">
                                     <span data="88" class="l menu-label">推广方式</span>
                                     <span class="normal icon-font"></span>
                                 </a>
                             </li>
                             <li>
-                                <a class="" href="/web/26754769/pro/product?siteId=12774508&amp;flag=fcWord">
+                                <a class="" href="/web/26754769/pro/product?siteId={{siteId}}&amp;flag=fcWord">
                                     <span data="89" class="l menu-label">搜索推广</span>
                                     <span class="normal icon-font"></span>
                                 </a>
                             </li>
                             <li>
-                                <a class="" href="/web/26754769/pro/product?siteId=12774508&amp;flag=feedUnit">
+                                <a class="" href="/web/26754769/pro/product?siteId={{siteId}}&amp;flag=feedUnit">
                                     <span data="137" class="l menu-label">信息流推广</span>
                                     <span class="new icon-font"></span>
                                 </a>
                             </li>
                             <li>
-                                <a class="" href="/web/26754769/pro/product?siteId=12774508&amp;flag=byWord">
+                                <a class="" href="/web/26754769/pro/product?siteId={{siteId}}&amp;flag=byWord">
                                     <span data="90" class="l menu-label">百意推广</span>
                                     <span class="normal icon-font"></span>
                                 </a>
                             </li>
                             <li>
-                                <a class="" href="/web/26754769/pro/conn?siteId=12774508">
+                                <a class="" href="/web/26754769/pro/conn?siteId={{siteId}}">
                                     <span data="92" class="l menu-label">推广url速度</span>
                                     <span class="normal icon-font"></span>
                                 </a>
@@ -409,14 +407,14 @@
                         <ul class="item-content hm-scroll hide">
                             <li class="nav-title">流量分析</li>
                             <li>
-                                <a class="" href="/web/26754769/trend/latest?siteId=12774508">
+                                <a class="" href="/web/26754769/trend/latest?siteId={{siteId}}">
                                     <span data="95" class="l menu-label">实时访客</span>
                                     <span class="normal icon-font"></span>
                                 </a>
                             </li>
                             <li>
                                 <span class="trend">
-                                    <a data="96" class="trend-title menu-label  " href="/web/26754769/trend/time?siteId=12774508">趋势分析</a>
+                                    <a data="96" class="trend-title menu-label  " :href="'/web/26754769/overview/index?siteId=' + items">趋势分析</a>
                                     <a href="/web/26754769/trend/time?siteId=12774508&amp;flag=today" class="day">今</a>
                                     <a href="/web/26754769/trend/time?siteId=12774508&amp;flag=yesterday" class="day">昨</a>
                                 </span>
@@ -430,31 +428,31 @@
                         <ul class="item-content hm-scroll hide">
                             <li class="nav-title">来源分析</li>
                             <li>
-                                <a class="" href="/web/26754769/source/all?siteId=12774508">
+                                <a class="" href="/web/26754769/source/all?siteId={{siteId}}">
                                     <span data="99" class="l menu-label">全部来源</span>
                                     <span class="normal icon-font"></span>
                                 </a>
                             </li>
                             <li>
-                                <a class="" href="/web/26754769/source/engine?siteId=12774508">
+                                <a class="" href="/web/26754769/source/engine?siteId={{siteId}}">
                                     <span data="100" class="l menu-label">搜索引擎</span>
                                     <span class="normal icon-font"></span>
                                 </a>
                             </li>
                             <li>
-                                <a class="" href="/web/26754769/source/searchword?siteId=12774508">
+                                <a class="" href="/web/26754769/source/searchword?siteId={{siteId}}">
                                     <span data="101" class="l menu-label">搜索词</span>
                                     <span class="normal icon-font"></span>
                                 </a>
                             </li>
                             <li>
-                                <a class="" href="/web/26754769/source/link?siteId=12774508">
+                                <a class="" href="/web/26754769/source/link?siteId={{siteId}}">
                                     <span data="102" class="l menu-label">外部链接</span>
                                     <span class="normal icon-font"></span>
                                 </a>
                             </li>
                             <li>
-                                <a class="" href="/web/26754769/custom/media?siteId=12774508">
+                                <a class="" href="/web/26754769/custom/media?siteId={{siteId}}">
                                     <span data="104" class="l menu-label">指定广告跟踪</span>
                                     <span class="normal icon-font"></span>
                                 </a>
@@ -468,43 +466,43 @@
                         <ul class="item-content hm-scroll hide">
                             <li class="nav-title">访问分析</li>
                             <li>
-                                <a class="" href="/web/26754769/visit/toppage?siteId=12774508">
+                                <a class="" href="/web/26754769/visit/toppage?siteId={{siteId}}">
                                     <span data="108" class="l menu-label">受访页面</span>
                                     <span class="normal icon-font"></span>
                                 </a>
                             </li>
                             <li>
-                                <a class="" href="/web/26754769/visit/landingpage?siteId=12774508">
+                                <a class="" href="/web/26754769/visit/landingpage?siteId={{siteId}}">
                                     <span data="109" class="l menu-label">入口页面</span>
                                     <span class="normal icon-font"></span>
                                 </a>
                             </li>
                             <li>
-                                <a class="" href="/web/26754769/visit/topdomain?siteId=12774508">
+                                <a class="" href="/web/26754769/visit/topdomain?siteId={{siteId}}">
                                     <span data="110" class="l menu-label">受访域名</span>
                                     <span class="normal icon-font"></span>
                                 </a>
                             </li>
                             <li>
-                                <a class="" href="/web/26754769/custom/pageclick?siteId=12774508">
+                                <a class="" href="/web/26754769/custom/pageclick?siteId={{siteId}}">
                                     <span data="106" class="l menu-label">页面点击图</span>
                                     <span class="normal icon-font"></span>
                                 </a>
                             </li>
                             <li>
-                                <a class="" href="/web/26754769/custom/flow?siteId=12774508">
+                                <a class="" href="/web/26754769/custom/flow?siteId={{siteId}}">
                                     <span data="107" class="l menu-label">页面上下游</span>
                                     <span class="normal icon-font"></span>
                                 </a>
                             </li>
                             <li>
-                                <a class="" href="/web/26754769/custom/event_track?siteId=12774508">
+                                <a class="" href="/web/26754769/custom/event_track?siteId={{siteId}}">
                                     <span data="111" class="l menu-label">事件分析</span>
                                     <span class="normal icon-font"></span>
                                 </a>
                             </li>
                             <li>
-                                <a class="" href="/web/26754769/custom/subdir?siteId=12774508">
+                                <a class="" href="/web/26754769/custom/subdir?siteId={{siteId}}">
                                     <span data="112" class="l menu-label">子目录</span>
                                     <span class="normal icon-font"></span>
                                 </a>
@@ -518,13 +516,13 @@
                         <ul class="item-content hm-scroll hide">
                             <li class="nav-title">转化分析</li>
                             <li>
-                                <a class="" href="/web/26754769/trans/overview?siteId=12774508">
+                                <a class="" href="/web/26754769/trans/overview?siteId={{siteId}}">
                                     <span data="114" class="l menu-label">转化概况</span>
                                     <span class="normal icon-font"></span>
                                 </a>
                             </li>
                             <li>
-                                <a class="" href="/web/26754769/custom/newpath?siteId=12774508">
+                                <a class="" href="/web/26754769/custom/newpath?siteId={{siteId}}">
                                     <span data="115" class="l menu-label">转化路径</span>
                                     <span class="normal icon-font"></span>
                                 </a>
@@ -538,37 +536,37 @@
                         <ul class="item-content hm-scroll hide">
                             <li class="nav-title">访客分析</li>
                             <li>
-                                <a class="" href="/web/26754769/visit/district?siteId=12774508">
+                                <a class="" href="/web/26754769/visit/district?siteId={{siteId}}">
                                     <span data="120" class="l menu-label">地域分布</span>
                                     <span class="normal icon-font"></span>
                                 </a>
                             </li>
                             <li>
-                                <a class="" href="/web/26754769/visit/client?siteId=12774508">
+                                <a class="" href="/web/26754769/visit/client?siteId={{siteId}}">
                                     <span data="121" class="l menu-label">系统环境</span>
                                     <span class="normal icon-font"></span>
                                 </a>
                             </li>
                             <li>
-                                <a class="" href="/web/26754769/visit/type?siteId=12774508">
+                                <a class="" href="/web/26754769/visit/type?siteId={{siteId}}">
                                     <span data="122" class="l menu-label">新老访客</span>
                                     <span class="normal icon-font"></span>
                                 </a>
                             </li>
                             <li>
-                                <a class="" href="/web/26754769/visit/attribute?siteId=12774508">
+                                <a class="" href="/web/26754769/visit/attribute?siteId={{siteId}}">
                                     <span data="123" class="l menu-label">访客属性</span>
                                     <span class="normal icon-font"></span>
                                 </a>
                             </li>
                             <li>
-                                <a class="" href="/web/26754769/visit/character?siteId=12774508">
+                                <a class="" href="/web/26754769/visit/character?siteId={{siteId}}">
                                     <span data="124" class="l menu-label">忠诚度</span>
                                     <span class="normal icon-font"></span>
                                 </a>
                             </li>
                             <li>
-                                <a class="" href="/web/26754769/custom/visit?siteId=12774508">
+                                <a class="" href="/web/26754769/custom/visit?siteId={{siteId}}">
                                     <span data="125" class="l menu-label">自定义变量</span>
                                     <span class="normal icon-font"></span>
                                 </a>
@@ -582,7 +580,7 @@
                         <ul class="item-content hm-scroll hide">
                             <li class="nav-title">优化分析</li>
                             <li>
-                                <a class="" href="/web/26754769/opt/security?siteId=12774508">
+                                <a class="" href="/web/26754769/opt/security?siteId={{siteId}}">
                                     <span data="134" class="l menu-label">网站安全</span>
                                     <span class="normal icon-font"></span>
                                 </a>
@@ -591,19 +589,19 @@
                                 <a href="/web/26754769/" class="expandable ">网页抓取</a>
                                 <ul>
                                     <li>
-                                        <a class=" " href="/web/26754769/opt/indexes?siteId=12774508">
+                                        <a class=" " href="/web/26754769/opt/indexes?siteId={{siteId}}">
                                             <span data="129" class="l menu-label">百度索引量</span>
                                             <span class="normal icon-font"></span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class=" " href="/web/26754769/opt/crawl?siteId=12774508">
+                                        <a class=" " href="/web/26754769/opt/crawl?siteId={{siteId}}">
                                             <span data="133" class="l menu-label">抓取异常</span>
                                             <span class="normal icon-font"></span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class=" " href="/web/26754769/opt/robots?siteId=12774508">
+                                        <a class=" " href="/web/26754769/opt/robots?siteId={{siteId}}">
                                             <span data="136" class="l menu-label">Robots</span>
                                             <span class="normal icon-font"></span>
                                         </a>
@@ -611,19 +609,19 @@
                                 </ul>
                             </li>
                             <li>
-                                <a class="" href="/web/26754769/opt/searchwordrank?siteId=12774508">
+                                <a class="" href="/web/26754769/opt/searchwordrank?siteId={{siteId}}">
                                     <span data="128" class="l menu-label">搜索词排名</span>
                                     <span class="normal icon-font"></span>
                                 </a>
                             </li>
                             <li>
-                                <a class="" href="/web/26754769/opt/speed?siteId=12774508">
+                                <a class="" href="/web/26754769/opt/speed?siteId={{siteId}}">
                                     <span data="130" class="l menu-label">网站速度诊断</span>
                                     <span class="normal icon-font"></span>
                                 </a>
                             </li>
                             <li>
-                                <a class="" href="/web/26754769/opt/updown?siteId=12774508">
+                                <a class="" href="/web/26754769/opt/updown?siteId={{siteId}}">
                                     <span data="131" class="l menu-label">升降榜</span>
                                     <span class="normal icon-font"></span>
                                 </a>
@@ -733,7 +731,7 @@
                                     <th class="empty-tr0"></th>
                                 </tr>
                             </tbody>
-                            
+
                         </table>
                     </div>
 
@@ -777,295 +775,27 @@
                                         <div class="table-grid-item">
                                             <div class="title clearfix">
                                                 <div class="l">趋势图</div>
-                                                <div class="r"><a id="event-monitor-trend" class="detail-report-btn" href="/web/26754769/trend/time?siteId=12774508&amp;isTab=1">&nbsp;</a></div>
+                                                <div class="r"><a id="event-monitor-trend" class="detail-report-btn" :href="'/web/26754769/overview/index?siteId=' + items">&nbsp;</a></div>
                                             </div>
                                             <div class="line-indicators-row clearfix">
                                                 <div class="layui-tab" style="margin: 0;">
                                                     <ul class="layui-tab-title">
-                                                        <li class="layui-this">浏览量</li>
-                                                        <li>访客数</li>
-                                                        <li>IP数</li>
-                                                        <li>跳出率</li>
-                                                        <li>平均访问时长</li>
-                                                        <li>转化次数</li>
-                                                        <li>前一日</li>
-                                                        <li>上周同期</li>
+                                                        <li class="layui-this" onclick="tendency(this)" type="pv">浏览量</li>
+                                                        <li onclick="tendency(this)" type="uv">访客数</li>
+                                                        <li onclick="tendency(this)" type="ip">IP数</li>
+                                                        <li onclick="tendency(this)" type="rate">跳出率</li>
+                                                        <li onclick="tendency(this)" type="ave">平均访问时长</li>
+                                                        @*
+                                                            <li>转化次数</li>
+                                                            <li>前一日</li>
+                                                            <li>上周同期</li>*@
                                                     </ul>
                                                     <div class="layui-tab-content" style="padding: 0;">
-                                                        <div id="line" class="layui-tab-item layui-show" style="width: 800px;height: 319px;">
-                                                            <script>
-                                                                var myChart = echarts.init(document.getElementById('line'));
-                                                                var colors = ['#C23531', '#2F4554'];
-                                                                option = {
-                                                                    color: colors,
-
-                                                                    tooltip: {
-                                                                        trigger: 'none',
-                                                                        axisPointer: {
-                                                                            type: 'cross'
-                                                                        }
-                                                                    },
-                                                                    legend: {
-                                                                        data: ['新顾客', '老顾客']
-                                                                    },
-                                                                    grid: {
-                                                                        top: 70,
-                                                                        bottom: 50
-                                                                    },
-                                                                    xAxis: [
-                                                                        {
-                                                                            type: 'category',
-                                                                            axisTick: {
-                                                                                alignWithLabel: true
-                                                                            },
-                                                                            axisLine: {
-                                                                                onZero: false,
-                                                                                lineStyle: {
-                                                                                    color: colors[1]
-                                                                                }
-                                                                            },
-                                                                            axisPointer: {
-                                                                                label: {
-                                                                                    formatter: function (params) {
-                                                                                        return '老顾客  ' + params.value
-                                                                                            + (params.seriesData.length ? '：' + params.seriesData[0].data : '');
-                                                                                    }
-                                                                                }
-                                                                            },
-                                                                            data: ["2019-03-06", "2019-03-07", "2019-03-09", "2019-03-10", "2019-03-11"]
-                                                                        },
-                                                                        {
-                                                                            type: 'category',
-                                                                            axisTick: {
-                                                                                alignWithLabel: true
-                                                                            },
-                                                                            axisLine: {
-                                                                                onZero: false,
-                                                                                lineStyle: {
-                                                                                    color: colors[0]
-                                                                                }
-                                                                            },
-                                                                            axisPointer: {
-                                                                                label: {
-                                                                                    formatter: function (params) {
-                                                                                        return '新顾客  ' + params.value
-                                                                                            + (params.seriesData.length ? '：' + params.seriesData[0].data : '');
-                                                                                    }
-                                                                                }
-                                                                            },
-                                                                            data: ["2019-03-06", "2019-03-07", "2019-03-09", "2019-03-10", "2019-03-11"]
-                                                                        }
-                                                                    ],
-                                                                    yAxis: [
-                                                                        {
-                                                                            type: 'value'
-                                                                        }
-                                                                    ],
-                                                                    series: [
-                                                                        {
-                                                                            name: '新顾客',
-                                                                            type: 'line',
-                                                                            xAxisIndex: 1,
-                                                                            smooth: true,
-                                                                            data: [6, 9, 9, 26, 28]
-                                                                        },
-                                                                        {
-                                                                            name: '老顾客',
-                                                                            type: 'line',
-                                                                            smooth: true,
-                                                                            data: [9, 9, 11, 18, 4]
-                                                                        }
-                                                                    ]
-                                                                };
-                                                                myChart.setOption(option);
-                                                            </script>
-                                                        </div>
-                                                        <div id="lineb" class="layui-tab-item" style="width: 800px;height: 319px;">
-                                                            <script>
-                                                                var myChart = echarts.init(document.getElementById('lineb'));
-                                                                option = {
-                                                                    xAxis: {
-                                                                        type: 'category',
-                                                                        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-                                                                    },
-                                                                    yAxis: {
-                                                                        type: 'value'
-                                                                    },
-                                                                    series: [{
-                                                                        data: [820, 932, 901, 934, 1290, 13, 13],
-                                                                        type: 'line'
-                                                                    }]
-                                                                };
-
-                                                                myChart.setOption(option);
-                                                            </script>
-                                                        </div>
-                                                        <div id="linec" class="layui-tab-item" style="width: 800px;height: 319px;">
-                                                            <script>
-                                                                var myChart = echarts.init(document.getElementById('linec'));
-                                                                option = {
-                                                                    xAxis: {
-                                                                        type: 'category',
-                                                                        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-                                                                    },
-                                                                    yAxis: {
-                                                                        type: 'value'
-                                                                    },
-                                                                    series: [{
-                                                                        data: [80, 92, 901, 4, 90, 30, 20],
-                                                                        type: 'line'
-                                                                    }]
-                                                                };
-
-                                                                myChart.setOption(option);
-                                                            </script>
-                                                        </div>
-                                                        <div id="lined" class="layui-tab-item" style="width: 800px;height: 319px;">
-                                                            <script>
-                                                                var myChart = echarts.init(document.getElementById('lined'));
-                                                                option = {
-                                                                    xAxis: {
-                                                                        type: 'category',
-                                                                        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-                                                                    },
-                                                                    yAxis: {
-                                                                        type: 'value'
-                                                                    },
-                                                                    series: [{
-                                                                        data: [8, 92, 9, 4, 190, 130, 120],
-                                                                        type: 'line'
-                                                                    }]
-                                                                };
-
-                                                                myChart.setOption(option);
-                                                            </script>
-                                                        </div>
-                                                        <div id="linee" class="layui-tab-item" style="width: 800px;height: 319px;">
-                                                            <script>
-                                                                var myChart = echarts.init(document.getElementById('linee'));
-                                                                option = {
-                                                                    xAxis: {
-                                                                        type: 'category',
-                                                                        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-                                                                    },
-                                                                    yAxis: {
-                                                                        type: 'value'
-                                                                    },
-                                                                    series: [{
-                                                                        data: [820, 932, 901, 934, 120, 130, 130],
-                                                                        type: 'line'
-                                                                    }]
-                                                                };
-
-                                                                myChart.setOption(option);
-                                                            </script>
-                                                        </div>
-                                                        <div id="linef" class="layui-tab-item" style="width: 800px;height: 319px;">
-                                                            <script>
-                                                                var myChart = echarts.init(document.getElementById('linef'));
-                                                                option = {
-                                                                    xAxis: {
-                                                                        type: 'category',
-                                                                        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-                                                                    },
-                                                                    yAxis: {
-                                                                        type: 'value'
-                                                                    },
-                                                                    series: [{
-                                                                        data: [80, 92, 91, 94, 190, 130, 120],
-                                                                        type: 'line'
-                                                                    }]
-                                                                };
-
-                                                                myChart.setOption(option);
-                                                            </script>
-                                                        </div>
-                                                        <div id="lineg" class="layui-tab-item" style="width: 800px;height: 319px;">
-                                                            <script>
-                                                                var myChart = echarts.init(document.getElementById('lineg'));
-                                                                option = {
-                                                                    xAxis: {
-                                                                        type: 'category',
-                                                                        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-                                                                    },
-                                                                    yAxis: {
-                                                                        type: 'value'
-                                                                    },
-                                                                    series: [{
-                                                                        data: [20, 32, 1, 34, 290, 330, 320],
-                                                                        type: 'line'
-                                                                    }]
-                                                                };
-
-                                                                myChart.setOption(option);
-                                                            </script>
-                                                        </div>
-                                                        <div id="lineh" class="layui-tab-item" style="width: 800px;height: 319px;">
-                                                            <script>
-                                                                var myChart = echarts.init(document.getElementById('lineh'));
-                                                                option = {
-                                                                    xAxis: {
-                                                                        type: 'category',
-                                                                        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-                                                                    },
-                                                                    yAxis: {
-                                                                        type: 'value'
-                                                                    },
-                                                                    series: [{
-                                                                        data: [82, 93, 90, 93, 129, 133, 132],
-                                                                        type: 'line'
-                                                                    }]
-                                                                };
-
-                                                                myChart.setOption(option);
-                                                            </script>
+                                                        <div id="line" class="layui-tab-item layui-show" style="width: 800px;height: 300px;">
                                                         </div>
                                                     </div>
                                                 </div>
-                                                @*<div class="l">
-                                                    <div id="LineIndicators" class="filter pro-type-select">
-                                                        <ul class="group">
-                                                            <li data="pv_count" class="first cur">浏览量(PV)</li>
-                                                            <li data="visitor_count" class=" ">访客数(UV)</li>
-                                                            <li data="custom" id="LineIndicatorsOther" class="last cst-02" style="position: relative;">
-                                                                <span class="display-label">其它</span><span class="btn-arrow">&nbsp;</span>
-                                                                <span class="cst-dp-header">                         <span class="cst-dp-desc"></span>                         <span class="cst-dp-label" title=""></span>                         <span class="cst-dp-arrow btn-arrow"></span>                    </span><ul class="cst-dp-body hm-dropdown-shadow hm-scroll" style="display: none"><li data="ip_count" class="cst-dp-item ">                              <a title="IP数" class="ellipsis cst-dp-item-label">IP数</a>                          </li><li data="bounce_ratio" class="cst-dp-item ">                              <a title="跳出率" class="ellipsis cst-dp-item-label">跳出率</a>                          </li><li data="avg_visit_time" class="cst-dp-item ">                              <a title="平均访问时长" class="ellipsis cst-dp-item-label">平均访问时长</a>                          </li><li data="trans_count" class="cst-dp-item ">                              <a title="转化次数" class="ellipsis cst-dp-item-label">转化次数</a>                          </li></ul>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="r">
-                                                    <div class="overview-flash-indicator-compare" id="check-option-container" style="display: block;">
-                                                        <span class="label">对比：</span>
-                                                        <label class="first">
-                                                            <!--<div id="set-source-type-checkbox" class="form-style checkbox "></div>-->
-                                                            <input type="checkbox" checked="checked" data="[1,1]" id="last-day" class="custom-checkbox">
-                                                            <label for="last-day" class="cmp-label">前一日</label>
-                                                        </label>
-                                                        <label class="last">
-                                                            <!--<div id="set-source-type-checkbox" class="form-style checkbox "></div>-->
-                                                            <input type="checkbox" data="[2,2]" id="last-week" class="custom-checkbox">
-                                                            <label for="last-week" class="cmp-label">上周同期</label>
-                                                        </label>
-                                                    </div>
-                                                </div>*@
                                             </div>
-
-                                            @*<div id="line" style="width: 800px;height: 316px;">
-                                                <div class="hm-charts-html">
-                                                    <div class="hm-charts-hint"
-                                                         style="position: absolute; font: 12px &quot;Microsoft Yahei&quot;, Helvetica, STHeitiSC-Light, Arial, sans-serif; left: 0px; top: 0px; width: 100%; height: 100%; text-align: center; background-color: rgb(255, 255, 255); opacity: 0.8; transition: all 0.4s ease 0s; display: none;">
-                                                        <div class="hm-charts-hint-content"
-                                                             style="position: absolute; top: 50%; left: 48%;">
-                                                            <span class="hm-charts-hint-text"
-                                                                  style="vertical-align: top; line-height: 24px; margin-left: -60px;">
-                                                                <img src=""
-                                                                     style="vertical-align:bottom;margin-right:5px"><span>数据正在加载中...</span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>*@
                                         </div>
                                     </div>
                                     <div class="right" id="search-word-container">
@@ -1073,7 +803,7 @@
                                             <div class="title clearfix">
                                                 <div class="l">Top10关键词</div>
                                                 <div class="r">
-                                                    <a class="detail-report-btn" href="/web/26754769/pro/product?siteId=12774508&amp;flag=fcWord"
+                                                    <a class="detail-report-btn" href="/web/26754769/pro/product?siteId={{siteId}}&amp;flag=fcWord"
                                                        id="event-monitor-word"></a>
                                                 </div>
                                             </div>
@@ -1082,12 +812,11 @@
                                                     <thead>
                                                         <tr>
                                                             <td class="al url">关键词</td>
-                                                            <td class="ar" width="20%">消费</td>
+                                                            <td class="ar" width="20%">次数</td>
                                                             <td class="ratio" width="20%">占比</td>
                                                         </tr>
                                                     </thead>
-                                                    <tbody>
-                                                    </tbody>
+                                                    <tbody></tbody>
                                                 </table>
                                             </div>
                                         </div>
@@ -1101,7 +830,7 @@
                                         <div class="table-grid-item">
                                             <div class="title clearfix">
                                                 <div class="l">Top10来源网站</div>
-                                                <div class="r"><a class="detail-report-btn" href="/web/26754769/source/all?viewType=site&amp;siteId=12774508">&nbsp;</a></div>
+                                                <div class="r"><a class="detail-report-btn" :href="'/web/26754769/overview/index?siteId=' + items">&nbsp;</a></div>
                                             </div>
                                             <div class="table-data clearfix">
                                                 <table cellpadding="0" cellspacing="0" class="table-layout-01">
@@ -1112,54 +841,7 @@
                                                             <td class="ratio" width="20%">占比</td>
                                                         </tr>
                                                     </thead>
-                                                    <tbody id="source-site-container">
-                                                        @*<tr>
-                                                            <td class="al url">
-                                                                <span class="ellipsis" title="www.shvalnet.com">www.shvalnet.com</span>
-                                                            </td>
-                                                            <td class="ar">15</td>
-                                                            <td class="ratio">
-                                                                <div style="background-color:#dcebfe; width:53.57%;"
-                                                                     title="53.57%">
-                                                                    53.57%
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="al url">
-                                                                <span class="ellipsis" title="直接访问">直接访问</span>
-                                                            </td>
-                                                            <td class="ar">6</td>
-                                                            <td class="ratio">
-                                                                <div style="background-color:#dcebfe; width:21.43%;"
-                                                                     title="21.43%">
-                                                                    21.43%
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="al url">
-                                                                <span class="ellipsis" title="360搜索">360搜索</span>
-                                                            </td>
-                                                            <td class="ar">5</td>
-                                                            <td class="ratio">
-                                                                <div style="background-color:#dcebfe; width:17.86%;"
-                                                                     title="17.86%">
-                                                                    17.86%
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="al url"><span class="ellipsis" title="百度">百度</span></td>
-                                                            <td class="ar">3</td>
-                                                            <td class="ratio">
-                                                                <div style="background-color:#dcebfe; width:10.71%;"
-                                                                     title="10.71%">
-                                                                    10.71%
-                                                                </div>
-                                                            </td>
-                                                        </tr>*@
-                                                    </tbody>
+                                                    <tbody id="source-site-container"></tbody>
                                                 </table>
                                             </div>
                                         </div>
@@ -1169,7 +851,7 @@
                                             <div class="title clearfix">
                                                 <div class="l">Top10入口页面</div>
                                                 <div class="r">
-                                                    <a class="detail-report-btn" href="/web/26754769/visit/landingpage?siteId=12774508">&nbsp;</a>
+                                                    <a class="detail-report-btn" :href="'/web/26754769/overview/index?siteId=' + items">&nbsp;</a>
                                                 </div>
                                             </div>
                                             <div class="table-data clearfix">
@@ -1196,7 +878,7 @@
                                             <div class="title clearfix">
                                                 <div class="l">Top10受访页面</div>
                                                 <div class="r">
-                                                    <a class="detail-report-btn" href="/web/26754769/visit/toppage?siteId=12774508">&nbsp;</a>
+                                                    <a class="detail-report-btn" :href="'/web/26754769/overview/index?siteId=' + items">&nbsp;</a>
                                                 </div>
                                             </div>
                                             <div class="table-data clearfix">
@@ -1223,7 +905,7 @@
                                             <div class="title clearfix">
                                                 <div class="l">新老访客</div>
                                                 <div class="r">
-                                                    <a class="detail-report-btn" href="/web/26754769/visit/type?siteId=12774508">&nbsp;</a>
+                                                    <a class="detail-report-btn" :href="'/web/26754769/overview/index?siteId=' + items">&nbsp;</a>
                                                 </div>
                                             </div>
                                             <div class="table-data clearfix" id="visitor-type-container">    <div class="visit-type-summary clearfix"><table><tbody><tr><td class="visit-type-icon"><div></div></td><td class="visit-type-new"><div><div class="visit-type-summary-title">新访客</div><div class="visit-type-summary-data">95<span class="ratil-unit">%</span></div></div></td><td class="visit-type-old"><div><div class="visit-type-summary-title">老访客</div><div class="visit-type-summary-data">5<span class="ratil-unit">%</span></div></div></td></tr></tbody></table></div><div class="visit-type-detail"><table><tbody><tr><td class="visit-type-detail-name">浏览量</td><td class="visit-type-detail-new">26</td><td class="visit-type-detail-old">1</td></tr><tr><td class="visit-type-detail-name">访客数</td><td class="visit-type-detail-new">19</td><td class="visit-type-detail-old">1</td></tr><tr><td class="visit-type-detail-name">跳出率</td><td class="visit-type-detail-new">66.67%</td><td class="visit-type-detail-old">--</td></tr><tr><td class="visit-type-detail-name">平均访问时长</td><td class="visit-type-detail-new">00:01:52</td><td class="visit-type-detail-old">--</td></tr><tr><td class="visit-type-detail-name">平均访问页数</td><td class="visit-type-detail-new">1.37</td><td class="visit-type-detail-old">1</td></tr></tbody></table></div></div>
@@ -1237,24 +919,11 @@
                                 <div class="left">
                                     <div class="table-grid-item">
                                         <div class="title clearfix">
-                                            <div class="l">访客属性-年龄分布</div>
-                                            <div class="r"><a id="event-monitor-age" class="detail-report-btn" href="/web/26754769/visit/attribute?siteId=12774508">&nbsp;</a></div>
+                                            <div class="l">网络设备</div>
+                                            <div class="r"><a id="event-monitor-age" class="detail-report-btn" :href="'/web/26754769/overview/index?siteId=' + items">&nbsp;</a></div>
                                         </div>
 
-                                        <div id="age-bar" style="width: 800px;height: 339px;">
-                                            <div class="hm-charts-html">
-                                                <div class="hm-charts-hint"
-                                                     style="position: absolute; font: 12px &quot;Microsoft Yahei&quot;, Helvetica, STHeitiSC-Light, Arial, sans-serif; left: 0px; top: 0px; width: 100%; height: 100%; text-align: center; background-color: rgb(255, 255, 255); opacity: 0.8; transition: all 0.4s ease 0s; display: none;">
-                                                    <div class="hm-charts-hint-content"
-                                                         style="position: absolute; top: 50%; left: 48%;">
-                                                        <span class="hm-charts-hint-text"
-                                                              style="vertical-align: top; line-height: 24px; margin-left: -60px;">
-                                                            <img style="vertical-align:bottom;margin-right:5px" src="">
-                                                            <span>数据正在加载中...</span>
-                                                        </span>
-                                                    </div>
-                                                </div><div class="hm-charts-tooltip" style="position: absolute; font: 12px &quot;Microsoft Yahei&quot;, Helvetica, STHeitiSC-Light, Arial, sans-serif; left: 468.5px; top: 271px; min-width: 198px; border-width: 1px; border-style: solid; border-color: rgb(214, 215, 216); border-radius: 4px; padding: 0px; background-color: rgb(255, 255, 255); opacity: 0; box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 5px; transition: all 0.3s ease 0s; pointer-events: none;"><div class="hm-charts-tooltip-header"><span class="hm-charts-tooltip-header-category">55岁以上</span></div><div class="hm-charts-tooltip-body"><p class="hm-charts-tooltip-item"><span class="hm-charts-tooltip-item-icon" style="color:#4fa8f9">■ </span><span class="hm-charts-tooltip-item-label">年龄分布 </span><span class="hm-charts-tooltip-item-value">0.75%</span></p></div></div>
-                                            </div>
+                                        <div id="network-device-bar" style="width: 800px;height: 339px;">
                                         </div>
                                     </div>
                                 </div>
@@ -1262,7 +931,7 @@
                                     <div class="table-grid-item">
                                         <div class="title clearfix">
                                             <div class="l">地域分布</div>
-                                            <div class="r"><a id="event-monitor-area" class="detail-report-btn" href="/web/26754769/visit/district?siteId=12774508">&nbsp;</a></div>
+                                            <div class="r"><a id="event-monitor-area" class="detail-report-btn" :href="'/web/26754769/overview/index?siteId=' + items">&nbsp;</a></div>
                                         </div>
                                         <div id="china-map" style="height: 320px; width: 800px;margin: 0 auto">
                                         </div>
@@ -1287,7 +956,12 @@
         </div>
     </div>
     <script src="~/Scripts/jquery-1.10.2.js"></script>
-    <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+    <script src="~/Scripts/Vue.js"></script>
+    <script src="~/Scripts/vue.min.js"></script>
+    <script type="text/javascript">
+        //动态拼接siteId渲染
+        var datatable = new Vue({ el: '.body', data: { items: '', }, });
+    </script>
     <script type="text/javascript">
         function timeConverte(time_distance) {
             // 天时分秒换算
@@ -1319,22 +993,30 @@
     </script>
     <script type="text/javascript">
         var day = "0";
+        var provic = [];
+        var toCash = [];
+        var chartData = "", type = "pv";
+        var reportType = "pv", style = "value", formatter = "";
+        var dataChart = [];
+        var lastResult = [];
         $(function () {
             var content = "";
             var error = "";
             var loading = "";
+
             $.ajax({
                 async: true,
                 url: "/Home/GetReportData/",
                 type: 'GET',
                 dataType: "json",
                 beforeSend: function () {
-                        $("#IndexPreviewTableList>tbody").append("<tr class='preview-loading'><td class='empty-td' colspan='8' align='middle' style='text-align: center;height: 200px;'><img src='/img/loading.gif' style='vertical-align: middle;margin-right: 5px;' />数据正在加载中...</td></tr>");
+                    $("#IndexPreviewTableList>tbody").append("<tr class='preview-loading'><td class='empty-td' colspan='8' align='middle' style='text-align: center;height: 200px;'><img src='/img/loading.gif' style='vertical-align: middle;margin-right: 5px;' />数据正在加载中...</td></tr>");
                 },
                 complete: function () {
                     $(".preview-loading").remove();
                 },
                 success: function (data) {
+                    $(".preview-loading").remove();
                     if (data != null) {
                         //今日
                         content += "<tr class='highlight'><td class='normal'>今日</td><td class=''>" + data.today.WebPv + "</td><td class=''>" + data.today.WebUv + "</td>" + ""
@@ -1375,17 +1057,24 @@
                         content += "<tr><td class='empty-td' colspan='8' align='middle' style='text-align: center;height: 200px;'>暂无数据</td></tr>";
                     }
                     $('#IndexPreviewTableList>tbody').append(content);
+                    datatable.items = data.siteId;
+                    $('.account').html("Hi&nbsp;" + data.users);
+                    console.log(data.users);
+                    console.log(user);
                 },
-                error: function () {
+                error: function (e) {
+                    console.log(e);
                     error = "<tr><td class='empty-td' colspan='8' align='middle' style='text-align: center;height: 200px;'>暂无数据</td></tr>";
                     $('#IndexPreviewTableList>tbody').append(error);
                 }
             })
             Report(day);
+            tendency(reportType);
         })
-        //最近七天事件
+        //最近事件
         function Report(date) {
             var content = "";
+            day = date;
             $.ajax({
                 async: true,
                 url: "/Home/PostReportData",
@@ -1395,10 +1084,14 @@
                 beforeSend: function () {
                     $("#source-site-container").append("<tr class='source-loading'><td class='empty-td' colspan='8' align='middle' style='text-align: center;height: 200px;'><img src='/img/loading.gif' style='vertical-align: middle;margin-right: 5px;' />数据正在加载中...</td></tr>");
                     $("#search-word-container tbody").append("<tr class='search-loading'><td class='empty-td' colspan='8' align='middle' style='text-align: center;height: 200px;'><img src='/img/loading.gif' style='vertical-align: middle;margin-right: 5px;' />数据正在加载中...</td></tr>");
+                    $("#network-device-bar").append("<div class='network-loading' style='margin-left: 40%;margin-top: 140px;'><td class='empty-td' colspan='8' align='middle' style='text-align: center;height: 200px;'><img src='/img/loading.gif' style='vertical-align: middle;margin-right: 5px;' />数据正在加载中...</div></div>");
+                    $("#china-map").append("<div class='map-loading' style='margin-left: 40%;margin-top: 140px;'><td class='empty-td' colspan='8' align='middle' style='text-align: center;height: 200px;'><img src='/img/loading.gif' style='vertical-align: middle;margin-right: 5px;' />数据正在加载中...</div></div>");
                 },
                 complete: function () {
-                    $(".source-loading").remove();
-                    $(".search-loading").remove();
+                    $("#source-site-container .source-loading").remove();
+                    $("#search-word-container tbody .search-loading").remove();
+                    $("#network-device-bar .network-loading").remove();
+                    $("#china-map .map-loading").remove();
                 },
                 success: function (data) {
                     $("#source-site-container").html("");
@@ -1407,10 +1100,12 @@
                             + "<td class='ar'>" + data.sourceSite[i].Id + "</td><td class='ratio'><div style='background-color:#dcebfe; width:" + data.sourceSite[i].SearchTerms + "" + ""
                             + ";'title='" + data.sourceSite[i].SearchTerms + "'>" + data.sourceSite[i].SearchTerms + "</div></td></tr>";
                     }
-                    if (content == "") {
+                    if (data.sourceSite.length == 0) {
+                        $("#source-site-container").html("");
                         $("#source-site-container").append("<tr><td class='empty-td' colspan='3' align='middle' style='text-align: center;'>暂无数据</td></tr>");
                     }
                     else {
+                        $("#source-site-container").html("");
                         $("#source-site-container").append(content);
                     }
                     content = "";
@@ -1419,20 +1114,447 @@
                             + "<td class='ar'>" + data.keyword[j].Id + "</td><td class='ratio'><div style='background-color:#dcebfe; width:" + data.keyword[j].VisitPage + "" + ""
                             + ";'title='" + data.keyword[j].VisitPage + "'>" + data.keyword[j].VisitPage + "</div></td></tr>";
                     }
-                    if (content == "") {
+                    if (data.keyword.length == 0) {
+                        $("#search-word-container tbody").html("");
                         $("#search-word-container tbody").append("<tr><td class='empty-td' colspan='3' align='middle' style='text-align: center;'>暂无数据</td></tr>");
                     }
                     else {
                         $("#search-word-container tbody").html("");
                         $("#search-word-container tbody").append(content);
                     }
+                    if (data.territory.length == 0) {
+                        $("#china-map").html("");
+                        $("#china-map").append("<div style='margin-left: 0%;margin-top: 140px;'><div class='empty-td' colspan='3' align='middle' style='text-align: center;'>暂无数据</div></div>");
+                    }
+                    else {
+                        provic = [];
+                        var proportion = [];
+                        for (var i = 0; i < data.territory.length; i++) {
+                            provic.push({
+                                name: '' + data.territory[i].Address,
+                                value: data.territory[i].Id
+                            });
+                            proportion.push({
+                                name: '' + data.territory[i].Address,
+                                value: data.territory[i].VisitPage
+                            });
+                        }
+                        mapChart(provic, proportion);
+                    }
+                    if (data.networkDevice.length == 0) {
+                        $("#network-device-bar").html("");
+                        $("#network-device-bar").append("<div style='margin-left: 0%;margin-top: 140px;'><div class='empty-td' colspan='3' align='middle' style='text-align: center;'>暂无数据</div></div>");
+                    }
+                    else {
+                        provic = [];
+                        proportion = [];
+                        for (var i = 0; i < data.networkDevice.length; i++) {
+                            proportion.push({
+                                value: '' + data.networkDevice[i].DeviceType,
+                                name: data.networkDevice[i].VisitPage
+                            });
+                            provic.push({
+                                name: '' + data.networkDevice[i].DeviceType,
+                                value: data.networkDevice[i].Id
+                            });
+                        }
+                        networkDeviceBar(provic, proportion);
+                    }
                 },
                 error: function () {
                     error = "<tr><td class='empty-td' colspan='3' align='middle' style='text-align: center;'>暂无数据</td></tr>";
                     $('#source-site-container').append(error);
                     $("#search-word-container tbody").append(error);
+                    $("#network-device-bar").append(error);
+                    $("#china-map").append(error);
+                }
+            });
+            //趋势图
+            $.ajax({
+                async: true,
+                url: "/Home/PostChart",
+                data: { date },
+                type: "Post",
+                dataType: "json",
+                beforeSend: function () {
+                    $("#line").append("<div class='line-loading' style='margin-top: -180px;z-index: 10000;'><div class='empty-td' colspan='8' align='middle' style='text-align: center;height: 200px;'><img src='/img/loading.gif' style='vertical-align: middle;margin-right: 5px;' />数据正在加载中...</div></div>");
+                },
+                complete: function () {
+                    $(".line-loading").remove();
+                },
+                success: function (data) {
+                    $(".layui-tab-content").css({ "display": "block" });
+                    chartData = data.chart;
+                    var dataChart = [];
+                    for (var j = 0; j < data.chart.length; j++) {
+                        dataChart.push(data.chart[j].WebPv);
+                    }
+                    if (day == "0" || day == "-1") {
+                        lastResult = [];
+                        for (var i = 0; i < chartData.length; i++) {
+                            lastResult.push(chartData[i].WebDomain);
+                        }
+                    }
+                    else {
+                        lastResult = [];
+                        for (var i = 0; i < chartData.length; i++) {
+                            lastResult.push(chartData[i].WebDomain);
+                        }
+                    }
+                    if (type == "pv") {
+                        dataChart = [];
+                        style = "value";
+                        formatter = "";
+                        for (var i = 0; i < chartData.length; i++) {
+                            dataChart.push(chartData[i].WebPv)
+                        }
+                    }
+                    else if (type == "uv") {
+                        dataChart = [];
+                        style = "value";
+                        formatter = "";
+                        for (var i = 0; i < chartData.length; i++) {
+                            dataChart.push(chartData[i].WebUv)
+                        }
+                    }
+                    else if (type == "ip") {
+                        dataChart = [];
+                        style = "value";
+                        formatter = "";
+                        for (var i = 0; i < chartData.length; i++) {
+                            dataChart.push(chartData[i].IpCount)
+                        }
+                    }
+                    else if (type == "rate") {
+                        dataChart = [];
+                        style = "value";
+                        formatter = "%";
+                        for (var i = 0; i < chartData.length; i++) {
+                            dataChart.push(chartData[i].BounceRate)
+                        }
+                    }
+                    else if (type == "ave") {
+                        dataChart = [];
+                        style = "value";
+                        formatter = "s";
+                        for (var i = 0; i < chartData.length; i++) {
+                            dataChart.push(chartData[i].WebTS)
+                        }
+                    }
+                    var myChart = echarts.init(document.getElementById('line'));
+                    option = {
+                        tooltip: {
+                            name: '' + type,
+                            trigger: 'item',
+                            formatter: '{b}:\n{c}' + formatter
+                        },
+                        grid: {
+                            left: '3%',
+                            right: '4%',
+                            bottom: '3%',
+                            containLabel: true
+                        },
+                        toolbox: {
+                            feature: {
+                                saveAsImage: {}
+                            }
+                        },
+                        xAxis: {
+                            type: 'category',
+                            boundaryGap: false,
+                            data: lastResult
+                        },
+                        yAxis: {
+                            type: '' + style,
+                            axisLabel: { show: true, interval: 'auto', formatter: '{value}' + formatter }, show: true
+                        },
+                        series: [
+                            {
+                                name: '' + type,
+                                type: 'line',
+                                itemStyle: {
+                                    normal: {
+                                        label: {
+                                            show: false,
+                                            position: 'top',
+                                            formatter: '{b}:\n{c}' + formatter
+                                        }
+                                    }
+                                },
+                                data: dataChart
+                            }
+                        ]
+                    };
+                    myChart.setOption(option);
+                },
+                error: function () {
+                    $(".layui-tab-content").css({ "display": "none" });
+                    $(".layui-tab-content").append("<div><div class='empty-td' colspan='3' align='middle' style='text-align: center;'>暂无数据</div></div>");
                 }
             })
+        }
+    </script>
+    <script type="text/javascript">
+        function tendency(data) {
+            type = data.type;
+            if (day == "0" || day == "-1") {
+                lastResult = [];
+                for (var i = 0; i < chartData.length; i++) {
+                    lastResult.push(chartData[i].WebDomain);
+                }
+            }
+            else {
+                lastResult = [];
+                for (var i = 0; i < chartData.length; i++) {
+                    lastResult.push(chartData[i].WebDomain);
+                }
+            }
+            if (type == "pv") {
+                dataChart = [];
+                style = "value";
+                formatter = "";
+                for (var i = 0; i < chartData.length; i++) {
+                    dataChart.push(chartData[i].WebPv)
+                }
+            }
+            else if (type == "uv") {
+                dataChart = [];
+                style = "value";
+                formatter = "";
+                for (var i = 0; i < chartData.length; i++) {
+                    dataChart.push(chartData[i].WebUv)
+                }
+            }
+            else if (type == "ip") {
+                dataChart = [];
+                style = "value";
+                formatter = "";
+                for (var i = 0; i < chartData.length; i++) {
+                    dataChart.push(chartData[i].IpCount)
+                }
+            }
+            else if (type == "rate") {
+                dataChart = [];
+                style = "value";
+                formatter = "%";
+                for (var i = 0; i < chartData.length; i++) {
+                    dataChart.push(chartData[i].BounceRate)
+                }
+            }
+            else if (type == "ave") {
+                dataChart = [];
+                style = "value";
+                formatter = "s";
+                for (var i = 0; i < chartData.length; i++) {
+                    dataChart.push(chartData[i].WebTS)
+                }
+            }
+            var myChart = echarts.init(document.getElementById('line'));
+            option = {
+                tooltip: {
+                    name: '' + type,
+                    trigger: 'item',
+                    formatter: '{b}:\n{c}' + formatter
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                toolbox: {
+                    feature: {
+                        saveAsImage: {}
+                    }
+                },
+                xAxis: {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: lastResult
+                },
+                yAxis: {
+                    type: '' + style,
+                    axisLabel: { show: true, interval: 'auto', formatter: '{value}' + formatter }, show: true
+
+                },
+                series: [
+                    {
+                        name: '' + type,
+                        type: 'line',
+                        itemStyle: {
+                            normal: {
+                                label: {
+                                    show: false,
+                                    position: 'top',
+                                    formatter: '{b}:\n{c}' + formatter
+                                }
+                            }
+                        },
+                        data: dataChart
+                    }
+                ]
+            };
+            myChart.setOption(option);
+        }
+    </script>
+    <script type="text/javascript">
+        function mapChart(provic, proportion) {
+            var myChart = echarts.init(document.getElementById('china-map'));
+            option = {
+                tooltip: {
+                    trigger: 'item',
+                    formatter: function (params) {
+                        var res = "";
+                        if (params.value) {
+                            res = params.name + '：' + params.value;
+                        } else {
+                            res = params.name + '：' + '-';
+                        }
+                        var datas = proportion;
+                        for (var i = 0; i < datas.length; i++) {
+                            if (params.name == datas[i].name) {
+                                res = res + '<br/>占比：' + datas[i].value;
+                                break;
+                            }
+                            else {
+                                res = res + '<br/>占比：' + '-';
+                            }
+                        }
+                        return res;
+                    }
+                },
+                visualMap: {
+                    min: 0,
+                    max: 250000,
+                    left: 'left',
+                    top: 'bottom',
+                    text: ['高', '低'],           // 文本，默认为数值文本
+                    calculable: true
+                },
+                toolbox: {
+                    show: true,
+                    orient: 'vertical',
+                    left: 'right',
+                    top: 'center',
+                    feature: {
+                        dataView: { readOnly: false },
+                        restore: {},
+                        saveAsImage: {}
+                    }
+                },
+                series: [
+                    {
+                        name: '地域分布',
+                        type: 'map',
+                        mapType: 'china',
+                        roam: false,
+                        label: {
+                            normal: {
+                                show: false
+                            },
+                            emphasis: {
+                                show: false
+                            }
+                        },
+                        data: provic
+                    },
+                    {
+                        name: '占比',
+                        type: 'map',
+                        mapType: 'china',
+                        roam: false,
+                        label: {
+                            normal: {
+                                show: false
+                            },
+                            emphasis: {
+                                show: false
+                            }
+                        },
+                        data: proportion
+                    }
+                ]
+            };
+            myChart.setOption(option);
+        }
+        function networkDeviceBar(provic, proportion) {
+            var myChart = echarts.init(document.getElementById('network-device-bar'));
+            option = {
+                color: ['#C23531'],
+                tooltip: {
+                    trigger: 'item',
+                    axisPointer: {
+                        type: 'shadow'
+                    },
+                    formatter: function (params) {
+                        var res = "";
+                        if (params.value != 0) {
+                            res = params.name + '：' + params.value;
+                        } else {
+                            res = params.name + '：' + '-';
+                        }
+                        var datas = proportion;
+                        for (var i = 0; i < datas.length; i++) {
+                            if (params.name == datas[i].value) {
+                                res = res + '<br/>占比：' + datas[i].name;
+                                break;
+                            }
+                        }
+                        return res;
+                    }
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                xAxis: [
+                    {
+                        type: 'category',
+                        data: proportion,
+                        axisTick: {
+                            alignWithLabel: true
+                        }
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value',
+                        axisLabel: {
+                            //设置y轴数值为%
+                            formatter: '{value}',
+                        }
+                    }
+                ],
+                series: [
+                    {
+                        name: '',
+                        type: 'bar',
+                        barWidth: '30%',
+                        label: {
+                            normal: {
+                                show: true,
+                                position: 'top'
+                            }
+                        },
+                        itemStyle: {
+                            normal: {
+                                // 随机显示
+                                //color:function(d){return "#"+Math.floor(Math.random()*(256*256*256-1)).toString(16);}
+
+                                // 定制显示（按顺序）
+                                color: function (params) {
+                                    var colorList = ['#B74AE5', '#0AAF9F', '#E89589', '#16A085', '#4A235A', '#C39BD3 ', '#F9E79F', '#BA4A00', '#ECF0F1', '#616A6B', '#EAF2F8', '#4A235A', '#3498DB'];
+                                    return colorList[params.dataIndex]
+                                }
+                            },
+                        },
+                        data: provic
+                    }
+                ]
+            };
+            myChart.setOption(option);
         }
     </script>
     <script>

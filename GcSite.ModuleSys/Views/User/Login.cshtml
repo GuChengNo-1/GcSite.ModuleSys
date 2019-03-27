@@ -552,7 +552,7 @@
                     dataType: 'json',
                     success: function (data) {
                         if (data.success == 1) {
-                            window.location.href = "/Home/Report?id=" + data.id;
+                            window.location.href = "/Home/Index?userId=" + data.id;
                         }
                         else if (data.success == 2) {
                             alert("用户名或密码错误！");
