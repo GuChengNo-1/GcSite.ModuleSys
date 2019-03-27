@@ -1490,26 +1490,6 @@
                     $("#visitor-type-container").html("").append(error);
                 }
             });
-            //content = "";
-            //$.ajax({
-            //    as: true,
-            //    url: '/Home/NewOldVisit',
-            //    data: { date },
-            //    type: 'post',
-            //    dataType: 'json',
-            //    beforeSend: function () {
-            //        $("#visitor-type-container").html("").append("<tr class='type-loading'><td class='empty-td' colspan='8' align='middle' style='text-align: center;height: 200px;'><img src='/img/loading.gif' style='vertical-align: middle;margin-right: 5px;' />数据正在加载中...</td></tr>");
-            //    },
-            //    complete: function () {
-            //        $(".type-loading").remove();
-            //    },
-            //    success: function (data) {
-            //        alert(content);
-            //        content = "<div class=\"visit-type-summary clearfix\"><table><tbody><tr><td class=\"visit-type-icon\"><div></div></td><td class=\"visit-type-new\"><div><div class=\"visit-type-summary-title\">新访客</div><div class=\"visit-type-summary-data\">" + data.newRatio + "<span class=\"ratil-unit\">%</span></div></div></td><td class=\"visit-type-old\"><div><div class=\"visit-type-summary-title\">老访客</div><div class=\"visit-type-summary-data\">" + data.oldRatio + "<span class=\"ratil-unit\">%</span></div></div></td></tr></tbody></table ></div > <div class=\"visit-type-detail\"><table><tbody><tr><td class=\"visit-type-detail-name\">浏览量</td><td class=\"visit-type-detail-new\">" + data.newtoday.WebPv + "</td><td class=\"visit-type-detail-old\">" + data.oldtoday.WebPv + "</td></tr><tr><td class=\"visit-type-detail-name\">访客数</td><td class=\"visit-type-detail-new\">" + data.newtoday.WebUv + "</td><td class=\"visit-type-detail-old\">" + data.oldtoday.WebUv + "</td></tr><tr><td class=\"visit-type-detail-name\">跳出率</td><td class=\"visit-type-detail-new\">" + data.newtoday.BounceRate + "</td><td class=\"visit-type-detail-old\">" + data.oldtoday.BounceRate + "</td></tr><tr><td class=\"visit-type-detail-name\">平均访问时长</td><td class=\"visit-type-detail-new\">" + data.newtoday.WebTS + "</td><td class=\"visit-type-detail-old\">" + data.oldtoday.WebTS + "</td></tr><tr><td class=\"visit-type-detail-name\">平均访问页数</td><td class=\"visit-type-detail-new\">" + data.newtoday.IpCount + "</td><td class=\"visit-type-detail-old\">" + data.oldtoday.IpCount + "</td></tr></tbody></table></div>";
-            //        $("#visitor-type-container").html("").append(content);
-            //        alert(content);
-            //    }
-            //});
         }
     </script>
     <script>
