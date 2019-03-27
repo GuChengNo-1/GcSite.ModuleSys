@@ -208,7 +208,7 @@ namespace GcSite.ModuleSys.Controllers
                 //今  昨
                 if (date == "0" || date == "-1")
                 {
-                    date == "0" ? "0" : date;
+                    date = date == "0" ? "0" : date;
                     endTime = DateTime.Now.AddDays(double.Parse(date));
                     //获取当天所有时间段的条件数据
                     for (int i = 0; i < 24; i++)
