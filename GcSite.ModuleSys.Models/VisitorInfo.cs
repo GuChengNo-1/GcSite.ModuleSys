@@ -28,13 +28,13 @@ namespace GcSite.ModuleSys.Models
         /// </summary>
         public string Address { get; set; }
         /// <summary>
-        /// 搜索引擎
-        /// </summary>
-        public string VisitSE { get; set; }
-        /// <summary>
         /// pv当前关键字
         /// </summary>
         public string SearchTerms { get; set; }
+        /// <summary>
+        /// 搜索引擎
+        /// </summary>
+        public string VisitSE { get; set; }
         /// <summary>
         /// 设备类型
         /// </summary>
