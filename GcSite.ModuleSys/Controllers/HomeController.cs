@@ -19,9 +19,9 @@ namespace GcSite.ModuleSys.Controllers
         public static int webId = 0;
         //[Route("~/Home/")]
         //[Route("~/Home/Index.html")]
-        public ActionResult Index()
+        public ActionResult Index(int siteId)
         {
-            var userList = work.CreateRepository<UserInfo>().GetList(m => m.Id == 1).FirstOrDefault();
+            var userList = work.CreateRepository<UserInfo>().GetList(m => m.Id == siteId).FirstOrDefault();
             var webList = work.CreateRepository<WebInfo>().GetList(m => m.UserInfo.Id == userList.Id).FirstOrDefault();
             ViewBag.host = webList;
             //当前日期
@@ -44,6 +44,13 @@ namespace GcSite.ModuleSys.Controllers
             };
             #endregion
             ViewBag.predict = predict;
+            var model = db.UserInfo.ToList().Where(p => p.Id == siteId);
+            string name = "";
+            foreach (var item in model)
+            {
+                name = item.UserName;
+            }
+            ViewBag.name = name;
             return View();
         }
         //[Route("~/Home/")]
@@ -143,7 +150,13 @@ namespace GcSite.ModuleSys.Controllers
             var sourceSite = SourceSiteByDay(endTime, date, webId);
             //关键词计算
             var keyword = KeywordByDay(endTime, date, webId);
-            return Json(new { sourceSite, keyword }, JsonRequestBehavior.AllowGet);
+            //Top10受访页面
+            var TopPageView = PageviewByDay(endTime, date, webId);
+            //入口页面
+            var EntryPage = EntryPageByDay(endTime, date, webId);
+            //新老访客
+            var Visiter = NewOldVisit(endTime, date, webId);
+            return Json(new { sourceSite, keyword, TopPageView, EntryPage, Visiter }, JsonRequestBehavior.AllowGet);
         }
         //[Route("~/Home/")]
         //[Route("~/Home/analysis.html")]
@@ -185,11 +198,11 @@ namespace GcSite.ModuleSys.Controllers
                     if (flow.Count == 0)
                     {
                         FlowComputer model = new FlowComputer();
-                        model.SearchTerms = vistio[i].SearchTerms; 
+                        model.SearchTerms = vistio[i].SearchTerms;
                         model.Id = vistio.Count(m => m.SearchTerms == vistio[i].SearchTerms);
                         decimal rateResult = Math.Round((decimal)model.Id / vistio.Count, 4);
                         if (rateResult >= 1) { rateResult = 1; }
-                        model.VisitPage = (rateResult * 100).ToString().Length >= 5 ? 
+                        model.VisitPage = (rateResult * 100).ToString().Length >= 5 ?
                             (rateResult * 100).ToString().Substring(0, 4) + "%" : (rateResult * 100).ToString() + "%";
                         flow.Add(model);
                     }
@@ -243,7 +256,6 @@ namespace GcSite.ModuleSys.Controllers
         public List<FlowComputer> SourceSiteByDay(DateTime endTime, string date, int site)
         {
             List<FlowComputer> flow = new List<FlowComputer>();
-
             try
             {
                 List<FlowComputer> vistio = null;
@@ -271,7 +283,7 @@ namespace GcSite.ModuleSys.Controllers
                         model.Id = vistio.Count(m => m.VisitSE == vistio[i].VisitSE);
                         decimal rateResult = Math.Round((decimal)model.Id / vistio.Count, 4);
                         if (rateResult >= 1) { rateResult = 1; }
-                        model.SearchTerms = (rateResult * 100).ToString().Length >= 5 ? 
+                        model.SearchTerms = (rateResult * 100).ToString().Length >= 5 ?
                             (rateResult * 100).ToString().Substring(0, 4) + "%" : (rateResult * 100).ToString() + "%";
                         flow.Add(model);
                     }
@@ -316,6 +328,87 @@ namespace GcSite.ModuleSys.Controllers
             return flow.OrderByDescending(m => m.Id).ToList();
         }
         /// <summary>
+        /// Top10入口页面
+        /// </summary>
+        /// <param name="endTime"></param>
+        /// <param name="date"></param>
+        /// <param name="site"></param>
+        /// <returns></returns>
+        public List<VisitorInfo> EntryPageByDay(DateTime endTime, string date, int site)
+        {
+            List<VisitorInfo> flow = new List<VisitorInfo>();
+            try
+            {
+                List<VisitorInfo> vistio = null;
+                if (date == "0" || date == "-1")
+                {
+                    date = date == "0" ? "0" : date;
+                    endTime = DateTime.Now.AddDays(double.Parse(date));
+                    vistio = work.CreateRepository<VisitorInfo>().GetList(
+                        m => DbFunctions.DiffDays(m.AccessTime, endTime) == 0 && m.WebInfo.Id == site
+                        ).ToList();
+                }
+                else
+                {
+                    vistio = work.CreateRepository<VisitorInfo>().GetList(
+                        m => DbFunctions.DiffDays(m.AccessTime, endTime) <= 0 && m.WebInfo.Id == site
+                        ).ToList();
+                }
+                //数量&占比计算
+                for (int i = 0; i < vistio.Count; i++)
+                {
+                    if (flow.Count == 0)
+                    {
+                        VisitorInfo model = new VisitorInfo();
+                        model.VisitPage = vistio[i].VisitPage;
+                        model.Id = vistio.Count(m => m.VisitPage == vistio[i].VisitPage);
+                        decimal rateResult = Math.Round((decimal)model.Id / vistio.Count, 4);
+                        if (rateResult >= 1) { rateResult = 1; }
+                        model.VisitSE = (rateResult * 100).ToString().Length >= 5 ?
+                            (rateResult * 100).ToString().Substring(0, 4) + "%" : (rateResult * 100).ToString() + "%";
+                        flow.Add(model);
+                    }
+                    else
+                    {
+                        if (flow.Count <= 10)
+                        {
+                            for (int j = 0; j < flow.Count; j++)
+                            {
+                                if (flow[j].VisitPage.Trim() != vistio[i].VisitPage.Trim())
+                                {
+                                    VisitorInfo model = new VisitorInfo();
+                                    model.VisitPage = vistio[i].VisitPage;
+                                    model.Id = vistio.Count(m => m.VisitPage == vistio[i].VisitPage);
+                                    decimal rateResult = Math.Round((decimal)model.Id / vistio.Count, 4);
+                                    if (rateResult >= 1) { rateResult = 1; }
+                                    model.VisitSE = (rateResult * 100).ToString().Length >= 5 ?
+                                        (rateResult * 100).ToString().Substring(0, 4) + "%" : (rateResult * 100).ToString() + "%";
+                                    flow.Add(model);
+                                }
+                            }
+                        }
+                    }
+                }
+                //去除冗余数据
+                for (int i = 0; i < flow.Count(); i++)
+                {
+                    for (int j = flow.Count() - 1; j > i; j--)
+                    {
+                        if (flow[i].VisitPage == flow[j].VisitPage)
+                        {
+                            flow.RemoveAt(j);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return flow = null;
+                throw ex;
+            }
+            return flow.OrderByDescending(m => m.Id).ToList();
+        }
+        /// <summary>
         /// 受访页面(数量,占比)
         /// </summary>
         /// <param name="endTime"></param>
@@ -325,7 +418,6 @@ namespace GcSite.ModuleSys.Controllers
         public List<FlowComputer> PageviewByDay(DateTime endTime, string date, int site)
         {
             List<FlowComputer> flow = new List<FlowComputer>();
-
             try
             {
                 List<FlowComputer> vistio = null;
@@ -333,18 +425,313 @@ namespace GcSite.ModuleSys.Controllers
                 {
                     date = date == "0" ? "0" : date;
                     endTime = DateTime.Now.AddDays(double.Parse(date));
-                    vistio = work.CreateRepository<FlowComputer>().GetList(m => DbFunctions.DiffDays(m.CurrentTime, endTime) == 0 && m.WebInfo.Id == site).ToList();
+                    vistio = work.CreateRepository<FlowComputer>().GetList(
+                        m => DbFunctions.DiffDays(m.CurrentTime, endTime) == 0 && m.WebInfo.Id == site
+                        ).ToList();
                 }
                 else
                 {
-                    vistio = work.CreateRepository<FlowComputer>().GetList(m => DbFunctions.DiffDays(m.CurrentTime, endTime) <= 0 && m.WebInfo.Id == site).ToList();
+                    vistio = work.CreateRepository<FlowComputer>().GetList(
+                        m => DbFunctions.DiffDays(m.CurrentTime, endTime) <= 0 && m.WebInfo.Id == site
+                        ).ToList();
+                }
+                //数量&占比计算
+                for (int i = 0; i < vistio.Count; i++)
+                {
+                    if (flow.Count == 0)
+                    {
+                        FlowComputer model = new FlowComputer();
+                        model.VisitPage = vistio[i].VisitPage;
+                        model.Id = vistio.Count(m => m.VisitPage == vistio[i].VisitPage);
+                        decimal rateResult = Math.Round((decimal)model.Id / vistio.Count, 4);
+                        if (rateResult >= 1) { rateResult = 1; }
+                        model.VisitSE = (rateResult * 100).ToString().Length >= 5 ?
+                            (rateResult * 100).ToString().Substring(0, 4) + "%" : (rateResult * 100).ToString() + "%";
+                        flow.Add(model);
+                    }
+                    else
+                    {
+                        if (flow.Count <= 10)
+                        {
+                            for (int j = 0; j < flow.Count; j++)
+                            {
+                                if (flow[j].VisitPage.Trim() != vistio[i].VisitPage.Trim())
+                                {
+                                    FlowComputer model = new FlowComputer();
+                                    model.VisitPage = vistio[i].VisitPage;
+                                    model.Id = vistio.Count(m => m.VisitPage == vistio[i].VisitPage);
+                                    decimal rateResult = Math.Round((decimal)model.Id / vistio.Count, 4);
+                                    if (rateResult >= 1) { rateResult = 1; }
+                                    model.VisitSE = (rateResult * 100).ToString().Length >= 5 ?
+                                        (rateResult * 100).ToString().Substring(0, 4) + "%" : (rateResult * 100).ToString() + "%";
+                                    flow.Add(model);
+                                }
+                            }
+                        }
+                    }
+                }
+                //去除冗余数据
+                for (int i = 0; i < flow.Count(); i++)
+                {
+                    for (int j = flow.Count() - 1; j > i; j--)
+                    {
+                        if (flow[i].VisitPage == flow[j].VisitPage)
+                        {
+                            flow.RemoveAt(j);
+                        }
+                    }
                 }
             }
             catch (Exception ex)
             {
+                return flow = null;
                 throw ex;
             }
-            return flow;
+            return flow.OrderByDescending(m => m.Id).ToList();
+        }
+        /// <summary>
+        /// 新老访客(浏览量、访客数、跳出率、平均访问时长、平均访问页数)
+        /// </summary>
+        /// <param name="endTime"></param>
+        /// <param name="date"></param>
+        /// <param name="site"></param>
+        /// <returns></returns>
+        public List<WebInfo> NewOldVisit(DateTime endTime, string date, int site)
+        {
+            List<WebInfo> list = new List<WebInfo>();
+            if (date == "0" || date == "-1")
+            {
+                //按IP地址分组
+                //List<FlowComputer> vistio = null;
+                var oldlist = db.VisitorInfo.Where(v => DbFunctions.DiffDays(v.AccessTime, endTime) == 0).GroupBy(p => p.IpAddress).Select(p => new { count = p.Count(), key = p.Key });
+                double old = 0;
+                double Xin = 0;
+                foreach (var item in oldlist)
+                {
+                    int str1 = item.count;
+                    if (str1 > 1)
+                    {
+                        //获取老访客数量
+                        old += old + 1;
+                    }
+                    else
+                    {
+                        //获取新访客数量
+                        Xin += Xin + 1;
+                    }
+                }
+                //老访客比例
+                string oldRatio = "";
+                //新访客比例
+                string newRatio = "";
+                if (old + Xin > 0)
+                {
+                    oldRatio = (old / (old + Xin) * 100).ToString("0.00");
+                    newRatio = (Xin / (old + Xin) * 100).ToString("0.00");
+                }
+                else
+                {
+                    oldRatio = "0.00";
+                    newRatio = "0.00";
+                }
+                var webList = work.CreateRepository<WebInfo>().GetList(m => m.Id == webId).Select(m => new
+                {
+                    Id = m.Id,
+                    WebPv = m.WebPv,
+                    WebUv = m.WebUv,
+                    BounceRate = m.BounceRate,
+                    IpCount = m.IpCount,
+                    WebTS = m.WebTS,
+                    WebDomain = m.WebDomain,
+                    WebConversion = m.WebConversion,
+                    WebKey = m.WebKey
+                }).FirstOrDefault();
+                ViewBag.host = webList;
+                var oldtoday = GetVistiorByDay(endTime, webList.Id);
+                //PV
+                double oPv = double.Parse(oldtoday.WebPv.ToString()) * (old / (old + Xin));
+                oldtoday.WebPv = int.Parse(oPv.ToString("0"));
+                oldtoday.WebKey = oldRatio;
+                //UV
+                double oUv = double.Parse(oldtoday.WebUv.ToString()) * (old / (old + Xin));
+                oldtoday.WebUv = int.Parse(oUv.ToString("0"));
+                //BR
+                double oBr = double.Parse(oldtoday.BounceRate.ToString().Replace("%", "").Trim()) * (old / (old + Xin));
+                oldtoday.BounceRate = oBr.ToString("0.00") + "%";
+                //TS
+                string time = oldtoday.WebTS;
+                int hour = int.Parse(time.Split(':')[0].ToString());
+                int minute = int.Parse(time.Split(':')[1].ToString());
+                int second = int.Parse(time.Split(':')[2].ToString());
+                time = (hour * 3600 + minute * 60 + second).ToString();
+                double nTs = double.Parse(time) * (old / (old + Xin));
+                TimeSpan ts = new TimeSpan(0, 0, Convert.ToInt32(nTs));
+                oldtoday.WebTS = ts.ToString();
+                //平均访问页数
+                var page = 0.00;
+                if (oUv != 0)
+                {
+                    page = db.FlowComputer.Where(v => System.Data.Entity.Core.Objects.EntityFunctions.DiffDays(v.CurrentTime, endTime) == 0).GroupBy(p => p.Id).Select(p => p.Count()).DefaultIfEmpty().Sum() * (old / ((Xin + old))) / oUv;
+                    oldtoday.WebDomain = page.ToString("0.00");
+                }
+                else
+                {
+                    oldtoday.WebDomain = "0";
+                }
+                list.Add(oldtoday);
+
+                var newtoday = GetVistiorByDay(endTime, webList.Id);
+                newtoday.WebKey = newRatio;
+                //PV
+                double nPv = double.Parse(newtoday.WebPv.ToString()) * (Xin / (old + Xin));
+                newtoday.WebPv = int.Parse(nPv.ToString("0"));
+                //UV
+                double nUv = double.Parse(newtoday.WebUv.ToString()) * (Xin / (old + Xin));
+                newtoday.WebUv = int.Parse(nUv.ToString("0"));
+                //BR
+                double nBr = double.Parse(newtoday.BounceRate.ToString().Replace("%", "").Trim()) * (Xin / (old + Xin));
+                newtoday.BounceRate = nBr.ToString() + "%";
+                //TS平均访问时长
+                time = newtoday.WebTS;
+                hour = int.Parse(time.Split(':')[0].ToString());
+                minute = int.Parse(time.Split(':')[1].ToString());
+                second = int.Parse(time.Split(':')[2].ToString());
+                time = (hour * 3600 + minute * 60 + second).ToString();
+                nTs = double.Parse(time) * (Xin / (old + Xin));
+                ts = new TimeSpan(0, 0, Convert.ToInt32(nTs));
+                newtoday.WebTS = ts.ToString();
+                //平均访问页数
+                //double nPage = double.Parse(newtoday.WebConversion.ToString()) * (Xin / (old + Xin));
+                if (nUv != 0)
+                {
+                    page = db.FlowComputer.Where(v => DbFunctions.DiffDays(v.CurrentTime, endTime) == 0).GroupBy(p => p.Id).Select(p => p.Count()).DefaultIfEmpty().Sum() * (Xin / ((Xin + old))) / nUv;
+                    newtoday.WebDomain = page.ToString("0.00");
+                }
+                else
+                {
+                    newtoday.WebDomain = "0";
+                }
+                list.Add(newtoday);
+            }
+            else
+            {
+
+                var oldlist = db.VisitorInfo.Where(v => DbFunctions.DiffDays(v.AccessTime, endTime) <= 0).GroupBy(p => p.IpAddress).Select(p => new { count = p.Count() });
+                double old = 0;
+                double Xin = 0;
+                foreach (var item in oldlist)
+                {
+                    int str1 = item.count;
+                    if (str1 > 1)
+                    {
+                        //获取老访客数量
+                        old += old + 1;
+                    }
+                    else
+                    {
+                        //获取新访客数量
+                        Xin += Xin + 1;
+                    }
+                }
+                //老访客比例
+                string oldRatio = "";
+                //新访客比例
+                string newRatio = "";
+                if (old + Xin > 0)
+                {
+                    oldRatio = (old / (old + Xin) * 100).ToString("0.00");
+                    newRatio = (Xin / (old + Xin) * 100).ToString("0.00");
+                }
+                else
+                {
+                    oldRatio = "0.00";
+                    newRatio = "0.00";
+                }
+                var webList = work.CreateRepository<WebInfo>().GetList(m => m.Id == webId).Select(m => new
+                {
+                    Id = m.Id,
+                    WebPv = m.WebPv,
+                    WebUv = m.WebUv,
+                    BounceRate = m.BounceRate,
+                    IpCount = m.IpCount,
+                    WebTS = m.WebTS,
+                    WebDomain = m.WebDomain,
+                    WebConversion = m.WebConversion,
+                    WebKey = m.WebKey
+                }).FirstOrDefault();
+                ViewBag.host = webList;
+                var oldtoday = GetVistiorByEveryDay(endTime, webList.Id);
+                oldtoday.WebKey = oldRatio;
+                //PV
+                double oPv = double.Parse(oldtoday.WebPv.ToString()) * (old / (old + Xin));
+                oldtoday.WebPv = int.Parse(oPv.ToString("0"));
+                //UV
+                double oUv = double.Parse(oldtoday.WebUv.ToString()) * (old / (old + Xin));
+                oldtoday.WebUv = int.Parse(oUv.ToString("0"));
+                //BR
+                double oBr = double.Parse(oldtoday.BounceRate.ToString().Replace("%", "").Trim()) * (old / (old + Xin));
+                oldtoday.BounceRate = oBr.ToString("0.00") + "%";
+                //TS
+                string time = oldtoday.WebTS;
+                int hour = int.Parse(time.Split(':')[0].ToString());
+                int minute = int.Parse(time.Split(':')[1].ToString());
+                int second = int.Parse(time.Split(':')[2].ToString());
+                time = (hour * 3600 + minute * 60 + second).ToString();
+                double nTs = double.Parse(time) * (old / (old + Xin));
+                TimeSpan ts = new TimeSpan(0, 0, Convert.ToInt32(nTs));
+                oldtoday.WebTS = ts.ToString();
+                //平均访问页数
+                var page = 0.00;
+                if (oUv != 0)
+                {
+                    page = db.FlowComputer.Where(v => System.Data.Entity.Core.Objects.EntityFunctions.DiffDays(v.CurrentTime, endTime) <= 0).GroupBy(p => p.Id).Select(p => p.Count()).DefaultIfEmpty().Sum() * (old / ((Xin + old))) / oUv;
+                    oldtoday.WebDomain = page.ToString("0.00");
+                }
+                else
+                {
+                    oldtoday.WebDomain = "0.00";
+                }
+                list.Add(oldtoday);
+
+                var newtoday = GetVistiorByEveryDay(endTime, webList.Id);
+                newtoday.WebKey = newRatio;
+                //PV
+                double nPv = double.Parse(newtoday.WebPv.ToString()) * (Xin / (old + Xin));
+                newtoday.WebPv = int.Parse(nPv.ToString("0"));
+                //UV
+                double nUv = double.Parse(newtoday.WebUv.ToString()) * (Xin / (old + Xin));
+                newtoday.WebUv = int.Parse(nUv.ToString("0"));
+                //BR
+                double nBr = double.Parse(newtoday.BounceRate.ToString().Replace("%", "").Trim()) * (Xin / (old + Xin));
+                newtoday.BounceRate = nBr.ToString("0.00") + "%";
+                //TS平均访问时长
+                time = newtoday.WebTS;
+                hour = int.Parse(time.Split(':')[0].ToString());
+                minute = int.Parse(time.Split(':')[1].ToString());
+                second = int.Parse(time.Split(':')[2].ToString());
+                time = (hour * 3600 + minute * 60 + second).ToString();
+                nTs = double.Parse(time) * (Xin / (old + Xin));
+                ts = new TimeSpan(0, 0, Convert.ToInt32(nTs));
+                newtoday.WebTS = ts.ToString();
+                //平均访问页数
+                //double nPage = double.Parse(newtoday.WebConversion.ToString()) * (Xin / (old + Xin));
+                if (nUv != 0)
+                {
+                    page = db.FlowComputer.Where(v => DbFunctions.DiffDays(v.CurrentTime, endTime) <= 0).GroupBy(p => p.Id).Select(p => p.Count()).DefaultIfEmpty().Sum() * (Xin / ((Xin + old))) / nUv;
+                    newtoday.WebDomain = page.ToString("0.00");
+                }
+                else
+                {
+                    newtoday.WebDomain = "0.00";
+                }
+                list.Add(newtoday);
+            }
+            //根据新老访客查询浏览量
+            //根据新老访客查询访客数
+            //根据新老访客查询跳出率
+            //根据新老访客查询平均访问时长
+            //根据新老访客查询平均访问页数
+            return list;
         }
         /// <summary>
         /// 根据指定日期计算统计流量
@@ -386,6 +773,61 @@ namespace GcSite.ModuleSys.Controllers
                 //计算平均时长,根据条件时间&网站id
                 int sumDuration = work.CreateRepository<VisitorInfo>().GetCount(m => DbFunctions.DiffDays(m.AccessTime, startTime) == 0 && m.WebInfo.Id == site);
                 double duration = work.CreateRepository<VisitorInfo>().GetCount(m => DbFunctions.DiffDays(m.AccessTime, startTime) == 0 && m.WebInfo.Id == site);
+                duration = vistio.Sum(a => a.Duration);
+                int averageTime = (int)Math.Ceiling(Convert.ToDouble(duration / sumDuration));
+                TimeSpan ts = new TimeSpan(0, 0, averageTime);
+                web.WebTS = ts.ToString();
+
+                if (web.WebTS.Contains("-24855.03:14:08")) { web.WebTS = "00:00:00"; }
+            }
+            catch (Exception ex)
+            {
+                web.IpCount = 0;
+                web.WebConversion = 0;
+                web.WebDomain = "";
+                web.WebPv = 0;
+                web.WebTS = "00:00:00";
+                web.WebUv = 0;
+                web.BounceRate = "0%";
+                return web;
+                throw ex;
+            }
+            return web;
+        }
+        public WebInfo GetVistiorByEveryDay(DateTime startTime, int site)
+        {
+            WebInfo web = new WebInfo();
+            try
+            {
+                List<VisitorInfo> vistio = work.CreateRepository<VisitorInfo>().GetList(m => DbFunctions.DiffDays(m.AccessTime, startTime) <= 0 && m.WebInfo.Id == site).ToList();
+                //获取pv量,根据条件时间&网站id
+                web.WebPv = work.CreateRepository<FlowComputer>().GetList(m => DbFunctions.DiffDays(m.CurrentTime, startTime) <= 0 && m.WebInfo.Id == site).Count();
+                //获取uv值,根据条件时间&网站id
+                web.WebUv = work.CreateRepository<VisitorInfo>().GetList(m => DbFunctions.DiffDays(m.AccessTime, startTime) <= 0 && m.WebInfo.Id == site).Count();
+                //获取ip数 去重
+                List<VisitorInfo> webuv = work.CreateRepository<VisitorInfo>().GetList(m => DbFunctions.DiffDays(m.AccessTime, startTime) <= 0 && m.WebInfo.Id == site).ToList();
+                for (int i = 0; i < webuv.Count(); i++)
+                {
+                    for (int j = webuv.Count() - 1; j > i; j--)
+                    {
+                        if (webuv[i].IpAddress == webuv[j].IpAddress)
+                        {
+                            webuv.RemoveAt(j);
+                        }
+                    }
+                }
+                web.IpCount = webuv.Count;
+                //计算跳出率,根据条件时间&网站id
+                int rate = work.CreateRepository<VisitorInfo>().GetCount(m => m.PageNumber == 0 && DbFunctions.DiffDays(m.AccessTime, startTime) <= 0 && m.WebInfo.Id == site);
+                int sumPv = work.CreateRepository<WebInfo>().GetList(m => m.UserInfo.Id == site).FirstOrDefault().WebPv;
+                decimal rateResult = Math.Round((decimal)rate / web.WebPv, 4);
+                if (rateResult >= 1) { rateResult = 1; }
+                web.BounceRate = (rateResult * 100).ToString().Length >= 5 ? (rateResult * 100).ToString().Substring(0, 4) + "%" : (rateResult * 100).ToString() + "%";
+                //计算转换次数,根据条件时间&网站id
+                web.WebConversion = 0;
+                //计算平均时长,根据条件时间&网站id
+                int sumDuration = work.CreateRepository<VisitorInfo>().GetCount(m => DbFunctions.DiffDays(m.AccessTime, startTime) <= 0 && m.WebInfo.Id == site);
+                double duration = work.CreateRepository<VisitorInfo>().GetCount(m => DbFunctions.DiffDays(m.AccessTime, startTime) <= 0 && m.WebInfo.Id == site);
                 duration = vistio.Sum(a => a.Duration);
                 int averageTime = (int)Math.Ceiling(Convert.ToDouble(duration / sumDuration));
                 TimeSpan ts = new TimeSpan(0, 0, averageTime);
@@ -575,9 +1017,8 @@ namespace GcSite.ModuleSys.Controllers
             }
             return int_hour + ":" + int_minute + ":" + int_second;
         }
-        public ActionResult AnalysisInit()
+        public ActionResult AnalysisInit(int siteId)
         {
-
             #region  获取今天的浏览量、访客数、跳出率、平均访问时长
             //获取今天的浏览量、访客数、跳出率、平均访问时长
             string today = DateTime.Now.ToString("yyyy-MM-dd");
@@ -607,7 +1048,6 @@ namespace GcSite.ModuleSys.Controllers
             double avgts = a / model1;
             TimeSpan ts = new TimeSpan(0, 0, Convert.ToInt32(avgts));
             string str = ts.ToString();
-
             //获取前一天天的浏览量、访客数、跳出率、平均访问时长
             string yesterday = DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd");
             int yyear = int.Parse(yesterday.Split('-')[0].ToString());
@@ -657,11 +1097,7 @@ namespace GcSite.ModuleSys.Controllers
                 }
             }
 
-
-
             //var xin = db.VisitorInfo.Where();
-
-
 
             ////老访客比例
             //string oldRatio = (old / (old + Xin) * 100).ToString("0.00") + "%";

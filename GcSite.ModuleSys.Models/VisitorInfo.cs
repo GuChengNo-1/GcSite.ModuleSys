@@ -32,6 +32,14 @@ namespace GcSite.ModuleSys.Models
         /// </summary>
         public string VisitSE { get; set; }
         /// <summary>
+        /// pv当前关键字
+        /// </summary>
+        public string SearchTerms { get; set; }
+        /// <summary>
+        /// 设备类型
+        /// </summary>
+        public string DeviceType { get; set; }
+        /// <summary>
         /// 访问时间
         /// </summary>
         public DateTime AccessTime { get; set; }

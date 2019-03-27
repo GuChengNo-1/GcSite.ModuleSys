@@ -56,7 +56,7 @@
                 <span class="more-tools top-nav-item layer account-wrapper" id="span1">
                     <span class="account">
                         Hi&nbsp;
-                        gucheng262314
+                        @ViewBag.name
                     </span>
                     <em></em>
                     <ul class="content hide" id="sp1">
@@ -262,8 +262,7 @@
                     </tr>`;
             $("#tbody").append(trs);
 		});
-	});
-
+        });
 	var setc = document.getElementById("search-type-container");
 	var ddl = document.getElementById("ddl");
     setc.onclick = function () {

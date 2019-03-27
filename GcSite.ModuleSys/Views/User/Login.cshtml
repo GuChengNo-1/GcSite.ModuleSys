@@ -537,7 +537,6 @@
             $("#jquery-dialog--HM__1modal").css("display", "none");
             $("#jquery-dialog--HM__1").css("display", "none");
         });
-
         $("#cas_code").click(function () {
             $("#cas_code").attr("src", "/User/GetCodeImg?id=" + Math.random());
         });
@@ -563,7 +562,6 @@
                         }
                     }
                 });
-                //$("#cas_code").attr("src", "/User/GetCodeImg?id=" + Math.random());
             }
             else if ($("#UserName").val() != "" && $("#Password").val() != "" && $("#Valicode").val() == "") {
                 alert("请输入验证码！");
@@ -579,6 +577,5 @@
             }//调用登录按钮的登录事件
         }
     </script>
-
 </body>
 </html>
