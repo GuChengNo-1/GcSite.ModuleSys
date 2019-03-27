@@ -154,6 +154,7 @@
     <Compile Include="common\ValidataCode.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ToolbarController.cs" />
+    <Compile Include="Controllers\TrafficController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -176,6 +177,8 @@
     <Content Include="css\management.css" />
     <Content Include="css\man_com.css" />
     <Content Include="css\overview.css" />
+    <Content Include="css\traffic_tren.css" />
+    <Content Include="css\traffic_visi.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="font\font1\demo.css" />
@@ -396,10 +399,12 @@
     <Content Include="Views\beife\Analysis.cshtml" />
     <Content Include="Views\beife\Report.cshtml" />
     <Content Include="Views\beife\Index.cshtml" />
+    <Content Include="Views\Traffic\Visitors.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Trend\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

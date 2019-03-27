@@ -204,11 +204,10 @@ namespace GcSite.ModuleSys.Controllers
 
             try
             {
-                List<FlowComputer> vistio = null;
                 //今  昨
                 if (date == "0" || date == "-1")
                 {
-                    date == "0" ? "0" : date;
+                    date = date == "0" ? "0" : date;
                     endTime = DateTime.Now.AddDays(double.Parse(date));
                     //获取当天所有时间段的条件数据
                     for (int i = 0; i < 24; i++)
@@ -856,7 +855,7 @@ namespace GcSite.ModuleSys.Controllers
                 var page = 0.00;
                 if (oUv != 0)
                 {
-                    page = db.FlowComputer.Where(v => System.Data.Entity.Core.Objects.EntityFunctions.DiffDays(v.CurrentTime, endTime) == 0).GroupBy(p => p.Id).Select(p => p.Count()).DefaultIfEmpty().Sum() * (old / ((Xin + old))) / oUv;
+                    page = db.FlowComputer.Where(v => DbFunctions.DiffDays(v.CurrentTime, endTime) == 0).GroupBy(p => p.Id).Select(p => p.Count()).DefaultIfEmpty().Sum() * (old / ((Xin + old))) / oUv;
                     oldtoday.WebDomain = page.ToString("0.00");
                 }
                 else
@@ -969,7 +968,7 @@ namespace GcSite.ModuleSys.Controllers
                 var page = 0.00;
                 if (oUv != 0)
                 {
-                    page = db.FlowComputer.Where(v => System.Data.Entity.Core.Objects.EntityFunctions.DiffDays(v.CurrentTime, endTime) <= 0).GroupBy(p => p.Id).Select(p => p.Count()).DefaultIfEmpty().Sum() * (old / ((Xin + old))) / oUv;
+                    page = db.FlowComputer.Where(v => DbFunctions.DiffDays(v.CurrentTime, endTime) <= 0).GroupBy(p => p.Id).Select(p => p.Count()).DefaultIfEmpty().Sum() * (old / ((Xin + old))) / oUv;
                     oldtoday.WebDomain = page.ToString("0.00");
                 }
                 else
