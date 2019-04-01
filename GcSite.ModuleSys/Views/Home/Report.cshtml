@@ -9,12 +9,12 @@
     <title>报告</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="~/layui/css/layui.css">
-    <link href="~/css/common.css" rel="stylesheet" type="text/css" media="all">
-    <link href="~/css/overview.css" rel="stylesheet" type="text/css" media="all">
+    <link href="~/Content/css/common.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/css/overview.css" rel="stylesheet" type="text/css" media="all" />
     <script src="~/layui/layui.js"></script>
-    <script src="~/js/jquery.min.js"></script>
-    <script src="~/js/echarts.min.js"></script>
-    <script src="~/js/china.js"></script>
+    <script src="~/Content/js/jquery.min.js"></script>
+    <script src="~/Content/js/echarts.min.js"></script>
+    <script src="~/Content/js/china.js"></script>
 </head>
 <body id="main-body">
     <div class="header-wrapper" id="header">
@@ -123,14 +123,14 @@
                         </a>
                         <ul class="expandable-level1 expandable-content liulian" style="display:none">
                             <li>
-                                <a class=" " :href="'/web/26754769/overview/index?siteId=' + items">
+                                <a class=" " :href="'/Traffic/Visitors?siteId=' + items">
                                     <span data="95" class="l menu-label">实时访客</span>
                                     <span class="normal icon-font">&nbsp;</span>
                                 </a>
                             </li>
                             <li>
                                 <span class="trend">
-                                    <a data="96" class="trend-title menu-label  " :href="'/web/26754769/overview/index?siteId=' + items">趋势分析</a>
+                                    <a data="96" class="trend-title menu-label  " :href="'/Traffic/Trend?siteId=' + items">趋势分析</a>
                                     <a id="event-monitor-today" :href="'/web/26754769/overview/index?siteId=' + items" class="day">今</a>
                                     <a id="event-monitor-yesterday" href="/web/26754769/trend/time?siteId=12774508&amp;flag=yesterday" class="day">昨</a>
                                 </span>
@@ -406,7 +406,7 @@
                         <ul class="item-content hm-scroll hide">
                             <li class="nav-title">流量分析</li>
                             <li>
-                                <a class="" href="/web/26754769/trend/latest?siteId={{siteId}}">
+                                <a class="" href="'/Traffic/Visitors?siteId=' + items">
                                     <span data="95" class="l menu-label">实时访客</span>
                                     <span class="normal icon-font"></span>
                                 </a>
@@ -858,10 +858,7 @@
                                                             <td class="ratio" width="20%">占比</td>
                                                         </tr>
                                                     </thead>
-                                                    <tbody id="landing-page-container">
-                                                        @*<tr><td title="https://www.sh808web.com" class="al url"><a target="_blank" class="ellipsis" href="https://www.sh808web.com">https://www.sh808web.com</a></td><td class="ar">29</td><td class="ratio"><div title="96.67%" style="background-color:#dcebfe; width:96.67%;">96.67%</div></td></tr>
-                                                        <tr><td title="http://fanyi.baidu.com/referrer" class="al url"><a target="_blank" class="ellipsis" href="http://fanyi.baidu.com/referrer">http://fanyi.baidu.com/referrer</a></td><td class="ar">1</td><td class="ratio"><div title="3.33%" style="background-color:#dcebfe; width:3.33%;">3.33%</div></td></tr>*@
-                                                    </tbody>
+                                                    <tbody id="landing-page-container"></tbody>
                                                 </table>
                                             </div>
                                         </div>
@@ -885,12 +882,7 @@
                                                             <td class="ratio" width="20%">占比</td>
                                                         </tr>
                                                     </thead>
-                                                    <tbody id="visit-page-container">
-                                                        @*<tr><td title="https://www.sh808web.com" class="al url"><a target="_blank" class="ellipsis" href="https://www.sh808web.com">https://www.sh808web.com</a></td><td class="ar">62</td><td class="ratio"><div title="93.94%" style="background-color:#dcebfe; width:93.94%;">93.94%</div></td></tr>
-                                                        <tr><td title="https://www.sh808web.com/news/view/3806.html" class="al url"><a target="_blank" class="ellipsis" href="https://www.sh808web.com/news/view/3806.html">https://www.sh808web.com/news/view/3806.html</a></td><td class="ar">2</td><td class="ratio"><div title="3.03%" style="background-color:#dcebfe; width:3.03%;">3.03%</div></td></tr>
-                                                        <tr><td title="http://fanyi.baidu.com/referrer" class="al url"><a target="_blank" class="ellipsis" href="http://fanyi.baidu.com/referrer">http://fanyi.baidu.com/referrer</a></td><td class="ar">1</td><td class="ratio"><div title="1.52%" style="background-color:#dcebfe; width:1.52%;">1.52%</div></td></tr>
-                                                        <tr><td title="https://www.sh808web.com/case.html" class="al url"><a target="_blank" class="ellipsis" href="https://www.sh808web.com/case.html">https://www.sh808web.com/case.html</a></td><td class="ar">1</td><td class="ratio"><div title="1.52%" style="background-color:#dcebfe; width:1.52%;">1.52%</div></td></tr>*@
-                                                    </tbody>
+                                                    <tbody id="visit-page-container"></tbody>
                                                 </table>
                                             </div>
                                         </div>
@@ -903,10 +895,7 @@
                                                     <a class="detail-report-btn" :href="'/web/26754769/overview/index?siteId=' + items">&nbsp;</a>
                                                 </div>
                                             </div>
-                                            <div class="table-data clearfix" id="visitor-type-container">    
-                                            @*<div class="visit-type-summary clearfix">
-                                                <table><tbody><tr><td class="visit-type-icon"><div></div></td><td class="visit-type-new"><div><div class="visit-type-summary-title">新访客</div><div class="visit-type-summary-data">95<span class="ratil-unit">%</span></div></div></td><td class="visit-type-old"><div><div class="visit-type-summary-title">老访客</div><div class="visit-type-summary-data">5<span class="ratil-unit">%</span></div></div></td></tr></tbody></table></div><div class="visit-type-detail"><table><tbody><tr><td class="visit-type-detail-name">浏览量</td><td class="visit-type-detail-new">26</td><td class="visit-type-detail-old">1</td></tr><tr><td class="visit-type-detail-name">访客数</td><td class="visit-type-detail-new">19</td><td class="visit-type-detail-old">1</td></tr><tr><td class="visit-type-detail-name">跳出率</td><td class="visit-type-detail-new">66.67%</td><td class="visit-type-detail-old">--</td></tr><tr><td class="visit-type-detail-name">平均访问时长</td><td class="visit-type-detail-new">00:01:52</td><td class="visit-type-detail-old">--</td></tr><tr><td class="visit-type-detail-name">平均访问页数</td><td class="visit-type-detail-new">1.37</td><td class="visit-type-detail-old">1</td></tr></tbody></table>
-                                                </div>*@
+                                            <div class="table-data clearfix" id="visitor-type-container">
                                             </div>
                                         </div>
                                     </div>
@@ -991,7 +980,7 @@
         }
     </script>
     <script type="text/javascript">
-        
+
         var day = "0";
         var provic = [];
         var toCash = [];
@@ -1010,7 +999,7 @@
                 type: 'GET',
                 dataType: "json",
                 beforeSend: function () {
-                    $("#IndexPreviewTableList>tbody").append("<tr class='preview-loading'><td class='empty-td' colspan='8' align='middle' style='text-align: center;height: 200px;'><img src='/img/loading.gif' style='vertical-align: middle;margin-right: 5px;' />数据正在加载中...</td></tr>");
+                    $("#IndexPreviewTableList>tbody").append("<tr class='preview-loading'><td class='empty-td' colspan='8' align='middle' style='text-align: center;height: 200px;'><img src='/Content/img/loading.gif' style='vertical-align: middle;margin-right: 5px;' />数据正在加载中...</td></tr>");
                 },
                 complete: function () {
                     $(".preview-loading").remove();
@@ -1082,16 +1071,16 @@
                 type: "Post",
                 dataType: "json",
                 beforeSend: function () {
-                    $("#source-site-container").append("<tr class='source-loading'><td class='empty-td' colspan='8' align='middle' style='text-align: center;height: 200px;'><img src='/img/loading.gif' style='vertical-align: middle;margin-right: 5px;' />数据正在加载中...</td></tr>");
-                    $("#search-word-container tbody").append("<tr class='search-loading'><td class='empty-td' colspan='8' align='middle' style='text-align: center;height: 200px;'><img src='/img/loading.gif' style='vertical-align: middle;margin-right: 5px;' />数据正在加载中...</td></tr>");
-                    $("#network-device-bar").append("<div class='network-loading' style='margin-left: 40%;margin-top: 140px;'><td class='empty-td' colspan='8' align='middle' style='text-align: center;height: 200px;'><img src='/img/loading.gif' style='vertical-align: middle;margin-right: 5px;' />数据正在加载中...</div></div>");
-                    $("#china-map").append("<div class='map-loading' style='margin-left: 40%;margin-top: 140px;'><td class='empty-td' colspan='8' align='middle' style='text-align: center;height: 200px;'><img src='/img/loading.gif' style='vertical-align: middle;margin-right: 5px;' />数据正在加载中...</div></div>");
+                    $("#source-site-container").append("<tr class='source-loading'><td class='empty-td' colspan='8' align='middle' style='text-align: center;height: 200px;'><img src='/Content/img/loading.gif' style='vertical-align: middle;margin-right: 5px;' />数据正在加载中...</td></tr>");
+                    $("#search-word-container tbody").append("<tr class='search-loading'><td class='empty-td' colspan='8' align='middle' style='text-align: center;height: 200px;'><img src='/Content/img/loading.gif' style='vertical-align: middle;margin-right: 5px;' />数据正在加载中...</td></tr>");
+                    $("#network-device-bar").append("<div class='network-loading' style='margin-left: 40%;margin-top: 140px;'><td class='empty-td' colspan='8' align='middle' style='text-align: center;height: 200px;'><img src='/Content/img/loading.gif' style='vertical-align: middle;margin-right: 5px;' />数据正在加载中...</div></div>");
+                    $("#china-map").append("<div class='map-loading' style='margin-left: 40%;margin-top: 140px;'><td class='empty-td' colspan='8' align='middle' style='text-align: center;height: 200px;'><img src='/Content/img/loading.gif' style='vertical-align: middle;margin-right: 5px;' />数据正在加载中...</div></div>");
                     //来源网站
-                    $("#visit-page-container").append("<tr class='visit-loading'><td class='empty-td' colspan='8' align='middle' style='text-align: center;height: 200px;'><img src='/img/loading.gif' style='vertical-align: middle;margin-right: 5px;' />数据正在加载中...</td></tr>");
+                    $("#visit-page-container").append("<tr class='visit-loading'><td class='empty-td' colspan='8' align='middle' style='text-align: center;height: 200px;'><img src='/Content/img/loading.gif' style='vertical-align: middle;margin-right: 5px;' />数据正在加载中...</td></tr>");
                     //入口页面
                     $("#landing-page-container").append("<tr class='landing-loading'><td class='empty-td' colspan='8' align='middle' style='text-align: center;height: 200px;'><img src='/img/loading.gif' style='vertical-align: middle;margin-right: 5px;' />数据正在加载中...</td></tr>");
                     //新老访客
-                    $("#visitor-type-container").html("").append("<tr class='type-loading'><td class='empty-td' colspan='8' align='middle' style='text-align: center;height: 200px;'><img src='/img/loading.gif' style='vertical-align: middle;margin-right: 5px;' />数据正在加载中...</td></tr>");
+                    $("#visitor-type-container").html("").append("<div class='map-loading' style='margin-left: 40%;margin-top: 140px;'><td class='empty-td' colspan='8' align='middle' style='text-align: center;height: 200px;'><img src='/Content/img/loading.gif' style='vertical-align: middle;margin-right: 5px;' />数据正在加载中...</div></div>");
                 },
                 complete: function () {
                     $("#source-site-container .source-loading").remove();
@@ -1134,7 +1123,7 @@
                         $("#search-word-container tbody").append(content);
                     }
                     content = "";
-                   
+
                     for (var i = 0; i < data.TopPageView.length; i++) {
                         content += "<tr><td title=\"" + data.TopPageView[i].VisitPage + "\" class=\"al url\"><a target=\"_blank\" class=\"ellipsis\" href=\"" + data.TopPageView[i].VisitPage + "\">" + data.TopPageView[i].VisitPage + "</a></td><td class=\"ar\">" + data.TopPageView[i].Id + "</td><td class=\"ratio\"><div title=\"" + data.TopPageView[i].VisitSE + "\" style=\"background-color:#dcebfe; width:" + data.TopPageView[i].VisitSE + ";\">" + data.TopPageView[i].VisitSE + "</div></td></tr>";
                     }
@@ -1219,7 +1208,7 @@
                 type: "Post",
                 dataType: "json",
                 beforeSend: function () {
-                    $("#line").append("<div class='line-loading' style='margin-top: -180px;z-index: 10000;'><div class='empty-td' colspan='8' align='middle' style='text-align: center;height: 200px;'><img src='/img/loading.gif' style='vertical-align: middle;margin-right: 5px;' />数据正在加载中...</div></div>");
+                    $("#line").append("<div class='line-loading' style='margin-top: -180px;z-index: 10000;'><div class='empty-td' colspan='8' align='middle' style='text-align: center;height: 200px;'><img src='/Content/img/loading.gif' style='vertical-align: middle;margin-right: 5px;' />数据正在加载中...</div></div>");
                 },
                 complete: function () {
                     $(".line-loading").remove();

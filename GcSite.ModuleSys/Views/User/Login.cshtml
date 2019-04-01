@@ -9,8 +9,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=1200, initial-scale=1, maximum-scale=1">
     <title>谷程统计</title>
-    <link href="~/css/home.css" rel="stylesheet" type="text/css" media="all">
-    <link href="~/css/login.css" rel="stylesheet" type="text/css" media="all">
+    <link href="~/Content/css/home.css" rel="stylesheet"  type="text/css" media="all"/>
+    <link href="~/Content/css/login.css" rel="stylesheet" type="text/css" media="all" />
 </head>
 <body onkeydown="keyLogin();">
     <div class="homepage-header-wrapper">
@@ -303,12 +303,10 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="hp-typical-user-icons">
                     <img src="img/home/typical-user-list.png" alt="典型用户列表">
                 </div>
             </div>
-
             <div class="hp-whole-row hp-start">
                 <div class="hp-whole-row-content hp-start-detail">
                     <h2>点击一下，开始使用</h2>
@@ -318,10 +316,6 @@
                     </div>
                 </div>
             </div>
-
-
-
-
             <script id="LoginTemplate" type="text/template">
                 <div class="hp-dialog-close">
                     <span>✖</span>
@@ -334,8 +328,6 @@
                     <div id="LoginMain" class="ico-login clearfix">
                         <div class="visitor-login-tab" id="LoginTab">请输入查看密码</div>
                         <div id="LoginInput" class="login-input">
-                            @*<form method="post" action="">
-                                *@
                                 <input type="hidden" value="0" id="Appid" name="appid">
                                 <div class="form-item">
                                     <input type="password" class="client-password-input" id="Client_Password" name="passwd" style="ime-mode: disabled" placeholder="请输入查看密码" />
@@ -355,8 +347,6 @@
                                 </div>
                                 <input type="hidden" value="utf-8" name="charset" />
                                 <input type="hidden" value="1" name="senderr" />
-                                @*
-                            </form>*@
                         </div>
                     </div>
                     }
@@ -364,8 +354,6 @@
                     <div id="LoginMain" class="login-main">
                         <div class="login-main-account-info">统计/推广/联盟 账号请在此登录</div>
                         <div id="LoginInput" class="login-input">
-                            @*<form method="post" action="/User/Login">
-                                *@
                                 <input type="hidden" value="12" id="Appid" name="appid">
                                 <div class="form-item login-username">
                                     <input type="text" class="text form-item-input" tabindex="1" id="UserName" autocomplete="off" name="entered_login" value="" placeholder="请输入用户名">
@@ -378,19 +366,6 @@
                                     <input type="text" class="text form-item-input" id="Valicode" tabindex="3" name="entered_imagecode" maxlength="4" autocomplete="off" style="ime-mode:disabled" placeholder="验证码">
                                     <img src="/User/GetCodeImg?id=0.111565465" id='cas_code' width="70" height="38" align="middle" />
                                 </div>
-                                @*<div class="error-msg-row">
-                                    if (/被锁定/.test(this.errMsg)) {
-                                    <div id="ErrorTip" class="error customlized-lock-info">
-                                        <p>账号已被锁定，统计账号30分钟后自动解锁</p>
-                                        <p>其他账号请到原注册平台，通过找回密码来解锁</p>
-                                    </div>
-                                    }
-                                    else if (this.errMsg) {
-                                    <div id="ErrorTip" class="error">#{this.errMsg}</div>
-                                    }
-                                    <div class="error" id="ErrorNoSubmit" style="display: none;">
-                                    </div>
-                                </div>*@
                                 <div class="form-buttons">
                                     <input type="button" id="Submit" tabindex="4" class="login-btn form-btn l" value="登录" />
                                 </div>
@@ -407,8 +382,6 @@
                     }
                 </div>
             </script>
-
-
 
             <!-- 内容区块结束 -->
         </div>
@@ -468,7 +441,7 @@
         <div class="footer-corp">
             <div class="footer-corp-mail">
                 <a href="http://di.baidu.com" target="_blank">百度数据智能平台</a>
-                <span class="bdg-qr">微信二维码<img src="data:image/png;base64,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" alt="百度数智平台"></span>
+                <span class="bdg-qr">微信二维码<img src="" alt="百度数智平台"></span>
                 <span>售前咨询：dihelp@baidu.com</span>
                 <span>售后咨询：diquestion@baidu.com</span>
                 <span>QQ群：650596829</span>
@@ -526,7 +499,7 @@
         </div>
     </div>
 
-    <script src="~/js/jquery.min.js"></script>
+    <script src="~/Content/js/jquery.min.js"></script>
     <script src="~/Scripts/jquery-3.2.1.js"></script>
     <script>
         $(".visitor-btn").on("click", function () {
@@ -549,6 +522,12 @@
                     type: 'post',
                     data: { name: $("#UserName").val(), pwd: $("#Password").val(), code: $("#Valicode").val() },
                     dataType: 'json',
+                    beforeSend: function () {
+                        $("#Submit").append("<tr class='source-loading'><td class='empty-td' colspan='8' align='middle' style='text-align: center;height: 200px;'><img src='/img/loading.gif' style='vertical-align: middle;margin-right: 5px;' />数据正在加载中...</td></tr>");
+                    },
+                    complete: function () {
+                        $("#Submit .source-loading").remove();
+                    },
                     success: function (data) {
                         if (data.success == 1) {
                             window.location.href = "/Home/Index?userId=" + data.id;

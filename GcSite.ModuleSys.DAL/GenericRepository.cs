@@ -60,7 +60,6 @@ namespace GcSite.ModuleSys.DAL
             if (where == null)
             {
                 query = _dbSet;
-
             }
             else
             {

@@ -148,7 +148,7 @@ namespace GcSite.ModuleSys.Controllers
                 average.WebTS = ts.ToString();
                 #endregion
 
-                return Json(new {today, yesterday, total, atThisTime, historical, predict, average , siteId = webId.ToString(),users = user.UserName.ToString()}, JsonRequestBehavior.AllowGet);
+                return Json(new { today, yesterday, total, atThisTime, historical, predict, average, siteId = webId.ToString(), users = user.UserName.ToString() }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
@@ -832,70 +832,87 @@ namespace GcSite.ModuleSys.Controllers
                 }).FirstOrDefault();
                 ViewBag.host = webList;
                 var oldtoday = GetVistiorByDay(endTime, webList.Id);
-                //PV
-                double oPv = double.Parse(oldtoday.WebPv.ToString()) * (old / (old + Xin));
-                oldtoday.WebPv = int.Parse(oPv.ToString("0"));
-                oldtoday.WebKey = oldRatio;
-                //UV
-                double oUv = double.Parse(oldtoday.WebUv.ToString()) * (old / (old + Xin));
-                oldtoday.WebUv = int.Parse(oUv.ToString("0"));
-                //BR
-                double oBr = double.Parse(oldtoday.BounceRate.ToString().Replace("%", "").Trim()) * (old / (old + Xin));
-                oldtoday.BounceRate = oBr.ToString("0.00") + "%";
-                //TS
-                string time = oldtoday.WebTS;
-                int hour = int.Parse(time.Split(':')[0].ToString());
-                int minute = int.Parse(time.Split(':')[1].ToString());
-                int second = int.Parse(time.Split(':')[2].ToString());
-                time = (hour * 3600 + minute * 60 + second).ToString();
-                double nTs = double.Parse(time) * (old / (old + Xin));
-                TimeSpan ts = new TimeSpan(0, 0, Convert.ToInt32(nTs));
-                oldtoday.WebTS = ts.ToString();
-                //平均访问页数
-                var page = 0.00;
-                if (oUv != 0)
+                var newtoday = GetVistiorByDay(endTime, webList.Id);
+                if (old / (old + Xin) >= 0 || old / (old + Xin) >= 0)
                 {
+                    //PV
+                    double oPv = double.Parse(oldtoday.WebPv.ToString()) * (old / (old + Xin));
+                    oldtoday.WebPv = int.Parse(oPv.ToString("0"));
+                    oldtoday.WebKey = oldRatio;
+                    //UV
+                    double oUv = double.Parse(oldtoday.WebUv.ToString()) * (old / (old + Xin));
+                    oldtoday.WebUv = int.Parse(oUv.ToString("0"));
+                    //BR
+                    double oBr = double.Parse(oldtoday.BounceRate.ToString().Replace("%", "").Trim()) * (old / (old + Xin));
+                    oldtoday.BounceRate = oBr.ToString("0.00") + "%";
+                    //TS
+                    string time = oldtoday.WebTS;
+                    int hour = int.Parse(time.Split(':')[0].ToString());
+                    int minute = int.Parse(time.Split(':')[1].ToString());
+                    int second = int.Parse(time.Split(':')[2].ToString());
+                    time = (hour * 3600 + minute * 60 + second).ToString();
+                    double nTs = double.Parse(time) * (old / (old + Xin));
+                    TimeSpan ts = new TimeSpan(0, 0, Convert.ToInt32(nTs));
+                    oldtoday.WebTS = ts.ToString();
+                    //平均访问页数
+                    var page = 0.00;
                     page = db.FlowComputer.Where(v => DbFunctions.DiffDays(v.CurrentTime, endTime) == 0).GroupBy(p => p.Id).Select(p => p.Count()).DefaultIfEmpty().Sum() * (old / ((Xin + old))) / oUv;
                     oldtoday.WebDomain = page.ToString("0.00");
-                }
-                else
-                {
-                    oldtoday.WebDomain = "0";
-                }
-                list.Add(oldtoday);
+                    list.Add(oldtoday);
 
-                var newtoday = GetVistiorByDay(endTime, webList.Id);
-                newtoday.WebKey = newRatio;
-                //PV
-                double nPv = double.Parse(newtoday.WebPv.ToString()) * (Xin / (old + Xin));
-                newtoday.WebPv = int.Parse(nPv.ToString("0"));
-                //UV
-                double nUv = double.Parse(newtoday.WebUv.ToString()) * (Xin / (old + Xin));
-                newtoday.WebUv = int.Parse(nUv.ToString("0"));
-                //BR
-                double nBr = double.Parse(newtoday.BounceRate.ToString().Replace("%", "").Trim()) * (Xin / (old + Xin));
-                newtoday.BounceRate = nBr.ToString() + "%";
-                //TS平均访问时长
-                time = newtoday.WebTS;
-                hour = int.Parse(time.Split(':')[0].ToString());
-                minute = int.Parse(time.Split(':')[1].ToString());
-                second = int.Parse(time.Split(':')[2].ToString());
-                time = (hour * 3600 + minute * 60 + second).ToString();
-                nTs = double.Parse(time) * (Xin / (old + Xin));
-                ts = new TimeSpan(0, 0, Convert.ToInt32(nTs));
-                newtoday.WebTS = ts.ToString();
-                //平均访问页数
-                //double nPage = double.Parse(newtoday.WebConversion.ToString()) * (Xin / (old + Xin));
-                if (nUv != 0)
-                {
+                    newtoday.WebKey = newRatio;
+                    //PV
+                    double nPv = double.Parse(newtoday.WebPv.ToString()) * (Xin / (old + Xin));
+                    newtoday.WebPv = int.Parse(nPv.ToString("0"));
+                    //UV
+                    double nUv = double.Parse(newtoday.WebUv.ToString()) * (Xin / (old + Xin));
+                    newtoday.WebUv = int.Parse(nUv.ToString("0"));
+                    //BR
+                    double nBr = double.Parse(newtoday.BounceRate.ToString().Replace("%", "").Trim()) * (Xin / (old + Xin));
+                    newtoday.BounceRate = nBr.ToString() + "%";
+                    //TS平均访问时长
+                    time = newtoday.WebTS;
+                    hour = int.Parse(time.Split(':')[0].ToString());
+                    minute = int.Parse(time.Split(':')[1].ToString());
+                    second = int.Parse(time.Split(':')[2].ToString());
+                    time = (hour * 3600 + minute * 60 + second).ToString();
+                    nTs = double.Parse(time) * (Xin / (old + Xin));
+                    ts = new TimeSpan(0, 0, Convert.ToInt32(nTs));
+                    newtoday.WebTS = ts.ToString();
+                    //平均访问页数
+                    //double nPage = double.Parse(newtoday.WebConversion.ToString()) * (Xin / (old + Xin));
                     page = db.FlowComputer.Where(v => DbFunctions.DiffDays(v.CurrentTime, endTime) == 0).GroupBy(p => p.Id).Select(p => p.Count()).DefaultIfEmpty().Sum() * (Xin / ((Xin + old))) / nUv;
                     newtoday.WebDomain = page.ToString("0.00");
+                    newtoday.WebDomain = "0";
+                    list.Add(newtoday);
                 }
                 else
                 {
-                    newtoday.WebDomain = "0";
+                    newtoday.WebKey = "0";
+                    //PV
+                    newtoday.WebPv = 0;
+                    //UV
+                    newtoday.WebUv = 0;
+                    //BR
+                    newtoday.BounceRate = "0.00" + "%";
+                    //TS平均访问时长
+                    newtoday.WebTS = "00:00:00";
+                    //平均访问页数
+                    newtoday.WebDomain = "0.00";
+                    list.Add(newtoday);
+                    oldtoday.WebKey = "0";
+                    //PV
+                    oldtoday.WebPv = 0;
+                    //UV
+                    oldtoday.WebUv = 0;
+                    //BR
+                    oldtoday.BounceRate = "0.00" + "%";
+                    //TS平均访问时长
+                    oldtoday.WebTS = "00:00:00";
+                    //平均访问页数
+                    oldtoday.WebDomain = "0.00";
+                    list.Add(oldtoday);
                 }
-                list.Add(newtoday);
             }
             else
             {
@@ -945,70 +962,101 @@ namespace GcSite.ModuleSys.Controllers
                 }).FirstOrDefault();
                 ViewBag.host = webList;
                 var oldtoday = GetVistiorByEveryDay(endTime, webList.Id);
-                oldtoday.WebKey = oldRatio;
-                //PV
-                double oPv = double.Parse(oldtoday.WebPv.ToString()) * (old / (old + Xin));
-                oldtoday.WebPv = int.Parse(oPv.ToString("0"));
-                //UV
-                double oUv = double.Parse(oldtoday.WebUv.ToString()) * (old / (old + Xin));
-                oldtoday.WebUv = int.Parse(oUv.ToString("0"));
-                //BR
-                double oBr = double.Parse(oldtoday.BounceRate.ToString().Replace("%", "").Trim()) * (old / (old + Xin));
-                oldtoday.BounceRate = oBr.ToString("0.00") + "%";
-                //TS
-                string time = oldtoday.WebTS;
-                int hour = int.Parse(time.Split(':')[0].ToString());
-                int minute = int.Parse(time.Split(':')[1].ToString());
-                int second = int.Parse(time.Split(':')[2].ToString());
-                time = (hour * 3600 + minute * 60 + second).ToString();
-                double nTs = double.Parse(time) * (old / (old + Xin));
-                TimeSpan ts = new TimeSpan(0, 0, Convert.ToInt32(nTs));
-                oldtoday.WebTS = ts.ToString();
-                //平均访问页数
-                var page = 0.00;
-                if (oUv != 0)
-                {
-                    page = db.FlowComputer.Where(v => DbFunctions.DiffDays(v.CurrentTime, endTime) <= 0).GroupBy(p => p.Id).Select(p => p.Count()).DefaultIfEmpty().Sum() * (old / ((Xin + old))) / oUv;
-                    oldtoday.WebDomain = page.ToString("0.00");
-                }
-                else
-                {
-                    oldtoday.WebDomain = "0.00";
-                }
-                list.Add(oldtoday);
-
                 var newtoday = GetVistiorByEveryDay(endTime, webList.Id);
-                newtoday.WebKey = newRatio;
-                //PV
-                double nPv = double.Parse(newtoday.WebPv.ToString()) * (Xin / (old + Xin));
-                newtoday.WebPv = int.Parse(nPv.ToString("0"));
-                //UV
-                double nUv = double.Parse(newtoday.WebUv.ToString()) * (Xin / (old + Xin));
-                newtoday.WebUv = int.Parse(nUv.ToString("0"));
-                //BR
-                double nBr = double.Parse(newtoday.BounceRate.ToString().Replace("%", "").Trim()) * (Xin / (old + Xin));
-                newtoday.BounceRate = nBr.ToString("0.00") + "%";
-                //TS平均访问时长
-                time = newtoday.WebTS;
-                hour = int.Parse(time.Split(':')[0].ToString());
-                minute = int.Parse(time.Split(':')[1].ToString());
-                second = int.Parse(time.Split(':')[2].ToString());
-                time = (hour * 3600 + minute * 60 + second).ToString();
-                nTs = double.Parse(time) * (Xin / (old + Xin));
-                ts = new TimeSpan(0, 0, Convert.ToInt32(nTs));
-                newtoday.WebTS = ts.ToString();
-                //平均访问页数
-                //double nPage = double.Parse(newtoday.WebConversion.ToString()) * (Xin / (old + Xin));
-                if (nUv != 0)
+
+                if (old / (old + Xin) >= 0 || old / (old + Xin) >= 0)
                 {
-                    page = db.FlowComputer.Where(v => DbFunctions.DiffDays(v.CurrentTime, endTime) <= 0).GroupBy(p => p.Id).Select(p => p.Count()).DefaultIfEmpty().Sum() * (Xin / ((Xin + old))) / nUv;
-                    newtoday.WebDomain = page.ToString("0.00");
+                    oldtoday.WebKey = oldRatio;
+                    //PV
+                    double oPv = double.Parse(oldtoday.WebPv.ToString()) * (old / (old + Xin));
+                    oldtoday.WebPv = int.Parse(oPv.ToString("0"));
+                    //UV
+                    double oUv = double.Parse(oldtoday.WebUv.ToString()) * (old / (old + Xin));
+                    oldtoday.WebUv = int.Parse(oUv.ToString("0"));
+                    //BR
+                    double oBr = double.Parse(oldtoday.BounceRate.ToString().Replace("%", "").Trim()) * (old / (old + Xin));
+                    oldtoday.BounceRate = oBr.ToString("0.00") + "%";
+                    //TS
+                    string time = oldtoday.WebTS;
+                    int hour = int.Parse(time.Split(':')[0].ToString());
+                    int minute = int.Parse(time.Split(':')[1].ToString());
+                    int second = int.Parse(time.Split(':')[2].ToString());
+                    time = (hour * 3600 + minute * 60 + second).ToString();
+                    double nTs = double.Parse(time) * (old / (old + Xin));
+                    TimeSpan ts = new TimeSpan(0, 0, Convert.ToInt32(nTs));
+                    oldtoday.WebTS = ts.ToString();
+                    //平均访问页数
+                    var page = 0.00;
+                    if (oUv != 0)
+                    {
+                        page = db.FlowComputer.Where(v => DbFunctions.DiffDays(v.CurrentTime, endTime) <= 0).GroupBy(p => p.Id).Select(p => p.Count()).DefaultIfEmpty().Sum() * (old / ((Xin + old))) / oUv;
+                        oldtoday.WebDomain = page.ToString("0.00");
+                    }
+                    else
+                    {
+                        oldtoday.WebDomain = "0.00";
+                    }
+                    list.Add(oldtoday);
+
+                    newtoday.WebKey = newRatio;
+                    //PV
+                    double nPv = double.Parse(newtoday.WebPv.ToString()) * (Xin / (old + Xin));
+                    newtoday.WebPv = int.Parse(nPv.ToString("0"));
+                    //UV
+                    double nUv = double.Parse(newtoday.WebUv.ToString()) * (Xin / (old + Xin));
+                    newtoday.WebUv = int.Parse(nUv.ToString("0"));
+                    //BR
+                    double nBr = double.Parse(newtoday.BounceRate.ToString().Replace("%", "").Trim()) * (Xin / (old + Xin));
+                    newtoday.BounceRate = nBr.ToString("0.00") + "%";
+                    //TS平均访问时长
+                    time = newtoday.WebTS;
+                    hour = int.Parse(time.Split(':')[0].ToString());
+                    minute = int.Parse(time.Split(':')[1].ToString());
+                    second = int.Parse(time.Split(':')[2].ToString());
+                    time = (hour * 3600 + minute * 60 + second).ToString();
+                    nTs = double.Parse(time) * (Xin / (old + Xin));
+                    ts = new TimeSpan(0, 0, Convert.ToInt32(nTs));
+                    newtoday.WebTS = ts.ToString();
+                    //平均访问页数
+                    //double nPage = double.Parse(newtoday.WebConversion.ToString()) * (Xin / (old + Xin));
+                    if (nUv != 0)
+                    {
+                        page = db.FlowComputer.Where(v => DbFunctions.DiffDays(v.CurrentTime, endTime) <= 0).GroupBy(p => p.Id).Select(p => p.Count()).DefaultIfEmpty().Sum() * (Xin / ((Xin + old))) / nUv;
+                        newtoday.WebDomain = page.ToString("0.00");
+                    }
+                    else
+                    {
+                        newtoday.WebDomain = "0.00";
+                    }
+                    list.Add(newtoday);
                 }
                 else
                 {
+                    newtoday.WebKey = "0";
+                    //PV
+                    newtoday.WebPv = 0;
+                    //UV
+                    newtoday.WebUv = 0;
+                    //BR
+                    newtoday.BounceRate = "0.00" + "%";
+                    //TS平均访问时长
+                    newtoday.WebTS = "00:00:00";
+                    //平均访问页数
                     newtoday.WebDomain = "0.00";
+                    list.Add(newtoday);
+                    oldtoday.WebKey = "0";
+                    //PV
+                    oldtoday.WebPv = 0;
+                    //UV
+                    oldtoday.WebUv = 0;
+                    //BR
+                    oldtoday.BounceRate = "0.00" + "%";
+                    //TS平均访问时长
+                    oldtoday.WebTS = "00:00:00";
+                    //平均访问页数
+                    oldtoday.WebDomain = "0.00";
+                    list.Add(oldtoday);
                 }
-                list.Add(newtoday);
             }
             //根据新老访客查询浏览量
             //根据新老访客查询访客数

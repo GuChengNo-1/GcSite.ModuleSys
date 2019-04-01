@@ -1,0 +1,1179 @@
+﻿
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title> 趋势分析</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="~/layui/css/layui.css" rel="stylesheet" />
+    <link href="~/Content/css/common.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="~/Content/js/jquery.min.js"></script>
+    <script src="~/Content/js/echarts.min.js"></script>
+    <script src="~/layui/lay/modules/laydate.js"></script>
+
+
+</head>
+<body>
+    <div class="header-wrapper">
+        <div class="header clearfix">
+            <div class="logo l">
+                <a href="../gc_home.html"><img src="img/logo4.png" alt="百度统计"></a>
+                <span class="logo-title">网站统计</span>
+            </div>
+            <div class="view-tab l">
+                <a href="../gc_index.html" class="" id="homepage">主页</a>
+                <a href="../gc_report.html" class="selected">报告</a>
+                <a href="../gc_analysis.html" target="_blank">高级分析</a>
+                <a href="../gc_management.html" target="_blank" class="site-center">管理</a>
+            </div>
+            <div class="top-nav r">
+                <div class="selector site-selector top-nav-item" id="site-list-container">
+                    <div class="arrow close">
+                    </div>
+                    <div class="text" title="sh808web.com">
+                        sh808web.com
+                    </div>
+                    <a href="javascript:void(0)" title="设为默认网站" id="set-current-default-site" data="12774508" class="set-default is-not-default"></a>
+                    <ul class="site-selector-options hm-scroll" style="display: none" id="site-list">
+                        <li>
+                            <em class="sub-dir-arrow "></em>
+                            <a href="javascript:void(0);" data="12774508" class="url" title="sh808web.com-sh808web.com">sh808web.com-sh808web.com</a>
+                            <a href="javascript:void(0)" data="12774508" class="set-default is-not-default" title="设为默认网站"></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <a id="event-monitor-help-center" href="http://tongji.baidu.com/web/help/index?from=2" class="more-apps top-nav-item  my-service" target="_blank">帮助中心</a>
+                <span class="more-tools top-nav-item layer" id="span2">
+                    <span class="icon icon-font"></span>
+                    <ul class="content hide" id="sp2">
+                        <li class="item">
+                            <a href="http://www2.baidu.com/gucheng.html" target="_blank">谷程推广</a>
+                        </li>
+                        <li class="item">
+                            <a href="http://union.baidu.com/gucheng.html" target="_blank">谷程联盟</a>
+                        </li>
+                        <li class="item">
+                            <a href="http://dmp.baidu.com/gucheng.html" target="_blank">谷程DMP</a>
+                        </li>
+                        <li class="item">
+                            <a href="http://zhanzhang.baidu.com/gucheng.html" target="_blank">站长平台</a>
+                        </li>
+                        <li class="item">
+                            <a href="http://jingsuan.baidu.com/gucheng.html" target="_blank">谷程精算</a>
+                        </li>
+                        <li class="item">
+                            <a href="http://di.baidu.com/gucheng.html" target="_blank">谷程数智平台</a>
+                        </li>
+                    </ul>
+                </span>
+                <span class="more-tools top-nav-item layer account-wrapper" id="span1">
+                    <span class="account">
+                        Hi&nbsp;
+                        gucheng262314
+                    </span>
+                    <em></em>
+                    <ul class="content hide" id="sp1">
+                        <li class="item">
+                            <a href="/gucheng.html/tongji.baidu.com/web/help/article?id=276&amp;type=0" target="_blank">联系我们</a>
+                        </li>
+                        <li class="item">
+                            <a href="/gucheng.html/tongji.baidu.com/web/help/index?from=2" target="_blank">帮助中心</a>
+                        </li>
+                        <li class="item">
+                            <a href="/web/26754769/welcome/logout" id="event-monitor-logout">退出</a>
+                        </li>
+                    </ul>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="body">
+        <div class="aside" id="aside">
+            <div class="nav-wrapper">
+                <div class="title">
+                    <span class="l nav-text">网站导航</span>
+                    <span id="event-monitor-operation" class="operation close icon-font"></span>
+                </div>
+                <ul class="nav hm-scroll" id="main-menu">
+                    <li class="common-report menu-item clearfix">
+                        <span class="add-common-report">
+                            <span class="expandable recordable open" memo="{id:'0',type:'menu',global:1,status:''}">
+                                <span class="icon icon-font"></span>
+                                <span class="item-title">常用报告</span>
+                            </span>
+                            <a class="setting-icon icon-font" href="../gc_index.html"></a>
+                        </span>
+                        <ul class="expandable-level1 expandable-content"></ul>
+                    </li>
+                    <li class="pro-overview menu-item clearfix">
+                        <a href="../gc_report.html">
+                            <span class="icon icon-font"></span>
+                            <span data="85" class="item-title menu-label">网站概况</span>
+                        </a>
+                        <ul class="expandable-level1 expandable-content"></ul>
+                    </li>
+                    <li class="flow-analysis menu-item flow-analysis-selected clearfix">
+                        <a href="javascript:void(0)" class="expandable recordable open" memo="{id:'94',type:'menu',global:1,status:''}">
+                            <span class="icon icon-font"></span>
+                            <span class="item-title">流量分析</span>
+                        </a>
+                        <ul class="expandable-level1 expandable-content">
+                            <li>
+                                <a class=" " href="traffic_visitors.html">
+                                    <span data="95" class="l menu-label">实时访客</span>
+                                    <span class="normal icon-font">&nbsp;</span>
+                                </a>
+                            </li>
+                            <li>
+                                <span class="trend">
+                                    <a data="96" class="trend-title menu-label selected " href="traffic_trend.html">趋势分析</a>
+                                    <a id="event-monitor-today" href="/web/26754769/trend/time?siteId=12774508&amp;flag=today" class="day">今</a>
+                                    <a id="event-monitor-yesterday" href="/web/26754769/trend/time?siteId=12774508&amp;flag=yesterday" class="day">昨</a>
+                                </span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="source-analysis menu-item clearfix">
+                        <a href="javascript:void(0)" class="expandable recordable close" memo="{id:'98',type:'menu',global:1,status:'1'}">
+                            <span class="icon icon-font"></span>
+                            <span class="item-title">来源分析</span>
+                        </a>
+                        <ul class="expandable-level1 expandable-content " style="display:none">
+                            <li>
+                                <a class=" " href="source_all.html">
+                                    <span data="99" class="l menu-label">全部来源</span>
+                                    <span class="normal icon-font">&nbsp;</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class=" " href="source_search.html">
+                                    <span data="100" class="l menu-label">搜索引擎</span>
+                                    <span class="normal icon-font">&nbsp;</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class=" " href="source_word.html">
+                                    <span data="101" class="l menu-label">搜索词</span>
+                                    <span class="normal icon-font">&nbsp;</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class=" " href="source_link.html">
+                                    <span data="102" class="l menu-label">外部链接</span>
+                                    <span class="normal icon-font">&nbsp;</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class=" " href="source_advertising.html">
+                                    <span data="104" class="l menu-label">指定广告跟踪</span>
+                                    <span class="normal icon-font">&nbsp;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="visit-analysis menu-item clearfix">
+                        <a href="javascript:void(0)" class="expandable recordable close" memo="{id:'105',type:'menu',global:1,status:'1'}">
+                            <span class="icon icon-font"></span>
+                            <span class="item-title">访问分析</span>
+                        </a>
+                        <ul class="expandable-level1 expandable-content " style="display:none">
+                            <li>
+                                <a class=" " href="access_domain_name.html">
+                                    <span data="108" class="l menu-label">受访页面</span>
+                                    <span class="normal icon-font">&nbsp;</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class=" " href="access_entrance.html">
+                                    <span data="109" class="l menu-label">入口页面</span>
+                                    <span class="normal icon-font">&nbsp;</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class=" " href="access_subdirectories.html">
+                                    <span data="110" class="l menu-label">受访域名</span>
+                                    <span class="normal icon-font">&nbsp;</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class=" " href="access_click_graph.html">
+                                    <span data="106" class="l menu-label">页面点击图</span>
+                                    <span class="normal icon-font">&nbsp;</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class=" " href="access_updown.html">
+                                    <span data="107" class="l menu-label">页面上下游</span>
+                                    <span class="normal icon-font">&nbsp;</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class=" " href="access_event.html">
+                                    <span data="111" class="l menu-label">事件分析</span>
+                                    <span class="normal icon-font">&nbsp;</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class=" " href="/web/26754769/custom/subdir?siteId=12774508">
+                                    <span data="112" class="l menu-label">子目录</span>
+                                    <span class="normal icon-font">&nbsp;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="visitor-analysis menu-item clearfix">
+                        <a href="javascript:void(0)" class="expandable recordable close" memo="{id:'119',type:'menu',global:1,status:'1'}">
+                            <span class="icon icon-font"></span>
+                            <span class="item-title">访客分析</span>
+                        </a>
+                        <ul class="expandable-level1 expandable-content " style="display:none">
+                            <li>
+                                <a class=" " href="visitors_regional.html">
+                                    <span data="120" class="l menu-label">地域分布</span>
+                                    <span class="normal icon-font">&nbsp;</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class=" " href="visitors_ystem.html">
+                                    <span data="121" class="l menu-label">系统环境</span>
+                                    <span class="normal icon-font">&nbsp;</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class=" " href="visitors_newold.html">
+                                    <span data="122" class="l menu-label">新老访客</span>
+                                    <span class="normal icon-font">&nbsp;</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class=" " href="visitors_attribute.html">
+                                    <span data="123" class="l menu-label">访客属性</span>
+                                    <span class="normal icon-font">&nbsp;</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class=" " href="visitor_loyalty.html">
+                                    <span data="124" class="l menu-label">忠诚度</span>
+                                    <span class="normal icon-font">&nbsp;</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class=" " href="visitor_variable.html">
+                                    <span data="125" class="l menu-label">自定义变量</span>
+                                    <span class="normal icon-font">&nbsp;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="optimize-analysis menu-item clearfix">
+                        <a href="javascript:void(0)" class="expandable recordable close" memo="{id:'126',type:'menu',global:1,status:'1'}">
+                            <span class="icon icon-font"></span>
+                            <span class="item-title">优化分析</span>
+                        </a>
+                        <ul class="expandable-level1 expandable-content " style="display:none">
+                            <li>
+                                <a class=" " href="optimize_safety.html">
+                                    <span data="134" class="l menu-label">网站安全</span>
+                                    <span class="normal icon-font">&nbsp;</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class=" " href="optimize_grab.html">
+                                    <span data="128" class="l menu-label">百度索引量</span>
+                                    <span class="normal icon-font">&nbsp;</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class=" " href="optimize_abnormal.html">
+                                    <span data="128" class="l menu-label">抓取异常</span>
+                                    <span class="normal icon-font">&nbsp;</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class=" " href="optimize_robots.html">
+                                    <span data="128" class="l menu-label">Robots</span>
+                                    <span class="normal icon-font">&nbsp;</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class=" " href="optimize_ranking.html">
+                                    <span data="128" class="l menu-label">搜索词排名</span>
+                                    <span class="normal icon-font">&nbsp;</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class=" " href="optimize_speed.html">
+                                    <span data="130" class="l menu-label">网站速度诊断</span>
+                                    <span class="normal icon-font">&nbsp;</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class=" " href="optimize_lift.html">
+                                    <span data="131" class="l menu-label">升降榜</span>
+                                    <span class="normal icon-font">&nbsp;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="simple-nav-wrapper hide">
+                <div class="title">
+                    <span id="unfold" class="operation open icon-font"></span>
+                </div>
+                <ul class="simple-nav" id="cc">
+                    <li class="common-report menu-item clearfix cur">
+                        <a class="super-menu-item" href="javascript:void(0)">
+                            <span class="icon icon-font"></span>
+                        </a>
+                        <ul class="item-content hide">
+                            <li class="nav-title single clearfix">
+                                <a data="0" href="#" class="menu-label">常用报告</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="pro-overview menu-item clearfix">
+                        <a class="super-menu-item" href="javascript:void(0)">
+                            <span class="icon icon-font"></span>
+                        </a>
+                        <ul class="item-content hide">
+                            <li class="nav-title single clearfix">
+                                <a data="85" href="#" class="menu-label">网站概况</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="flow-analysis menu-item flow-analysis-selected clearfix">
+                        <a class="super-menu-item" href="javascript:void(0)">
+                            <span class="icon icon-font"></span>
+                        </a>
+                        <ul class="item-content hm-scroll hide">
+                            <li class="nav-title">流量分析</li>
+                            <li>
+                                <a class="selected" href="/web/26754769/trend/latest?siteId=12774508">
+                                    <span data="95" class="l menu-label">实时访客</span>
+                                    <span class="normal icon-font"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <span class="trend">
+                                    <a data="96" class="trend-title menu-label  " href="/web/26754769/trend/time?siteId=12774508">趋势分析</a>
+                                    <a href="/web/26754769/trend/time?siteId=12774508&amp;flag=today" class="day">今</a>
+                                    <a href="/web/26754769/trend/time?siteId=12774508&amp;flag=yesterday" class="day">昨</a>
+                                </span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="source-analysis menu-item clearfix">
+                        <a class="super-menu-item" href="javascript:void(0)">
+                            <span class="icon icon-font"></span>
+                        </a>
+                        <ul class="item-content hm-scroll hide">
+                            <li class="nav-title">来源分析</li>
+                            <li>
+                                <a class="" href="source_all.html">
+                                    <span data="99" class="l menu-label">全部来源</span>
+                                    <span class="normal icon-font"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="" href="source_search.html">
+                                    <span data="100" class="l menu-label">搜索引擎</span>
+                                    <span class="normal icon-font"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="" href="source_word.html">
+                                    <span data="101" class="l menu-label">搜索词</span>
+                                    <span class="normal icon-font"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="" href="source_link.html">
+                                    <span data="102" class="l menu-label">外部链接</span>
+                                    <span class="normal icon-font"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="" href="source_advertising.html">
+                                    <span data="104" class="l menu-label">指定广告跟踪</span>
+                                    <span class="normal icon-font"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="visit-analysis menu-item clearfix ">
+                        <a class="super-menu-item" href="javascript:void(0)">
+                            <span class="icon icon-font"></span>
+                        </a>
+                        <ul class="item-content hm-scroll hide">
+                            <li class="nav-title">访问分析</li>
+                            <li>
+                                <a class="" href="access_surveyed.html">
+                                    <span data="108" class="l menu-label">受访页面</span>
+                                    <span class="normal icon-font"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="" href="access_entrance.html">
+                                    <span data="109" class="l menu-label">入口页面</span>
+                                    <span class="normal icon-font"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="" href="access_domain_name.html">
+                                    <span data="110" class="l menu-label">受访域名</span>
+                                    <span class="normal icon-font"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="" href="access_click_graph.html">
+                                    <span data="106" class="l menu-label">页面点击图</span>
+                                    <span class="normal icon-font"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="" href="access_updown.html">
+                                    <span data="107" class="l menu-label">页面上下游</span>
+                                    <span class="normal icon-font"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="" href="access_event.html">
+                                    <span data="111" class="l menu-label">事件分析</span>
+                                    <span class="normal icon-font"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="" href="access_subdirectories.html">
+                                    <span data="112" class="l menu-label">子目录</span>
+                                    <span class="normal icon-font"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="visitor-analysis menu-item clearfix ">
+                        <a class="super-menu-item" href="javascript:void(0)">
+                            <span class="icon icon-font"></span>
+                        </a>
+                        <ul class="item-content hm-scroll hide">
+                            <li class="nav-title">访客分析</li>
+                            <li>
+                                <a class="" href="visitors_regional.html">
+                                    <span data="120" class="l menu-label">地域分布</span>
+                                    <span class="normal icon-font"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="" href="visitors_ystem.html">
+                                    <span data="121" class="l menu-label">系统环境</span>
+                                    <span class="normal icon-font"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="" href="visitors_newold.html">
+                                    <span data="122" class="l menu-label">新老访客</span>
+                                    <span class="normal icon-font"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="" href="visitors_attribute.html">
+                                    <span data="123" class="l menu-label">访客属性</span>
+                                    <span class="normal icon-font"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="" href="visitor_loyalty.html">
+                                    <span data="124" class="l menu-label">忠诚度</span>
+                                    <span class="normal icon-font"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="" href="visitors_regional.html">
+                                    <span data="125" class="l menu-label">自定义变量</span>
+                                    <span class="normal icon-font"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="optimize-analysis menu-item clearfix ">
+                        <a class="super-menu-item" href="javascript:void(0)">
+                            <span class="icon icon-font"></span>
+                        </a>
+                        <ul class="item-content hm-scroll hide">
+                            <li class="nav-title">优化分析</li>
+                            <li>
+                                <a class="" href="optimize_safety.html">
+                                    <span data="134" class="l menu-label">网站安全</span>
+                                    <span class="normal icon-font"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class=" " href="optimize_grab.html">
+                                    <span data="129" class="l menu-label">百度索引量</span>
+                                    <span class="normal icon-font"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class=" " href="optimize_abnormal.html">
+                                    <span data="133" class="l menu-label">抓取异常</span>
+                                    <span class="normal icon-font"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class=" " href="optimize_robots.html">
+                                    <span data="136" class="l menu-label">Robots</span>
+                                    <span class="normal icon-font"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="" href="optimize_ranking.html">
+                                    <span data="128" class="l menu-label">搜索词排名</span>
+                                    <span class="normal icon-font"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="" href="optimize_speed.html">
+                                    <span data="130" class="l menu-label">网站速度诊断</span>
+                                    <span class="normal icon-font"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="" href="optimize_lift.html">
+                                    <span data="131" class="l menu-label">升降榜</span>
+                                    <span class="normal icon-font"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="misc" id="misc">
+            <ul class="clearfix">
+                <li id="event-monitor-consultation" class="item">
+                    <a class="consultation item-icon icon-font" href="#" target="_blank"><span class="icon"></span></a>
+                    <a class="consultation-text item-text" href="" target="_blank"><span class="text">在线客服</span></a>
+                </li>
+                <li id="event-monitor-message" class="item">
+                    <a class="message item-icon icon-font" href="javascript:void(0)"><span class="icon"></span></a>
+                    <a id="feedback" class="message-text item-text" href="javascript:void(0)"><span class="text">反馈建议</span></a>
+                </li>
+                <li id="event-monitor-introduction" class="item" toggle-data="introduction-qr-code">
+                    <a class="introduction item-icon icon-font" href="javascript:void(0)">
+                        <span class="icon"></span>
+                    </a>
+                    <a class="introduction-text item-text" href="javascript:void(0)">
+                        <span class="text">关注微信</span>
+                    </a>
+                </li>
+                <li class="item" id="back-to-top" style="">
+                    <a class="top item-icon icon-font" href="#top"><span class="icon"></span></a>
+                    <a class="top-text item-text" href="#top"><span class="text">返回顶部</span></a>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="main">
+            <div id="report-wrapper" class="content clearfix">
+                <div id="content-header-wrapper" style="height: 132px;">
+                    <div id="content-header" class="content-header fixed-scroll-bar" style="width: 1606px;">
+
+                        <div class="title-bar clearfix">
+                            <div id="tool-bar" class="tool-bar r">
+                                <a href="javascript:void(0);" id="pin-btn" class="pin-btn open recordable r" memo="{id:'Scroll',type:'scroll',global:1}"><span class="icon icon-font"></span></a>
+                                <a href="javascript:void(0);" id="download-report" class="download-report trackable r" memo="{id:'doload'}">下载</a>
+                                <a href="javascript:void(0);" id="send-report" class="send-report trackable r" memo="{id:'masend'}"><span class="icon icon-font"></span>发送</a>
+                                <a href="javascript:void(0);" id="common-report" class="common-report r "><span class="icon icon-font"></span>常用报告</a>
+                            </div>
+                            <div class="setting-bar r">
+                            </div>
+                            <h5 class="l">
+                                趋势分析
+                            </h5>
+                            <div id="date" class="date l"></div>
+                            <a title="点击可查看报告详细帮助" id="report-tip-icon" class="report-help close l" href="javascript:void(0);">&nbsp;</a>
+                        </div>
+
+
+                        <div class="report-tip" id="report-tip" style="display: none;">
+                            <div class="tip-arrow"></div>
+                            <div class="report-tip-content">
+                                <table class="report-tip-table">
+                                    <tbody>
+                                        <tr>
+                                            <td width="70%" valign="top">
+                                                <div class="left-content"><div>本报告助您分析：</div><p>今日零点至当前时间内网民对您网站的访问情况。助您了解今日的访客和浏览量变化趋势。</p></div>
+                                            </td>
+                                            <td width="30%" valign="middle" class="report-tip-search-container">
+                                                <div class="right-content">
+                                                    <div class="questions">
+                                                        <div>常见问题：<a href="https://tongji.baidu.com/web/help/article?id=141&amp;type=0" target="_blank">趋势分析报告能告诉我哪些信息？</a></div>
+                                                    </div>
+                                                    <div class="report-tip-search">
+                                                        <div class="report-tip-search-input">
+                                                            <span class="report-tip-search-btn">&nbsp;</span>
+                                                            <input type="text" name="keyword" placeholder="更多问题请在这里查询..." id="ReportHelp">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div id="filters" class="filters">
+                            <div class="control-bar-wrapper clearfix" id="control-bar-wrapper">
+                                <div class="control-bar bg-iframe l" id="control-bar">
+                                    <span class="l label">时间：</span>
+                                    <div class="l date-select-bar" id="date-select-bar">
+                                        <a href="#00" class="trackable date-bar-single-day cur" onclick="Report(0)" memo="{id:'time_tody'}">今天</a>
+                                        <span class="seprator"></span>
+                                        <a href="#-1" class="trackable date-bar-single-day" onclick="Report(-1)" memo="{id:'time_yest'}">昨天</a>
+                                        <span class="seprator"></span>
+                                        <a href="#-6" class="trackable" onclick="Report(-6)" memo="{id:'time_week'}">最近7天</a>
+                                        <span class="seprator"></span>
+                                        <a href="#-29" class="trackable" onclick="Report(-29)" memo="{id:'time_month'}">最近30天</a>
+                                    </div>
+                                    <div class="l time-select-bar" id="custom-date-select">
+                                        <div class="select-bar-item l">
+                                            <input onfocus="javascript:this.blur();" readonly="readonly" class="text trackable" memo="{id:'time_selt'}" id="date-select" value="自定义时间段">
+                                            <a class="dropdown"></a>
+                                        </div>
+                                        <div class="select-bar-item l">
+                                            <label for="compare-date">
+                                                <span class="checkbox compare-date-checkbox"></span>
+                                                <input type="checkbox" id="compare-date" class="compare-date">
+                                                <span id="date-compare-title">对比时间段</span>
+                                            </label>
+                                            <span id="compare-date-container" class="compare-date-container hide">
+                                                <input onfocus="javascript:this.blur();" readonly="readonly" class="text trackable" memo="{id:'time_consel'}" id="compare-date-select" value="时间段对比">
+                                                <a class="dropdown"></a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="l time-span clearfix" id="time-span">
+                                        <a id="by-hour" class="l selected" data="6" href="javascript:void(0)">按时</a>
+                                        <a id="by-day" class="l" data="5" href="javascript:void(0)">按日</a>
+                                        <a id="by-week" class="l disable" data="4" href="javascript:void(0)">按周</a>
+                                        <a id="by-month" class="l last disable" data="3" href="javascript:void(0)">按月</a>
+                                    </div>
+                                </div>
+                                <a id="event-monitor-advanced-filter" class="advanced-filter up" href="javascript:void(0)">收起筛选</a>
+                            </div>
+                            <div class="filter-content-wrapper drop-down-parent clearfix">
+                                <div id="Sources" class="filter drop-down-container">
+                                    <span class="drop-down-label">来源：</span><div class="drop-down-header"><span class="drop-down-text ellipsis" data-id="all" title="全部">全部</span><span class="btn-arrow">&nbsp;</span></div><div class="drop-down-list hm-scroll drop-down-level1" style="display: none; width: 150px; left: 41px;" level="1">
+                                        <ul>
+                                            <li class="drop-down-query-li"><span class="drop-down-search-btn">&nbsp;</span><input type="text" class="drop-down-query" placeholder="请输入关键词..." style="width: 72px;"></li>
+                                            <li class="drop-down-li drop-down-clickable" data-id="all" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="全部">全部</span></li>
+                                            <li class="drop-down-li drop-down-clickable" data-id="through" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="直接访问">直接访问</span></li>
+
+                                            <li class="drop-down-li " data-id="search" data-children="true">
+                                                <span class="drop-down-arrow-style drop-down-arrow " style="float: right; width: 6px;">&nbsp;</span>
+                                                <span class="drop-down-li-content" title="搜索引擎">搜索引擎</span>
+                                            </li>
+
+                                            <li class="drop-down-li drop-down-clickable" data-id="link" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="外部链接">外部链接</span></li>
+
+                                            @*<li class="drop-down-shortcut"><span class="drop-down-arrow-style" style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content">快捷操作</span></li>
+        <li class="drop-down-li drop-down-clickable shortcut-li" data-id="search,1" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="百度">百度</span></li>
+        <li class="drop-down-li drop-down-clickable shortcut-li" data-id="search,-3" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="百度付费推广">百度付费推广</span></li>
+        <li class="drop-down-li drop-down-clickable shortcut-li" data-id="search,-3,32767" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="百度搜索推广">百度搜索推广</span></li><li class="drop-down-li drop-down-clickable shortcut-li" data-id="search,-3,32763" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="百度百意推广">百度百意推广</span></li>
+    <li class="drop-down-li drop-down-clickable shortcut-li" data-id="search,-3,32761" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="百度信息流推广">百度信息流推广</span></li>
+    <li class="drop-down-li drop-down-clickable shortcut-li" data-id="search,-2" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="百度自然搜索">百度自然搜索</span></li> *@                                           
+                                            <li class="drop-down-li drop-down-clickable shortcut-li" data-id="search,2" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="Google">Google</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div id="ClientDevices" class="filter"><label class="label">设备：</label><ul class="group"><li id="jquery-customRadio--HM__5-all" data="all" title="全部" class="cur first">全部</li><li id="jquery-customRadio--HM__5-pc" data="pc" title="计算机" class="">计算机</li><li id="jquery-customRadio--HM__5-mobile" data="mobile" title="移动设备" class=" last">移动设备</li></ul></div>
+                                <div id="Areas" class="filter drop-down-container"><span class="drop-down-label">地域：</span><div class="drop-down-header"><span class="drop-down-text ellipsis" data-id="all" title="全部">全部</span><span class="btn-arrow">&nbsp;</span></div><div class="drop-down-list hm-scroll drop-down-level1" style="display: none; width: 150px; left: 41px;" level="1"><ul><li class="drop-down-query-li"><span class="drop-down-search-btn">&nbsp;</span><input type="text" class="drop-down-query" placeholder="请输入关键词..." style="width: 72px;"></li><li class="drop-down-li drop-down-clickable" data-id="all" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="全部">全部</span></li><li class="drop-down-li drop-down-clickable" data-id="china" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="全国">全国</span></li><li class="drop-down-li " data-id="province" data-children="true"><span class="drop-down-arrow-style drop-down-arrow " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="省市自治区">省市自治区</span></li><li class="drop-down-li drop-down-clickable" data-id="other" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="其他">其他</span></li><li class="drop-down-shortcut"><span class="drop-down-arrow-style" style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content">快捷操作</span></li><li class="drop-down-li drop-down-clickable shortcut-li" data-id="province,1" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="北京">北京</span></li><li class="drop-down-li drop-down-clickable shortcut-li" data-id="province,2" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="上海">上海</span></li><li class="drop-down-li drop-down-clickable shortcut-li" data-id="province,4" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="广东">广东</span></li></ul></div></div>
+                                <div id="Visitors" class="filter"><label class="label">访客：</label><ul class="group"><li id="jquery-customRadio--HM__6-all" data="all" title="全部" class="cur first">全部</li><li id="jquery-customRadio--HM__6-new" data="new" title="新访客" class="">新访客</li><li id="jquery-customRadio--HM__6-old" data="old" title="老访客" class=" last">老访客</li></ul></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="page-tip" id="PageTip" style="display:none">
+                    <a class="tip-close open trackable" memo="{id:'PageTip',type:'page-tip',global:0}" onclick="$(this).parent().hide();" href="javascript:void(0);"></a>
+                    <div class="text"></div>
+                </div>
+                <div class="page-tip" id="ConditionalPageTip" style="display:none">
+                    <a class="tip-close open trackable" memo="{id:'ConditionalPageTip',type:'page-tip',global:0}" onclick="$(this).parent().hide();" href="javascript:void(0);"></a>
+                    <div class="text"></div>
+                </div>
+
+
+                <div class="main-content">
+                    <div id="tabs" class="section">
+                        <div class="tabs">
+                            <ul class="clearfix">
+                                <li class="selected">
+                                    <a href="#">全部趋势</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="summary" class="section " style="border-top: none"><table class="summary"><tbody><tr><td><span class="text">浏览量(PV)<a href="javascript:void(0);" data="pv_count" class="help">&nbsp;</a></span><div class="value summary-ellipsis" title="71">71</div></td><td><span class="text">访客数(UV)<a href="javascript:void(0);" data="visitor_count" class="help">&nbsp;</a></span><div class="value summary-ellipsis" title="38">38</div></td><td><span class="text">IP数<a href="javascript:void(0);" data="ip_count" class="help">&nbsp;</a></span><div class="value summary-ellipsis" title="28">28</div></td><td><span class="text">跳出率<a href="javascript:void(0);" data="bounce_ratio" class="help">&nbsp;</a></span><div class="value summary-ellipsis" title="77.14%">77.14%</div></td><td class="last"><span class="text">平均访问时长<a href="javascript:void(0);" data="avg_visit_time" class="help">&nbsp;</a></span><div class="value summary-ellipsis" title="00:01:37">00:01:37</div></td></tr></tbody></table></div>
+                    <div class="flash-text-container">
+                        <span class="flash-text toggleable-hidden">趋势图</span>
+                    </div>
+                    <div class="flash-indicator" id="flash-indicator">
+                        <div class="flash-indicator-wrapper">
+                            指标：
+                            <a id="flash-indicator-btn">
+                                <span class="flash-indicator-text trackable" id="flash-indicator-text" memo="{id:'flash_poin'}">访问次数</span>
+                            </a>
+                            <span class="btn-arrow">&nbsp;</span>
+                        </div>
+                        <div class="flash-indicator-container layer" id="flash-option-container">
+                            <div class="text" id="flash-tip">
+                                提示：可同时选择<span class="max-flash-indicator-num"
+                                              id="max-flash-indicator-num">2</span>项
+                            </div>
+                            <div id="flash-indicator-container">
+                                <div class="group clearfix">
+                                    <label for="jquery-chartIndicator--HM__3-pv_count">
+                                        <div class="form-style checkbox"></div>
+                                        <input id="jquery-chartIndicator--HM__3-pv_count"
+                                               name="jquery-chartIndicator--HM__3-flash-indicator" title="浏览量(PV)" type="checkbox"
+                                               value="pv_count">浏览量(PV)
+                                    </label><label for="jquery-chartIndicator--HM__3-visit_count">
+                                        <div class="form-style checkbox checked"></div>
+                                        <input checked="checked"
+                                               id="jquery-chartIndicator--HM__3-visit_count" name="jquery-chartIndicator--HM__3-flash-indicator" title="访问次数"
+                                               type="checkbox" value="visit_count">访问次数
+                                    </label><label for="jquery-chartIndicator--HM__3-visitor_count">
+                                        <div class="form-style checkbox"></div>
+                                        <input id="jquery-chartIndicator--HM__3-visitor_count"
+                                               name="jquery-chartIndicator--HM__3-flash-indicator" title="访客数(UV)"
+                                               type="checkbox" value="visitor_count">访客数(UV)
+                                    </label><label for="jquery-chartIndicator--HM__3-new_visitor_count">
+                                        <div class="form-style checkbox"></div>
+                                        <input id="jquery-chartIndicator--HM__3-new_visitor_count"
+                                               name="jquery-chartIndicator--HM__3-flash-indicator" title="新访客数"
+                                               type="checkbox" value="new_visitor_count">新访客数
+                                    </label><label for="jquery-chartIndicator--HM__3-new_visitor_ratio">
+                                        <div class="form-style checkbox"></div>
+                                        <input id="jquery-chartIndicator--HM__3-new_visitor_ratio"
+                                               name="jquery-chartIndicator--HM__3-flash-indicator" title="新访客比率"
+                                               type="checkbox" value="new_visitor_ratio">新访客比率
+                                    </label><label for="jquery-chartIndicator--HM__3-ip_count">
+                                        <div class="form-style checkbox"></div>
+                                        <input id="jquery-chartIndicator--HM__3-ip_count"
+                                               name="jquery-chartIndicator--HM__3-flash-indicator" title="IP数" type="checkbox"
+                                               value="ip_count">IP数
+                                    </label>
+                                </div>
+                                <div class="separator"></div>
+                                <div class="group clearfix">
+                                    <label for="jquery-chartIndicator--HM__3-bounce_ratio">
+                                        <div class="form-style checkbox"></div>
+                                        <input id="jquery-chartIndicator--HM__3-bounce_ratio"
+                                               name="jquery-chartIndicator--HM__3-flash-indicator" title="跳出率"
+                                               type="checkbox" value="bounce_ratio">跳出率
+                                    </label><label for="jquery-chartIndicator--HM__3-avg_visit_time">
+                                        <div class="form-style checkbox"></div>
+                                        <input id="jquery-chartIndicator--HM__3-avg_visit_time"
+                                               name="jquery-chartIndicator--HM__3-flash-indicator" title="平均访问时长"
+                                               type="checkbox" value="avg_visit_time">平均访问时长
+                                    </label><label for="jquery-chartIndicator--HM__3-avg_visit_pages">
+                                        <div class="form-style checkbox"></div>
+                                        <input id="jquery-chartIndicator--HM__3-avg_visit_pages"
+                                               name="jquery-chartIndicator--HM__3-flash-indicator" title="平均访问页数"
+                                               type="checkbox" value="avg_visit_pages">平均访问页数
+                                    </label>
+                                </div>
+                                <div class="separator"></div>
+                                <div class="group clearfix">
+                                    @*<label for="jquery-chartIndicator--HM__3-trans_count">
+                                        <div class="form-style checkbox"></div>
+                                        <input id="jquery-chartIndicator--HM__3-trans_count"
+                                               name="jquery-chartIndicator--HM__3-flash-indicator" title="转化次数" type="checkbox"
+                                               value="trans_count">转化次数
+                                    </label><label for="jquery-chartIndicator--HM__3-trans_ratio">
+                                        <div class="form-style checkbox"></div>
+                                        <input id="jquery-chartIndicator--HM__3-trans_ratio"
+                                               name="jquery-chartIndicator--HM__3-flash-indicator" title="转化率" type="checkbox"
+                                               value="trans_ratio">转化率
+                                    </label><label for="jquery-chartIndicator--HM__3-income">
+                                        <div class="form-style checkbox"></div>
+                                        <input id="jquery-chartIndicator--HM__3-income"
+                                               name="jquery-chartIndicator--HM__3-flash-indicator" title="转化收益" type="checkbox"
+                                               value="income">转化收益
+                                    </label>*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="to-toggle">
+                        <div class="flash-container" id="flash-line-container" style="position: relative; font-family: &quot;Microsoft Yahei&quot;, Helvetica, STHeitiSC-Light, Arial, sans-serif;">
+                            <div class="hm-charts-html">
+                                <div class="hm-charts-hint"
+                                     style="position: absolute; font: 12px &quot;Microsoft Yahei&quot;, Helvetica, STHeitiSC-Light, Arial, sans-serif; left: 0px; top: 0px; width: 100%; height: 100%; text-align: center; background-color: rgb(255, 255, 255); opacity: 0.8; transition: all 0.4s ease 0s; display: none;">
+                                    <div class="hm-charts-hint-content" style="position: absolute; top: 50%; left: 48%;">
+                                        <span class="hm-charts-hint-text"
+                                              style="vertical-align: top; line-height: 24px; margin-left: -60px;">
+                                            <img src="data:image/gif;base64,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AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+                                                 style="vertical-align:bottom;margin-right:5px"><span>数据正在加载中...</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="hm-html-legend"
+                                     style="position: absolute; width: 1399px; font: 12px &quot;Microsoft Yahei&quot;, Helvetica, STHeitiSC-Light, Arial, sans-serif; left: 115px; padding: 5px 0px; background-color: rgb(255, 255, 255); bottom: 10px; text-align: center;">
+                                    <span class="hm-html-legend-item" style="display:inline-block;">
+                                        <label class="hm-charts-tooltip-item-icon" style="color:#4fa8f9;">●</label><label class="hm-charts-tooltip-item-value" style="" title="访问次数 ">访问次数</label>
+                                    </span>
+                                </div>
+                                <div class="hm-charts-tooltip"
+                                     style="position: absolute; font: 12px &quot;Microsoft Yahei&quot;, Helvetica, STHeitiSC-Light, Arial, sans-serif; left: 125.5px; top: 19px; min-width: 198px; border-width: 1px; border-style: solid; border-color: rgb(214, 215, 216); border-radius: 4px; padding: 0px; background-color: rgb(255, 255, 255); opacity: 0.9; box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 5px; transition: all 0.3s ease 0s; pointer-events: none;">
+                                    <div class="hm-charts-tooltip-header">
+                                        <span class="hm-charts-tooltip-header-category">00:00 - 00:59</span>
+                                    </div>
+                                    <div class="hm-charts-tooltip-body">
+                                        <p class="hm-charts-tooltip-item">
+                                            <span class="hm-charts-tooltip-item-icon" style="color:#4fa8f9">●</span><span class="hm-charts-tooltip-item-label">访问次数</span><span class="hm-charts-tooltip-item-value">--</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fold">
+                        <a href="javascript:void(0);" id="toggle-flash-btn" targets=".to-toggle,.flash-indicator,.time-select,.flash-text" class="open toggleable recordable trackable">
+                        </a>
+                    </div>
+                    <div id="table-indicator">
+                        <div class="table-indicator-custom-btn"><span>自定义指标</span></div><div class="table-indicator" style="display: none;">
+                            <div class="shortcuts"><em class="gray">提示：可同时选择<em class="red">6</em>项</em><a href="javascript:void(0)" id="jquery-tableIndicator--HM__4-Default" class="shortcutsButton" type="Default">系统默认指标</a></div><div class="group clearfix"><label class="groupName">网站基础指标:</label><div style="overflow: hidden;"><label for="jquery-tableIndicator--HM__4-pv_count"><div class="checkbox checked"></div>    <input type="checkbox" title="浏览量(PV)" value="pv_count" id="jquery-tableIndicator--HM__4-pv_count" checked="checked">浏览量(PV)</label><label for="jquery-tableIndicator--HM__4-pv_ratio"><div class="checkbox"></div>    <input type="checkbox" title="浏览量占比" value="pv_ratio" id="jquery-tableIndicator--HM__4-pv_ratio">浏览量占比</label><label for="jquery-tableIndicator--HM__4-visit_count"><div class="checkbox"></div>    <input type="checkbox" title="访问次数" value="visit_count" id="jquery-tableIndicator--HM__4-visit_count">访问次数</label><label for="jquery-tableIndicator--HM__4-visitor_count"><div class="checkbox checked"></div>    <input type="checkbox" title="访客数(UV)" value="visitor_count" id="jquery-tableIndicator--HM__4-visitor_count" checked="checked">访客数(UV)</label><label for="jquery-tableIndicator--HM__4-new_visitor_count"><div class="checkbox"></div>    <input type="checkbox" title="新访客数" value="new_visitor_count" id="jquery-tableIndicator--HM__4-new_visitor_count">新访客数</label><label for="jquery-tableIndicator--HM__4-new_visitor_ratio"><div class="checkbox"></div>    <input type="checkbox" title="新访客比率" value="new_visitor_ratio" id="jquery-tableIndicator--HM__4-new_visitor_ratio">新访客比率</label><label for="jquery-tableIndicator--HM__4-ip_count"><div class="checkbox checked"></div>    <input type="checkbox" title="IP数" value="ip_count" id="jquery-tableIndicator--HM__4-ip_count" checked="checked">IP数</label></div></div><div class="group clearfix"><label class="groupName">流量质量指标:</label><div style="overflow: hidden;"><label for="jquery-tableIndicator--HM__4-bounce_ratio"><div class="checkbox checked"></div>    <input type="checkbox" title="跳出率" value="bounce_ratio" id="jquery-tableIndicator--HM__4-bounce_ratio" checked="checked">跳出率</label><label for="jquery-tableIndicator--HM__4-avg_visit_time"><div class="checkbox checked"></div>    <input type="checkbox" title="平均访问时长" value="avg_visit_time" id="jquery-tableIndicator--HM__4-avg_visit_time" checked="checked">平均访问时长</label><label for="jquery-tableIndicator--HM__4-avg_visit_pages"><div class="checkbox"></div>    <input type="checkbox" title="平均访问页数" value="avg_visit_pages" id="jquery-tableIndicator--HM__4-avg_visit_pages">平均访问页数</label></div></div><div class="group clearfix"><label class="groupName">转化指标:</label><div style="overflow: hidden;"><label for="jquery-tableIndicator--HM__4-trans_count"><div class="checkbox"></div>    <input type="checkbox" title="转化次数" value="trans_count" id="jquery-tableIndicator--HM__4-trans_count">转化次数</label><label for="jquery-tableIndicator--HM__4-trans_ratio"><div class="checkbox"></div>    <input type="checkbox" title="转化率" value="trans_ratio" id="jquery-tableIndicator--HM__4-trans_ratio">转化率</label><label for="jquery-tableIndicator--HM__4-income"><div class="checkbox"></div>    <input type="checkbox" title="转化收益" value="income" id="jquery-tableIndicator--HM__4-income">转化收益</label></div></div><div class="group clearfix"><label class="groupName">商桥沟通指标:</label><div style="overflow: hidden;"><label for="jquery-tableIndicator--HM__4-communi_visitor_count"><div class="checkbox"></div>    <input type="checkbox" title="沟通人数" value="communi_visitor_count" id="jquery-tableIndicator--HM__4-communi_visitor_count">沟通人数</label><label for="jquery-tableIndicator--HM__4-communi_visit_count"><div class="checkbox"></div>    <input type="checkbox" title="沟通次数" value="communi_visit_count" id="jquery-tableIndicator--HM__4-communi_visit_count">沟通次数</label><label for="jquery-tableIndicator--HM__4-valid_communi_visitor_count"><div class="checkbox"></div>    <input type="checkbox" title="有效沟通人数" value="valid_communi_visitor_count" id="jquery-tableIndicator--HM__4-valid_communi_visitor_count">有效沟通人数</label><label for="jquery-tableIndicator--HM__4-valid_communi_visit_count"><div class="checkbox"></div>    <input type="checkbox" title="有效沟通次数" value="valid_communi_visit_count" id="jquery-tableIndicator--HM__4-valid_communi_visit_count">有效沟通次数</label><label for="jquery-tableIndicator--HM__4-msg_visit_count"><div class="checkbox"></div>    <input type="checkbox" title="留言量" value="msg_visit_count" id="jquery-tableIndicator--HM__4-msg_visit_count">留言量</label><label for="jquery-tableIndicator--HM__4-name_card_count"><div class="checkbox"></div>    <input type="checkbox" title="名片量" value="name_card_count" id="jquery-tableIndicator--HM__4-name_card_count">名片量</label><label for="jquery-tableIndicator--HM__4-avg_communi_time"><div class="checkbox"></div>    <input type="checkbox" title="平均沟通时长" value="avg_communi_time" id="jquery-tableIndicator--HM__4-avg_communi_time">平均沟通时长</label><label for="jquery-tableIndicator--HM__4-communi_ratio"><div class="checkbox"></div>    <input type="checkbox" title="沟通比例" value="communi_ratio" id="jquery-tableIndicator--HM__4-communi_ratio">沟通比例</label></div></div>
+                            <div class="table-indicator-btn"><a id="jquery-tableIndicator--HM__4-Ok" class="btn btn-focused" href="javascript:void(0)">确定</a></div>
+                        </div>
+                    </div>
+                    <div id="table">
+                        <table class="table table-layout-03">
+                            <thead>
+                                <tr class="group-title" id="">
+                                    <td class="number-col" data="" id="" colspan="1" rowspan="2"><div class="td-content">&nbsp;</div></td>
+                                    <td class="table-index sortable desc" data="simple_date_title" id="simple_date_title" colspan="1" rowspan="2"><div class="td-content">日期</div></td>
+                                    <td class="group-name2 group" data="2" id="2" colspan="3" rowspan=""><div class="td-content">网站基础指标</div></td>
+                                    <td class="group-name3 group" data="3" id="3" colspan="2" rowspan=""><div class="td-content">流量质量指标</div></td>
+                                </tr>
+                                <tr class="group-item" id=""><td class="number sortable group" data="pv_count" id="pv_count" colspan="" rowspan=""><div class="td-content">浏览量(PV)</div></td><td class="number sortable" data="visitor_count" id="visitor_count" colspan="" rowspan=""><div class="td-content">访客数(UV)</div></td><td class="number sortable" data="ip_count" id="ip_count" colspan="" rowspan=""><div class="td-content">IP数</div></td><td class="ratio sortable group" data="bounce_ratio" id="bounce_ratio" colspan="" rowspan=""><div class="td-content">跳出率</div></td><td class="time sortable" data="avg_visit_time" id="avg_visit_time" colspan="" rowspan=""><div class="td-content">平均访问时长</div></td></tr>
+                            </thead>
+                            <tbody><tr class="line" id="table-tr_0"><td class="number-col" data="" id="" colspan=""><div class="td-content" title="1">1</div></td><td class="table-index simple_date_title" data="" id="" colspan=""><div class="td-content" title="">15:00 - 15:59</div></td><td class="number group pv_count" data="" id="" colspan=""><div class="td-content" title="">7</div></td><td class="number visitor_count" data="" id="" colspan=""><div class="td-content" title="">3</div></td><td class="number ip_count" data="" id="" colspan=""><div class="td-content" title="">3</div></td><td class="ratio group bounce_ratio" data="" id="" colspan=""><div class="td-content" title="">--</div></td><td class="time avg_visit_time" data="" id="" colspan=""><div class="td-content" title="">--</div></td></tr><tr class="line" id="table-tr_1"><td class="number-col" data="" id="" colspan=""><div class="td-content" title="2">2</div></td><td class="table-index simple_date_title" data="" id="" colspan=""><div class="td-content" title="">14:00 - 14:59</div></td><td class="number group pv_count" data="" id="" colspan=""><div class="td-content" title="">15</div></td><td class="number visitor_count" data="" id="" colspan=""><div class="td-content" title="">4</div></td><td class="number ip_count" data="" id="" colspan=""><div class="td-content" title="">4</div></td><td class="ratio group bounce_ratio" data="" id="" colspan=""><div class="td-content" title="">66.67%</div></td><td class="time avg_visit_time" data="" id="" colspan=""><div class="td-content" title="">00:01:24</div></td></tr><tr class="line" id="table-tr_2"><td class="number-col" data="" id="" colspan=""><div class="td-content" title="3">3</div></td><td class="table-index simple_date_title" data="" id="" colspan=""><div class="td-content" title="">13:00 - 13:59</div></td><td class="number group pv_count" data="" id="" colspan=""><div class="td-content" title="">2</div></td><td class="number visitor_count" data="" id="" colspan=""><div class="td-content" title="">2</div></td><td class="number ip_count" data="" id="" colspan=""><div class="td-content" title="">2</div></td><td class="ratio group bounce_ratio" data="" id="" colspan=""><div class="td-content" title="">100%</div></td><td class="time avg_visit_time" data="" id="" colspan=""><div class="td-content" title="">00:00:51</div></td></tr><tr class="line" id="table-tr_3"><td class="number-col" data="" id="" colspan=""><div class="td-content" title="4">4</div></td><td class="table-index simple_date_title" data="" id="" colspan=""><div class="td-content" title="">12:00 - 12:59</div></td><td class="number group pv_count" data="" id="" colspan=""><div class="td-content" title="">--</div></td><td class="number visitor_count" data="" id="" colspan=""><div class="td-content" title="">--</div></td><td class="number ip_count" data="" id="" colspan=""><div class="td-content" title="">--</div></td><td class="ratio group bounce_ratio" data="" id="" colspan=""><div class="td-content" title="">--</div></td><td class="time avg_visit_time" data="" id="" colspan=""><div class="td-content" title="">--</div></td></tr><tr class="line" id="table-tr_4"><td class="number-col" data="" id="" colspan=""><div class="td-content" title="5">5</div></td><td class="table-index simple_date_title" data="" id="" colspan=""><div class="td-content" title="">11:00 - 11:59</div></td><td class="number group pv_count" data="" id="" colspan=""><div class="td-content" title="">14</div></td><td class="number visitor_count" data="" id="" colspan=""><div class="td-content" title="">7</div></td><td class="number ip_count" data="" id="" colspan=""><div class="td-content" title="">7</div></td><td class="ratio group bounce_ratio" data="" id="" colspan=""><div class="td-content" title="">62.5%</div></td><td class="time avg_visit_time" data="" id="" colspan=""><div class="td-content" title="">00:01:06</div></td></tr><tr class="line" id="table-tr_5"><td class="number-col" data="" id="" colspan=""><div class="td-content" title="6">6</div></td><td class="table-index simple_date_title" data="" id="" colspan=""><div class="td-content" title="">10:00 - 10:59</div></td><td class="number group pv_count" data="" id="" colspan=""><div class="td-content" title="">12</div></td><td class="number visitor_count" data="" id="" colspan=""><div class="td-content" title="">4</div></td><td class="number ip_count" data="" id="" colspan=""><div class="td-content" title="">4</div></td><td class="ratio group bounce_ratio" data="" id="" colspan=""><div class="td-content" title="">50%</div></td><td class="time avg_visit_time" data="" id="" colspan=""><div class="td-content" title="">00:02:34</div></td></tr><tr class="line" id="table-tr_6"><td class="number-col" data="" id="" colspan=""><div class="td-content" title="7">7</div></td><td class="table-index simple_date_title" data="" id="" colspan=""><div class="td-content" title="">09:00 - 09:59</div></td><td class="number group pv_count" data="" id="" colspan=""><div class="td-content" title="">7</div></td><td class="number visitor_count" data="" id="" colspan=""><div class="td-content" title="">4</div></td><td class="number ip_count" data="" id="" colspan=""><div class="td-content" title="">4</div></td><td class="ratio group bounce_ratio" data="" id="" colspan=""><div class="td-content" title="">50%</div></td><td class="time avg_visit_time" data="" id="" colspan=""><div class="td-content" title="">00:01:55</div></td></tr><tr class="line" id="table-tr_7"><td class="number-col" data="" id="" colspan=""><div class="td-content" title="8">8</div></td><td class="table-index simple_date_title" data="" id="" colspan=""><div class="td-content" title="">08:00 - 08:59</div></td><td class="number group pv_count" data="" id="" colspan=""><div class="td-content" title="">1</div></td><td class="number visitor_count" data="" id="" colspan=""><div class="td-content" title="">1</div></td><td class="number ip_count" data="" id="" colspan=""><div class="td-content" title="">1</div></td><td class="ratio group bounce_ratio" data="" id="" colspan=""><div class="td-content" title="">100%</div></td><td class="time avg_visit_time" data="" id="" colspan=""><div class="td-content" title="">00:00:04</div></td></tr><tr class="line" id="table-tr_8"><td class="number-col" data="" id="" colspan=""><div class="td-content" title="9">9</div></td><td class="table-index simple_date_title" data="" id="" colspan=""><div class="td-content" title="">07:00 - 07:59</div></td><td class="number group pv_count" data="" id="" colspan=""><div class="td-content" title="">--</div></td><td class="number visitor_count" data="" id="" colspan=""><div class="td-content" title="">--</div></td><td class="number ip_count" data="" id="" colspan=""><div class="td-content" title="">--</div></td><td class="ratio group bounce_ratio" data="" id="" colspan=""><div class="td-content" title="">--</div></td><td class="time avg_visit_time" data="" id="" colspan=""><div class="td-content" title="">--</div></td></tr><tr class="line" id="table-tr_9"><td class="number-col" data="" id="" colspan=""><div class="td-content" title="10">10</div></td><td class="table-index simple_date_title" data="" id="" colspan=""><div class="td-content" title="">06:00 - 06:59</div></td><td class="number group pv_count" data="" id="" colspan=""><div class="td-content" title="">--</div></td><td class="number visitor_count" data="" id="" colspan=""><div class="td-content" title="">--</div></td><td class="number ip_count" data="" id="" colspan=""><div class="td-content" title="">--</div></td><td class="ratio group bounce_ratio" data="" id="" colspan=""><div class="td-content" title="">--</div></td><td class="time avg_visit_time" data="" id="" colspan=""><div class="td-content" title="">--</div></td></tr><tr class="line" id="table-tr_10"><td class="number-col" data="" id="" colspan=""><div class="td-content" title="11">11</div></td><td class="table-index simple_date_title" data="" id="" colspan=""><div class="td-content" title="">05:00 - 05:59</div></td><td class="number group pv_count" data="" id="" colspan=""><div class="td-content" title="">3</div></td><td class="number visitor_count" data="" id="" colspan=""><div class="td-content" title="">3</div></td><td class="number ip_count" data="" id="" colspan=""><div class="td-content" title="">0</div></td><td class="ratio group bounce_ratio" data="" id="" colspan=""><div class="td-content" title="">100%</div></td><td class="time avg_visit_time" data="" id="" colspan=""><div class="td-content" title="">00:02:00</div></td></tr><tr class="line" id="table-tr_11"><td class="number-col" data="" id="" colspan=""><div class="td-content" title="12">12</div></td><td class="table-index simple_date_title" data="" id="" colspan=""><div class="td-content" title="">04:00 - 04:59</div></td><td class="number group pv_count" data="" id="" colspan=""><div class="td-content" title="">1</div></td><td class="number visitor_count" data="" id="" colspan=""><div class="td-content" title="">1</div></td><td class="number ip_count" data="" id="" colspan=""><div class="td-content" title="">1</div></td><td class="ratio group bounce_ratio" data="" id="" colspan=""><div class="td-content" title="">100%</div></td><td class="time avg_visit_time" data="" id="" colspan=""><div class="td-content" title="">00:00:14</div></td></tr><tr class="line" id="table-tr_12"><td class="number-col" data="" id="" colspan=""><div class="td-content" title="13">13</div></td><td class="table-index simple_date_title" data="" id="" colspan=""><div class="td-content" title="">03:00 - 03:59</div></td><td class="number group pv_count" data="" id="" colspan=""><div class="td-content" title="">6</div></td><td class="number visitor_count" data="" id="" colspan=""><div class="td-content" title="">6</div></td><td class="number ip_count" data="" id="" colspan=""><div class="td-content" title="">1</div></td><td class="ratio group bounce_ratio" data="" id="" colspan=""><div class="td-content" title="">100%</div></td><td class="time avg_visit_time" data="" id="" colspan=""><div class="td-content" title="">00:02:00</div></td></tr><tr class="line" id="table-tr_13"><td class="number-col" data="" id="" colspan=""><div class="td-content" title="14">14</div></td><td class="table-index simple_date_title" data="" id="" colspan=""><div class="td-content" title="">02:00 - 02:59</div></td><td class="number group pv_count" data="" id="" colspan=""><div class="td-content" title="">--</div></td><td class="number visitor_count" data="" id="" colspan=""><div class="td-content" title="">--</div></td><td class="number ip_count" data="" id="" colspan=""><div class="td-content" title="">--</div></td><td class="ratio group bounce_ratio" data="" id="" colspan=""><div class="td-content" title="">--</div></td><td class="time avg_visit_time" data="" id="" colspan=""><div class="td-content" title="">--</div></td></tr><tr class="line" id="table-tr_14"><td class="number-col" data="" id="" colspan=""><div class="td-content" title="15">15</div></td><td class="table-index simple_date_title" data="" id="" colspan=""><div class="td-content" title="">01:00 - 01:59</div></td><td class="number group pv_count" data="" id="" colspan=""><div class="td-content" title="">3</div></td><td class="number visitor_count" data="" id="" colspan=""><div class="td-content" title="">3</div></td><td class="number ip_count" data="" id="" colspan=""><div class="td-content" title="">1</div></td><td class="ratio group bounce_ratio" data="" id="" colspan=""><div class="td-content" title="">100%</div></td><td class="time avg_visit_time" data="" id="" colspan=""><div class="td-content" title="">00:02:00</div></td></tr><tr class="line" id="table-tr_15"><td class="number-col" data="" id="" colspan=""><div class="td-content" title="16">16</div></td><td class="table-index simple_date_title" data="" id="" colspan=""><div class="td-content" title="">00:00 - 00:59</div></td><td class="number group pv_count" data="" id="" colspan=""><div class="td-content" title="">--</div></td><td class="number visitor_count" data="" id="" colspan=""><div class="td-content" title="">--</div></td><td class="number ip_count" data="" id="" colspan=""><div class="td-content" title="">--</div></td><td class="ratio group bounce_ratio" data="" id="" colspan=""><div class="td-content" title="">--</div></td><td class="time avg_visit_time" data="" id="" colspan=""><div class="td-content" title="">--</div></td></tr></tbody>
+                            <tfoot><tr class="" id=""><td class="number-col" data="" id="" colspan=""><div class="td-content" title="&nbsp;">&nbsp;</div></td><td class="summary simple_date_title" data="" id="" colspan="1"><div class="td-content" title="">当前汇总</div></td><td class="number group pv_count" data="" id="" colspan=""><div class="td-content" title="">71</div></td><td class="number visitor_count" data="" id="" colspan=""><div class="td-content" title="">38</div></td><td class="number ip_count" data="" id="" colspan=""><div class="td-content" title="">28</div></td><td class="ratio group bounce_ratio" data="" id="" colspan=""><div class="td-content" title="">77.14%</div></td><td class="time avg_visit_time" data="" id="" colspan=""><div class="td-content" title="">00:01:37</div></td></tr></tfoot>
+                        </table>
+                    </div>
+                    <div id="paging">
+                    </div>
+
+                    <script type="text/template" id="DataWarnningTemplate">
+                        var msg = this.msg;
+                        var data = this.data;
+
+                        <div class="data-warnning-content">
+                            <div class="data-warnning-msg">#{msg}</div>
+                            <div class="data-warnning-opts">
+                                <div class="buttons clearfix">
+                                    <span class="warnning-opts l">
+                                        <input type="checkbox" class="custom-checkbox" id="data-warnning-check" /><label for="data-warnning-check">我知道了，不再提示</label>
+                                    </span>
+                                    <div class="data-warnning-opt-buttons">
+                                        <a class="btn btn-large" onclick="page.DataLimitDialog.close()" href="javascript:void(0);">取消</a>
+                                        <a class="btn btn-large btn-blue submit" href="javascript:void(0);" lastchangedata="#{data}" onclick="page.submitDataWarnning()">确定</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </script>
+
+                </div>
+
+            </div>
+
+            <div class="footer">
+                <span>©2019 GC</span>
+                <a href="#" target="_blank">谷程首页</a>
+                <a href="#" target="_blank">谷程推广</a>
+                <a href="#" target="_blank">谷程联盟</a>
+                <a href="#" target="_blank">谷程广告管家</a>
+                <a href="#" target="_blank">谷程指数</a>
+                <a href="#" target="_blank">谷程云加速</a>
+                <a href="#" target="_blank">谷程数智平台</a>
+                <a href="#" target="_blank">使用谷程前必读</a>
+            </div>
+        </div>
+    </div>
+    <script src="~/Content/js/all.js"></script>
+    <script>
+        $(function () {
+            $(".select-bar-item").click(function () {
+                $(this).toggleClass("cur");
+            });
+            $("#time-span a").click(function () {
+                $(this).addClass("selected").siblings("a").removeClass("selected");
+            });
+        })
+        $(function () {
+            $("#Sources .drop-down-header").click(function () {
+                $(this).toggleClass("btn-selected");
+                $(this).next("div").toggle();
+                $("#Sources .drop-down-level2").remove();
+            })
+            $("#Sources .drop-down-level1 li").mouseenter(function () {
+                $(this).addClass("hover").siblings("li").removeClass("hover");
+                $("#Sources .drop-down-level3").remove();
+                $("#Sources .drop-down-level1 li").click(function () {
+                    $("#Sources .drop-down-header").children(".drop-down-text").text($(this).text());
+                    $("#Sources .drop-down-level1").hide();
+                    $("#Sources .drop-down-header ").removeClass("btn-selected");
+                    $("#Sources .drop-down-level3").remove();
+                });
+                var index = $(this).index()
+                if (index === 3) {
+                    $(this).parents("#Sources").prepend('<div class="drop-down-list hm-scroll drop-down-level2" style="width: 150px; left: 193px; top: 116px;" level="2"><ul><li class="drop-down-li drop-down-clickable" data-id="search,0" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="全部">全部</span></li><li class="drop-down-li drop-down-clickable hover" data-id="search,1" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="百度">百度</span></li><li class="drop-down-li drop-down-clickable" data-id="search,2" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="Google">Google</span></li><li class="drop-down-li drop-down-clickable" data-id="search,4" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="搜狗">搜狗</span></li><li class="drop-down-li drop-down-clickable" data-id="search,6" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="Yahoo">Yahoo</span></li><li class="drop-down-li drop-down-clickable" data-id="search,7" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="中国雅虎">中国雅虎</span></li><li class="drop-down-li drop-down-clickable" data-id="search,8" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="搜搜">搜搜</span></li><li class="drop-down-li drop-down-clickable" data-id="search,11" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="有道">有道</span></li><li class="drop-down-li drop-down-clickable" data-id="search,12" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="狗狗搜索">狗狗搜索</span></li><li class="drop-down-li drop-down-clickable" data-id="search,13" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="Bing">Bing</span></li><li class="drop-down-li drop-down-clickable" data-id="search,14" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="360搜索">360搜索</span></li><li class="drop-down-li drop-down-clickable" data-id="search,15" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="即刻搜索">即刻搜索</span></li><li class="drop-down-li drop-down-clickable" data-id="search,16" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="奇虎搜索">奇虎搜索</span></li><li class="drop-down-li drop-down-clickable" data-id="search,17" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="一淘搜索">一淘搜索</span></li><li class="drop-down-li drop-down-clickable" data-id="search,18" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="搜酷">搜酷</span></li><li class="drop-down-li drop-down-clickable" data-id="search,19" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="宜搜">宜搜</span></li><li class="drop-down-li drop-down-clickable" data-id="search,20" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="UC搜索">UC搜索</span></li><li class="drop-down-li drop-down-clickable" data-id="search,21" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="好搜">好搜</span></li><li class="drop-down-li drop-down-clickable" data-id="search,22" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="神马搜索">神马搜索</span></li><li class="drop-down-li drop-down-clickable" data-id="search,23" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="中国搜索">中国搜索</span></li></ul></div>')
+                } else {
+                    $(".drop-down-level2").remove();
+                }
+                $("#Sources .drop-down-level2 li").mouseenter(function () {
+                    $(this).addClass("hover").siblings("li").removeClass("hover");
+                    var indextwo = $(this).index();
+                    //if (indextwo === 2) {
+                    //    $(this).parents("#Sources").prepend('<div class="drop-down-list hm-scroll drop-down-level3" style="width: 150px; left: 345px; top: 168px;" level="3"><ul><li class="drop-down-li drop-down-clickable" data-id="search,-3,-1" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="全部">全部</span></li><li class="drop-down-li drop-down-clickable" data-id="search,-3,32767" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="百度搜索推广">百度搜索推广</span></li><li class="drop-down-li drop-down-clickable" data-id="search,-3,32763" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="百度百意推广">百度百意推广</span></li><li class="drop-down-li drop-down-clickable" data-id="search,-3,32761" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="百度信息流推广">百度信息流推广</span></li><li class="drop-down-li drop-down-clickable" data-id="search,-3,32765" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="百度品牌植入">百度品牌植入</span></li><li class="drop-down-li drop-down-clickable" data-id="search,-3,32739" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="百度金融">百度金融</span></li><li class="drop-down-li drop-down-clickable" data-id="search,-3,32759" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="百度教育">百度教育</span></li><li class="drop-down-li drop-down-clickable hover" data-id="search,-3,32729" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="百度爱玩">百度爱玩</span></li><li class="drop-down-li drop-down-clickable" data-id="search,-3,32749" data-children="false"><span class="drop-down-arrow-style  " style="float: right; width: 6px;">&nbsp;</span><span class="drop-down-li-content" title="百度健康">百度健康</span></li></ul></div>')
+                    //} else {
+                    //    $(".drop-down-level3").remove()
+                    //}
+                    $("#Sources .drop-down-level3 li").mouseenter(function () {
+                        $(this).addClass("hover").siblings("li").removeClass("hover");
+                    })
+                    $("#Sources .drop-down-level3 li").click(function () {
+                        $("#Sources .drop-down-header").children(".drop-down-text").text($(this).text());
+                        $("#Sources .drop-down-header ").removeClass("btn-selected");
+                        $("#Sources .drop-down-level1").hide();
+                        $("#Sources .drop-down-level2").remove();
+                        $("#Sources .drop-down-level3").remove();
+                    })
+                });
+                $("#Sources .drop-down-level2 li").click(function () {
+                    $("#Sources .drop-down-header").children(".drop-down-text").text($(this).text());
+                    $("#Sources .drop-down-header ").removeClass("btn-selected");
+                    $("#Sources .drop-down-level1").hide();
+                    $("#Sources .drop-down-level2").remove();
+                });
+            })
+        })
+        $(function () {
+            $("#Areas .drop-down-header").click(function () {
+                $(this).toggleClass("btn-selected");
+                $(this).next("div").toggle();
+            });
+            $("#Areas .drop-down-level1>ul>li").mouseenter(function () {
+                $(this).addClass("hover").siblings("li").removeClass("hover");
+                var indexA = $(this).index();
+                if (indexA === 3) {
+                    $(this).parents("#Areas").prepend("<div class=\"drop-down-list hm-scroll drop-down-level2\" style=\"width: 150px; left: 193px; top: 116px;\" level=\"2\"><ul><li class=\"drop-down-li drop-down-clickable selected hover\" data-id=\"province,1\" data-children=\"false\"><span class=\"drop-down-arrow-style  \" style=\"float: right; width: 6px;\">&nbsp;</span><span class=\"drop-down-li-content\" title=\"北京\">北京</span></li><li class=\"drop-down-li drop-down-clickable\" data-id=\"province,2\" data-children=\"false\"><span class=\"drop-down-arrow-style  \" style=\"float: right; width: 6px;\">&nbsp;</span><span class=\"drop-down-li-content\" title=\"上海\">上海</span></li><li class=\"drop-down-li drop-down-clickable\" data-id=\"province,3\" data-children=\"false\"><span class=\"drop-down-arrow-style  \" style=\"float: right; width: 6px;\">&nbsp;</span><span class=\"drop-down-li-content\" title=\"天津\">天津</span></li><li class=\"drop-down-li drop-down-clickable\" data-id=\"province,4\" data-children=\"false\"><span class=\"drop-down-arrow-style  \" style=\"float: right; width: 6px;\">&nbsp;</span><span class=\"drop-down-li-content\" title=\"广东\">广东</span></li><li class=\"drop-down-li drop-down-clickable\" data-id=\"province,5\" data-children=\"false\"><span class=\"drop-down-arrow-style  \" style=\"float: right; width: 6px;\">&nbsp;</span><span class=\"drop-down-li-content\" title=\"福建\">福建</span></li><li class=\"drop-down-li drop-down-clickable\" data-id=\"province,8\" data-children=\"false\"><span class=\"drop-down-arrow-style  \" style=\"float: right; width: 6px;\">&nbsp;</span><span class=\"drop-down-li-content\" title=\"海南\">海南</span></li><li class=\"drop-down-li drop-down-clickable\" data-id=\"province,9\" data-children=\"false\"><span class=\"drop-down-arrow-style  \" style=\"float: right; width: 6px;\">&nbsp;</span><span class=\"drop-down-li-content\" title=\"安徽\">安徽</span></li><li class=\"drop-down-li drop-down-clickable\" data-id=\"province,10\" data-children=\"false\"><span class=\"drop-down-arrow-style  \" style=\"float: right; width: 6px;\">&nbsp;</span><span class=\"drop-down-li-content\" title=\"贵州\">贵州</span></li><li class=\"drop-down-li drop-down-clickable\" data-id=\"province,11\" data-children=\"false\"><span class=\"drop-down-arrow-style  \" style=\"float: right; width: 6px;\">&nbsp;</span><span class=\"drop-down-li-content\" title=\"甘肃\">甘肃</span></li><li class=\"drop-down-li drop-down-clickable\" data-id=\"province,12\" data-children=\"false\"><span class=\"drop-down-arrow-style  \" style=\"float: right; width: 6px;\">&nbsp;</span><span class=\"drop-down-li-content\" title=\"广西\">广西</span></li><li class=\"drop-down-li drop-down-clickable\" data-id=\"province,13\" data-children=\"false\"><span class=\"drop-down-arrow-style  \" style=\"float: right; width: 6px;\">&nbsp;</span><span class=\"drop-down-li-content\" title=\"河北\">河北</span></li><li class=\"drop-down-li drop-down-clickable\" data-id=\"province,14\" data-children=\"false\"><span class=\"drop-down-arrow-style  \" style=\"float: right; width: 6px;\">&nbsp;</span><span class=\"drop-down-li-content\" title=\"河南\">河南</span></li><li class=\"drop-down-li drop-down-clickable\" data-id=\"province,15\" data-children=\"false\"><span class=\"drop-down-arrow-style  \" style=\"float: right; width: 6px;\">&nbsp;</span><span class=\"drop-down-li-content\" title=\"黑龙江\">黑龙江</span></li><li class=\"drop-down-li drop-down-clickable\" data-id=\"province,16\" data-children=\"false\"><span class=\"drop-down-arrow-style  \" style=\"float: right; width: 6px;\">&nbsp;</span><span class=\"drop-down-li-content\" title=\"湖北\">湖北</span></li><li class=\"drop-down-li drop-down-clickable\" data-id=\"province,17\" data-children=\"false\"><span class=\"drop-down-arrow-style  \" style=\"float: right; width: 6px;\">&nbsp;</span><span class=\"drop-down-li-content\" title=\"湖南\">湖南</span></li><li class=\"drop-down-li drop-down-clickable\" data-id=\"province,18\" data-children=\"false\"><span class=\"drop-down-arrow-style  \" style=\"float: right; width: 6px;\">&nbsp;</span><span class=\"drop-down-li-content\" title=\"吉林\">吉林</span></li><li class=\"drop-down-li drop-down-clickable\" data-id=\"province,19\" data-children=\"false\"><span class=\"drop-down-arrow-style  \" style=\"float: right; width: 6px;\">&nbsp;</span><span class=\"drop-down-li-content\" title=\"江苏\">江苏</span></li><li class=\"drop-down-li drop-down-clickable\" data-id=\"province,20\" data-children=\"false\"><span class=\"drop-down-arrow-style  \" style=\"float: right; width: 6px;\">&nbsp;</span><span class=\"drop-down-li-content\" title=\"江西\">江西</span></li><li class=\"drop-down-li drop-down-clickable\" data-id=\"province,21\" data-children=\"false\"><span class=\"drop-down-arrow-style  \" style=\"float: right; width: 6px;\">&nbsp;</span><span class=\"drop-down-li-content\" title=\"辽宁\">辽宁</span></li><li class=\"drop-down-li drop-down-clickable\" data-id=\"province,22\" data-children=\"false\"><span class=\"drop-down-arrow-style  \" style=\"float: right; width: 6px;\">&nbsp;</span><span class=\"drop-down-li-content\" title=\"内蒙古\">内蒙古</span></li><li class=\"drop-down-li drop-down-clickable\" data-id=\"province,23\" data-children=\"false\"><span class=\"drop-down-arrow-style  \" style=\"float: right; width: 6px;\">&nbsp;</span><span class=\"drop-down-li-content\" title=\"宁夏\">宁夏</span></li><li class=\"drop-down-li drop-down-clickable\" data-id=\"province,24\" data-children=\"false\"><span class=\"drop-down-arrow-style  \" style=\"float: right; width: 6px;\">&nbsp;</span><span class=\"drop-down-li-content\" title=\"青海\">青海</span></li><li class=\"drop-down-li drop-down-clickable\" data-id=\"province,25\" data-children=\"false\"><span class=\"drop-down-arrow-style  \" style=\"float: right; width: 6px;\">&nbsp;</span><span class=\"drop-down-li-content\" title=\"山东\">山东</span></li><li class=\"drop-down-li drop-down-clickable\" data-id=\"province,26\" data-children=\"false\"><span class=\"drop-down-arrow-style  \" style=\"float: right; width: 6px;\">&nbsp;</span><span class=\"drop-down-li-content\" title=\"山西\">山西</span></li><li class=\"drop-down-li drop-down-clickable\" data-id=\"province,27\" data-children=\"false\"><span class=\"drop-down-arrow-style  \" style=\"float: right; width: 6px;\">&nbsp;</span><span class=\"drop-down-li-content\" title=\"陕西\">陕西</span></li><li class=\"drop-down-li drop-down-clickable\" data-id=\"province,28\" data-children=\"false\"><span class=\"drop-down-arrow-style  \" style=\"float: right; width: 6px;\">&nbsp;</span><span class=\"drop-down-li-content\" title=\"四川\">四川</span></li><li class=\"drop-down-li drop-down-clickable\" data-id=\"province,29\" data-children=\"false\"><span class=\"drop-down-arrow-style  \" style=\"float: right; width: 6px;\">&nbsp;</span><span class=\"drop-down-li-content\" title=\"西藏\">西藏</span></li><li class=\"drop-down-li drop-down-clickable\" data-id=\"province,30\" data-children=\"false\"><span class=\"drop-down-arrow-style  \" style=\"float: right; width: 6px;\">&nbsp;</span><span class=\"drop-down-li-content\" title=\"新疆\">新疆</span></li><li class=\"drop-down-li drop-down-clickable\" data-id=\"province,31\" data-children=\"false\"><span class=\"drop-down-arrow-style  \" style=\"float: right; width: 6px;\">&nbsp;</span><span class=\"drop-down-li-content\" title=\"云南\">云南</span></li><li class=\"drop-down-li drop-down-clickable\" data-id=\"province,32\" data-children=\"false\"><span class=\"drop-down-arrow-style  \" style=\"float: right; width: 6px;\">&nbsp;</span><span class=\"drop-down-li-content\" title=\"浙江\">浙江</span></li><li class=\"drop-down-li drop-down-clickable\" data-id=\"province,33\" data-children=\"false\"><span class=\"drop-down-arrow-style  \" style=\"float: right; width: 6px;\">&nbsp;</span><span class=\"drop-down-li-content\" title=\"重庆\">重庆</span></li><li class=\"drop-down-li drop-down-clickable\" data-id=\"province,34\" data-children=\"false\"><span class=\"drop-down-arrow-style  \" style=\"float: right; width: 6px;\">&nbsp;</span><span class=\"drop-down-li-content\" title=\"香港\">香港</span></li><li class=\"drop-down-li drop-down-clickable\" data-id=\"province,35\" data-children=\"false\"><span class=\"drop-down-arrow-style  \" style=\"float: right; width: 6px;\">&nbsp;</span><span class=\"drop-down-li-content\" title=\"台湾\">台湾</span></li><li class=\"drop-down-li drop-down-clickable\" data-id=\"province,36\" data-children=\"false\"><span class=\"drop-down-arrow-style  \" style=\"float: right; width: 6px;\">&nbsp;</span><span class=\"drop-down-li-content\" title=\"澳门\">澳门</span></li></ul></div>")
+                } else {
+                    $("#Areas .drop-down-level2").remove();
+                }
+                $("#Areas .drop-down-level2>ul>li").mouseenter(function () {
+                    $(this).addClass("hover").siblings("li").removeClass("hover");
+                })
+                $("#Areas .drop-down-level2>ul>li").click(function () {
+                    $("#Areas .drop-down-header").children(".drop-down-text").text($(this).text());
+                    $("#Areas .drop-down-level1").hide();
+                    $("#Areas .drop-down-level2").remove();
+                    $("#Areas .drop-down-header").removeClass("btn-selected");
+                })
+            })
+            $("#Areas .drop-down-level1>ul>li").click(function () {
+                $("#Areas .drop-down-header").children(".drop-down-text").text($(this).text());
+                $("#Areas .drop-down-level1").hide();
+                $("#Areas .drop-down-level2").remove();
+                $("#Areas .drop-down-header").removeClass("btn-selected");
+
+            })
+        })
+        $(function () {
+        })
+
+    </script>
+    <script>
+        //var myDate = new Date();
+        //$(function () {
+        //    alert(123);
+        //$("#date").html() = getNowFormatDate();
+        //console.log(myDate.toLocaleDateString());
+        //alert(getNowFormatDate());
+        //});//获取当前时间，格式YYYY-MM-DD
+        //function getNowFormatDate() {
+        //    var date = new Date();
+        //    var seperator1 = "-";
+        //    var year = date.getFullYear();
+        //    var month = date.getMonth() + 1;
+        //    var strDate = date.getDate();
+        //    if (month >= 1 && month <= 9) {
+        //        month = "0" + month;
+        //    }
+        //    if (strDate >= 0 && strDate <= 9) {
+        //        strDate = "0" + strDate;
+        //    }
+        //    var currentdate = year + seperator1 + month + seperator1 + strDate;
+        //    return currentdate;
+        //}
+    </script>
+    <script>
+        var day = "0";
+        var dataChart = [];
+        var lastResult = [];
+        if (day == "0" || day == "-1") {
+            lastResult = [];
+            for (var i = 0; i < chartData.length; i++) {
+                lastResult.push(chartData[i].WebDomain);
+            }
+        }
+        else {
+            lastResult = [];
+            for (var i = 0; i < chartData.length; i++) {
+                lastResult.push(chartData[i].WebDomain);
+            }
+        }
+        $.ajax({
+            async: true,
+            url: "/Home/PostReportData",
+            type: 'Post',
+            data: { day },
+            dataType: "json",
+            beforeSend: function () {
+                $("#flash-line-container").append("<tr class='preview-loading'><td class='empty-td' colspan='8' align='middle' style='text-align: center;height: 200px;'><img src='/img/loading.gif' style='vertical-align: middle;margin-right: 5px;' />数据正在加载中...</td></tr>");
+            },
+            complete: function () {
+                $(".preview-loading").remove();
+            },
+            success: function (data) {
+                $(".preview-loading").remove();
+                if (data != null) {
+                    //今日
+
+
+
+
+
+
+
+
+
+
+                    var myChart = echarts.init(document.getElementById('flash-line-container'));
+                    option = {
+                        tooltip: {
+                            trigger: 'axis',
+                            axisPointer: {
+                                lineStyle: {
+                                    color: '#ddd'
+                                }
+                            },
+                            backgroundColor: 'rgba(255,255,255,1)',
+                            padding: [5, 10],
+                            textStyle: {
+                                color: '#red',
+                            },
+                            extraCssText: 'box-shadow: 0 0 5px rgba(41,60,85，0.3)'
+                        },
+                        legend: {
+                            left: '50%',
+                            textAlign: 'center',
+                            data: ['今日', '上周同期']
+                        },
+                        xAxis: [
+                            {
+                                type: 'category',
+                                data: proportion,
+                                axisTick: {
+                                    alignWithLabel: true
+                                }
+                            }
+                        ],
+                        yAxis: [
+                            {
+                                type: 'value',
+                                axisLabel: {
+                                    //设置y轴数值为%
+                                    formatter: '{value}',
+                                }
+                            }
+                        ],
+                        series: [{
+                            name: '今日',
+                            type: 'line',
+                            smooth: true,
+                            showSymbol: false,
+                            symbol: 'circle',
+                            symbolSize: 6,
+                            data: provic,
+                            areaStyle: {
+                                normal: {
+                                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                        offset: 0,
+                                        color: 'rgba(41,60,85,0.5)'
+                                    }, {
+                                        offset: 1,
+                                        color: 'rgba(41,60,85,0.2)'
+                                    }], false)
+                                }
+                            },
+                            itemStyle: {
+                                normal: {
+                                    color: '#293C55'
+                                }
+                            },
+                            lineStyle: {
+                                normal: {
+                                    width: 3
+                                }
+                            }
+                        }, {
+                            name: '上周同期',
+                            type: 'line',
+                            smooth: true,
+                            showSymbol: false,
+                            symbol: 'circle',
+                            symbolSize: 6,
+                            data: provic,
+                            areaStyle: {
+                                normal: {
+                                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                        offset: 0,
+                                        color: 'rgba(169,51,76,1)'
+                                    }, {
+                                        offset: 1,
+                                        color: 'rgba(169,51,76,1)'
+                                    }], false)
+                                }
+                            },
+                            itemStyle: {
+                                normal: {
+                                    color: '#A9334C'
+                                }
+                            },
+                            lineStyle: {
+                                normal: {
+                                    width: 3
+                                }
+                            }
+                        }]
+                    };
+                    myChart.setOption(option);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

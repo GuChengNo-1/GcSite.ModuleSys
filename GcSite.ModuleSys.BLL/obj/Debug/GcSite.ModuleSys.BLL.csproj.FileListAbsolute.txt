@@ -28,12 +28,10 @@ D:\张丽月\GitHub\GcSite.ModuleSys\GcSite.ModuleSys.BLL\bin\Debug\GcSite.Modul
 D:\张丽月\GitHub\GcSite.ModuleSys\GcSite.ModuleSys.BLL\bin\Debug\GcSite.ModuleSys.BLL.pdb
 D:\张丽月\GitHub\GcSite.ModuleSys\GcSite.ModuleSys.BLL\bin\Debug\GcSite.ModuleSys.DAL.dll
 D:\张丽月\GitHub\GcSite.ModuleSys\GcSite.ModuleSys.BLL\bin\Debug\GcSite.ModuleSys.Models.dll
-D:\张丽月\GitHub\GcSite.ModuleSys\GcSite.ModuleSys.BLL\bin\Debug\EntityFramework.dll
 D:\张丽月\GitHub\GcSite.ModuleSys\GcSite.ModuleSys.BLL\bin\Debug\System.Linq.Dynamic.dll
 D:\张丽月\GitHub\GcSite.ModuleSys\GcSite.ModuleSys.BLL\bin\Debug\GcSite.ModuleSys.DAL.pdb
 D:\张丽月\GitHub\GcSite.ModuleSys\GcSite.ModuleSys.BLL\bin\Debug\GcSite.ModuleSys.DAL.dll.config
 D:\张丽月\GitHub\GcSite.ModuleSys\GcSite.ModuleSys.BLL\bin\Debug\GcSite.ModuleSys.Models.pdb
-D:\张丽月\GitHub\GcSite.ModuleSys\GcSite.ModuleSys.BLL\bin\Debug\EntityFramework.xml
 D:\张丽月\GitHub\GcSite.ModuleSys\GcSite.ModuleSys.BLL\obj\Debug\GcSite.ModuleSys.BLL.csprojResolveAssemblyReference.cache
 D:\张丽月\GitHub\GcSite.ModuleSys\GcSite.ModuleSys.BLL\obj\Debug\GcSite.ModuleSys.BLL.dll
 D:\张丽月\GitHub\GcSite.ModuleSys\GcSite.ModuleSys.BLL\obj\Debug\GcSite.ModuleSys.BLL.pdb

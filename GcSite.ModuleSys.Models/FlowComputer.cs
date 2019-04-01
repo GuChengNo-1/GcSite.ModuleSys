@@ -16,6 +16,10 @@ namespace GcSite.ModuleSys.Models
         /// </summary>
         public DateTime CurrentTime { get; set; }
         /// <summary>
+        /// ip地址
+        /// </summary>
+        public string IpAddress { get; set; }
+        /// <summary>
         /// pv当前页面
         /// </summary>
         public string VisitPage { get; set; }
